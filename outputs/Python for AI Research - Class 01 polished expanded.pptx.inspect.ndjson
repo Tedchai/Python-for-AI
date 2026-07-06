@@ -1,0 +1,724 @@
+{"kind":"deck","id":"pr/zmr4v0","name":"Deck"}
+{"kind":"layout","layoutId":"82314fa4-02f2-448e-bdcc-8fe1ab799fe5","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"07bdd1bf-0b63-4e4e-a3dc-690955f5dfcd","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/osd79n","slide":1,"title":"MERITPOINT ACADEMY","textShapes":7}
+{"kind":"shape","id":"sh/ed8v6psf","slide":1,"bbox":[0,0,860,720]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":1,"text":"MERITPOINT ACADEMY","textPreview":"MERITPOINT ACADEMY","textChars":18,"textLines":1,"bbox":[76,58,520,42]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":1,"text":"Python for\nAI Research","textPreview":"Python for | AI Research","textChars":22,"textLines":2,"bbox":[74,150,650,178]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":1,"text":"第 1 课：课程导入与 Python 第一个 Notebook","textPreview":"第 1 课：课程导入与 Python 第一个 Notebook","textChars":31,"textLines":1,"bbox":[80,356,640,42]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":1,"text":"从今天开始，我们用代码处理数据、提出问题、评价模型，并最终完成一个可展示的 AI 科研项目。","textPreview":"从今天开始，我们用代码处理数据、提出问题、评价模型，并最终完成一个可展示的 AI 科研项目。","textChars":46,"textLines":1,"bbox":[80,420,620,96]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":1,"bbox":[80,550,300,54]}
+{"kind":"textbox","id":"sh/7ed8bat4","slide":1,"text":"当堂产出：首个可运行 Notebook","textPreview":"当堂产出：首个可运行 Notebook","textChars":19,"textLines":1,"bbox":[96,564,270,28]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":1,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/cvixczed","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"image","id":"im/o7qpg3ex","slide":1,"name":"","alt":"Python for AI Research course overview poster","bbox":[790,0,490,720]}
+{"kind":"notes","id":"nt/osd79n","slide":1,"text":""}
+{"kind":"slide","id":"sl/k5xnvx","slide":2,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":14}
+{"kind":"textbox","id":"sh/i5sneloj","slide":2,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":2,"text":"今天这节课要完成三件事","textPreview":"今天这节课要完成三件事","textChars":11,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":2,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/7y1kre1w","slide":2,"bbox":[94,190,320,250]}
+{"kind":"shape","id":"sh/ed8v6psf","slide":2,"bbox":[120,218,54,54]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":2,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[137,229,20,26]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":2,"text":"了解课程","textPreview":"了解课程","textChars":4,"textLines":1,"bbox":[122,298,260,36]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":2,"text":"知道 15 节课怎样从 Python 走到 AI 科研项目。","textPreview":"知道 15 节课怎样从 Python 走到 AI 科研项目。","textChars":30,"textLines":1,"bbox":[124,354,260,72]}
+{"kind":"shape","id":"sh/ih4byhgn","slide":2,"bbox":[472,190,320,250]}
+{"kind":"shape","id":"sh/032lszqt","slide":2,"bbox":[498,218,54,54]}
+{"kind":"textbox","id":"sh/tovahoza","slide":2,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[515,229,20,26]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":2,"text":"明确提交方式","textPreview":"明确提交方式","textChars":6,"textLines":1,"bbox":[500,298,260,36]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":2,"text":"了解作业要求、提交节奏和 AI 使用规范说明。","textPreview":"了解作业要求、提交节奏和 AI 使用规范说明。","textChars":23,"textLines":1,"bbox":[502,354,260,72]}
+{"kind":"shape","id":"sh/0fepkzup","slide":2,"bbox":[850,190,320,250]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":2,"bbox":[876,218,54,54]}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":2,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[893,229,20,26]}
+{"kind":"textbox","id":"sh/bulwval8","slide":2,"text":"写出代码","textPreview":"写出代码","textChars":4,"textLines":1,"bbox":[878,298,260,36]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":2,"text":"在 Google Colab 里运行第一个 Python notebook。","textPreview":"在 Google Colab 里运行第一个 Python notebook。","textChars":38,"textLines":1,"bbox":[880,354,260,72]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":2,"text":"课堂节奏：说明规则 -> 现场演示 -> 跟做练习 -> 提交一个小成果","textPreview":"课堂节奏：说明规则 -> 现场演示 -> 跟做练习 -> 提交一个小成果","textChars":36,"textLines":1,"bbox":[120,510,1040,38]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":2,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/83itgfml","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/k5xnvx","slide":2,"text":""}
+{"kind":"slide","id":"sl/wdxf1s","slide":3,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":11}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":3,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":3,"text":"先认识讲师，也认识这门课的学习方式","textPreview":"先认识讲师，也认识这门课的学习方式","textChars":17,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":3,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/gfmlkjm1","slide":3,"bbox":[94,184,322,302]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":3,"text":"我是谁","textPreview":"我是谁","textChars":3,"textLines":1,"bbox":[124,216,260,38]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":3,"text":"• 研究或教学方向\n• 做过的项目案例\n• 为什么开这门课","textPreview":"• 研究或教学方向 | • 做过的项目案例 | • 为什么开这门课","textChars":29,"textLines":3,"bbox":[128,284,258,150]}
+{"kind":"shape","id":"sh/rytsvu9k","slide":3,"bbox":[472,184,322,302]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":3,"text":"我怎么教","textPreview":"我怎么教","textChars":4,"textLines":1,"bbox":[502,216,260,38]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":3,"text":"• 每节课都有可见产出\n• 少背概念，多做练习\n• 用真实数据训练科研表达","textPreview":"• 每节课都有可见产出 | • 少背概念，多做练习 | • 用真实数据训练科研表达","textChars":37,"textLines":3,"bbox":[506,284,258,150]}
+{"kind":"shape","id":"sh/tovahoza","slide":3,"bbox":[850,184,322,302]}
+{"kind":"textbox","id":"sh/032lszqt","slide":3,"text":"你怎么学","textPreview":"你怎么学","textChars":4,"textLines":1,"bbox":[880,216,260,38]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":3,"text":"• 课堂跟做，不怕报错\n• 作业小步提交\n• 能解释自己的代码最重要","textPreview":"• 课堂跟做，不怕报错 | • 作业小步提交 | • 能解释自己的代码最重要","textChars":34,"textLines":3,"bbox":[884,284,258,150]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":3,"text":"课堂里遇到报错很正常。关键不是不出错，而是能读懂、定位、修正。","textPreview":"课堂里遇到报错很正常。关键不是不出错，而是能读懂、定位、修正。","textChars":31,"textLines":1,"bbox":[118,540,1040,38]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":3,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/wdxf1s","slide":3,"text":""}
+{"kind":"slide","id":"sl/io54ee","slide":4,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":24}
+{"kind":"textbox","id":"sh/je9cvixc","slide":4,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":4,"text":"15 节课会完成一个完整 AI 科研闭环","textPreview":"15 节课会完成一个完整 AI 科研闭环","textChars":20,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/1gvy90je","slide":4,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/q1orytsv","slide":4,"bbox":[110,170,136,50]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":4,"text":"阶段 1","textPreview":"阶段 1","textChars":4,"textLines":1,"bbox":[130,181,92,22]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"text":"Python 基础入门","textPreview":"Python 基础入门","textChars":11,"textLines":1,"bbox":[288,172,360,36]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":4,"text":"第 1-4 课","textPreview":"第 1-4 课","textChars":7,"textLines":1,"bbox":[704,177,170,30]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":4,"text":"入门 notebook","textPreview":"入门 notebook","textChars":11,"textLines":1,"bbox":[900,178,250,30]}
+{"kind":"shape","id":"sh/fyxobm58","slide":4,"bbox":[110,252,136,50]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":4,"text":"阶段 2","textPreview":"阶段 2","textChars":4,"textLines":1,"bbox":[130,263,92,22]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":4,"text":"数据处理与分析","textPreview":"数据处理与分析","textChars":7,"textLines":1,"bbox":[288,254,360,36]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":4,"text":"第 5-7 课","textPreview":"第 5-7 课","textChars":7,"textLines":1,"bbox":[704,259,170,30]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":4,"text":"清洗数据集","textPreview":"清洗数据集","textChars":5,"textLines":1,"bbox":[900,260,250,30]}
+{"kind":"shape","id":"sh/7adsji5s","slide":4,"bbox":[110,334,136,50]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":4,"text":"阶段 3","textPreview":"阶段 3","textChars":4,"textLines":1,"bbox":[130,345,92,22]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":4,"text":"可视化与 EDA","textPreview":"可视化与 EDA","textChars":8,"textLines":1,"bbox":[288,336,360,36]}
+{"kind":"textbox","id":"sh/wval87ed","slide":4,"text":"第 8 课","textPreview":"第 8 课","textChars":5,"textLines":1,"bbox":[704,341,170,30]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":4,"text":"核心图表","textPreview":"核心图表","textChars":4,"textLines":1,"bbox":[900,342,250,30]}
+{"kind":"shape","id":"sh/eloj2t83","slide":4,"bbox":[110,416,136,50]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":4,"text":"阶段 4","textPreview":"阶段 4","textChars":4,"textLines":1,"bbox":[130,427,92,22]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":4,"text":"机器学习建模","textPreview":"机器学习建模","textChars":6,"textLines":1,"bbox":[288,418,360,36]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":4,"text":"第 9-13 课","textPreview":"第 9-13 课","textChars":8,"textLines":1,"bbox":[704,423,170,30]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":4,"text":"模型与评价","textPreview":"模型与评价","textChars":5,"textLines":1,"bbox":[900,424,250,30]}
+{"kind":"shape","id":"sh/m1cfa9w3","slide":4,"bbox":[110,498,136,50]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":4,"text":"阶段 5","textPreview":"阶段 5","textChars":4,"textLines":1,"bbox":[130,509,92,22]}
+{"kind":"textbox","id":"sh/47y1kre1","slide":4,"text":"AI 科研项目实战","textPreview":"AI 科研项目实战","textChars":9,"textLines":1,"bbox":[288,500,360,36]}
+{"kind":"textbox","id":"sh/tsvu9kni","slide":4,"text":"第 14-15 课","textPreview":"第 14-15 课","textChars":9,"textLines":1,"bbox":[704,505,170,30]}
+{"kind":"textbox","id":"sh/m58z25kb","slide":4,"text":"报告 + PPT","textPreview":"报告 + PPT","textChars":8,"textLines":1,"bbox":[900,506,250,30]}
+{"kind":"textbox","id":"sh/bq1oryts","slide":4,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/io54ee","slide":4,"text":""}
+{"kind":"slide","id":"sl/4lyhzq","slide":5,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":22}
+{"kind":"textbox","id":"sh/6psfil0r","slide":5,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":5,"text":"每节课都有一个可以提交的小成果","textPreview":"每节课都有一个可以提交的小成果","textChars":15,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":5,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/vixczed8","slide":5,"bbox":[104,164,1040,48]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":5,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[130,174,80,24]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":5,"text":"第一个 Python notebook","textPreview":"第一个 Python notebook","textChars":19,"textLines":1,"bbox":[250,173,330,24]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":5,"text":"变量、print、注释、输入输出","textPreview":"变量、print、注释、输入输出","textChars":16,"textLines":1,"bbox":[620,173,470,24]}
+{"kind":"shape","id":"sh/vu9knih4","slide":5,"bbox":[104,228,1040,48]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":5,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[130,238,80,24]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":5,"text":"评分/分类小程序","textPreview":"评分/分类小程序","textChars":8,"textLines":1,"bbox":[250,237,330,24]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":5,"text":"if、for、while、逻辑判断","textPreview":"if、for、while、逻辑判断","textChars":17,"textLines":1,"bbox":[620,237,470,24]}
+{"kind":"shape","id":"sh/6psfil0r","slide":5,"bbox":[104,292,1040,48]}
+{"kind":"textbox","id":"sh/val87ed8","slide":5,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[130,302,80,24]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":5,"text":"函数 + 文件输出","textPreview":"函数 + 文件输出","textChars":9,"textLines":1,"bbox":[250,301,330,24]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":5,"text":"参数、返回值、简单文件读写","textPreview":"参数、返回值、简单文件读写","textChars":13,"textLines":1,"bbox":[620,301,470,24]}
+{"kind":"shape","id":"sh/2x4nap4r","slide":5,"bbox":[104,356,1040,48]}
+{"kind":"textbox","id":"sh/vixczed8","slide":5,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[130,366,80,24]}
+{"kind":"textbox","id":"sh/kf6dcbul","slide":5,"text":"样本记录表","textPreview":"样本记录表","textChars":5,"textLines":1,"bbox":[250,365,330,24]}
+{"kind":"textbox","id":"sh/d0z61032","slide":5,"text":"list、dict、set、基础统计","textPreview":"list、dict、set、基础统计","textChars":18,"textLines":1,"bbox":[620,365,470,24]}
+{"kind":"shape","id":"sh/dsji5sne","slide":5,"bbox":[104,420,1040,48]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":5,"text":"5-8","textPreview":"5-8","textChars":3,"textLines":1,"bbox":[130,430,80,24]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":5,"text":"数据处理与 EDA 小报告","textPreview":"数据处理与 EDA 小报告","textChars":13,"textLines":1,"bbox":[250,429,330,24]}
+{"kind":"textbox","id":"sh/61032lsz","slide":5,"text":"NumPy、pandas、清洗、可视化","textPreview":"NumPy、pandas、清洗、可视化","textChars":19,"textLines":1,"bbox":[620,429,470,24]}
+{"kind":"shape","id":"sh/d4vmtwra","slide":5,"bbox":[104,484,1040,48]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":5,"text":"9-15","textPreview":"9-15","textChars":4,"textLines":1,"bbox":[130,494,80,24]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":5,"text":"AI 科研项目","textPreview":"AI 科研项目","textChars":7,"textLines":1,"bbox":[250,493,330,24]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":5,"text":"建模、评价、报告、展示","textPreview":"建模、评价、报告、展示","textChars":11,"textLines":1,"bbox":[620,493,470,24]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":5,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/4lyhzq","slide":5,"text":""}
+{"kind":"slide","id":"sl/txulqw","slide":6,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":16}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":6,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/m94fu18j","slide":6,"text":"评分标准看重持续产出和最终项目","textPreview":"评分标准看重持续产出和最终项目","textChars":15,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/fu18jqh0","slide":6,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/83itgfml","slide":6,"bbox":[96,178,500,132]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":6,"text":"35%","textPreview":"35%","textChars":3,"textLines":1,"bbox":[124,206,120,46]}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":6,"text":"周度作业","textPreview":"周度作业","textChars":4,"textLines":1,"bbox":[266,202,260,30]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":6,"text":"每节课的小成果、notebook 是否能运行、是否按时提交。","textPreview":"每节课的小成果、notebook 是否能运行、是否按时提交。","textChars":30,"textLines":1,"bbox":[266,244,290,48]}
+{"kind":"shape","id":"sh/4zidonyd","slide":6,"bbox":[648,178,500,132]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":6,"text":"20%","textPreview":"20%","textChars":3,"textLines":1,"bbox":[676,206,120,46]}
+{"kind":"textbox","id":"sh/1kre1w7m","slide":6,"text":"数据部分","textPreview":"数据部分","textChars":4,"textLines":1,"bbox":[818,202,260,30]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":6,"text":"数据来源、变量说明、清洗记录、EDA 图表和观察。","textPreview":"数据来源、变量说明、清洗记录、EDA 图表和观察。","textChars":25,"textLines":1,"bbox":[818,244,290,48]}
+{"kind":"shape","id":"sh/ji5snelo","slide":6,"bbox":[96,356,500,132]}
+{"kind":"textbox","id":"sh/uxc3ylc7","slide":6,"text":"25%","textPreview":"25%","textChars":3,"textLines":1,"bbox":[124,384,120,46]}
+{"kind":"textbox","id":"sh/1cfa9w3m","slide":6,"text":"建模部分","textPreview":"建模部分","textChars":4,"textLines":1,"bbox":[266,380,260,30]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":6,"text":"模型选择、baseline 对比、评价指标和结果解释。","textPreview":"模型选择、baseline 对比、评价指标和结果解释。","textChars":27,"textLines":1,"bbox":[266,422,290,48]}
+{"kind":"shape","id":"sh/j6tovaho","slide":6,"bbox":[648,356,500,132]}
+{"kind":"textbox","id":"sh/ulwval87","slide":6,"text":"20%","textPreview":"20%","textChars":3,"textLines":1,"bbox":[676,384,120,46]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":6,"text":"期末展示","textPreview":"期末展示","textChars":4,"textLines":1,"bbox":[818,380,260,30]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":6,"text":"报告/PPT 是否清楚，是否能说明限制和改进方向。","textPreview":"报告/PPT 是否清楚，是否能说明限制和改进方向。","textChars":25,"textLines":1,"bbox":[818,422,290,48]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":6,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/txulqw","slide":6,"text":""}
+{"kind":"slide","id":"sl/5x3x02","slide":7,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":11}
+{"kind":"textbox","id":"sh/ed8bat47","slide":7,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":7,"text":"作业提交方式会在课后统一通知","textPreview":"作业提交方式会在课后统一通知","textChars":14,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":7,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":7,"bbox":[110,180,520,292]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":7,"text":"课程名称","textPreview":"课程名称","textChars":4,"textLines":1,"bbox":[150,222,160,30]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":7,"text":"The AI Toolbox","textPreview":"The AI Toolbox","textChars":14,"textLines":1,"bbox":[150,260,420,44]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":7,"text":"提交方式","textPreview":"提交方式","textChars":4,"textLines":1,"bbox":[150,334,160,30]}
+{"kind":"textbox","id":"sh/7adsji5s","slide":7,"text":"课后通知","textPreview":"课后通知","textChars":4,"textLines":1,"bbox":[150,370,360,58]}
+{"kind":"shape","id":"sh/epkzupwb","slide":7,"bbox":[700,180,420,292]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":7,"text":"今天先完成","textPreview":"今天先完成","textChars":5,"textLines":1,"bbox":[740,222,240,32]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":7,"text":"1. 建好 Colab notebook\n2. 按要求命名文件\n3. 确认可以完整运行\n4. 等待老师发布提交入口","textPreview":"1. 建好 Colab notebook | 2. 按要求命名文件 | 3. 确认可以完整运行 | 4. 等待老师发布提交入口","textChars":57,"textLines":4,"bbox":[742,282,330,142]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":7,"text":"今天重点是把 notebook 跑通；具体提交入口和截止时间会课后统一发布。","textPreview":"今天重点是把 notebook 跑通；具体提交入口和截止时间会课后统一发布。","textChars":38,"textLines":1,"bbox":[140,528,1000,42]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":7,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/5x3x02","slide":7,"text":""}
+{"kind":"slide","id":"sl/obqkpn","slide":8,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/n29gr2p8","slide":8,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":8,"text":"AI 可以帮你学习，但不能替你完成思考","textPreview":"AI 可以帮你学习，但不能替你完成思考","textChars":19,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/58z25kb6","slide":8,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/y90je9cv","slide":8,"bbox":[104,180,500,310]}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":8,"bbox":[676,180,500,310]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":8,"bbox":[136,214,118,30]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":8,"text":"可以这样用","textPreview":"可以这样用","textChars":5,"textLines":1,"bbox":[150,218,90,22]}
+{"kind":"shape","id":"sh/u54zidon","slide":8,"bbox":[708,214,118,30]}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":8,"text":"不能这样用","textPreview":"不能这样用","textChars":5,"textLines":1,"bbox":[722,218,90,22]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":8,"text":"• 解释概念和报错\n• 生成练习题\n• 辅助 debug\n• 润色报告语言\n• 提出研究方向","textPreview":"• 解释概念和报错 | • 生成练习题 | • 辅助 debug | • 润色报告语言 | • 提出研究方向","textChars":46,"textLines":5,"bbox":[142,274,400,156]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":8,"text":"• 把 AI 输出当事实\n• 伪造引用或实验结果\n• 上传隐私或受限数据\n• 提交自己无法解释的代码","textPreview":"• 把 AI 输出当事实 | • 伪造引用或实验结果 | • 上传隐私或受限数据 | • 提交自己无法解释的代码","textChars":50,"textLines":4,"bbox":[714,274,400,156]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":8,"text":"最终项目需要说明 AI 工具帮你做了什么；你必须能口头解释提交的代码、图表和模型结果。","textPreview":"最终项目需要说明 AI 工具帮你做了什么；你必须能口头解释提交的代码、图表和模型结果。","textChars":43,"textLines":1,"bbox":[126,536,1028,54]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":8,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/obqkpn","slide":8,"text":""}
+{"kind":"slide","id":"sl/yn1hbr","slide":9,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":12}
+{"kind":"textbox","id":"sh/cbulwval","slide":9,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":9,"text":"为什么 AI 科研第一步要学 Python","textPreview":"为什么 AI 科研第一步要学 Python","textChars":21,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/u54zidon","slide":9,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/5kb6xkf6","slide":9,"bbox":[110,174,490,126]}
+{"kind":"textbox","id":"sh/czed8v6p","slide":9,"text":"读数据","textPreview":"读数据","textChars":3,"textLines":1,"bbox":[144,202,160,34]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":9,"text":"CSV、表格、文本和公开数据集都可以用 Python 处理。","textPreview":"CSV、表格、文本和公开数据集都可以用 Python 处理。","textChars":30,"textLines":1,"bbox":[304,198,252,60]}
+{"kind":"shape","id":"sh/ytsvu9kn","slide":9,"bbox":[655,174,490,126]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":9,"text":"做分析","textPreview":"做分析","textChars":3,"textLines":1,"bbox":[689,202,160,34]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":9,"text":"NumPy、pandas 和图表库让观察变成证据。","textPreview":"NumPy、pandas 和图表库让观察变成证据。","textChars":25,"textLines":1,"bbox":[849,198,252,60]}
+{"kind":"shape","id":"sh/u54zidon","slide":9,"bbox":[110,352,490,126]}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":9,"text":"跑模型","textPreview":"跑模型","textChars":3,"textLines":1,"bbox":[144,380,160,34]}
+{"kind":"textbox","id":"sh/cbulwval","slide":9,"text":"scikit-learn 可以快速训练 baseline 并比较结果。","textPreview":"scikit-learn 可以快速训练 baseline 并比较结果。","textChars":35,"textLines":1,"bbox":[304,376,252,60]}
+{"kind":"shape","id":"sh/5sneloj2","slide":9,"bbox":[655,352,490,126]}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":9,"text":"讲清楚","textPreview":"讲清楚","textChars":3,"textLines":1,"bbox":[689,380,160,34]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":9,"text":"notebook 把代码、图表和解释放在同一个研究记录里。","textPreview":"notebook 把代码、图表和解释放在同一个研究记录里。","textChars":29,"textLines":1,"bbox":[849,376,252,60]}
+{"kind":"textbox","id":"sh/czed8v6p","slide":9,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/5kb6xkf6","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/yn1hbr","slide":9,"text":""}
+{"kind":"slide","id":"sl/i5ador","slide":10,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":8}
+{"kind":"textbox","id":"sh/83itgfml","slide":10,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":10,"text":"今天先把 Colab 和 Notebook 跑通","textPreview":"今天先把 Colab 和 Notebook 跑通","textChars":24,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/qxs72x4n","slide":10,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/x0nuxc3y","slide":10,"bbox":[104,176,460,322]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":10,"text":"Notebook 是什么","textPreview":"Notebook 是什么","textChars":12,"textLines":1,"bbox":[140,214,330,36]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":10,"text":"• 一格一格运行代码\n• 代码、文字、图表放在一起\n• 适合记录科研过程\n• 可以分享链接和提交作业","textPreview":"• 一格一格运行代码 | • 代码、文字、图表放在一起 | • 适合记录科研过程 | • 可以分享链接和提交作业","textChars":50,"textLines":4,"bbox":[142,284,360,150]}
+{"kind":"shape","id":"sh/m94fu18j","slide":10,"bbox":[642,176,500,322]}
+{"kind":"textbox","id":"sh/xc3ylc7u","slide":10,"text":"课堂操作","textPreview":"课堂操作","textChars":4,"textLines":1,"bbox":[682,214,330,36]}
+{"kind":"textbox","id":"sh/4r65wjud","slide":10,"text":"1. 打开 colab.research.google.com\n2. New notebook\n3. 重命名为 Class01_FirstNotebook\n4. 运行第一个代码单元格\n5. 点击 Share 或提交 notebook 链接","textPreview":"1. 打开 colab.research.google.com | 2. New notebook | 3. 重命名为 Class01_FirstNotebook | 4. 运行第一个代码单元格 | 5. 点击 Share 或提交 notebook 链接","textChars":119,"textLines":5,"bbox":[684,276,400,154]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":10,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/i5ador","slide":10,"text":""}
+{"kind":"slide","id":"sl/clpck6","slide":11,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":6}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":11,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":11,"text":"第一段代码只做一件事：让电脑说出结果","textPreview":"第一段代码只做一件事：让电脑说出结果","textChars":18,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/loj2t83i","slide":11,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/e9cvixcz","slide":11,"bbox":[120,178,1040,270]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":11,"text":"# Class 01\nprint(\"Hello, AI Research!\")\nprint(\"My first Python notebook is running.\")","textPreview":"# Class 01 | print(\"Hello, AI Research!\") | print(\"My first Python notebook is running.\")","textChars":85,"textLines":3,"bbox":[170,228,920,138]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":11,"text":"print() 的意思是把括号里的内容显示出来。今天先不追求复杂，先确认：我能运行、能改动、能解释。","textPreview":"print() 的意思是把括号里的内容显示出来。今天先不追求复杂，先确认：我能运行、能改动、能解释。","textChars":50,"textLines":1,"bbox":[130,504,1020,60]}
+{"kind":"textbox","id":"sh/lwval87e","slide":11,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/ahoza1gv","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/clpck6","slide":11,"text":""}
+{"kind":"slide","id":"sl/ctbuox","slide":12,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":7}
+{"kind":"textbox","id":"sh/lkjm1cfa","slide":12,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/at47y1kr","slide":12,"text":"变量让代码记住一个值","textPreview":"变量让代码记住一个值","textChars":10,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/3ex0nuxc","slide":12,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/sneloj2t","slide":12,"bbox":[110,168,500,326]}
+{"kind":"textbox","id":"sh/l87ed8ba","slide":12,"text":"变量的直觉","textPreview":"变量的直觉","textChars":5,"textLines":1,"bbox":[146,212,300,34]}
+{"kind":"textbox","id":"sh/ahoza1gv","slide":12,"text":"• 变量像一个有名字的盒子\n• 等号右边先计算，左边负责保存\n• 名字要清楚，方便别人读懂\n• 科研代码里变量名本身就是说明","textPreview":"• 变量像一个有名字的盒子 | • 等号右边先计算，左边负责保存 | • 名字要清楚，方便别人读懂 | • 科研代码里变量名本身就是说明","textChars":62,"textLines":4,"bbox":[150,278,390,152]}
+{"kind":"shape","id":"sh/32lszqtc","slide":12,"bbox":[670,168,460,326]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":12,"text":"student_name = \"Alex\"\nage = 16\nhours = 2.5\nprint(student_name)\nprint(age + 1)","textPreview":"student_name = \"Alex\" | age = 16 | hours = 2.5 | print(student_name) | print(age + 1)","textChars":77,"textLines":5,"bbox":[710,224,380,192]}
+{"kind":"textbox","id":"sh/lwval87e","slide":12,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/ctbuox","slide":12,"text":""}
+{"kind":"slide","id":"sl/eqc3l8","slide":13,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":17}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":13,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":13,"text":"常见数据类型决定代码能做什么","textPreview":"常见数据类型决定代码能做什么","textChars":14,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/gvy90je9","slide":13,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/r2p8nqxs","slide":13,"bbox":[126,190,220,236]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":13,"text":"str","textPreview":"str","textChars":3,"textLines":1,"bbox":[154,226,160,44]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":13,"text":"文字","textPreview":"文字","textChars":2,"textLines":1,"bbox":[156,298,160,28]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":13,"text":"\"AI\"","textPreview":"\"AI\"","textChars":4,"textLines":1,"bbox":[156,352,160,34]}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":13,"bbox":[398,190,220,236]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":13,"text":"int","textPreview":"int","textChars":3,"textLines":1,"bbox":[426,226,160,44]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":13,"text":"整数","textPreview":"整数","textChars":2,"textLines":1,"bbox":[428,298,160,28]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":13,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[428,352,160,34]}
+{"kind":"shape","id":"sh/m94fu18j","slide":13,"bbox":[670,190,220,236]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":13,"text":"float","textPreview":"float","textChars":5,"textLines":1,"bbox":[698,226,160,44]}
+{"kind":"textbox","id":"sh/83itgfml","slide":13,"text":"小数","textPreview":"小数","textChars":2,"textLines":1,"bbox":[700,298,160,28]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":13,"text":"0.87","textPreview":"0.87","textChars":4,"textLines":1,"bbox":[700,352,160,34]}
+{"kind":"shape","id":"sh/qxs72x4n","slide":13,"bbox":[942,190,220,236]}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":13,"text":"bool","textPreview":"bool","textChars":4,"textLines":1,"bbox":[970,226,160,44]}
+{"kind":"textbox","id":"sh/4zidonyd","slide":13,"text":"真假","textPreview":"真假","textChars":2,"textLines":1,"bbox":[972,298,160,28]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":13,"text":"True","textPreview":"True","textChars":4,"textLines":1,"bbox":[972,352,160,34]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":13,"text":"先用 type() 查看变量类型，再决定能不能相加、比较、拼接或判断。","textPreview":"先用 type() 查看变量类型，再决定能不能相加、比较、拼接或判断。","textChars":35,"textLines":1,"bbox":[142,508,996,40]}
+{"kind":"textbox","id":"sh/8v6psfil","slide":13,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/eqc3l8","slide":13,"text":""}
+{"kind":"slide","id":"sl/w95mqe","slide":14,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":6}
+{"kind":"textbox","id":"sh/i9s36hcr","slide":14,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":14,"text":"注释让别人知道你为什么这样写","textPreview":"注释让别人知道你为什么这样写","textChars":14,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/0fepkzup","slide":14,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/bi9s36hc","slide":14,"bbox":[112,174,1040,290]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":14,"text":"# Store one student's simple research profile\nname = \"Mia\"\ninterest = \"medical AI\"\nweekly_hours = 3\n\nprint(name, \"wants to study\", interest)","textPreview":"# Store one student's simple research profile | name = \"Mia\" | interest = \"medical AI\" | weekly_hours = 3 |  | print(name, \"wants to stud...","textChars":140,"textLines":6,"bbox":[154,212,960,208]}
+{"kind":"textbox","id":"sh/tovahoza","slide":14,"text":"好的注释不是翻译每一行代码，而是解释这段代码在研究任务里扮演什么角色。","textPreview":"好的注释不是翻译每一行代码，而是解释这段代码在研究任务里扮演什么角色。","textChars":35,"textLines":1,"bbox":[136,526,1008,42]}
+{"kind":"textbox","id":"sh/032lszqt","slide":14,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/w95mqe","slide":14,"text":""}
+{"kind":"slide","id":"sl/mrx2lp","slide":15,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/dg7adsji","slide":15,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":15,"text":"课堂练习：做一个自己的学习档案","textPreview":"课堂练习：做一个自己的学习档案","textChars":15,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/vahoza1g","slide":15,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/onyd0z61","slide":15,"bbox":[102,170,510,350]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":15,"text":"任务要求","textPreview":"任务要求","textChars":4,"textLines":1,"bbox":[142,214,260,34]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":15,"text":"• 创建 5 个变量\n• 至少包含 str、int、float、bool\n• 用 print() 输出 3 行介绍\n• 加入 2 行注释说明用途","textPreview":"• 创建 5 个变量 | • 至少包含 str、int、float、bool | • 用 print() 输出 3 行介绍 | • 加入 2 行注释说明用途","textChars":72,"textLines":4,"bbox":[146,284,390,150]}
+{"kind":"shape","id":"sh/z25kb6xk","slide":15,"bbox":[680,170,450,350]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":15,"text":"当堂成果","textPreview":"当堂成果","textChars":4,"textLines":1,"bbox":[720,214,260,34]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":15,"text":"一个命名清楚、能顺利运行、别人看得懂的 Class01_FirstNotebook。","textPreview":"一个命名清楚、能顺利运行、别人看得懂的 Class01_FirstNotebook。","textChars":42,"textLines":1,"bbox":[724,286,340,98]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":15,"text":"完成后先自己重跑一遍，再提交链接。","textPreview":"完成后先自己重跑一遍，再提交链接。","textChars":17,"textLines":1,"bbox":[724,420,340,58]}
+{"kind":"textbox","id":"sh/sji5snel","slide":15,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/mrx2lp","slide":15,"text":""}
+{"kind":"slide","id":"sl/4251h1","slide":16,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":14}
+{"kind":"textbox","id":"sh/je9cvixc","slide":16,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":16,"text":"提交前用这 5 项检查自己","textPreview":"提交前用这 5 项检查自己","textChars":13,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/1gvy90je","slide":16,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/q1orytsv","slide":16,"bbox":[134,170,44,44]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":16,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[149,180,14,20]}
+{"kind":"shape","id":"sh/87ed8bat","slide":16,"bbox":[210,166,850,52]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":16,"text":"文件名清楚：Class01_FirstNotebook","textPreview":"文件名清楚：Class01_FirstNotebook","textChars":27,"textLines":1,"bbox":[246,179,760,24]}
+{"kind":"shape","id":"sh/qd4vmtwr","slide":16,"bbox":[134,242,44,44]}
+{"kind":"textbox","id":"sh/fyxobm58","slide":16,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[149,252,14,20]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":16,"bbox":[210,238,850,52]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":16,"text":"所有单元格能从上到下运行","textPreview":"所有单元格能从上到下运行","textChars":12,"textLines":1,"bbox":[246,251,760,24]}
+{"kind":"shape","id":"sh/psfil0rq","slide":16,"bbox":[134,314,44,44]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":16,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[149,324,14,20]}
+{"kind":"shape","id":"sh/7adsji5s","slide":16,"bbox":[210,310,850,52]}
+{"kind":"textbox","id":"sh/epkzupwb","slide":16,"text":"变量名能看出含义","textPreview":"变量名能看出含义","textChars":8,"textLines":1,"bbox":[246,323,760,24]}
+{"kind":"shape","id":"sh/pg3ex0nu","slide":16,"bbox":[134,386,44,44]}
+{"kind":"textbox","id":"sh/wval87ed","slide":16,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[149,396,14,20]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":16,"bbox":[210,382,850,52]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":16,"text":"输出结果和课堂要求一致","textPreview":"输出结果和课堂要求一致","textChars":11,"textLines":1,"bbox":[246,395,760,24]}
+{"kind":"shape","id":"sh/mp0bi9s3","slide":16,"bbox":[134,458,44,44]}
+{"kind":"textbox","id":"sh/bat47y1k","slide":16,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[149,468,14,20]}
+{"kind":"shape","id":"sh/4vmtwra5","slide":16,"bbox":[210,454,850,52]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":16,"text":"分享权限或提交方式正确","textPreview":"分享权限或提交方式正确","textChars":11,"textLines":1,"bbox":[246,467,760,24]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":16,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/4251h1","slide":16,"text":""}
+{"kind":"slide","id":"sl/wd2c7e","slide":17,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/ytsvu9kn","slide":17,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/5kb6xkf6","slide":17,"text":"第 1 课作业：8-10 个变量与输出练习","textPreview":"第 1 课作业：8-10 个变量与输出练习","textChars":21,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/czed8v6p","slide":17,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/nqxs72x4","slide":17,"bbox":[110,176,500,314]}
+{"kind":"textbox","id":"sh/u54zidon","slide":17,"text":"你需要提交","textPreview":"你需要提交","textChars":5,"textLines":1,"bbox":[150,216,280,34]}
+{"kind":"textbox","id":"sh/5sneloj2","slide":17,"text":"• Colab notebook 链接\n• 8-10 个变量练习\n• 至少 3 种数据类型\n• 3-5 行 print 输出\n• 2-3 行注释说明","textPreview":"• Colab notebook 链接 | • 8-10 个变量练习 | • 至少 3 种数据类型 | • 3-5 行 print 输出 | • 2-3 行注释说明","textChars":74,"textLines":5,"bbox":[154,282,384,160]}
+{"kind":"shape","id":"sh/cbulwval","slide":17,"bbox":[670,176,460,314]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":17,"text":"评分重点","textPreview":"评分重点","textChars":4,"textLines":1,"bbox":[710,216,280,34]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":17,"text":"能运行 > 写得多\n能解释 > 抄答案\n命名清楚 > 只叫 a、b、c","textPreview":"能运行 > 写得多 | 能解释 > 抄答案 | 命名清楚 > 只叫 a、b、c","textChars":35,"textLines":3,"bbox":[716,292,350,116]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":17,"text":"提交方式和截止时间会课后统一通知。","textPreview":"提交方式和截止时间会课后统一通知。","textChars":17,"textLines":1,"bbox":[126,536,1028,38]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":17,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/6xkf6dcb","slide":17,"text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/wd2c7e","slide":17,"text":""}
+{"kind":"slide","id":"sl/e4oszi","slide":18,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/4r65wjud","slide":18,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":18,"text":"接下来把 Python 基础拆成小步练习","textPreview":"接下来把 Python 基础拆成小步练习","textChars":20,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/mlkjm1cf","slide":18,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/xkf6dcbu","slide":18,"bbox":[108,176,500,310]}
+{"kind":"textbox","id":"sh/4zidonyd","slide":18,"text":"练习顺序","textPreview":"练习顺序","textChars":4,"textLines":1,"bbox":[148,218,300,36]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":18,"text":"• 先预测输出\n• 再运行代码\n• 最后解释为什么\n• 每个概念只推进一小步","textPreview":"• 先预测输出 | • 再运行代码 | • 最后解释为什么 | • 每个概念只推进一小步","textChars":38,"textLines":4,"bbox":[152,286,390,142]}
+{"kind":"shape","id":"sh/mtwra5gb","slide":18,"bbox":[678,176,460,310]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":18,"text":"课堂口令","textPreview":"课堂口令","textChars":4,"textLines":1,"bbox":[718,218,260,36]}
+{"kind":"textbox","id":"sh/83itgfml","slide":18,"text":"Read\nPredict\nRun\nExplain","textPreview":"Read | Predict | Run | Explain","textChars":24,"textLines":4,"bbox":[736,278,320,156]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":18,"text":"不要急着复制答案。先猜，再验证，学习速度会快很多。","textPreview":"不要急着复制答案。先猜，再验证，学习速度会快很多。","textChars":25,"textLines":1,"bbox":[130,532,1020,40]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":18,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/e4oszi","slide":18,"text":""}
+{"kind":"slide","id":"sl/4c0f55","slide":19,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":7}
+{"kind":"textbox","id":"sh/9knih4by","slide":19,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/2t83itgf","slide":19,"text":"print() 的括号里放什么，就显示什么","textPreview":"print() 的括号里放什么，就显示什么","textChars":21,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/re1w7mp0","slide":19,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":19,"bbox":[112,168,1040,278]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":19,"text":"print(\"Python\")\nprint(2026)\nprint(\"AI\" + \" Research\")","textPreview":"print(\"Python\") | print(2026) | print(\"AI\" + \" Research\")","textChars":53,"textLines":3,"bbox":[168,224,920,142]}
+{"kind":"shape","id":"sh/25kb6xkf","slide":19,"bbox":[210,506,340,58]}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":19,"bbox":[610,506,340,58]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":19,"text":"先预测：会出现几行输出？","textPreview":"先预测：会出现几行输出？","textChars":12,"textLines":1,"bbox":[236,522,288,24]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":19,"text":"再运行：和你猜的一样吗？","textPreview":"再运行：和你猜的一样吗？","textChars":12,"textLines":1,"bbox":[636,522,288,24]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":19,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/4c0f55","slide":19,"text":""}
+{"kind":"slide","id":"sl/6yisa1","slide":20,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/nap4r65w","slide":20,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/cvixczed","slide":20,"text":"字符串要加引号，数字不用加引号","textPreview":"字符串要加引号，数字不用加引号","textChars":15,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/5gbq1ory","slide":20,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/udg7adsj","slide":20,"bbox":[116,172,500,300]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":20,"text":"可以运行","textPreview":"可以运行","textChars":4,"textLines":1,"bbox":[154,212,220,34]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":20,"text":"print(\"hello\")\nprint(100)\nprint(3.14)","textPreview":"print(\"hello\") | print(100) | print(3.14)","textChars":37,"textLines":3,"bbox":[158,280,380,138]}
+{"kind":"shape","id":"sh/54zidony","slide":20,"bbox":[674,172,470,300]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":20,"text":"会报错","textPreview":"会报错","textChars":3,"textLines":1,"bbox":[714,212,220,34]}
+{"kind":"textbox","id":"sh/judg7ads","slide":20,"text":"print(hello)","textPreview":"print(hello)","textChars":12,"textLines":1,"bbox":[720,292,340,48]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":20,"text":"Python 会以为 hello 是变量名，而不是文字。","textPreview":"Python 会以为 hello 是变量名，而不是文字。","textChars":28,"textLines":1,"bbox":[174,532,930,36]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":20,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/54zidony","slide":20,"text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/6yisa1","slide":20,"text":""}
+{"kind":"slide","id":"sl/v231ts","slide":21,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":14}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":21,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":21,"text":"同一个符号 +，遇到不同类型会有不同含义","textPreview":"同一个符号 +，遇到不同类型会有不同含义","textChars":20,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/zupwb2hw","slide":21,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/orytsvu9","slide":21,"bbox":[112,166,1040,250]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":21,"text":"print(3 + 4)\nprint(\"3\" + \"4\")\nprint(\"score: \" + \"95\")","textPreview":"print(3 + 4) | print(\"3\" + \"4\") | print(\"score: \" + \"95\")","textChars":53,"textLines":3,"bbox":[170,216,900,138]}
+{"kind":"shape","id":"sh/al87ed8b","slide":21,"bbox":[128,470,292,82]}
+{"kind":"textbox","id":"sh/z61032ls","slide":21,"text":"3 + 4","textPreview":"3 + 4","textChars":5,"textLines":1,"bbox":[148,486,110,22]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":21,"text":"数学加法","textPreview":"数学加法","textChars":4,"textLines":1,"bbox":[266,484,126,22]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":21,"text":"7","textPreview":"7","textChars":1,"textLines":1,"bbox":[162,518,220,24]}
+{"kind":"shape","id":"sh/hgn29gr2","slide":21,"bbox":[470,470,292,82]}
+{"kind":"textbox","id":"sh/svu9knih","slide":21,"text":"\"3\" + \"4\"","textPreview":"\"3\" + \"4\"","textChars":9,"textLines":1,"bbox":[490,486,110,22]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":21,"text":"文字拼接","textPreview":"文字拼接","textChars":4,"textLines":1,"bbox":[608,484,126,22]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":21,"text":"34","textPreview":"34","textChars":2,"textLines":1,"bbox":[504,518,220,24]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":21,"bbox":[812,470,292,82]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":21,"text":"\"score: \" + \"95\"","textPreview":"\"score: \" + \"95\"","textChars":16,"textLines":1,"bbox":[832,486,110,22]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":21,"text":"拼成一句话","textPreview":"拼成一句话","textChars":5,"textLines":1,"bbox":[950,484,126,22]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":21,"text":"score: 95","textPreview":"score: 95","textChars":9,"textLines":1,"bbox":[846,518,220,24]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":21,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":21,"text":"21","textPreview":"21","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/v231ts","slide":21,"text":""}
+{"kind":"slide","id":"sl/x4rbrn","slide":22,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":8}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":22,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":22,"text":"type() 帮你检查变量到底是什么类型","textPreview":"type() 帮你检查变量到底是什么类型","textChars":20,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/w3m94fu1","slide":22,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/3q5o7qpg","slide":22,"bbox":[118,172,470,306]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":22,"text":"age = 16\nscore = 88.5\nname = \"Lina\"\n\nprint(type(age))\nprint(type(score))\nprint(type(name))","textPreview":"age = 16 | score = 88.5 | name = \"Lina\" |  | print(type(age)) | print(type(score)) | print(type(name))","textChars":90,"textLines":7,"bbox":[158,214,380,214]}
+{"kind":"shape","id":"sh/lwval87e","slide":22,"bbox":[674,172,450,306]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":22,"text":"运行后你会看到","textPreview":"运行后你会看到","textChars":7,"textLines":1,"bbox":[714,218,260,32]}
+{"kind":"textbox","id":"sh/32lszqtc","slide":22,"text":"<class 'int'>\n<class 'float'>\n<class 'str'>","textPreview":"<class 'int'> | <class 'float'> | <class 'str'>","textChars":43,"textLines":3,"bbox":[722,292,320,110]}
+{"kind":"textbox","id":"sh/ahoza1gv","slide":22,"text":"写科研代码时，很多错误都来自“以为它是数字，其实它是文字”。","textPreview":"写科研代码时，很多错误都来自“以为它是数字，其实它是文字”。","textChars":30,"textLines":1,"bbox":[128,532,1020,40]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":22,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/54zidony","slide":22,"text":"22","textPreview":"22","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/x4rbrn","slide":22,"text":""}
+{"kind":"slide","id":"sl/ab7bif","slide":23,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":7}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":23,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":23,"text":"变量可以被更新，代码会记住最新的值","textPreview":"变量可以被更新，代码会记住最新的值","textChars":17,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/7qpg3ex0","slide":23,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/wjudg7ad","slide":23,"bbox":[112,166,1040,292]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":23,"text":"hours = 2\nprint(hours)\n\nhours = hours + 1\nprint(hours)\n\nhours += 2\nprint(hours)","textPreview":"hours = 2 | print(hours) |  | hours = hours + 1 | print(hours) |  | hours += 2 | print(hours)","textChars":79,"textLines":8,"bbox":[174,198,900,226]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":23,"text":"预测输出：2 -> 3 -> 5","textPreview":"预测输出：2 -> 3 -> 5","textChars":16,"textLines":1,"bbox":[160,506,420,38]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":23,"text":"hours += 2 是 hours = hours + 2 的简写。","textPreview":"hours += 2 是 hours = hours + 2 的简写。","textChars":35,"textLines":1,"bbox":[612,508,500,34]}
+{"kind":"textbox","id":"sh/0nuxc3yl","slide":23,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":23,"text":"23","textPreview":"23","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/ab7bif","slide":23,"text":""}
+{"kind":"slide","id":"sl/koa1n6","slide":24,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":11}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":24,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":24,"text":"变量名要像标签一样清楚","textPreview":"变量名要像标签一样清楚","textChars":11,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/4zidonyd","slide":24,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/f6dcbulw","slide":24,"bbox":[112,176,470,74]}
+{"kind":"shape","id":"sh/mlkjm1cf","slide":24,"bbox":[676,176,470,74]}
+{"kind":"textbox","id":"sh/xc3ylc7u","slide":24,"text":"x = 16","textPreview":"x = 16","textChars":6,"textLines":1,"bbox":[154,196,360,26]}
+{"kind":"textbox","id":"sh/4r65wjud","slide":24,"text":"student_age = 16","textPreview":"student_age = 16","textChars":16,"textLines":1,"bbox":[718,196,360,26]}
+{"kind":"shape","id":"sh/fu18jqh0","slide":24,"bbox":[112,288,470,74]}
+{"kind":"shape","id":"sh/m94fu18j","slide":24,"bbox":[676,288,470,74]}
+{"kind":"textbox","id":"sh/sji5snel","slide":24,"text":"a = 0.92","textPreview":"a = 0.92","textChars":8,"textLines":1,"bbox":[154,308,360,26]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":24,"text":"model_accuracy = 0.92","textPreview":"model_accuracy = 0.92","textChars":21,"textLines":1,"bbox":[718,308,360,26]}
+{"kind":"shape","id":"sh/adsji5sn","slide":24,"bbox":[112,400,470,74]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":24,"bbox":[676,400,470,74]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":24,"text":"b = \"heart\"","textPreview":"b = \"heart\"","textChars":11,"textLines":1,"bbox":[154,420,360,26]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":24,"text":"project_topic = \"heart\"","textPreview":"project_topic = \"heart\"","textChars":23,"textLines":1,"bbox":[718,420,360,26]}
+{"kind":"textbox","id":"sh/a5gbq1or","slide":24,"text":"科研项目会持续很多周。清楚的变量名是在帮未来的自己省时间。","textPreview":"科研项目会持续很多周。清楚的变量名是在帮未来的自己省时间。","textChars":29,"textLines":1,"bbox":[154,542,980,36]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":24,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":24,"text":"24","textPreview":"24","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/koa1n6","slide":24,"text":""}
+{"kind":"slide","id":"sl/ybroam","slide":25,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":6}
+{"kind":"textbox","id":"sh/4byhgn29","slide":25,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/bq1oryts","slide":25,"text":"f-string 让输出更像一句自然的话","textPreview":"f-string 让输出更像一句自然的话","textChars":20,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/m58z25kb","slide":25,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/t83itgfm","slide":25,"bbox":[108,166,1040,304]}
+{"kind":"textbox","id":"sh/4nap4r65","slide":25,"text":"name = \"Mia\"\ntopic = \"medical AI\"\nhours = 3\n\nprint(f\"{name} studies {topic} for {hours} hours each week.\")","textPreview":"name = \"Mia\" | topic = \"medical AI\" | hours = 3 |  | print(f\"{name} studies {topic} for {hours} hours each week.\")","textChars":106,"textLines":5,"bbox":[154,218,960,166]}
+{"kind":"textbox","id":"sh/b2hwfyxo","slide":25,"text":"大括号里的变量会被替换成当前值。","textPreview":"大括号里的变量会被替换成当前值。","textChars":16,"textLines":1,"bbox":[184,518,900,38]}
+{"kind":"textbox","id":"sh/mhk3q5o7","slide":25,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":25,"text":"25","textPreview":"25","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/ybroam","slide":25,"text":""}
+{"kind":"slide","id":"sl/2b8u0q","slide":26,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":8}
+{"kind":"textbox","id":"sh/2t83itgf","slide":26,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/9knih4by","slide":26,"text":"input() 可以从用户那里拿到信息","textPreview":"input() 可以从用户那里拿到信息","textChars":19,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/kzupwb2h","slide":26,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":26,"bbox":[116,168,504,320]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":26,"text":"代码","textPreview":"代码","textChars":2,"textLines":1,"bbox":[154,210,160,32]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":26,"text":"name = input(\"Your name: \")\nprint(f\"Hello, {name}!\")","textPreview":"name = input(\"Your name: \") | print(f\"Hello, {name}!\")","textChars":52,"textLines":2,"bbox":[154,286,400,92]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":26,"bbox":[682,168,440,320]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":26,"text":"注意","textPreview":"注意","textChars":2,"textLines":1,"bbox":[722,210,160,32]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":26,"text":"input() 得到的内容默认是 str。\n如果要做数学计算，通常要先转成 int 或 float。","textPreview":"input() 得到的内容默认是 str。 | 如果要做数学计算，通常要先转成 int 或 float。","textChars":50,"textLines":2,"bbox":[724,286,330,108]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":26,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/1cfa9w3m","slide":26,"text":"26","textPreview":"26","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/2b8u0q","slide":26,"text":""}
+{"kind":"slide","id":"sl/rz8cc8","slide":27,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":6}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":27,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":27,"text":"把输入转成数字后，才能计算","textPreview":"把输入转成数字后，才能计算","textChars":13,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/ex0nuxc3","slide":27,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/lwval87e","slide":27,"bbox":[112,166,1040,306]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":27,"text":"hours_text = input(\"Study hours: \")\nhours = float(hours_text)\n\nnext_week = hours + 1\nprint(f\"Next week goal: {next_week} hours\")","textPreview":"hours_text = input(\"Study hours: \") | hours = float(hours_text) |  | next_week = hours + 1 | print(f\"Next week goal: {next_week} hours\")","textChars":128,"textLines":5,"bbox":[154,216,960,174]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":27,"text":"小练习：把 float 改成 int，输入 2.5 会发生什么？","textPreview":"小练习：把 float 改成 int，输入 2.5 会发生什么？","textChars":32,"textLines":1,"bbox":[154,522,960,38]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":27,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/l87ed8ba","slide":27,"text":"27","textPreview":"27","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/rz8cc8","slide":27,"text":""}
+{"kind":"slide","id":"sl/uq573z","slide":28,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":14}
+{"kind":"textbox","id":"sh/byhgn29g","slide":28,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":28,"text":"除法、整除和取余会在第 2 课继续用到","textPreview":"除法、整除和取余会在第 2 课继续用到","textChars":19,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/t47y1kre","slide":28,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":28,"bbox":[126,190,290,248]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":28,"text":"87 / 25","textPreview":"87 / 25","textChars":7,"textLines":1,"bbox":[158,236,224,38]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":28,"text":"普通除法","textPreview":"普通除法","textChars":4,"textLines":1,"bbox":[158,310,224,30]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":28,"text":"3.48","textPreview":"3.48","textChars":4,"textLines":1,"bbox":[158,368,224,34]}
+{"kind":"shape","id":"sh/ixczed8v","slide":28,"bbox":[468,190,290,248]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":28,"text":"87 // 25","textPreview":"87 // 25","textChars":8,"textLines":1,"bbox":[500,236,224,38]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":28,"text":"整除","textPreview":"整除","textChars":2,"textLines":1,"bbox":[500,310,224,30]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":28,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[500,368,224,34]}
+{"kind":"shape","id":"sh/90je9cvi","slide":28,"bbox":[810,190,290,248]}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":28,"text":"87 % 25","textPreview":"87 % 25","textChars":7,"textLines":1,"bbox":[842,236,224,38]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":28,"text":"取余","textPreview":"取余","textChars":2,"textLines":1,"bbox":[842,310,224,30]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":28,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[842,368,224,34]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":28,"text":"预告：第 2 课会用 // 和 % 做硬币兑换与条件判断。","textPreview":"预告：第 2 课会用 // 和 % 做硬币兑换与条件判断。","textChars":29,"textLines":1,"bbox":[150,524,980,38]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":28,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":28,"text":"28","textPreview":"28","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/uq573z","slide":28,"text":""}
+{"kind":"slide","id":"sl/yr6nwd","slide":29,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":6}
+{"kind":"textbox","id":"sh/i5sneloj","slide":29,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":29,"text":"把今天的概念合成一个小档案程序","textPreview":"把今天的概念合成一个小档案程序","textChars":15,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/0bi9s36h","slide":29,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/7y1kre1w","slide":29,"bbox":[102,158,1080,382]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":29,"text":"# Class 01 mini profile\nname = input(\"Name: \")\nage = int(input(\"Age: \"))\ntopic = input(\"Research interest: \")\nhours = float(input(\"Weekly study hours: \"))\n\nprint(f\"{name}, age {age}, wants to study {topic}.\")\nprint(f\"Next week goal: {hours + 1} hours.\")","textPreview":"# Class 01 mini profile | name = input(\"Name: \") | age = int(input(\"Age: \")) | topic = input(\"Research interest: \") | hours = float(input...","textChars":253,"textLines":8,"bbox":[140,190,1000,304]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":29,"text":"当堂挑战：运行一次，并保存输出截图或 notebook 链接，等待提交入口发布。","textPreview":"当堂挑战：运行一次，并保存输出截图或 notebook 链接，等待提交入口发布。","textChars":40,"textLines":1,"bbox":[126,568,1030,34]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":29,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":29,"text":"29","textPreview":"29","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/yr6nwd","slide":29,"text":""}
+{"kind":"slide","id":"sl/ip9yxb","slide":30,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":17}
+{"kind":"textbox","id":"sh/lkjm1cfa","slide":30,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/at47y1kr","slide":30,"text":"先把小档案程序拆成 4 个可检查步骤","textPreview":"先把小档案程序拆成 4 个可检查步骤","textChars":18,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/3ex0nuxc","slide":30,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/sneloj2t","slide":30,"bbox":[108,174,480,118]}
+{"kind":"shape","id":"sh/l87ed8ba","slide":30,"bbox":[136,204,48,48]}
+{"kind":"textbox","id":"sh/ahoza1gv","slide":30,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[152,214,16,22]}
+{"kind":"textbox","id":"sh/32lszqtc","slide":30,"text":"收集信息","textPreview":"收集信息","textChars":4,"textLines":1,"bbox":[212,198,270,30]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":30,"text":"用 input() 问姓名、年龄、兴趣和学习时间","textPreview":"用 input() 问姓名、年龄、兴趣和学习时间","textChars":24,"textLines":1,"bbox":[212,238,320,36]}
+{"kind":"shape","id":"sh/lwval87e","slide":30,"bbox":[648,174,480,118]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":30,"bbox":[676,204,48,48]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":30,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[692,214,16,22]}
+{"kind":"textbox","id":"sh/zidonyd0","slide":30,"text":"转换类型","textPreview":"转换类型","textChars":4,"textLines":1,"bbox":[752,198,270,30]}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":30,"text":"年龄用 int()，学习时间用 float()","textPreview":"年龄用 int()，学习时间用 float()","textChars":23,"textLines":1,"bbox":[752,238,320,36]}
+{"kind":"shape","id":"sh/hgn29gr2","slide":30,"bbox":[108,344,480,118]}
+{"kind":"shape","id":"sh/svu9knih","slide":30,"bbox":[136,374,48,48]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":30,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[152,384,16,22]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":30,"text":"保存变量","textPreview":"保存变量","textChars":4,"textLines":1,"bbox":[212,368,270,30]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":30,"text":"变量名要清楚，之后才能继续使用","textPreview":"变量名要清楚，之后才能继续使用","textChars":15,"textLines":1,"bbox":[212,408,320,36]}
+{"kind":"shape","id":"sh/sji5snel","slide":30,"bbox":[648,344,480,118]}
+{"kind":"shape","id":"sh/87ed8bat","slide":30,"bbox":[676,374,48,48]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":30,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[692,384,16,22]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":30,"text":"组织输出","textPreview":"组织输出","textChars":4,"textLines":1,"bbox":[752,368,270,30]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":30,"text":"用 f-string 把结果写成完整句子","textPreview":"用 f-string 把结果写成完整句子","textChars":20,"textLines":1,"bbox":[752,408,320,36]}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":30,"text":"写程序时不要一次写完。每完成一步，就运行一次。","textPreview":"写程序时不要一次写完。每完成一步，就运行一次。","textChars":23,"textLines":1,"bbox":[156,542,960,36]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":30,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":30,"text":"30","textPreview":"30","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/ip9yxb","slide":30,"text":""}
+{"kind":"slide","id":"sl/83rbav","slide":31,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/orytsvu9","slide":31,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/z61032ls","slide":31,"text":"练习 1：把变量名改成别人也看得懂的名字","textPreview":"练习 1：把变量名改成别人也看得懂的名字","textChars":20,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/al87ed8b","slide":31,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":31,"bbox":[104,166,500,326]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":31,"text":"先看到这段","textPreview":"先看到这段","textChars":5,"textLines":1,"bbox":[144,206,260,34]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":31,"text":"a = \"Mia\"\nb = 16\nc = \"biology\"\nd = 4.5","textPreview":"a = \"Mia\" | b = 16 | c = \"biology\" | d = 4.5","textChars":38,"textLines":4,"bbox":[150,280,360,144]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":31,"bbox":[676,166,500,326]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":31,"text":"改成这样","textPreview":"改成这样","textChars":4,"textLines":1,"bbox":[716,206,260,34]}
+{"kind":"textbox","id":"sh/obm58z25","slide":31,"text":"student_name = \"Mia\"\nstudent_age = 16\nresearch_topic = \"biology\"\nweekly_hours = 4.5","textPreview":"student_name = \"Mia\" | student_age = 16 | research_topic = \"biology\" | weekly_hours = 4.5","textChars":83,"textLines":4,"bbox":[720,276,396,154]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":31,"text":"好变量名会让 debug 变简单，也会让老师更容易看懂你的思路。","textPreview":"好变量名会让 debug 变简单，也会让老师更容易看懂你的思路。","textChars":32,"textLines":1,"bbox":[134,540,1010,38]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":31,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":31,"text":"31","textPreview":"31","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/83rbav","slide":31,"text":""}
+{"kind":"slide","id":"sl/s6p9sa","slide":32,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":8}
+{"kind":"textbox","id":"sh/4r65wjud","slide":32,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":32,"text":"练习 2：让输出像一段研究自我介绍","textPreview":"练习 2：让输出像一段研究自我介绍","textChars":17,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/mlkjm1cf","slide":32,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/xkf6dcbu","slide":32,"bbox":[104,150,1080,318]}
+{"kind":"textbox","id":"sh/4zidonyd","slide":32,"text":"name = \"Mia\"\ntopic = \"medical AI\"\nhours = 4.5\n\nprint(f\"My name is {name}.\")\nprint(f\"I want to study {topic}.\")\nprint(f\"I can spend {hours} hours each week.\")","textPreview":"name = \"Mia\" | topic = \"medical AI\" | hours = 4.5 |  | print(f\"My name is {name}.\") | print(f\"I want to study {topic}.\") | print(f\"I can ...","textChars":157,"textLines":7,"bbox":[148,192,980,236]}
+{"kind":"shape","id":"sh/fepkzupw","slide":32,"bbox":[160,496,276,58]}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":32,"text":"把 topic 换成自己的兴趣","textPreview":"把 topic 换成自己的兴趣","textChars":15,"textLines":1,"bbox":[180,512,236,24]}
+{"kind":"shape","id":"sh/xobm58z2","slide":32,"bbox":[486,496,276,58]}
+{"kind":"textbox","id":"sh/83itgfml","slide":32,"text":"把 hours 改成自己的时间","textPreview":"把 hours 改成自己的时间","textChars":15,"textLines":1,"bbox":[506,512,236,24]}
+{"kind":"shape","id":"sh/y90je9cv","slide":32,"bbox":[812,496,276,58]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":32,"text":"再加一行 why 说明原因","textPreview":"再加一行 why 说明原因","textChars":13,"textLines":1,"bbox":[832,512,236,24]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":32,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":32,"text":"32","textPreview":"32","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/s6p9sa","slide":32,"text":""}
+{"kind":"slide","id":"sl/0bzgao","slide":33,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/9knih4by","slide":33,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/2t83itgf","slide":33,"text":"常见错误 1：NameError 通常说明名字没有定义","textPreview":"常见错误 1：NameError 通常说明名字没有定义","textChars":27,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/re1w7mp0","slide":33,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":33,"bbox":[108,174,500,286]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":33,"text":"会报错","textPreview":"会报错","textChars":3,"textLines":1,"bbox":[148,214,220,32]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":33,"text":"name = \"Mia\"\nprint(nmae)","textPreview":"name = \"Mia\" | print(nmae)","textChars":24,"textLines":2,"bbox":[150,292,360,88]}
+{"kind":"shape","id":"sh/rqd4vmtw","slide":33,"bbox":[674,174,500,286]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":33,"text":"检查方法","textPreview":"检查方法","textChars":4,"textLines":1,"bbox":[714,214,220,32]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":33,"text":"• 变量名有没有拼错\n• 大小写是否一致\n• 是不是先使用、后赋值","textPreview":"• 变量名有没有拼错 | • 大小写是否一致 | • 是不是先使用、后赋值","textChars":33,"textLines":3,"bbox":[720,288,360,120]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":33,"text":"Python 很严格：name 和 nmae 是两个完全不同的名字。","textPreview":"Python 很严格：name 和 nmae 是两个完全不同的名字。","textChars":34,"textLines":1,"bbox":[154,532,970,36]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":33,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":33,"text":"33","textPreview":"33","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/0bzgao","slide":33,"text":""}
+{"kind":"slide","id":"sl/fqvm3j","slide":34,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":8}
+{"kind":"textbox","id":"sh/90je9cvi","slide":34,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":34,"text":"常见错误 2：TypeError 经常来自文字和数字混用","textPreview":"常见错误 2：TypeError 经常来自文字和数字混用","textChars":28,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/rytsvu9k","slide":34,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/g7adsji5","slide":34,"bbox":[108,166,1040,206]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":34,"text":"age = input(\"Age: \")\nnext_year = age + 1","textPreview":"age = input(\"Age: \") | next_year = age + 1","textChars":40,"textLines":2,"bbox":[158,224,900,92]}
+{"kind":"shape","id":"sh/y1kre1w7","slide":34,"bbox":[136,428,440,86]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":34,"text":"input() 得到的是文字","textPreview":"input() 得到的是文字","textChars":14,"textLines":1,"bbox":[170,456,360,28]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":34,"bbox":[704,428,440,86]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":34,"text":"先 int(age)，再 + 1","textPreview":"先 int(age)，再 + 1","textChars":16,"textLines":1,"bbox":[738,456,360,28]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":34,"text":"修正：next_year = int(age) + 1","textPreview":"修正：next_year = int(age) + 1","textChars":27,"textLines":1,"bbox":[226,554,830,34]}
+{"kind":"textbox","id":"sh/cvixczed","slide":34,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":34,"text":"34","textPreview":"34","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/fqvm3j","slide":34,"text":""}
+{"kind":"slide","id":"sl/dxo9ei","slide":35,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":10}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":35,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":35,"text":"常见错误 3：ValueError 说明转换目标不合适","textPreview":"常见错误 3：ValueError 说明转换目标不合适","textChars":27,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/il0rqd4v","slide":35,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/t47y1kre","slide":35,"bbox":[118,170,460,304]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":35,"text":"这句可能失败","textPreview":"这句可能失败","textChars":6,"textLines":1,"bbox":[158,214,260,34]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":35,"text":"age = int(\"2.5\")","textPreview":"age = int(\"2.5\")","textChars":16,"textLines":1,"bbox":[160,300,320,48]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":35,"text":"\"2.5\" 不是整数写法","textPreview":"\"2.5\" 不是整数写法","textChars":12,"textLines":1,"bbox":[160,382,320,30]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":35,"bbox":[674,170,460,304]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":35,"text":"根据数据选择转换","textPreview":"根据数据选择转换","textChars":8,"textLines":1,"bbox":[714,214,300,34]}
+{"kind":"textbox","id":"sh/itgfmlkj","slide":35,"text":"int(\"16\")\nfloat(\"2.5\")\nstr(2026)","textPreview":"int(\"16\") | float(\"2.5\") | str(2026)","textChars":32,"textLines":3,"bbox":[724,292,300,120]}
+{"kind":"textbox","id":"sh/7ed8bat4","slide":35,"text":"看到 ValueError 时，先问：这个文字真的能变成我要的类型吗？","textPreview":"看到 ValueError 时，先问：这个文字真的能变成我要的类型吗？","textChars":35,"textLines":1,"bbox":[144,532,990,36]}
+{"kind":"textbox","id":"sh/0z61032l","slide":35,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/pkzupwb2","slide":35,"text":"35","textPreview":"35","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/dxo9ei","slide":35,"text":""}
+{"kind":"slide","id":"sl/gucozt","slide":36,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":20}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":36,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":36,"text":"小测：先判断类型，再运行验证","textPreview":"小测：先判断类型，再运行验证","textChars":14,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/gn29gr2p","slide":36,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/nuxc3ylc","slide":36,"bbox":[112,158,1040,58]}
+{"kind":"textbox","id":"sh/y90je9cv","slide":36,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[150,172,220,24]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":36,"text":"int","textPreview":"int","textChars":3,"textLines":1,"bbox":[450,172,160,24]}
+{"kind":"textbox","id":"sh/gbq1oryt","slide":36,"text":"可以做整数计算","textPreview":"可以做整数计算","textChars":7,"textLines":1,"bbox":[690,172,380,24]}
+{"kind":"shape","id":"sh/nqxs72x4","slide":36,"bbox":[112,234,1040,58]}
+{"kind":"textbox","id":"sh/u54zidon","slide":36,"text":"\"16\"","textPreview":"\"16\"","textChars":4,"textLines":1,"bbox":[150,248,220,24]}
+{"kind":"textbox","id":"sh/cbulwval","slide":36,"text":"str","textPreview":"str","textChars":3,"textLines":1,"bbox":[450,248,160,24]}
+{"kind":"textbox","id":"sh/5sneloj2","slide":36,"text":"看起来像数字，其实是文字","textPreview":"看起来像数字，其实是文字","textChars":12,"textLines":1,"bbox":[690,248,380,24]}
+{"kind":"shape","id":"sh/u54zidon","slide":36,"bbox":[112,310,1040,58]}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":36,"text":"16.0","textPreview":"16.0","textChars":4,"textLines":1,"bbox":[150,324,220,24]}
+{"kind":"textbox","id":"sh/czed8v6p","slide":36,"text":"float","textPreview":"float","textChars":5,"textLines":1,"bbox":[450,324,160,24]}
+{"kind":"textbox","id":"sh/5kb6xkf6","slide":36,"text":"小数类型","textPreview":"小数类型","textChars":4,"textLines":1,"bbox":[690,324,380,24]}
+{"kind":"shape","id":"sh/ytsvu9kn","slide":36,"bbox":[112,386,1040,58]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":36,"text":"True","textPreview":"True","textChars":4,"textLines":1,"bbox":[150,400,220,24]}
+{"kind":"textbox","id":"sh/gn29gr2p","slide":36,"text":"bool","textPreview":"bool","textChars":4,"textLines":1,"bbox":[450,400,160,24]}
+{"kind":"textbox","id":"sh/58z25kb6","slide":36,"text":"只有 True 或 False","textPreview":"只有 True 或 False","textChars":15,"textLines":1,"bbox":[690,400,380,24]}
+{"kind":"shape","id":"sh/tcj6tova","slide":36,"bbox":[112,462,1040,58]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":36,"text":"\"True\"","textPreview":"\"True\"","textChars":6,"textLines":1,"bbox":[150,476,220,24]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":36,"text":"str","textPreview":"str","textChars":3,"textLines":1,"bbox":[450,476,160,24]}
+{"kind":"textbox","id":"sh/il0rqd4v","slide":36,"text":"加了引号就是文字","textPreview":"加了引号就是文字","textChars":8,"textLines":1,"bbox":[690,476,380,24]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":36,"text":"验证方式：print(type(value))","textPreview":"验证方式：print(type(value))","textChars":23,"textLines":1,"bbox":[242,556,800,34]}
+{"kind":"textbox","id":"sh/0je9cvix","slide":36,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":36,"text":"36","textPreview":"36","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/gucozt","slide":36,"text":""}
+{"kind":"slide","id":"sl/5p25hn","slide":37,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":15}
+{"kind":"textbox","id":"sh/0fepkzup","slide":37,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/bulwval8","slide":37,"text":"同伴检查：别人能不能看懂你的 notebook","textPreview":"同伴检查：别人能不能看懂你的 notebook","textChars":23,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/i9s36hcr","slide":37,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/tovahoza","slide":37,"bbox":[118,162,464,78]}
+{"kind":"textbox","id":"sh/032lszqt","slide":37,"text":"命名","textPreview":"命名","textChars":2,"textLines":1,"bbox":[144,182,110,28]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":37,"text":"变量名能看出含义","textPreview":"变量名能看出含义","textChars":8,"textLines":1,"bbox":[274,182,260,28]}
+{"kind":"shape","id":"sh/ixczed8v","slide":37,"bbox":[644,162,464,78]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":37,"text":"运行","textPreview":"运行","textChars":2,"textLines":1,"bbox":[670,182,110,28]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":37,"text":"从上到下运行不报错","textPreview":"从上到下运行不报错","textChars":9,"textLines":1,"bbox":[800,182,260,28]}
+{"kind":"shape","id":"sh/i9s36hcr","slide":37,"bbox":[118,286,464,78]}
+{"kind":"textbox","id":"sh/bulwval8","slide":37,"text":"输出","textPreview":"输出","textChars":2,"textLines":1,"bbox":[144,306,110,28]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":37,"text":"结果不是一堆孤立数字","textPreview":"结果不是一堆孤立数字","textChars":10,"textLines":1,"bbox":[274,306,260,28]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":37,"bbox":[644,286,464,78]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":37,"text":"解释","textPreview":"解释","textChars":2,"textLines":1,"bbox":[670,306,110,28]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":37,"text":"至少有 2 行注释说明","textPreview":"至少有 2 行注释说明","textChars":11,"textLines":1,"bbox":[800,306,260,28]}
+{"kind":"shape","id":"sh/032lszqt","slide":37,"bbox":[118,410,464,78]}
+{"kind":"textbox","id":"sh/tovahoza","slide":37,"text":"整洁","textPreview":"整洁","textChars":2,"textLines":1,"bbox":[144,430,110,28]}
+{"kind":"textbox","id":"sh/il0rqd4v","slide":37,"text":"删掉无关测试代码","textPreview":"删掉无关测试代码","textChars":8,"textLines":1,"bbox":[274,430,260,28]}
+{"kind":"textbox","id":"sh/b6xkf6dc","slide":37,"text":"检查时不要直接替对方写答案，只指出哪里看不懂。","textPreview":"检查时不要直接替对方写答案，只指出哪里看不懂。","textChars":23,"textLines":1,"bbox":[150,552,980,34]}
+{"kind":"textbox","id":"sh/32lszqtc","slide":37,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/ahoza1gv","slide":37,"text":"37","textPreview":"37","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/5p25hn","slide":37,"text":""}
+{"kind":"slide","id":"sl/udfdpo","slide":38,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":38,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":38,"text":"把 notebook 写成研究记录，而不是只写代码","textPreview":"把 notebook 写成研究记录，而不是只写代码","textChars":25,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/uxc3ylc7","slide":38,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/1cfa9w3m","slide":38,"bbox":[104,168,500,316]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":38,"text":"代码 cell","textPreview":"代码 cell","textChars":7,"textLines":1,"bbox":[144,212,260,34]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":38,"text":"• 保存变量\n• 运行计算\n• 打印结果\n• 检查类型","textPreview":"• 保存变量 | • 运行计算 | • 打印结果 | • 检查类型","textChars":27,"textLines":4,"bbox":[150,286,330,138]}
+{"kind":"shape","id":"sh/ulwval87","slide":38,"bbox":[676,168,500,316]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":38,"text":"文字说明","textPreview":"文字说明","textChars":4,"textLines":1,"bbox":[716,212,260,34]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":38,"text":"• 这段代码想解决什么\n• 变量代表什么\n• 输出说明什么\n• 下一步想改什么","textPreview":"• 这段代码想解决什么 | • 变量代表什么 | • 输出说明什么 | • 下一步想改什么","textChars":39,"textLines":4,"bbox":[722,286,350,138]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":38,"text":"AI 科研项目最后看的不是代码量，而是代码能不能支持一个清楚的问题。","textPreview":"AI 科研项目最后看的不是代码量，而是代码能不能支持一个清楚的问题。","textChars":34,"textLines":1,"bbox":[120,540,1040,38]}
+{"kind":"textbox","id":"sh/z61032ls","slide":38,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":38,"text":"38","textPreview":"38","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/udfdpo","slide":38,"text":""}
+{"kind":"slide","id":"sl/5vxyzz","slide":39,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":11}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":39,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/9gr2p8nq","slide":39,"text":"加分挑战：从 3 个方向里选一个扩展","textPreview":"加分挑战：从 3 个方向里选一个扩展","textChars":18,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/gvy90je9","slide":39,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/r2p8nqxs","slide":39,"bbox":[116,184,300,256]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":39,"text":"学习计划","textPreview":"学习计划","textChars":4,"textLines":1,"bbox":[146,230,240,34]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":39,"text":"输入本周可用时间，输出下周目标","textPreview":"输入本周可用时间，输出下周目标","textChars":15,"textLines":1,"bbox":[150,306,230,78]}
+{"kind":"shape","id":"sh/kjm1cfa9","slide":39,"bbox":[466,184,300,256]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":39,"text":"兴趣档案","textPreview":"兴趣档案","textChars":4,"textLines":1,"bbox":[496,230,240,34]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":39,"text":"输入研究兴趣，输出一句项目介绍","textPreview":"输入研究兴趣，输出一句项目介绍","textChars":15,"textLines":1,"bbox":[500,306,230,78]}
+{"kind":"shape","id":"sh/4fu18jqh","slide":39,"bbox":[816,184,300,256]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":39,"text":"简单计算","textPreview":"简单计算","textChars":4,"textLines":1,"bbox":[846,230,240,34]}
+{"kind":"textbox","id":"sh/m94fu18j","slide":39,"text":"输入两个数字，输出总和与平均值","textPreview":"输入两个数字，输出总和与平均值","textChars":15,"textLines":1,"bbox":[850,306,230,78]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":39,"text":"选一个就够。重点是能运行、能解释、能修改。","textPreview":"选一个就够。重点是能运行、能解释、能修改。","textChars":21,"textLines":1,"bbox":[162,526,960,38]}
+{"kind":"textbox","id":"sh/83itgfml","slide":39,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":39,"text":"39","textPreview":"39","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/5vxyzz","slide":39,"text":""}
+{"kind":"slide","id":"sl/7c1tvc","slide":40,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":13}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":40,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/1gvy90je","slide":40,"text":"老师巡回时重点看这 3 件事","textPreview":"老师巡回时重点看这 3 件事","textChars":14,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/8z25kb6x","slide":40,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":40,"bbox":[150,176,960,82]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":40,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[188,196,50,32]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":40,"text":"能否运行","textPreview":"能否运行","textChars":4,"textLines":1,"bbox":[280,196,240,32]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":40,"text":"如果报错，先读最后一行错误信息。","textPreview":"如果报错，先读最后一行错误信息。","textChars":16,"textLines":1,"bbox":[560,199,460,28]}
+{"kind":"shape","id":"sh/fyxobm58","slide":40,"bbox":[150,302,960,82]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":40,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[188,322,50,32]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":40,"text":"能否解释","textPreview":"能否解释","textChars":4,"textLines":1,"bbox":[280,322,240,32]}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":40,"text":"说清每个变量代表什么。","textPreview":"说清每个变量代表什么。","textChars":11,"textLines":1,"bbox":[560,325,460,28]}
+{"kind":"shape","id":"sh/a9w3m94f","slide":40,"bbox":[150,428,960,82]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":40,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[188,448,50,32]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":40,"text":"能否修改","textPreview":"能否修改","textChars":4,"textLines":1,"bbox":[280,448,240,32]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":40,"text":"换一个输入，输出也应该跟着变。","textPreview":"换一个输入，输出也应该跟着变。","textChars":15,"textLines":1,"bbox":[560,451,460,28]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":40,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/z61032ls","slide":40,"text":"40","textPreview":"40","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/7c1tvc","slide":40,"text":""}
+{"kind":"slide","id":"sl/92sfcy","slide":41,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":15}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":41,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":41,"text":"提交前最后整理：让文件像一个完成品","textPreview":"提交前最后整理：让文件像一个完成品","textChars":17,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/qtcj6tov","slide":41,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/xs72x4na","slide":41,"bbox":[108,168,1040,318]}
+{"kind":"shape","id":"sh/87ed8bat","slide":41,"bbox":[154,214,34,34]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":41,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[165,221,12,18]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":41,"text":"文件名包含 Class01 和自己的名字","textPreview":"文件名包含 Class01 和自己的名字","textChars":20,"textLines":1,"bbox":[220,216,840,28]}
+{"kind":"shape","id":"sh/x4nap4r6","slide":41,"bbox":[154,262,34,34]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":41,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[165,269,12,18]}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":41,"text":"所有 cell 从上到下重新运行一次","textPreview":"所有 cell 从上到下重新运行一次","textChars":18,"textLines":1,"bbox":[220,264,840,28]}
+{"kind":"shape","id":"sh/bat47y1k","slide":41,"bbox":[154,310,34,34]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":41,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[165,317,12,18]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":41,"text":"输出结果保留在 notebook 里","textPreview":"输出结果保留在 notebook 里","textChars":18,"textLines":1,"bbox":[220,312,840,28]}
+{"kind":"shape","id":"sh/m1cfa9w3","slide":41,"bbox":[154,358,34,34]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":41,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[165,365,12,18]}
+{"kind":"textbox","id":"sh/47y1kre1","slide":41,"text":"删除明显无关的测试 cell","textPreview":"删除明显无关的测试 cell","textChars":14,"textLines":1,"bbox":[220,360,840,28]}
+{"kind":"shape","id":"sh/tsvu9kni","slide":41,"bbox":[154,406,34,34]}
+{"kind":"textbox","id":"sh/m58z25kb","slide":41,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[165,413,12,18]}
+{"kind":"textbox","id":"sh/bq1oryts","slide":41,"text":"确认链接或截图已经准备好","textPreview":"确认链接或截图已经准备好","textChars":12,"textLines":1,"bbox":[220,408,840,28]}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":41,"text":"提交方式和截止时间会课后统一通知。","textPreview":"提交方式和截止时间会课后统一通知。","textChars":17,"textLines":1,"bbox":[150,540,960,38]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":41,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":41,"text":"41","textPreview":"41","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/92sfcy","slide":41,"text":""}
+{"kind":"slide","id":"sl/t1iivi","slide":42,"title":"PYTHON FOR AI RESEARCH | CLASS 01","textShapes":9}
+{"kind":"textbox","id":"sh/u9knih4b","slide":42,"text":"PYTHON FOR AI RESEARCH | CLASS 01","textPreview":"PYTHON FOR AI RESEARCH | CLASS 01","textChars":33,"textLines":1,"bbox":[70,28,680,26]}
+{"kind":"textbox","id":"sh/1032lszq","slide":42,"text":"下节课我们让程序开始做判断","textPreview":"下节课我们让程序开始做判断","textChars":13,"textLines":1,"bbox":[70,64,900,58]}
+{"kind":"shape","id":"sh/cfa9w3m9","slide":42,"bbox":[70,128,170,5]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":42,"bbox":[118,180,520,282]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":42,"text":"今天你已经完成","textPreview":"今天你已经完成","textChars":7,"textLines":1,"bbox":[158,226,340,36]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":42,"text":"• 明确作业要求和提交节奏\n• 理解 15 节课学习路径\n• 运行第一个 notebook\n• 练过变量、类型和输入输出","textPreview":"• 明确作业要求和提交节奏 | • 理解 15 节课学习路径 | • 运行第一个 notebook | • 练过变量、类型和输入输出","textChars":60,"textLines":4,"bbox":[162,294,390,140]}
+{"kind":"shape","id":"sh/c7u54zid","slide":42,"bbox":[704,180,420,282]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":42,"text":"Class 02","textPreview":"Class 02","textChars":8,"textLines":1,"bbox":[744,230,260,44]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":42,"text":"Control Flow\n条件判断、循环、比较和逻辑运算","textPreview":"Control Flow | 条件判断、循环、比较和逻辑运算","textChars":28,"textLines":2,"bbox":[746,306,330,96]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":42,"text":"目标：写一个能根据输入做判断的小程序。","textPreview":"目标：写一个能根据输入做判断的小程序。","textChars":19,"textLines":1,"bbox":[180,534,920,38]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":42,"text":"MeritPoint Academy / 恒点学术","textPreview":"MeritPoint Academy / 恒点学术","textChars":25,"textLines":1,"bbox":[70,676,400,24]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":42,"text":"42","textPreview":"42","textChars":2,"textLines":1,"bbox":[1160,672,50,26]}
+{"kind":"notes","id":"nt/t1iivi","slide":42,"text":""}

@@ -1,0 +1,15 @@
+.agents/
+.codex/
+
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local/generated presentation scratch folders
+work/**/tmp/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
