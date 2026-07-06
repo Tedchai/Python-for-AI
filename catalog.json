@@ -1,0 +1,57 @@
+{
+  "site": "Python for AI Research",
+  "logo": "AI",
+  "tagline": "互动网页课件 — 随堂测验 · 浏览器 Python 实验 · 每页留言 · 可选语音讲解",
+  "courses": [
+    {
+      "id": "python-ai",
+      "title": "Python for AI Research",
+      "subtitle": "从 Python 基础、数据处理到 AI 科研项目展示的 15 节互动课程。",
+      "tags": [
+        "Python",
+        "AI Research",
+        "MeritPoint"
+      ],
+      "accent": "#1769C0",
+      "decks": [
+        {
+          "id": "lesson-01",
+          "n": 1,
+          "title": "课程导入与第一个 Python Notebook",
+          "summary": "课程规则、Google Classroom、Colab 入门、print、变量、数据类型、input、f-string 和 mini profile 小练习。",
+          "tags": [
+            "Class 01",
+            "Colab",
+            "Python Basics",
+            "Quiz",
+            "Lab"
+          ],
+          "duration": "60 min",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-02",
+          "n": 2,
+          "title": "Python Control Flow",
+          "summary": "if / elif / else、for、while、break、continue。",
+          "tags": [
+            "Class 02",
+            "Control Flow"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "lesson-03",
+          "n": 3,
+          "title": "Python Functions",
+          "summary": "def、参数、return、keyword arguments、scope、docstring。",
+          "tags": [
+            "Class 03",
+            "Functions"
+          ],
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

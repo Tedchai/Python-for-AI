@@ -1,0 +1,5 @@
+# Netlify: free tier, static hosting (comments & AI assistant stay hidden/degraded).
+# Just "Import from Git" — this file configures everything.
+[build]
+  command = "node build.js"
+  publish = "."
