@@ -33,23 +33,29 @@
           "id": "lesson-02",
           "n": 2,
           "title": "Python Control Flow",
-          "summary": "if / elif / else、for、while、break、continue。",
+          "summary": "条件判断、比较运算、for / while 循环、break / continue，以及评分/分类小程序。",
           "tags": [
             "Class 02",
-            "Control Flow"
+            "Control Flow",
+            "Quiz",
+            "Lab"
           ],
-          "status": "planned"
+          "duration": "60-75 min",
+          "status": "ready"
         },
         {
           "id": "lesson-03",
           "n": 3,
           "title": "Python Functions",
-          "summary": "def、参数、return、keyword arguments、scope、docstring。",
+          "summary": "def、函数调用、参数、return、keyword arguments、scope、docstring 和函数作业。",
           "tags": [
             "Class 03",
-            "Functions"
+            "Functions",
+            "Quiz",
+            "Lab"
           ],
-          "status": "planned"
+          "duration": "60-75 min",
+          "status": "ready"
         }
       ]
     }

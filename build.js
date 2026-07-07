@@ -52,8 +52,14 @@ const CATALOG = {
           summary: "课程规则、Google Classroom、Colab 入门、print、变量、数据类型、input、f-string 和 mini profile 小练习。",
           tags: ["Class 01", "Colab", "Python Basics", "Quiz", "Lab"],
           duration: "60 min", status: "ready" },
-        { id: "lesson-02", n: 2, title: "Python Control Flow", summary: "if / elif / else、for、while、break、continue。", tags: ["Class 02", "Control Flow"], status: "planned" },
-        { id: "lesson-03", n: 3, title: "Python Functions", summary: "def、参数、return、keyword arguments、scope、docstring。", tags: ["Class 03", "Functions"], status: "planned" },
+        { id: "lesson-02", n: 2, title: "Python Control Flow",
+          summary: "条件判断、比较运算、for / while 循环、break / continue，以及评分/分类小程序。",
+          tags: ["Class 02", "Control Flow", "Quiz", "Lab"],
+          duration: "60-75 min", status: "ready" },
+        { id: "lesson-03", n: 3, title: "Python Functions",
+          summary: "def、函数调用、参数、return、keyword arguments、scope、docstring 和函数作业。",
+          tags: ["Class 03", "Functions", "Quiz", "Lab"],
+          duration: "60-75 min", status: "ready" },
       ],
     },
   ],
@@ -1097,8 +1103,340 @@ print(f"Next week goal: {hours + 1} hours.")`;
   return S;
 }
 
+function buildPythonClass02() {
+  const S = [];
+  const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const bullets = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  const codeCoin = `cents = 87
+
+quarters = cents // 25
+left_after_quarters = cents % 25
+dimes = left_after_quarters // 10
+pennies = left_after_quarters % 10
+
+print(f"Input: {cents} cents")
+print(f"{quarters} quarters")
+print(f"{dimes} dime(s)")
+print(f"{pennies} pennies")`;
+  const codeClassify = `numbers = [5, -2, 0]
+
+for number in numbers:
+    if number > 0:
+        label = "positive"
+    elif number < 0:
+        label = "negative"
+    else:
+        label = "zero"
+    print(f"{number}: {label}")`;
+  const codeLoop = `scores = [42, 50, 67, 81, 93]
+
+for score in scores:
+    if score < 50:
+        grade = "fail"
+    elif score < 70:
+        grade = "pass"
+    elif score < 90:
+        grade = "good"
+    else:
+        grade = "excellent"
+    print(f"{score} -> {grade}")
+
+print("Odd numbers from 0 to 9:")
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)`;
+
+  S.push(sec("class02-title", `<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 02</div>
+    <h1 style="color:#fff">Python<br>Control Flow</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">条件判断、循环与程序选择路径</p>
+    <div class="grid3" style="margin-top:1em">
+      <div class="skillcard"><div class="cn">判断</div><p>if / elif / else</p></div>
+      <div class="skillcard"><div class="cn">重复</div><p>for / while / range</p></div>
+      <div class="skillcard"><div class="cn">控制</div><p>break / continue</p></div>
+    </div>
+    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右下角留言 · Python lab 可直接运行</p>
+    ${notes("第 2 课核心：让学生从顺序执行转向选择执行。保持先预测、再运行、再解释的节奏。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+
+  S.push(sec("class02-goals", `<div class="kicker">TODAY'S OUTPUT</div>
+    <h2>今天完成一个会做判断的小程序</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>预测路径</h3><p>能说出条件为 True / False 时哪几行会执行。</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>写出分支</h3><p>用 if / elif / else 完成二分类或三分类。</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>写出循环</h3><p>用 for / while 减少重复，并控制何时停止。</p></div>
+    </div>
+    <div class="callout"><b>课堂产出：</b>硬币兑换、正负数判断、循环打印和一个评分/分类练习。</div>
+    ${notes("明确产出后，学生会更容易理解每个语法点服务于什么任务。")}`));
+
+  S.push(labSlide("coin-lab", "WARM-UP LAB", "87 cents：// 和 % 的真实用途",
+    "先预测 quarters、dimes、pennies 的数量，再运行代码验证。",
+    codeCoin, [], "用第 1 课的整除和取余引出控制流：程序需要根据余数继续做下一步。"));
+
+  S.push(sec("if-mental-model", `<div class="kicker">IF STATEMENT</div>
+    <h2>if 让程序选择是否进入一个代码块</h2>
+    <div class="flow" style="margin-top:.7em">
+      <div class="step"><div class="n">1</div><b>Evaluate</b><span>条件表达式得到 True 或 False</span></div>
+      <div class="step"><div class="n">2</div><b>Enter or skip</b><span>True 执行缩进代码块，False 跳过</span></div>
+      <div class="step"><div class="n">3</div><b>Continue</b><span>代码块结束后继续往下走</span></div>
+    </div>
+    <pre style="font-size:.48em;margin-top:.7em"><code>if number &gt; 0:
+    print("positive")
+print("always runs")</code></pre>
+    ${notes("强调缩进是 Python 的结构，不是排版。让学生用手指出哪些行属于 if。")}`));
+
+  S.push(quizSlide("indent-quiz", "INDENTATION",
+    "在 Python 里，哪件事决定一行代码是否属于 if 代码块？",
+    ["括号数量", "缩进层级", "变量名长度", "代码颜色"],
+    1,
+    "Python 用缩进表示代码块。缩进不同，程序逻辑就可能完全不同。",
+    "可以现场把 print('always runs') 缩进进去，再让学生预测输出变化。"));
+
+  S.push(sec("branching", `<div class="kicker">IF / ELIF / ELSE</div>
+    <h2>多分支判断：只选择一条路径</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>二分支</h3>${bullets(["if 条件成立：走第一条路", "否则 else：走备用路线", "适合 pass / fail、yes / no"])}</div>
+      <div class="box"><h3>多分支</h3>${bullets(["先检查 if", "再逐个检查 elif", "都不满足时走 else", "适合 positive / negative / zero"])}</div>
+    </div>
+    <div class="callout"><b>口诀：</b>从上到下检查，遇到第一个 True 就执行，然后离开整组分支。</div>
+    ${notes("用 number = 5、-2、0 三个例子，让学生分别说出路径。")}`));
+
+  S.push(labSlide("classify-lab", "PYTHON LAB", "正数、负数、零：三分类判断",
+    "改动 numbers 列表里的值，观察每个输入如何走到不同分支。",
+    codeClassify, [], "这里避免 input，让浏览器实验可以直接运行。学生可以把列表改成自己的测试值。"));
+
+  S.push(sec("range-model", `<div class="kicker">FOR LOOP</div>
+    <h2>for loop 适合已知次数或已知序列</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>range(5)</h3><p>0, 1, 2, 3, 4</p></div>
+      <div class="box"><h3>range(-10, 11)</h3><p>-10 到 10，包含 -10，不包含 11</p></div>
+      <div class="box"><h3>range(0, 10, 2)</h3><p>0, 2, 4, 6, 8</p></div>
+    </div>
+    <div class="callout"><b>stop 不包含：</b>这是 range 最常见的边界错误。</div>
+    ${notes("让学生先写出 range(-10, 11) 的第一个和最后一个数字，再运行验证。")}`));
+
+  S.push(quizSlide("range-quiz", "RANGE",
+    "list(range(0, 5)) 的结果是什么？",
+    ["[0, 1, 2, 3, 4]", "[1, 2, 3, 4, 5]", "[0, 1, 2, 3, 4, 5]", "[5]"],
+    0,
+    "range 的 stop 是 exclusive，不包含 5。",
+    "如果学生混淆，可以和切片、半开区间做类比。"));
+
+  S.push(sec("while-model", `<div class="kicker">WHILE LOOP</div>
+    <h2>while 适合“不知道要重复几次”的任务</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>for</h3>${bullets(["遍历已知序列", "通常知道循环范围", "例如检查 scores 列表"])}</div>
+      <div class="box"><h3>while</h3>${bullets(["只要条件为 True 就继续", "适合输入验证", "必须设计终止条件"])}</div>
+    </div>
+    <pre style="font-size:.46em;margin-top:.6em"><code>count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1</code></pre>
+    ${notes("无限循环是重点风险：每次讲 while 都要问，这个条件什么时候会变成 False？")}`));
+
+  S.push(sec("break-continue", `<div class="kicker">BREAK / CONTINUE</div>
+    <h2>两个词，控制循环的节奏</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
+      <div class="box"><h3>break</h3><p>提前结束整个循环。常用于“已经找到了，不用继续”。</p></div>
+      <div class="box"><h3>continue</h3><p>跳过当前这一轮剩下的代码，直接进入下一轮。</p></div>
+    </div>
+    <div class="callout"><b>课堂问法：</b>它是离开整个循环，还是只跳过这一次？</div>
+    ${notes("用 0-9 只打印奇数的例子解释 continue；用找到第一个合格分数解释 break。")}`));
+
+  S.push(labSlide("grading-lab", "PYTHON LAB", "评分/分类程序：分支 + 循环",
+    "这是本课作业的雏形。改分数、改等级边界，再运行观察输出。",
+    codeLoop, [], "让学生选择成绩、风险、温度或学习时间建议作为作业主题。"));
+
+  S.push(sec("class02-homework", `<div class="kicker">HOMEWORK</div>
+    <h2>课后作业：写一个简单评分/分类程序</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
+      <div class="box">${bullets([
+        "必须包含至少一个 if / elif / else",
+        "至少测试 3 个不同输入，并保留输出结果",
+        "主题可以是成绩等级、风险等级、温度分类或学习时间建议",
+        "写 3-5 句话解释你的判断规则",
+        "说明哪些边界输入最容易出错"
+      ])}</div>
+      <div class="box"><h3>检查重点</h3><p>边界是否清楚，例如 50 分到底算 pass 还是 fail。</p><h3>提交</h3><p>Google Classroom -> Classwork -> Assignments</p></div>
+    </div>
+    ${notes("强调边界测试：刚好等于阈值的输入最能暴露逻辑问题。")}`));
+
+  S.push(sec("class02-exit", `<div class="kicker">EXIT TICKET</div>
+    <h2>离开前确认三件事</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="skillcard"><div class="cn">我能预测</div><p>判断 True / False 后程序走哪条路。</p></div>
+      <div class="skillcard"><div class="cn">我能循环</div><p>用 range 或列表让代码重复执行。</p></div>
+      <div class="skillcard"><div class="cn">我能控制</div><p>说出 break 和 continue 的区别。</p></div>
+    </div>
+    <div class="callout"><b>留言任务：</b>点右下角 Comment，写一个今天最容易混淆的边界情况。</div>
+    ${notes("收集学生对 range 边界、elif 顺序、while 终止条件的困惑。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+
+  return S;
+}
+
+function buildPythonClass03() {
+  const S = [];
+  const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const bullets = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  const codeGreet = `def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Sponge Bob")
+greet("AI researcher")`;
+  const codeReturn = `def add_numbers(num_1, num_2):
+    result = num_1 + num_2
+    return result
+
+total = add_numbers(3, 5)
+print(f"Sum: {total}")`;
+  const codePrice = `def calculate_price(item: str, quantity: int, price: float) -> float:
+    """Return the total price for an item order."""
+    total = quantity * price
+    return total
+
+apple_total = calculate_price(item="apple", quantity=3, price=0.5)
+orange_total = calculate_price(quantity=7, item="orange", price=1.2)
+
+print(f"Apple total: \${apple_total:.2f}")
+print(f"Orange total: \${orange_total:.2f}")`;
+
+  S.push(sec("class03-title", `<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 03</div>
+    <h1 style="color:#fff">Python<br>Functions</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">把重复逻辑封装成可以复用的工具</p>
+    <div class="grid3" style="margin-top:1em">
+      <div class="skillcard"><div class="cn">定义</div><p>def + 函数名</p></div>
+      <div class="skillcard"><div class="cn">传入</div><p>parameters / arguments</p></div>
+      <div class="skillcard"><div class="cn">传回</div><p>return value</p></div>
+    </div>
+    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右下角留言 · Python lab 可直接运行</p>
+    ${notes("第 3 课的主线：函数不是新语法炫技，而是给一段逻辑命名、复用、测试。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+
+  S.push(sec("class03-goals", `<div class="kicker">TODAY'S OUTPUT</div>
+    <h2>今天把重复代码变成函数</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>能定义</h3><p>写出 def function_name(parameters): 的基本结构。</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能调用</h3><p>用 arguments 传入不同值，让同一函数处理多种情况。</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能返回</h3><p>用 return 把计算结果交回调用处。</p></div>
+    </div>
+    <div class="callout"><b>课堂产出：</b>greet、add_numbers、calculate_price，以及一个自己的可复用函数。</div>
+    ${notes("把成果讲清楚：学生最后不是只会背 def，而是能封装一个小任务。")}`));
+
+  S.push(sec("why-functions", `<div class="kicker">WHY FUNCTIONS</div>
+    <h2>函数解决三个真实问题</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="box"><h3>减少重复</h3><p>同一段逻辑不用复制很多遍。</p></div>
+      <div class="box"><h3>命名逻辑</h3><p>函数名告诉别人这段代码想做什么。</p></div>
+      <div class="box"><h3>方便测试</h3><p>给不同输入，观察输出是否符合预期。</p></div>
+    </div>
+    <div class="callout"><b>关键句：</b>函数是“给一组步骤起名字”。</div>
+    ${notes("可以展示重复 print 或重复计算，再问：哪一块值得封装？")}`));
+
+  S.push(sec("function-syntax", `<div class="kicker">FUNCTION SYNTAX</div>
+    <h2>函数定义后不会自动运行</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>定义</h3><pre style="font-size:.68em"><code>def greet(name):
+    print(f"Hello, {name}!")</code></pre></div>
+      <div class="box"><h3>调用</h3><pre style="font-size:.68em"><code>greet("Sponge Bob")</code></pre></div>
+    </div>
+    <div class="callout"><b>常见错误：</b>只写了函数定义，但忘记在下面调用。</div>
+    ${notes("分清 define 和 call。定义像写菜谱，调用才是真的做菜。")}`));
+
+  S.push(labSlide("greet-lab", "PYTHON LAB", "第一个自定义函数：greet",
+    "改名字、增加一次调用，观察同一个函数如何复用。",
+    codeGreet, [], "让学生增加第三个 greet 调用，并把函数名改成更具体的名字。"));
+
+  S.push(quizSlide("call-quiz", "CALLING FUNCTIONS",
+    "如果只写 def greet(name): 但没有写 greet(\"Mia\")，会发生什么？",
+    ["函数会自动运行一次", "不会输出任何东西", "Python 一定报错", "变量 name 会变成全局变量"],
+    1,
+    "函数定义只是把步骤保存起来；调用函数时，函数体才会执行。",
+    "这道题帮助学生区分函数定义和函数调用。"));
+
+  S.push(sec("params-args", `<div class="kicker">PARAMETERS VS ARGUMENTS</div>
+    <h2>parameters 是占位名，arguments 是具体值</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
+      <div class="box"><h3>定义时</h3><p><code>def add_numbers(num_1, num_2):</code></p><p><b>num_1</b> 和 <b>num_2</b> 是 parameters。</p></div>
+      <div class="box"><h3>调用时</h3><p><code>add_numbers(3, 5)</code></p><p><b>3</b> 和 <b>5</b> 是 arguments。</p></div>
+    </div>
+    <div class="callout"><b>课堂问法：</b>这个名字是在函数定义里出现，还是调用时传进去？</div>
+    ${notes("中文里都叫参数容易混淆，建议用“占位名/具体值”解释。")}`));
+
+  S.push(sec("return-model", `<div class="kicker">RETURN</div>
+    <h2>return 把结果交回调用处</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Call</b><span>add_numbers(3, 5)</span></div>
+      <div class="step"><div class="n">2</div><b>Compute</b><span>函数内部算出 result = 8</span></div>
+      <div class="step"><div class="n">3</div><b>Return</b><span>把 8 交回外部变量 total</span></div>
+    </div>
+    <div class="callout"><b>return 不等于 print：</b>print 是显示；return 是把值传回去。</div>
+    ${notes("这是本课最容易混淆的地方。反复用“屏幕输出”和“交回结果”区分。")}`));
+
+  S.push(labSlide("return-lab", "PYTHON LAB", "add_numbers：保存返回值再输出",
+    "把 3 和 5 改成别的数字，再新增一次调用。",
+    codeReturn, [], "让学生先删掉 print 观察没有输出，再把返回值存入变量。"));
+
+  S.push(quizSlide("return-quiz", "RETURN",
+    "下面哪句话最准确？",
+    ["return 会把结果显示到屏幕上", "print 会把值传回调用处", "return 把结果传回调用处，print 只是显示", "return 后面的同级代码一定继续执行"],
+    2,
+    "return 的作用是把值交回调用处；print 的作用是显示文本。return 后同级代码不会继续执行。",
+    "如果时间允许，现场在 return 后加一行 print，验证它不会执行。"));
+
+  S.push(sec("keyword-args", `<div class="kicker">KEYWORD ARGUMENTS</div>
+    <h2>关键字参数让调用更清楚，也更不怕顺序错</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>positional</h3><pre style="font-size:.62em"><code>calculate_price("apple", 3, 0.5)</code></pre><p>短，但读者需要记住顺序。</p></div>
+      <div class="box"><h3>keyword</h3><pre style="font-size:.62em"><code>calculate_price(item="apple", quantity=3, price=0.5)</code></pre><p>长一点，但含义更清楚。</p></div>
+    </div>
+    ${notes("用 calculate_price 演示：顺序传错时可能不报错，但结果错，这比报错更危险。")}`));
+
+  S.push(labSlide("price-lab", "PYTHON LAB", "calculate_price：type hints + docstring",
+    "观察 type hints、docstring 和 keyword arguments 如何让函数更容易读。",
+    codePrice, [], "提醒学生：type hints 是给人和工具看的提示，Python 默认不会强制检查。"));
+
+  S.push(sec("scope-docstring", `<div class="kicker">SCOPE + DOCSTRING</div>
+    <h2>函数内部变量通常只在函数内部有效</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>scope</h3>${bullets(["函数内创建的变量是 local", "外部直接访问通常会 NameError", "返回值是更清楚的数据出口"])}</div>
+      <div class="box"><h3>docstring</h3>${bullets(["写在函数开头的三引号字符串", "说明函数做什么", "说明输入和返回值"])}</div>
+    </div>
+    <div class="callout"><b>好函数：</b>名字清楚，输入清楚，返回清楚，说明清楚。</div>
+    ${notes("scope 不必讲太深，重点是为什么函数内部变量不能随便在外面用。")}`));
+
+  S.push(sec("class03-homework", `<div class="kicker">HOMEWORK</div>
+    <h2>课后作业：新增一个自己的函数</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
+      <div class="box">${bullets([
+        "新增一个函数，例如 calculate_average、classify_score 或 calculate_study_goal",
+        "函数至少有 1 个参数，并至少调用 3 次",
+        "至少一次把返回值存入变量，再输出解释性句子",
+        "写 3-5 句话说明参数、返回值和封装理由",
+        "可选：把一次结果写入 class03_result.txt"
+      ])}</div>
+      <div class="box"><h3>提交检查</h3><p>notebook 能从上到下运行；函数名、参数名能看出含义。</p><h3>重点</h3><p>能解释 return 和 print 的区别。</p></div>
+    </div>
+    ${notes("如果时间不足，File I/O 只做预告，不要挤占函数核心练习。")}`));
+
+  S.push(sec("class03-exit", `<div class="kicker">EXIT TICKET</div>
+    <h2>离开前确认三句话</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="skillcard"><div class="cn">我能定义</div><p>写出一个带参数的函数。</p></div>
+      <div class="skillcard"><div class="cn">我能调用</div><p>传入不同 arguments 测试函数。</p></div>
+      <div class="skillcard"><div class="cn">我能返回</div><p>把 return value 存入变量。</p></div>
+    </div>
+    <div class="callout"><b>留言任务：</b>点右下角 Comment，写一句“return 和 print 的区别”。</div>
+    ${notes("用留言快速检查本课最关键误区。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+
+  return S;
+}
+
 const DECK_BUILDERS = {
   "python-ai/lesson-01": { build: buildPythonClass01, title: "Class 01 · Python for AI Research" },
+  "python-ai/lesson-02": { build: buildPythonClass02, title: "Class 02 · Python Control Flow" },
+  "python-ai/lesson-03": { build: buildPythonClass03, title: "Class 03 · Python Functions" },
 };
 
 // =====================================================================
