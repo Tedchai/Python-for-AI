@@ -1,0 +1,685 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class 04 · Python Lists and 2D Lists</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<style>
+:root{--navy:#0C2D52;--navy2:#12386A;--blue:#1769C0;--teal:#0F9DB0;--tealb:#2BC4D4;--coral:#EE6B36;--amber:#F2A93B;--green:#1FA37A;--ink:#21303F;--muted:#5E7183;--line:#D7E2EC;--cloud:#EEF4FA;--cloud2:#F6F9FC}
+.reveal{font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);font-size:30px}
+.reveal h1,.reveal h2,.reveal h3{font-family:Georgia,serif;color:var(--navy);text-transform:none;letter-spacing:0;font-weight:700;line-height:1.12}
+.reveal h1{font-size:1.55em}.reveal h2{font-size:1.12em}.reveal h3{font-size:.9em}
+.reveal .kicker{color:var(--teal);font-weight:700;letter-spacing:3px;font-size:.44em;text-transform:uppercase;margin-bottom:.35em;font-family:-apple-system,sans-serif}
+.reveal section{text-align:left}.reveal section.center{text-align:center}
+.reveal ul,.reveal ol{margin-left:1.05em}.reveal li{margin:.28em 0;font-size:.7em;line-height:1.38}
+.reveal p{font-size:.74em;line-height:1.42}.reveal .lead{font-size:.82em}.reveal .muted{color:var(--muted)}
+.reveal .callout{background:var(--cloud);border-left:6px solid var(--teal);border-radius:8px;padding:.45em .8em;margin-top:.5em;font-size:.7em}
+.reveal .callout b{color:var(--teal)}
+.reveal .pill{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:.16em .7em;font-size:.55em;color:var(--navy);margin:.12em .18em}
+.reveal .grid2{display:grid;grid-template-columns:1fr 1fr;gap:.65em}.reveal .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6em}
+.reveal .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.6em .75em;box-shadow:0 4px 14px rgba(20,40,70,.06)}
+.reveal .box h3{margin:.05em 0 .2em}.reveal .box p{font-size:.58em;margin:0}
+.reveal .feature{display:inline-block;font-size:.55em;font-weight:700;color:#fff;background:var(--navy);border-radius:6px;padding:.1em .55em;margin-top:.25em}
+.reveal .vid{display:grid;grid-template-columns:1.5fr 1fr;gap:1em;align-items:center}
+.reveal .poster{border-radius:12px;height:2.7em;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:1.25em;text-align:center;box-shadow:0 8px 24px rgba(20,40,70,.18);position:relative}
+.reveal .poster .play{position:absolute;width:1em;height:1em;border-radius:50%;background:rgba(255,255,255,.92);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:.5em}
+.reveal .qr{width:1.6em;height:1.6em;border:1px solid var(--line);border-radius:8px;background:#fff;padding:4px}
+.reveal .qrwrap{text-align:center;font-size:.5em;color:var(--muted)}.reveal .qrwrap a{color:var(--teal);word-break:break-all}
+.reveal a.btn{display:inline-block;background:#fff;border:1px solid var(--teal);color:var(--teal);border-radius:8px;padding:.16em .7em;font-size:.58em;font-weight:600}
+.reveal .src{font-size:.5em;color:var(--muted);margin-top:.5em}
+.reveal blockquote{border:none;box-shadow:none;background:var(--cloud2);border-left:6px solid var(--teal);border-radius:8px;font-size:.76em;font-style:normal;width:100%;padding:.65em 1em}
+.reveal .speak{cursor:pointer;display:inline-flex;align-items:center;gap:.4em;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:.28em .85em;font-size:.52em;font-weight:700;font-family:-apple-system,sans-serif;box-shadow:0 4px 12px rgba(15,157,176,.3)}
+.reveal .speak:hover{background:#0d8a9b}.reveal .speak.playing{background:var(--coral)}
+/* timeline */
+.reveal .tl{display:flex;gap:.4em;align-items:stretch;margin-top:.5em}
+.reveal .tl .ev{flex:1;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:10px;padding:.45em .5em}
+.reveal .tl .ev.winter{border-top-color:#7FA8D0}.reveal .tl .ev.boom{border-top-color:var(--coral)}
+.reveal .tl .yr{font-family:Georgia,serif;font-weight:800;color:var(--navy);font-size:.72em}
+.reveal .tl .ev b{font-size:.56em;color:var(--navy);display:block;margin:.1em 0}.reveal .tl .ev span{font-size:.5em;color:var(--muted);line-height:1.25;display:block}
+/* flow steps */
+.reveal .flow{display:flex;flex-wrap:wrap;gap:.4em;align-items:stretch}
+.reveal .step{flex:1 1 0;min-width:2.3em;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.38em .42em;position:relative}
+.reveal .step .n{position:absolute;top:-.5em;left:-.3em;width:1em;height:1em;border-radius:50%;background:var(--teal);color:#fff;font-size:.5em;font-weight:800;display:flex;align-items:center;justify-content:center}
+.reveal .step b{font-size:.56em;color:var(--navy);display:block;line-height:1.15}.reveal .step span{font-size:.48em;color:var(--muted)}
+.reveal .step.loop{border-color:var(--coral);border-style:dashed}
+/* prompt cards */
+.reveal .prompt{background:#0f2742;color:#dfeaf6;border-radius:9px;padding:.4em .65em;font-family:Consolas,monospace;font-size:.54em;margin:.26em 0;line-height:1.38}
+.reveal .prompt .you{color:var(--tealb);font-weight:700}
+/* skills */
+.reveal .skillcard{background:linear-gradient(135deg,#fff,var(--cloud));border:1px solid var(--line);border-radius:14px;padding:.65em .8em}
+.reveal .skillcard .cn{font-size:.95em;color:var(--navy);font-weight:700;font-family:Georgia,serif}
+/* QUIZ */
+.reveal .quiz{background:#fff;border:1px solid var(--line);border-radius:14px;padding:.7em .85em;box-shadow:0 6px 18px rgba(20,40,70,.07);max-width:18em}
+.reveal .quiz .qq{font-size:.72em;font-weight:600;color:var(--navy);margin:0 0 .5em}
+.reveal .quiz .opt{display:block;width:100%;text-align:left;background:var(--cloud2);border:1px solid var(--line);border-radius:9px;padding:.4em .6em;margin:.25em 0;font-size:.6em;color:var(--ink);cursor:pointer;transition:.1s;font-family:-apple-system,sans-serif}
+.reveal .quiz .opt:hover{border-color:var(--teal);background:#fff}
+.reveal .quiz .opt.correct{background:#E6F4EE;border-color:var(--green);color:#0d6b4f;font-weight:600}
+.reveal .quiz .opt.wrong{background:#FBEAE7;border-color:var(--coral);color:#a23c1c}
+.reveal .quiz .opt[disabled]{cursor:default}
+.reveal .quiz-exp{font-size:.56em;color:var(--muted);margin:.4em 0 0;display:none}
+.reveal .quiz.answered .quiz-exp{display:block}
+.reveal .quiz-badge{font-size:.5em;color:var(--teal);font-weight:700;letter-spacing:1px}
+/* CODE LAB */
+.reveal .lab{display:grid;grid-template-columns:1.55fr 1fr;gap:.6em;margin-top:.4em;height:11.2em}
+.reveal .lab-main{display:flex;flex-direction:column;min-width:0}
+.reveal .lab textarea.code{flex:1;width:100%;background:#0f2742;color:#e7f0fb;border:1px solid #21405f;border-radius:10px 10px 0 0;font-family:Consolas,"SF Mono",monospace;font-size:13px;line-height:1.4;padding:.5em .6em;resize:none;outline:none;tab-size:4}
+.reveal .lab-bar{display:flex;align-items:center;gap:.4em;background:#11314f;border:1px solid #21405f;border-top:none;padding:.3em .4em;flex-wrap:wrap}
+.reveal .lab-bar button{font-family:-apple-system,sans-serif;font-size:11px;font-weight:600;border:none;border-radius:7px;padding:.4em .7em;cursor:pointer}
+.reveal .lab-bar .run{background:var(--green);color:#fff}.reveal .lab-bar .run:hover{background:#178a64}
+.reveal .lab-bar .ai-explain,.reveal .lab-bar .ai-debug,.reveal .lab-bar .ai-improve{background:#1b3e5e;color:#cfe0ef}
+.reveal .lab-bar .ai-explain:hover,.reveal .lab-bar .ai-debug:hover,.reveal .lab-bar .ai-improve:hover{background:#27557d}
+.reveal .lab-status{font-size:10.5px;color:#9db8d6;margin-left:auto;font-family:-apple-system,sans-serif}
+.reveal .lab pre.out{background:#08192b;color:#bfe3c7;border:1px solid #21405f;border-top:none;border-radius:0 0 10px 10px;margin:0;padding:.5em .6em;font-family:Consolas,monospace;font-size:11.5px;line-height:1.4;overflow:auto;min-height:2.4em;max-height:4.2em;white-space:pre-wrap}
+.reveal .lab pre.out .err{color:#ff9b8a}
+.reveal .assist{display:flex;flex-direction:column;background:linear-gradient(135deg,#fff,#f1f7fb);border:1px solid var(--line);border-radius:11px;overflow:hidden;min-width:0}
+.reveal .assist-head{background:linear-gradient(90deg,#0F9DB0,#2BC4D4);color:#fff;font-size:12px;font-weight:700;padding:.45em .7em;font-family:-apple-system,sans-serif}
+.reveal .assist-body{flex:1;overflow:auto;padding:.5em .65em;font-size:12px;line-height:1.46;color:var(--ink);font-family:-apple-system,sans-serif}
+.reveal .assist-body p{font-size:12px;margin:.3em 0}.reveal .assist-body code{background:#eef3f8;border-radius:4px;padding:0 .25em;font-family:Consolas,monospace;font-size:11px}
+.reveal .assist-body pre{background:#0f2742;color:#e7f0fb;border-radius:8px;padding:.5em .6em;font-size:11px;overflow:auto;white-space:pre}
+.reveal .assist-body pre code{background:none;color:inherit}
+.reveal .assist-body .apply{background:var(--teal);color:#fff;border:none;border-radius:6px;padding:.25em .6em;font-size:11px;font-weight:600;cursor:pointer;margin-top:.2em}
+.reveal .assist-ask{display:flex;gap:.3em;border-top:1px solid var(--line);padding:.4em}
+.reveal .assist-ask input{flex:1;border:1px solid var(--line);border-radius:7px;padding:.4em .5em;font-size:12px;font-family:-apple-system,sans-serif;outline:none}
+.reveal .assist-ask button{background:var(--navy);color:#fff;border:none;border-radius:7px;padding:.4em .7em;font-size:12px;font-weight:600;cursor:pointer}
+/* HEAP / TOP-K VISUALIZER */
+.reveal .heapviz{margin-top:.35em;font-family:-apple-system,sans-serif}
+.reveal .hv-top{display:grid;grid-template-columns:1.3fr 1fr;gap:14px}
+.reveal .hv-code{background:#0f2742;border-radius:10px 10px 0 0;padding:8px 12px;border:1px solid #21405f;border-bottom:none}
+.reveal .hv-code-title{color:#9db8d6;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-bottom:4px}
+.reveal .hv-code pre.hv-pre{margin:0;color:#e7f0fb;font-family:Consolas,"SF Mono",monospace;font-size:11.5px;line-height:1.5;max-height:150px;overflow:auto;white-space:pre}
+.reveal .hv-info{background:#eef4fa;border:1px solid #21405f22;border-top:none;border-radius:0 0 10px 10px;padding:6px 12px;font-size:11px;color:var(--muted)}
+.reveal .hv-panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:6px}
+.reveal .hv-panel label{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-top:4px}
+.reveal .hv-panel label:first-child{margin-top:0}
+.reveal .hv-row{display:flex;gap:6px}
+.reveal .hv-input{flex:1;border:1px solid var(--line);border-radius:7px;padding:6px 9px;font-size:13px;font-family:-apple-system,sans-serif;min-width:0}
+.reveal .hv-insert{background:var(--green);color:#fff;border:none;border-radius:7px;padding:6px 12px;font-size:12.5px;font-weight:700;cursor:pointer}
+.reveal .hv-quick{display:flex;gap:5px;flex-wrap:wrap}
+.reveal .hv-quick-btn{background:var(--cloud);border:1px solid var(--line);border-radius:7px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink)}
+.reveal .hv-quick-btn:hover{border-color:var(--teal);color:var(--teal)}
+.reveal .hv-arr-now{background:var(--cloud2);border:1px solid var(--line);border-radius:7px;padding:6px 9px;font-family:Consolas,monospace;font-size:12.5px}
+.reveal .hv-status,.reveal .hv-action{font-size:12px;color:var(--ink)}
+.reveal .hv-frames-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin:10px 0 4px}
+.reveal .hv-frames{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.reveal .hv-frame{flex:0 0 auto;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center}
+.reveal .hv-frame-active{border-color:var(--teal);box-shadow:0 0 0 2px rgba(15,157,176,.18)}
+.reveal .hv-frame-title{font-size:11px;font-weight:700;color:var(--navy)}
+.reveal .hv-frame-desc{font-size:9.5px;color:var(--muted);min-height:1.6em;line-height:1.25;margin:2px 0}
+.reveal .hv-tree-svg{width:100%;height:80px}
+.reveal .hv-empty{color:var(--muted);font-size:10.5px;padding:20px 0}
+.reveal .hv-node{fill:#D6ECEF;stroke:#0B7E8A;stroke-width:1.5}
+.reveal .hv-node-hi{fill:#F2A93B;stroke:#c07f1a}
+.reveal .hv-node-text{font-size:9px;font-weight:700;fill:#0C2D52;text-anchor:middle;font-family:-apple-system,sans-serif}
+.reveal .hv-edge{stroke:#c7d6e4;stroke-width:1.5}
+.reveal .hv-swap{stroke:#C0392B;stroke-width:2;stroke-dasharray:3,2}
+.reveal .hv-arrs{display:flex;gap:8px;overflow-x:auto;margin-top:6px}
+.reveal .hv-arr{flex:0 0 auto;min-width:150px;text-align:center;font-family:Consolas,monospace;font-size:11.5px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 8px;color:var(--ink)}
+.reveal .hv-arr-active{border-color:var(--teal)}
+.reveal .hv-arr-hi{color:#C0392B;font-weight:700}
+.reveal .hv-controls{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}
+.reveal .hv-controls button{background:#fff;border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:11.5px;font-weight:600;cursor:pointer;color:var(--ink);font-family:-apple-system,sans-serif}
+.reveal .hv-controls button:hover{border-color:var(--teal);color:var(--teal)}
+.reveal .hv-play{background:var(--teal)!important;color:#fff!important;border-color:var(--teal)!important}
+.reveal .hv-speed-label{font-size:11px;color:var(--muted);margin-left:6px}
+/* comments */
+#commentBtn{position:fixed;right:16px;top:14px;z-index:60;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(15,157,176,.4)}
+#commentBtn:hover{background:#0d8a9b}#commentBtn .cnum{background:#fff;color:var(--teal);border-radius:999px;padding:0 6px;margin-left:5px;font-size:11px}
+#listenBtn{--p:0%;position:fixed;right:148px;bottom:14px;z-index:60;min-width:128px;justify-content:center;color:#fff;border:none;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(20,40,70,.34);display:none;align-items:center;gap:.45em;background:linear-gradient(to right,var(--teal) var(--p),var(--navy) var(--p));transition:background .15s linear}
+#listenBtn:hover{filter:brightness(1.1)}
+#listenBtn.playing{background:linear-gradient(to right,var(--coral) var(--p),#16406e var(--p))}
+#listenBtn .li-ic{font-size:12px;line-height:1}#listenBtn .li-tx{font-variant-numeric:tabular-nums;font-size:11.5px;opacity:.92}
+#ccBtn{position:fixed;right:286px;bottom:14px;z-index:60;background:var(--navy);color:#fff;border:none;border-radius:999px;padding:9px 12px;font-size:11.5px;font-weight:800;letter-spacing:.03em;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(20,40,70,.34);display:none;opacity:.5}
+#ccBtn:hover{opacity:.8}#ccBtn.on{opacity:1;background:var(--teal)}
+#capBar{position:fixed;left:50%;bottom:58px;transform:translateX(-50%);max-width:70%;background:rgba(8,16,30,.88);color:#fff;padding:.4em 1em;border-radius:9px;font-size:13.5px;line-height:1.35;text-align:center;z-index:59;display:none;font-family:-apple-system,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+#commentPanel{position:fixed;right:16px;top:60px;width:340px;max-height:64vh;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 44px rgba(20,40,70,.22);z-index:61;display:none;flex-direction:column;font-family:-apple-system,sans-serif;overflow:hidden}
+#commentPanel.open{display:flex}
+#commentPanel .ph{background:var(--navy);color:#fff;padding:10px 14px;font-size:13px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+#commentPanel .ph .x{cursor:pointer;opacity:.8}#commentPanel .ph .x:hover{opacity:1}
+#commentList{flex:1;overflow:auto;padding:10px 14px}
+#commentList .c{border-bottom:1px solid var(--cloud);padding:7px 0}#commentList .c:last-child{border:none}
+#commentList .c .cn{font-size:12px;font-weight:700;color:var(--navy)}#commentList .c .ct{font-size:10px;color:var(--muted);margin-left:6px}
+#commentList .c .cb{font-size:13px;color:var(--ink);margin-top:2px;white-space:pre-wrap;word-break:break-word}
+#commentList .none{color:var(--muted);font-size:12.5px;text-align:center;padding:14px 0}
+#commentForm{border-top:1px solid var(--line);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+#commentForm input,#commentForm textarea{border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-size:13px;font-family:-apple-system,sans-serif;outline:none}
+#commentForm textarea{resize:vertical;min-height:46px}
+#commentForm .row{display:flex;gap:6px;align-items:center}
+#commentForm button{background:var(--teal);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer}
+#commentForm .msg{font-size:11px;color:var(--muted)}
+/* donate */
+#donateBtn{position:fixed;left:16px;top:14px;z-index:60;background:var(--coral);color:#fff;border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;font-family:-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(238,107,54,.4)}
+#donateBtn:hover{background:#d85a28;text-decoration:none}
+/* slide number: default bottom-right collides with the comment/listen/cc button row, so move it to bottom-left */
+.reveal .slide-number{left:14px;right:auto;bottom:14px;z-index:58;background:rgba(255,255,255,.85);padding:2px 8px;border-radius:6px;color:var(--muted)}
+</style></head><body>
+<div class="reveal"><div class="slides">
+<section id="class04-title" data-sid="class04-title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
+<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 04</div>
+    <h1 style="color:#fff">Lists and<br>2D Lists</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">用索引、循环和嵌套结构管理一组数据</p>
+    <div class="grid3" style="margin-top:1em">
+      <div class="skillcard"><div class="cn">访问</div><p>list[index]</p></div>
+      <div class="skillcard"><div class="cn">修改</div><p>range(len(...))</p></div>
+      <div class="skillcard"><div class="cn">嵌套</div><p>2D list + nested loop</p></div>
+    </div>
+    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右上角留言 · Python lab 可直接运行</p>
+    <aside class="notes">本课来自 Python Structure 课件的 list 部分。目标不是背方法，而是能用 list 表示一组学生、分数或实验记录。</aside>
+</section>
+<section id="class04-goals" data-sid="class04-goals">
+<div class="kicker">TODAY'S OUTPUT</div>
+    <h2>今天把一组数据变成可处理的结构</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>能访问</h3><p>用 index 读出 list 中的指定元素。</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能遍历</h3><p>用 for-each 或 index loop 扫过每个元素。</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能建模</h3><p>用 2D list 表示表格型数据。</p></div>
+    </div>
+    <div class="callout"><b>课堂产出：</b>成绩列表加分、学生成绩表、二维成绩矩阵。</div>
+    <aside class="notes">先让学生理解 list 是“多个值放在一个变量里”，再进入二维结构。</aside>
+</section>
+<section id="list-index" data-sid="list-index">
+<div class="kicker">LIST INDEX</div>
+    <h2>list 的每个元素都有位置编号</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
+      <div class="box"><h3>数据</h3><pre style="font-size:.65em"><code>numbers = [1, 3, 5, 7, 9]</code></pre></div>
+      <div class="box"><h3>索引</h3><p><code>numbers[0]</code> 是 1，<code>numbers[4]</code> 是 9。</p><p>Python 从 0 开始计数。</p></div>
+    </div>
+    <div class="callout"><b>常见错误：</b>最后一个元素不是 <code>numbers[5]</code>，而是 <code>numbers[4]</code>。</div>
+    <aside class="notes">用手指表格位置，让学生先预测 numbers[2] 是什么。</aside>
+</section>
+<section id="list-index-quiz" data-sid="list-index-quiz">
+<div class="kicker">LIST INDEX</div>
+  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
+  <div class="quiz" data-correct="2">
+    <p class="qq">numbers = [1, 3, 5, 7, 9]，numbers[2] 的值是什么？</p>
+    <div class="opts"><button class="opt" data-i="0">1</button><button class="opt" data-i="1">3</button><button class="opt" data-i="2">5</button><button class="opt" data-i="3">7</button></div>
+    <p class="quiz-exp">索引从 0 开始，所以 index 2 对应第三个元素 5。</p>
+  </div>
+  <aside class="notes">这道题检查学生是否还在用 1-based counting。</aside>
+</section>
+<section id="loop-two-ways" data-sid="loop-two-ways">
+<div class="kicker">LOOP TWO WAYS</div>
+    <h2>遍历 list 有两种常用方式</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>for-each</h3><pre style="font-size:.58em"><code>for number in numbers:
+    print(number)</code></pre><p>适合只读取每个值。</p></div>
+      <div class="box"><h3>index loop</h3><pre style="font-size:.58em"><code>for i in range(len(numbers)):
+    print(numbers[i])</code></pre><p>适合需要位置或要修改元素。</p></div>
+    </div>
+    <aside class="notes">强调 for number in numbers 修改的是临时变量，不会自动改原 list。</aside>
+</section>
+<section id="score-curve-lab" data-sid="score-curve-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>成绩列表：按 index 给每个分数加 5</h2>
+  <p class="lead" style="margin:.1em 0 .25em">先运行，再把加分规则改成 +10 或只给低于 80 分的同学加分。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">scores = [85, 88, 92, 76, 90]
+
+print("Original scores:", scores)
+
+for i in range(len(scores)):
+    scores[i] += 5
+
+print("After curve:", scores)
+print("Average:", sum(scores) / len(scores))</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">这是 list 修改的核心练习：要改原 list，通常需要 index。</aside>
+</section>
+<section id="foreach-trap" data-sid="foreach-trap">
+<div class="kicker">COMMON TRAP</div>
+    <h2>for-each 里的变量不是原列表格子</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>看起来像修改</h3><pre style="font-size:.58em"><code>for score in scores:
+    score += 5</code></pre><p>只改了临时变量 score。</p></div>
+      <div class="box"><h3>真正修改 list</h3><pre style="font-size:.58em"><code>for i in range(len(scores)):
+    scores[i] += 5</code></pre><p>通过 index 写回原来的位置。</p></div>
+    </div>
+    <div class="callout"><b>判断标准：</b>等号左边是不是 <code>scores[i]</code>？</div>
+    <aside class="notes">这部分来自原课件中 number *= 2 但原 list 不变的动画。</aside>
+</section>
+<section id="two-d-list" data-sid="two-d-list">
+<div class="kicker">2D LIST</div>
+    <h2>二维 list 可以表示表格</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>结构</h3><pre style="font-size:.58em"><code>matrix = [
+    [85, 88, 92],
+    [76, 90, 84],
+    [91, 87, 95],
+]</code></pre></div>
+      <div class="box"><h3>访问</h3><ul><li>matrix[0] 是第一行</li><li>matrix[0][1] 是第一行第二个值</li><li>外层循环走行，内层循环走列</li></ul></div>
+    </div>
+    <aside class="notes">把二维 list 连接到成绩表、实验记录、图片像素或表格数据。</aside>
+</section>
+<section id="matrix-lab" data-sid="matrix-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>二维成绩表：nested loop</h2>
+  <p class="lead" style="margin:.1em 0 .25em">运行后观察外层 row 和内层 score 的顺序。再新增一名学生的一行成绩。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">matrix = [
+    [85, 88, 92],
+    [76, 90, 84],
+    [91, 87, 95],
+]
+
+for row_index in range(len(matrix)):
+    row = matrix[row_index]
+    print(f"Student {row_index + 1}: {row}")
+    for score in row:
+        print("  score:", score)
+
+print("First student's second score:", matrix[0][1])</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">让学生说清楚 row_index、row、score 三个变量分别代表什么。</aside>
+</section>
+<section id="matrix-quiz" data-sid="matrix-quiz">
+<div class="kicker">2D LIST</div>
+  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
+  <div class="quiz" data-correct="0">
+    <p class="qq">matrix[0][1] 表示什么？</p>
+    <div class="opts"><button class="opt" data-i="0">第 0 行第 1 列，也就是第一行第二个元素</button><button class="opt" data-i="1">第 1 行第 0 列</button><button class="opt" data-i="2">整个第一行</button><button class="opt" data-i="3">整个第二列</button></div>
+    <p class="quiz-exp">二维 list 的访问顺序通常是 row 再 column：matrix[row][column]。</p>
+  </div>
+  <aside class="notes">用表格坐标帮助学生理解。</aside>
+</section>
+<section id="roster-lab" data-sid="roster-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>学生名单 + 分数：list 的局限</h2>
+  <p class="lead" style="margin:.1em 0 .25em">这个练习故意用两个 list 管理学生和分数。第 6 课会用 dictionary 改得更自然。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">students = ["Alice", "Bob", "Charlie", "Diana"]
+scores = [85, 88, 92, 76]
+
+for i in range(len(students)):
+    print(f"{students[i]}: {scores[i]}")
+
+target = "Bob"
+for i in range(len(students)):
+    if students[i] == target:
+        scores[i] = 99
+
+print("Updated scores:")
+for i in range(len(students)):
+    print(f"{students[i]}: {scores[i]}")</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">为 dictionary 做铺垫：用 list 查找 Bob 需要循环，不够直接。</aside>
+</section>
+<section id="class04-homework" data-sid="class04-homework">
+<div class="kicker">HOMEWORK</div>
+    <h2>课后作业：用 list 管理一组成绩</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
+      <div class="box"><ul><li>创建一个至少 5 个分数的 list</li><li>打印每个分数和平均分</li><li>用 index loop 修改原 list 中的至少 2 个元素</li><li>创建一个 2D list，表示至少 3 名学生的多次成绩</li><li>写 3-5 句话解释什么时候需要 index</li></ul></div>
+      <div class="box"><h3>检查重点</h3><p>你的代码是否真的修改了原 list，而不是只修改临时变量。</p><h3>提交</h3><p>Colab notebook 链接。</p></div>
+    </div>
+    <aside class="notes">作业可以要求学生截图输出，也可以让 notebook 保留运行结果。</aside>
+</section>
+<section id="class04-exit" data-sid="class04-exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
+<div class="kicker">EXIT TICKET</div>
+    <h2>离开前确认三件事</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="skillcard"><div class="cn">我能读</div><p>用 index 访问 list 元素。</p></div>
+      <div class="skillcard"><div class="cn">我能改</div><p>用 index loop 修改原 list。</p></div>
+      <div class="skillcard"><div class="cn">我能嵌套</div><p>用 2D list 表示表格。</p></div>
+    </div>
+    <div class="callout"><b>留言任务：</b>写一句：什么时候用 for-each，什么时候用 index loop？</div>
+    <aside class="notes">收集学生对 for-each 和 index loop 的理解。</aside>
+</section>
+</div></div>
+
+
+<!-- per-slide comments -->
+<audio id="narratorAudio" preload="none" style="display:none"></audio>
+<div id="capBar"></div>
+<button id="ccBtn" title="Toggle captions">CC</button>
+<button id="listenBtn" title="Listen to this slide narrated"><span class="li-ic">▶</span><span class="li-tx">Listen</span></button>
+<button id="commentBtn" title="Comment on this slide">💬 Comment<span class="cnum" id="cnum">0</span></button>
+<div id="commentPanel">
+  <div class="ph"><span id="cph">Comments</span><span class="x" id="cclose">✕</span></div>
+  <div id="commentList"></div>
+  <form id="commentForm">
+    <div class="row"><input id="cname" placeholder="Your name (optional)" maxlength="40"></div>
+    <textarea id="cbody" placeholder="Leave a comment or question about this slide…" maxlength="2000"></textarea>
+    <div class="row"><button type="submit">Post</button><span class="msg" id="cmsg">Visible to your instructor &amp; classmates.</span></div>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+<script>
+const DECK = "python-ai/lesson-04";
+Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
+  width:1280, height:720, margin:0.04, transition:'slide',
+  keyboardCondition:'focused', plugins:[ RevealNotes ] });
+
+/* ---------- Shared audio player ----------
+ * One audio element, already attached to the DOM (see markup above), reused
+ * for every play. A bare detached Audio object is never used: on at least one
+ * real browser/profile that made Chrome abort play() within milliseconds
+ * ("interrupted because the media was removed from the document") — audio
+ * never audibly played and the button silently reset to idle before anyone
+ * noticed. Reusing an attached element avoids that path. */
+const _audio=document.getElementById('narratorAudio');
+let _btn=null,_playToken=0;
+function fmtClock(s){ s=Math.max(0,Math.floor(s||0)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function resetListenUI(){ listenBtn.style.setProperty('--p','0%'); listenBtn.querySelector('.li-ic').textContent='▶'; listenBtn.querySelector('.li-tx').textContent='Listen'; }
+function stopAudio(){
+  _playToken++; // invalidate any in-flight play() for the old src
+  _audio.pause(); _audio.currentTime=0; _audio.removeAttribute('src'); _audio.load();
+  _audio.removeEventListener('timeupdate',onListenTimeupdate); // else it'd animate listenBtn during a .speak clip
+  capBar.style.display='none';
+  if(_btn){
+    _btn.classList.remove('playing');
+    if(_btn===listenBtn) resetListenUI();
+    else if(_btn.querySelector('span')) _btn.querySelector('span').textContent=_btn.dataset.label||'Speak';
+  }
+  _btn=null;
+}
+document.addEventListener('click',function(e){
+  const b=e.target.closest('.speak'); if(!b) return;
+  if(_btn===b && !_audio.paused){ stopAudio(); return; }
+  stopAudio();
+  const token=_playToken;
+  _btn=b; b.dataset.label=b.dataset.label||b.querySelector('span').textContent;
+  b.classList.add('playing'); b.querySelector('span').textContent='Pause';
+  _audio.src=b.dataset.audio;
+  _audio.addEventListener('ended',stopAudio,{once:true});
+  _audio.play().catch(function(){ if(token===_playToken) stopAudio(); });
+});
+
+/* ---------- Per-slide narration ("Listen") + captions ---------- */
+const listenBtn=document.getElementById('listenBtn');
+const ccBtn=document.getElementById('ccBtn');
+const capBar=document.getElementById('capBar');
+let _narrationData=null; // { [sid]: { script, cues:[{start,end,text}], ... } }
+let _ccOn=localStorage.getItem('cc_captions')!=='0'; // on by default
+function updateCcBtn(){ ccBtn.classList.toggle('on',_ccOn); ccBtn.title=_ccOn?'Captions on — click to hide':'Captions off — click to show'; }
+async function loadNarrated(){
+  try{ const r=await fetch('audio/narration.json',{cache:'no-cache'}); if(!r.ok) throw 0;
+    _narrationData=await r.json(); }
+  catch(e){ _narrationData={}; }
+  updateCcBtn();
+  updateListen();
+}
+function updateListen(){
+  if(!_narrationData){ return; }
+  const has=!!_narrationData[curSid];
+  listenBtn.style.display=has?'inline-flex':'none';
+  ccBtn.style.display=has?'inline-flex':'none';
+  if(!has && _btn===listenBtn) stopAudio();
+}
+function cueAt(cues,t){ for(const c of cues) if(t>=c.start && t<c.end) return c; return null; }
+function updateCaption(){
+  const data=_narrationData && _narrationData[curSid];
+  const cues=data && data.cues;
+  if(!_ccOn || _btn!==listenBtn || !cues || !cues.length){ capBar.style.display='none'; return; }
+  const cue=cueAt(cues,_audio.currentTime);
+  if(cue){ capBar.textContent=cue.text; capBar.style.display='block'; }
+  else capBar.style.display='none'; // brief gap between sentences
+}
+ccBtn.addEventListener('click',function(){
+  _ccOn=!_ccOn; localStorage.setItem('cc_captions',_ccOn?'1':'0'); updateCcBtn(); updateCaption();
+});
+function onListenTimeupdate(){
+  if(_audio.duration) listenBtn.style.setProperty('--p',(_audio.currentTime/_audio.duration*100)+'%');
+  listenBtn.querySelector('.li-tx').textContent=fmtClock(_audio.currentTime)+' / '+fmtClock(_audio.duration);
+  updateCaption();
+}
+listenBtn.addEventListener('click',function(){
+  if(_btn===listenBtn && !_audio.paused){ stopAudio(); return; } // toggles play/stop even mid-buffer
+  stopAudio();
+  const token=_playToken;
+  _btn=listenBtn;
+  listenBtn.classList.add('playing');
+  listenBtn.querySelector('.li-ic').textContent='⏹';
+  listenBtn.querySelector('.li-tx').textContent='loading…';
+  _audio.src='audio/'+encodeURIComponent(curSid)+'.mp3';
+  _audio.addEventListener('timeupdate',onListenTimeupdate);
+  _audio.addEventListener('ended',stopAudio,{once:true});
+  _audio.play().catch(function(){
+    if(token!==_playToken) return; // superseded by a newer click/stop — ignore
+    _audio.removeEventListener('timeupdate',onListenTimeupdate);
+    stopAudio();
+    listenBtn.querySelector('.li-tx').textContent='tap to retry';
+    setTimeout(resetListenUI,2200);
+  });
+});
+
+/* ---------- Quizzes ---------- */
+document.addEventListener('click',function(e){
+  const opt=e.target.closest('.quiz .opt'); if(!opt) return;
+  const quiz=opt.closest('.quiz'); if(quiz.classList.contains('answered')) return;
+  const correct=parseInt(quiz.dataset.correct,10);
+  quiz.querySelectorAll('.opt').forEach(function(o){o.setAttribute('disabled','');});
+  const chosen=parseInt(opt.dataset.i,10);
+  quiz.querySelectorAll('.opt')[correct].classList.add('correct');
+  if(chosen!==correct) opt.classList.add('wrong');
+  quiz.classList.add('answered');
+});
+
+/* ---------- Heap / Top-K insertion visualizer ---------- */
+function hvState(el){
+  if(!el._hv){ el._hv={ frames:[{heap:[],action:'Ready. Insert a value to see the animation.',hi:[]}], cur:0, playing:false, timer:null }; }
+  return el._hv;
+}
+function hvTree(arr,hi){
+  if(!arr.length) return '<div class="hv-empty">(empty)</div>';
+  const W=200,H=140; const depthOf=(i)=>Math.floor(Math.log2(i+1)); const maxDepth=depthOf(arr.length-1);
+  const nodes=arr.map(function(v,i){ const d=depthOf(i); const levelStart=Math.pow(2,d)-1; const pos=i-levelStart; const cnt=Math.pow(2,d);
+    return { i:i, v:v, x:((pos+0.5)/cnt)*W, y:16+d*((H-24)/Math.max(1,maxDepth)) }; });
+  let svg='<svg viewBox="0 0 '+W+' '+(H+16)+'" class="hv-tree-svg">';
+  nodes.forEach(function(n){ if(n.i===0) return; const p=nodes[Math.floor((n.i-1)/2)];
+    svg+='<line x1="'+p.x+'" y1="'+p.y+'" x2="'+n.x+'" y2="'+n.y+'" class="hv-edge"/>'; });
+  (hi||[]).forEach(function(pair){ if(pair.length===2 && nodes[pair[0]] && nodes[pair[1]]){
+    svg+='<line x1="'+nodes[pair[0]].x+'" y1="'+nodes[pair[0]].y+'" x2="'+nodes[pair[1]].x+'" y2="'+nodes[pair[1]].y+'" class="hv-swap"/>'; } });
+  const hiIdx=(hi||[]).flat();
+  nodes.forEach(function(n){ const isHi=hiIdx.indexOf(n.i)>-1;
+    svg+='<circle cx="'+n.x+'" cy="'+n.y+'" r="13" class="hv-node'+(isHi?' hv-node-hi':'')+'"/><text x="'+n.x+'" y="'+(n.y+4)+'" class="hv-node-text">'+n.v+'</text>'; });
+  return svg+'</svg>';
+}
+function hvRender(el){
+  const st=hvState(el);
+  el.querySelector('.hv-arr-now').textContent='['+st.frames[st.cur].heap.join(', ')+']';
+  el.querySelector('.hv-step').textContent=st.cur+' / '+(st.frames.length-1);
+  el.querySelector('.hv-action-text').textContent=st.frames[st.cur].action;
+  const framesEl=el.querySelector('.hv-frames'), arrsEl=el.querySelector('.hv-arrs');
+  framesEl.innerHTML=''; arrsEl.innerHTML='';
+  st.frames.forEach(function(f,idx){
+    const hiIdx=(f.hi||[]).flat();
+    const card=document.createElement('div'); card.className='hv-frame'+(idx===st.cur?' hv-frame-active':'');
+    card.innerHTML='<div class="hv-frame-title">Step '+idx+'</div><div class="hv-frame-desc">'+(idx===0?'(empty)':f.action)+'</div>'+hvTree(f.heap,f.hi);
+    framesEl.appendChild(card);
+    const a=document.createElement('div'); a.className='hv-arr'+(idx===st.cur?' hv-arr-active':'');
+    a.innerHTML='['+f.heap.map(function(v,i){ return hiIdx.indexOf(i)>-1?'<span class="hv-arr-hi">'+v+'</span>':v; }).join(', ')+']';
+    arrsEl.appendChild(a);
+  });
+  const active=framesEl.querySelector('.hv-frame-active');
+  if(active) active.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+}
+function hvInsert(el,val){
+  const st=hvState(el);
+  if(st.cur!==st.frames.length-1) st.frames=st.frames.slice(0,st.cur+1); // drop redo history on a fresh insert
+  const heap=st.frames[st.frames.length-1].heap.slice();
+  const idx=heap.length; heap.push(val);
+  let i=idx, hi=[[idx,idx]];
+  while(i>0){ const p=Math.floor((i-1)/2);
+    if(heap[p]>heap[i]){ const t=heap[p]; heap[p]=heap[i]; heap[i]=t; hi=[[p,i]]; i=p; } else break; }
+  st.frames.push({ heap:heap, action:'Insert '+val+' at index '+idx, hi:hi });
+  st.cur=st.frames.length-1; hvRender(el);
+}
+function hvGoto(el,idx){ const st=hvState(el); st.cur=Math.max(0,Math.min(st.frames.length-1,idx)); hvRender(el); }
+function hvStop(el){ const st=hvState(el); if(st.timer){ clearInterval(st.timer); st.timer=null; } st.playing=false;
+  const b=el.querySelector('.hv-play'); if(b) b.textContent='▶ Play'; }
+function hvPlay(el){ const st=hvState(el); if(st.playing){ hvStop(el); return; }
+  if(st.cur>=st.frames.length-1) hvGoto(el,0);
+  st.playing=true; const b=el.querySelector('.hv-play'); if(b) b.textContent='⏸ Pause';
+  const speed=parseInt(el.querySelector('.hv-speed').value,10)||3, delay=Math.max(280,1300-speed*220);
+  st.timer=setInterval(function(){ if(st.cur>=st.frames.length-1){ hvStop(el); return; } hvGoto(el,st.cur+1); },delay);
+}
+document.addEventListener('click',function(e){
+  const hv=e.target.closest('.heapviz'); if(!hv) return;
+  if(e.target.closest('.hv-insert')){ const inp=hv.querySelector('.hv-input'); const v=parseInt(inp.value,10);
+    if(!isNaN(v)){ hvStop(hv); hvInsert(hv,v); inp.value=''; } }
+  else if(e.target.closest('.hv-quick-btn')){ hvStop(hv); hvInsert(hv,parseInt(e.target.closest('.hv-quick-btn').dataset.v,10)); }
+  else if(e.target.closest('.hv-first')){ hvStop(hv); hvGoto(hv,0); }
+  else if(e.target.closest('.hv-prev')){ hvStop(hv); hvGoto(hv,hvState(hv).cur-1); }
+  else if(e.target.closest('.hv-next')){ hvStop(hv); hvGoto(hv,hvState(hv).cur+1); }
+  else if(e.target.closest('.hv-last')){ hvStop(hv); hvGoto(hv,hvState(hv).frames.length-1); }
+  else if(e.target.closest('.hv-play')){ hvPlay(hv); }
+});
+document.addEventListener('keydown',function(e){
+  if(e.target.classList&&e.target.classList.contains('hv-input')&&e.key==='Enter'){
+    e.preventDefault(); const hv=e.target.closest('.heapviz'); const v=parseInt(e.target.value,10);
+    if(!isNaN(v)){ hvStop(hv); hvInsert(hv,v); e.target.value=''; }
+  }
+});
+document.querySelectorAll('.heapviz').forEach(function(hv){
+  const preset=(hv.dataset.preset||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+  const q=hv.querySelector('.hv-quick');
+  preset.forEach(function(v){ const b=document.createElement('button'); b.type='button'; b.className='hv-quick-btn'; b.dataset.v=v; b.textContent=v; q.appendChild(b); });
+  hvRender(hv);
+});
+
+/* ---------- Pyodide code labs ---------- */
+let _py=null,_pyLoading=null;
+async function getPy(statusEl){
+  if(_py) return _py;
+  if(!_pyLoading){ if(statusEl)statusEl.textContent='Loading Python…';
+    _pyLoading=loadPyodide({indexURL:'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/'}); }
+  _py=await _pyLoading; return _py;
+}
+function labOf(el){ return el.closest('.lab'); }
+async function runLab(lab){
+  const code=lab.querySelector('.code').value;
+  const out=lab.querySelector('.out'); const status=lab.querySelector('.lab-status');
+  out.textContent=''; out.classList.remove('has-err'); lab.dataset.lastError='';
+  try{
+    const py=await getPy(status);
+    const pkgs=(lab.dataset.packages||'').split(',').map(s=>s.trim()).filter(Boolean);
+    if(pkgs.length){ status.textContent='Loading '+pkgs.join(', ')+'…'; await py.loadPackage(pkgs); }
+    status.textContent='Running…';
+    let buf='';
+    py.setStdout({batched:(s)=>{buf+=s+'\n';}});
+    py.setStderr({batched:(s)=>{buf+=s+'\n';}});
+    await py.runPythonAsync(code);
+    out.textContent=buf||'(no output — add a print(...) )';
+    status.textContent='✓ done';
+  }catch(err){
+    const msg=(err&&err.message)?err.message:String(err);
+    out.innerHTML='<span class="err">'+msg.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</span>';
+    lab.dataset.lastError=msg; status.textContent='✗ error — try 🐞 Debug';
+  }
+}
+/* very small markdown -> html for assistant replies */
+function mdToHtml(md){
+  const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  let html=''; const parts=md.split(/```/);
+  parts.forEach(function(p,i){
+    if(i%2===1){ const code=p.replace(/^python\n?/i,''); html+='<pre data-code="'+encodeURIComponent(code.trim())+'"><code>'+esc(code.trim())+'</code></pre>'+
+      '<button class="apply">↧ Use this code</button>'; }
+    else { let t=esc(p).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`(.+?)`/g,'<code>$1</code>').replace(/\n{2,}/g,'</p><p>').replace(/\n/g,'<br>'); if(t.trim())html+='<p>'+t+'</p>'; }
+  });
+  return html;
+}
+async function askAssistant(lab,action,question){
+  const body=lab.querySelector('.assist-body');
+  body.innerHTML='<p class="muted">✨ Thinking…</p>';
+  try{
+    const r=await fetch('/api/assistant',{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({action:action,question:question||'',code:lab.querySelector('.code').value,error:lab.dataset.lastError||''})});
+    const j=await r.json();
+    body.innerHTML=mdToHtml(j.text||'(no response)');
+  }catch(e){ body.innerHTML='<p class="muted">Assistant unavailable right now. Try again shortly.</p>'; }
+}
+document.addEventListener('click',function(e){
+  const t=e.target;
+  if(t.closest('.lab .run')){ runLab(labOf(t.closest('.run'))); }
+  else if(t.closest('.lab .ai-explain')){ askAssistant(labOf(t.closest('.ai-explain')),'explain'); }
+  else if(t.closest('.lab .ai-debug')){ askAssistant(labOf(t.closest('.ai-debug')),'debug'); }
+  else if(t.closest('.lab .ai-improve')){ askAssistant(labOf(t.closest('.ai-improve')),'improve'); }
+  else if(t.closest('.lab .ask-btn')){ const lab=labOf(t.closest('.ask-btn')); const inp=lab.querySelector('.ask-in'); if(inp.value.trim()){ askAssistant(lab,'ask',inp.value.trim()); inp.value=''; } }
+  else if(t.classList&&t.classList.contains('apply')){ const pre=t.previousElementSibling; const lab=t.closest('.lab'); if(pre&&lab){ lab.querySelector('.code').value=decodeURIComponent(pre.dataset.code); } }
+});
+/* Tab key inserts spaces in code editors; keep typing inside textareas from triggering reveal nav */
+document.addEventListener('keydown',function(e){
+  const ta=e.target;
+  if(ta.classList&&ta.classList.contains('code')&&e.key==='Tab'){ e.preventDefault(); const s=ta.selectionStart,en=ta.selectionEnd; ta.value=ta.value.slice(0,s)+'    '+ta.value.slice(en); ta.selectionStart=ta.selectionEnd=s+4; }
+},true);
+/* allow Enter to submit the assistant question */
+document.addEventListener('keydown',function(e){ if(e.target.classList&&e.target.classList.contains('ask-in')&&e.key==='Enter'){ e.preventDefault(); const lab=labOf(e.target); if(e.target.value.trim()){ askAssistant(lab,'ask',e.target.value.trim()); e.target.value=''; } } });
+
+/* ---------- Per-slide comments ---------- */
+const btn=document.getElementById('commentBtn'),panel=document.getElementById('commentPanel'),
+  listEl=document.getElementById('commentList'),cnum=document.getElementById('cnum'),
+  cph=document.getElementById('cph'),form=document.getElementById('commentForm');
+let counts={}, curSid='title';
+// Comment identity = the slide's stable data-sid slug. Never positional:
+// a positional key would re-point old comments to a different slide whenever
+// the deck is reordered. Every slide is built with a sid (asserted at build);
+// the content-hash fallback below stays position-independent just in case.
+function _hashSid(s){ const t=((s&&s.textContent)||'').replace(/s+/g,' ').trim().slice(0,400); let h=0; for(let i=0;i<t.length;i++){ h=(h*31+t.charCodeAt(i))|0; } return 'auto-'+(h>>>0).toString(36); }
+function sidOf(){ const s=Reveal.getCurrentSlide(); if(s&&s.dataset.sid) return s.dataset.sid; console.warn('slide has no data-sid; using content-hash key'); return _hashSid(s); }
+function fmtTime(ts){ const d=new Date(ts); return d.toLocaleDateString()+' '+d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); }
+function escc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+async function loadCounts(){ try{ const r=await fetch('/api/comments/counts?deck='+encodeURIComponent(DECK)); const j=await r.json(); counts=j.counts||{}; updateBadge(); }catch(e){} }
+function updateBadge(){ cnum.textContent=counts[curSid]||0; }
+async function loadComments(){ listEl.innerHTML='<div class="none">Loading…</div>';
+  try{ const r=await fetch('/api/comments?deck='+encodeURIComponent(DECK)+'&slide='+encodeURIComponent(curSid)); const j=await r.json();
+    const cs=j.comments||[]; counts[curSid]=cs.length; updateBadge();
+    listEl.innerHTML=cs.length?cs.map(c=>'<div class="c"><span class="cn">'+escc(c.name)+'</span><span class="ct">'+fmtTime(c.created)+'</span><div class="cb">'+escc(c.body)+'</div></div>').join(''):'<div class="none">No comments yet — be the first!</div>';
+  }catch(e){ listEl.innerHTML='<div class="none">Could not load comments.</div>'; }
+}
+function openPanel(){ curSid=sidOf(); cph.textContent='Comments · '+curSid; panel.classList.add('open'); loadComments(); }
+btn.onclick=function(){ panel.classList.contains('open')?panel.classList.remove('open'):openPanel(); };
+document.getElementById('cclose').onclick=function(){ panel.classList.remove('open'); };
+form.onsubmit=async function(e){ e.preventDefault();
+  const name=document.getElementById('cname').value, body=document.getElementById('cbody').value.trim();
+  const msg=document.getElementById('cmsg'); if(!body){ msg.textContent='Write something first.'; return; }
+  msg.textContent='Posting…';
+  try{ const r=await fetch('/api/comments',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({deck:DECK,slide:curSid,name:name,body:body})});
+    const j=await r.json(); if(j.ok){ document.getElementById('cbody').value=''; msg.textContent='Posted! Thanks.'; loadComments(); } else { msg.textContent=j.error||'Could not post.'; }
+  }catch(e){ msg.textContent='Network error — try again.'; }
+};
+Reveal.on('slidechanged',function(){ stopAudio(); curSid=sidOf(); updateBadge(); updateListen(); if(panel.classList.contains('open')){ cph.textContent='Comments · '+curSid; loadComments(); } });
+Reveal.on('ready',function(){ curSid=sidOf(); loadCounts(); loadNarrated(); });
+</script>
+</body></html>

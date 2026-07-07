@@ -56,6 +56,51 @@
           ],
           "duration": "60-75 min",
           "status": "ready"
+        },
+        {
+          "id": "lesson-04",
+          "n": 4,
+          "title": "Python Lists and 2D Lists",
+          "summary": "list 索引、遍历、按 index 修改元素、二维列表和 nested loop。",
+          "tags": [
+            "Class 04",
+            "List",
+            "2D List",
+            "Quiz",
+            "Lab"
+          ],
+          "duration": "60-75 min",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-05",
+          "n": 5,
+          "title": "Python Tuples and Unpacking",
+          "summary": "tuple 的有序与不可变、count、更新策略、unpacking、星号解包和函数多返回值。",
+          "tags": [
+            "Class 05",
+            "Tuple",
+            "Unpacking",
+            "Quiz",
+            "Lab"
+          ],
+          "duration": "60-75 min",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-06",
+          "n": 6,
+          "title": "Python Dictionaries and Word Frequency",
+          "summary": "key-value 映射、get / keys / values / items、增改字典，以及词频统计小项目。",
+          "tags": [
+            "Class 06",
+            "Dictionary",
+            "Project",
+            "Quiz",
+            "Lab"
+          ],
+          "duration": "60-75 min",
+          "status": "ready"
         }
       ]
     }

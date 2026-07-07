@@ -60,6 +60,18 @@ const CATALOG = {
           summary: "def、函数调用、参数、return、keyword arguments、scope、docstring 和函数作业。",
           tags: ["Class 03", "Functions", "Quiz", "Lab"],
           duration: "60-75 min", status: "ready" },
+        { id: "lesson-04", n: 4, title: "Python Lists and 2D Lists",
+          summary: "list 索引、遍历、按 index 修改元素、二维列表和 nested loop。",
+          tags: ["Class 04", "List", "2D List", "Quiz", "Lab"],
+          duration: "60-75 min", status: "ready" },
+        { id: "lesson-05", n: 5, title: "Python Tuples and Unpacking",
+          summary: "tuple 的有序与不可变、count、更新策略、unpacking、星号解包和函数多返回值。",
+          tags: ["Class 05", "Tuple", "Unpacking", "Quiz", "Lab"],
+          duration: "60-75 min", status: "ready" },
+        { id: "lesson-06", n: 6, title: "Python Dictionaries and Word Frequency",
+          summary: "key-value 映射、get / keys / values / items、增改字典，以及词频统计小项目。",
+          tags: ["Class 06", "Dictionary", "Project", "Quiz", "Lab"],
+          duration: "60-75 min", status: "ready" },
       ],
     },
   ],
@@ -1433,10 +1445,510 @@ print(f"Orange total: \${orange_total:.2f}")`;
   return S;
 }
 
+function buildPythonClass04() {
+  const S = [];
+  const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const bullets = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  const codeScores = `scores = [85, 88, 92, 76, 90]
+
+print("Original scores:", scores)
+
+for i in range(len(scores)):
+    scores[i] += 5
+
+print("After curve:", scores)
+print("Average:", sum(scores) / len(scores))`;
+  const codeMatrix = `matrix = [
+    [85, 88, 92],
+    [76, 90, 84],
+    [91, 87, 95],
+]
+
+for row_index in range(len(matrix)):
+    row = matrix[row_index]
+    print(f"Student {row_index + 1}: {row}")
+    for score in row:
+        print("  score:", score)
+
+print("First student's second score:", matrix[0][1])`;
+  const codeRoster = `students = ["Alice", "Bob", "Charlie", "Diana"]
+scores = [85, 88, 92, 76]
+
+for i in range(len(students)):
+    print(f"{students[i]}: {scores[i]}")
+
+target = "Bob"
+for i in range(len(students)):
+    if students[i] == target:
+        scores[i] = 99
+
+print("Updated scores:")
+for i in range(len(students)):
+    print(f"{students[i]}: {scores[i]}")`;
+
+  S.push(sec("class04-title", `<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 04</div>
+    <h1 style="color:#fff">Lists and<br>2D Lists</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">用索引、循环和嵌套结构管理一组数据</p>
+    <div class="grid3" style="margin-top:1em">
+      <div class="skillcard"><div class="cn">访问</div><p>list[index]</p></div>
+      <div class="skillcard"><div class="cn">修改</div><p>range(len(...))</p></div>
+      <div class="skillcard"><div class="cn">嵌套</div><p>2D list + nested loop</p></div>
+    </div>
+    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右上角留言 · Python lab 可直接运行</p>
+    ${notes("本课来自 Python Structure 课件的 list 部分。目标不是背方法，而是能用 list 表示一组学生、分数或实验记录。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+
+  S.push(sec("class04-goals", `<div class="kicker">TODAY'S OUTPUT</div>
+    <h2>今天把一组数据变成可处理的结构</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>能访问</h3><p>用 index 读出 list 中的指定元素。</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能遍历</h3><p>用 for-each 或 index loop 扫过每个元素。</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能建模</h3><p>用 2D list 表示表格型数据。</p></div>
+    </div>
+    <div class="callout"><b>课堂产出：</b>成绩列表加分、学生成绩表、二维成绩矩阵。</div>
+    ${notes("先让学生理解 list 是“多个值放在一个变量里”，再进入二维结构。")}`));
+
+  S.push(sec("list-index", `<div class="kicker">LIST INDEX</div>
+    <h2>list 的每个元素都有位置编号</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
+      <div class="box"><h3>数据</h3><pre style="font-size:.65em"><code>numbers = [1, 3, 5, 7, 9]</code></pre></div>
+      <div class="box"><h3>索引</h3><p><code>numbers[0]</code> 是 1，<code>numbers[4]</code> 是 9。</p><p>Python 从 0 开始计数。</p></div>
+    </div>
+    <div class="callout"><b>常见错误：</b>最后一个元素不是 <code>numbers[5]</code>，而是 <code>numbers[4]</code>。</div>
+    ${notes("用手指表格位置，让学生先预测 numbers[2] 是什么。")}`));
+
+  S.push(quizSlide("list-index-quiz", "LIST INDEX",
+    "numbers = [1, 3, 5, 7, 9]，numbers[2] 的值是什么？",
+    ["1", "3", "5", "7"],
+    2,
+    "索引从 0 开始，所以 index 2 对应第三个元素 5。",
+    "这道题检查学生是否还在用 1-based counting。"));
+
+  S.push(sec("loop-two-ways", `<div class="kicker">LOOP TWO WAYS</div>
+    <h2>遍历 list 有两种常用方式</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>for-each</h3><pre style="font-size:.58em"><code>for number in numbers:
+    print(number)</code></pre><p>适合只读取每个值。</p></div>
+      <div class="box"><h3>index loop</h3><pre style="font-size:.58em"><code>for i in range(len(numbers)):
+    print(numbers[i])</code></pre><p>适合需要位置或要修改元素。</p></div>
+    </div>
+    ${notes("强调 for number in numbers 修改的是临时变量，不会自动改原 list。")}`));
+
+  S.push(labSlide("score-curve-lab", "PYTHON LAB", "成绩列表：按 index 给每个分数加 5",
+    "先运行，再把加分规则改成 +10 或只给低于 80 分的同学加分。",
+    codeScores, [], "这是 list 修改的核心练习：要改原 list，通常需要 index。"));
+
+  S.push(sec("foreach-trap", `<div class="kicker">COMMON TRAP</div>
+    <h2>for-each 里的变量不是原列表格子</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>看起来像修改</h3><pre style="font-size:.58em"><code>for score in scores:
+    score += 5</code></pre><p>只改了临时变量 score。</p></div>
+      <div class="box"><h3>真正修改 list</h3><pre style="font-size:.58em"><code>for i in range(len(scores)):
+    scores[i] += 5</code></pre><p>通过 index 写回原来的位置。</p></div>
+    </div>
+    <div class="callout"><b>判断标准：</b>等号左边是不是 <code>scores[i]</code>？</div>
+    ${notes("这部分来自原课件中 number *= 2 但原 list 不变的动画。")}`));
+
+  S.push(sec("two-d-list", `<div class="kicker">2D LIST</div>
+    <h2>二维 list 可以表示表格</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>结构</h3><pre style="font-size:.58em"><code>matrix = [
+    [85, 88, 92],
+    [76, 90, 84],
+    [91, 87, 95],
+]</code></pre></div>
+      <div class="box"><h3>访问</h3>${bullets(["matrix[0] 是第一行", "matrix[0][1] 是第一行第二个值", "外层循环走行，内层循环走列"])}</div>
+    </div>
+    ${notes("把二维 list 连接到成绩表、实验记录、图片像素或表格数据。")}`));
+
+  S.push(labSlide("matrix-lab", "PYTHON LAB", "二维成绩表：nested loop",
+    "运行后观察外层 row 和内层 score 的顺序。再新增一名学生的一行成绩。",
+    codeMatrix, [], "让学生说清楚 row_index、row、score 三个变量分别代表什么。"));
+
+  S.push(quizSlide("matrix-quiz", "2D LIST",
+    "matrix[0][1] 表示什么？",
+    ["第 0 行第 1 列，也就是第一行第二个元素", "第 1 行第 0 列", "整个第一行", "整个第二列"],
+    0,
+    "二维 list 的访问顺序通常是 row 再 column：matrix[row][column]。",
+    "用表格坐标帮助学生理解。"));
+
+  S.push(labSlide("roster-lab", "PYTHON LAB", "学生名单 + 分数：list 的局限",
+    "这个练习故意用两个 list 管理学生和分数。第 6 课会用 dictionary 改得更自然。",
+    codeRoster, [], "为 dictionary 做铺垫：用 list 查找 Bob 需要循环，不够直接。"));
+
+  S.push(sec("class04-homework", `<div class="kicker">HOMEWORK</div>
+    <h2>课后作业：用 list 管理一组成绩</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
+      <div class="box">${bullets([
+        "创建一个至少 5 个分数的 list",
+        "打印每个分数和平均分",
+        "用 index loop 修改原 list 中的至少 2 个元素",
+        "创建一个 2D list，表示至少 3 名学生的多次成绩",
+        "写 3-5 句话解释什么时候需要 index"
+      ])}</div>
+      <div class="box"><h3>检查重点</h3><p>你的代码是否真的修改了原 list，而不是只修改临时变量。</p><h3>提交</h3><p>Colab notebook 链接。</p></div>
+    </div>
+    ${notes("作业可以要求学生截图输出，也可以让 notebook 保留运行结果。")}`));
+
+  S.push(sec("class04-exit", `<div class="kicker">EXIT TICKET</div>
+    <h2>离开前确认三件事</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="skillcard"><div class="cn">我能读</div><p>用 index 访问 list 元素。</p></div>
+      <div class="skillcard"><div class="cn">我能改</div><p>用 index loop 修改原 list。</p></div>
+      <div class="skillcard"><div class="cn">我能嵌套</div><p>用 2D list 表示表格。</p></div>
+    </div>
+    <div class="callout"><b>留言任务：</b>写一句：什么时候用 for-each，什么时候用 index loop？</div>
+    ${notes("收集学生对 for-each 和 index loop 的理解。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+
+  return S;
+}
+
+function buildPythonClass05() {
+  const S = [];
+  const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const bullets = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  const codeTupleBasics = `colors = ("red", "green", "blue")
+
+print(colors)
+print(type(colors))
+print("First color:", colors[0])
+print("How many red?", colors.count("red"))
+
+# Try uncommenting this line:
+# colors[0] = "yellow"`;
+  const codeUnpack = `person = ("Alice", 30, "New York")
+name, age, city = person
+print(f"Name: {name}, Age: {age}, City: {city}")
+
+numbers = (1, 2, 3, 4, 5)
+start, *middle, end = numbers
+print("start:", start)
+print("middle:", middle)
+print("end:", end)`;
+  const codeReturnTuple = `def divide_with_remainder(a: int, b: int) -> tuple[int, int]:
+    quotient = a // b
+    remainder = a % b
+    return quotient, remainder
+
+q, r = divide_with_remainder(17, 5)
+print(f"Quotient: {q}, Remainder: {r}")
+
+result = divide_with_remainder(23, 4)
+print("Raw tuple:", result)`;
+
+  S.push(sec("class05-title", `<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 05</div>
+    <h1 style="color:#fff">Tuples and<br>Unpacking</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">用不可变结构保存稳定记录，并让函数返回多个值</p>
+    <div class="grid3" style="margin-top:1em">
+      <div class="skillcard"><div class="cn">不可变</div><p>immutable</p></div>
+      <div class="skillcard"><div class="cn">解包</div><p>name, age = record</p></div>
+      <div class="skillcard"><div class="cn">返回</div><p>return q, r</p></div>
+    </div>
+    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右上角留言 · Python lab 可直接运行</p>
+    ${notes("本课来自 Python Structure 的 tuple 部分。重点是 tuple 为什么存在，以及它和 list 的不同。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+
+  S.push(sec("class05-goals", `<div class="kicker">TODAY'S OUTPUT</div>
+    <h2>今天用 tuple 表示稳定记录</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>能区分</h3><p>说清 list mutable、tuple immutable。</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能解包</h3><p>把 tuple 中的元素直接赋给多个变量。</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能返回</h3><p>让函数用 tuple 返回多个结果。</p></div>
+    </div>
+    <div class="callout"><b>课堂产出：</b>学生记录 tuple、星号解包、除法函数返回商和余数。</div>
+    ${notes("把 tuple 连接到稳定记录、坐标、函数返回值等真实使用场景。")}`));
+
+  S.push(sec("tuple-model", `<div class="kicker">TUPLE MODEL</div>
+    <h2>tuple 是有序、可索引、不可变的序列</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>像 list</h3>${bullets(["有顺序", "可以用 index 访问", "可以切片", "可以遍历"])}</div>
+      <div class="box"><h3>不像 list</h3>${bullets(["创建后不能直接改某个元素", "更适合稳定记录", "常用于函数多返回值"])}</div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>colors = ("red", "green", "blue")</code></pre>
+    ${notes("不要只讲“括号”，要强调 tuple 的设计意图：稳定、不随便变。")}`));
+
+  S.push(labSlide("tuple-basics-lab", "PYTHON LAB", "tuple 基础：访问、count、不可变",
+    "运行后取消最后一行注释，观察 tuple 不能直接修改元素的报错。",
+    codeTupleBasics, [], "让学生把 colors 改成自己的三项稳定记录，例如坐标或学生信息。"));
+
+  S.push(quizSlide("tuple-quiz", "IMMUTABLE",
+    "colors = ('red', 'green', 'blue')，下面哪行会报错？",
+    ["print(colors[0])", "colors.count('red')", "colors[0] = 'yellow'", "len(colors)"],
+    2,
+    "tuple 是 immutable，不能用 index 直接改某个元素。",
+    "这道题区分访问和修改。"));
+
+  S.push(sec("update-tuples", `<div class="kicker">UPDATE TUPLES</div>
+    <h2>tuple 不能原地改，但可以创建新的 tuple</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><h3>拼接</h3><p><code>colors + ('yellow',)</code></p></div>
+      <div class="box"><h3>转 list</h3><p><code>list(colors)</code> 改完再 <code>tuple(...)</code></p></div>
+      <div class="box"><h3>重新赋值</h3><p>变量可以指向一个新的 tuple。</p></div>
+    </div>
+    <div class="callout"><b>注意：</b>单元素 tuple 要写 <code>('yellow',)</code>，逗号很重要。</div>
+    ${notes("原课件对 yellow 单元素 tuple 有多个反例，课堂上可以现场运行对比。")}`));
+
+  S.push(sec("unpacking", `<div class="kicker">UNPACKING</div>
+    <h2>tuple unpacking 让记录更容易读</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>记录</h3><pre style="font-size:.58em"><code>person = ("Alice", 30, "New York")</code></pre></div>
+      <div class="box"><h3>解包</h3><pre style="font-size:.58em"><code>name, age, city = person</code></pre><p>变量数量要和元素数量对应。</p></div>
+    </div>
+    ${notes("强调 unpacking 是按位置对应，不是按变量名对应。")}`));
+
+  S.push(labSlide("unpacking-lab", "PYTHON LAB", "unpacking 与星号解包",
+    "改 person 和 numbers，观察普通解包与 *middle 的结果。",
+    codeUnpack, [], "让学生解释 middle 为什么是 list，而不是 tuple。"));
+
+  S.push(quizSlide("unpack-quiz", "UNPACKING",
+    "name, age, city = ('Alice', 30, 'New York') 中，age 得到什么？",
+    ["Alice", "30", "New York", "整个 tuple"],
+    1,
+    "unpacking 按位置赋值，第二个变量 age 得到第二个元素 30。",
+    "检查学生是否理解位置对应。"));
+
+  S.push(sec("tuple-return", `<div class="kicker">RETURN VALUES</div>
+    <h2>tuple 很适合函数返回多个结果</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Compute</b><span>计算 quotient 和 remainder</span></div>
+      <div class="step"><div class="n">2</div><b>Return</b><span><code>return quotient, remainder</code></span></div>
+      <div class="step"><div class="n">3</div><b>Unpack</b><span><code>q, r = divide(...)</code></span></div>
+    </div>
+    <div class="callout"><b>Python 习惯：</b>多个返回值其实常常是一个 tuple。</div>
+    ${notes("连接第 3 课 return：这次 return 的不是一个数，而是一组结果。")}`));
+
+  S.push(labSlide("return-tuple-lab", "PYTHON LAB", "函数返回商和余数",
+    "运行后换几组数字，再把返回值 unpack 到不同变量名。",
+    codeReturnTuple, [], "让学生比较 q, r = ... 和 result = ... 两种写法。"));
+
+  S.push(sec("when-tuple", `<div class="kicker">WHEN TO USE TUPLE</div>
+    <h2>什么时候应该考虑 tuple？</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="box"><h3>稳定记录</h3><p>坐标、日期、学生基本信息等不希望被随便改的数据。</p></div>
+      <div class="box"><h3>函数返回</h3><p>一个函数自然产生多个相关结果。</p></div>
+      <div class="box"><h3>字典 key</h3><p>tuple 不可变，所以可以作为 dictionary key。</p></div>
+    </div>
+    ${notes("预告 dictionary：key 必须是 immutable，tuple 可以当 key，list 不可以。")}`));
+
+  S.push(sec("class05-homework", `<div class="kicker">HOMEWORK</div>
+    <h2>课后作业：用 tuple 表示稳定记录</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
+      <div class="box">${bullets([
+        "创建至少 3 个学生记录 tuple，例如 (name, age, topic)",
+        "对其中一个记录做 unpacking，并输出自然语言句子",
+        "写一个函数返回两个相关结果，并 unpack 返回值",
+        "至少演示一次 tuple 不能直接修改元素的报错或说明",
+        "写 3-5 句话说明 list 和 tuple 的选择标准"
+      ])}</div>
+      <div class="box"><h3>检查重点</h3><p>能不能解释 immutable，以及为什么 return 多个值时 tuple 很自然。</p><h3>提交</h3><p>Colab notebook 链接。</p></div>
+    </div>
+    ${notes("作业不要过度强调复杂方法，重点是数据结构选择。")}`));
+
+  S.push(sec("class05-exit", `<div class="kicker">EXIT TICKET</div>
+    <h2>离开前确认三句话</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="skillcard"><div class="cn">我能区分</div><p>list 可变，tuple 不可变。</p></div>
+      <div class="skillcard"><div class="cn">我能解包</div><p>按位置把元素赋给变量。</p></div>
+      <div class="skillcard"><div class="cn">我能返回</div><p>用 tuple 返回多个结果。</p></div>
+    </div>
+    <div class="callout"><b>留言任务：</b>写一个你认为适合用 tuple 的数据例子。</div>
+    ${notes("检查学生能否把 tuple 用到真实场景。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+
+  return S;
+}
+
+function buildPythonClass06() {
+  const S = [];
+  const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const bullets = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  const codeStudents = `students = {
+    "Alice": 85,
+    "Bob": 88,
+    "Charlie": 78,
+    "Diana": 92,
+}
+
+print("Bob's score:", students["Bob"])
+print("Eve's score:", students.get("Eve", "not found"))
+
+students["Eve"] = 86
+students["Bob"] = 99
+
+for name, score in students.items():
+    print(f"{name}: {score}")`;
+  const codeInventory = `inventory = {}
+
+def add_item(name: str, quantity: int) -> None:
+    inventory[name] = quantity
+
+def update_item(name: str, quantity: int) -> None:
+    if name in inventory:
+        inventory[name] = quantity
+    else:
+        print(f"{name} is not in inventory yet.")
+
+def print_inventory() -> None:
+    for name, quantity in inventory.items():
+        print(f"{name}: {quantity}")
+
+add_item("notebook", 12)
+add_item("pen", 30)
+update_item("pen", 25)
+print_inventory()`;
+  const codeWordFrequency = `def word_frequency(text: str) -> dict[str, int]:
+    cleaned = text.lower()
+    for mark in [".", "!", "?", ","]:
+        cleaned = cleaned.replace(mark, "")
+
+    counts = {}
+    for word in cleaned.split():
+        if word not in counts:
+            counts[word] = 1
+        else:
+            counts[word] += 1
+    return counts
+
+sample = "The quick brown fox jumps over the lazy dog. The dog barked!"
+print(word_frequency(sample))`;
+
+  S.push(sec("class06-title", `<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 06</div>
+    <h1 style="color:#fff">Dictionaries and<br>Word Frequency</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">用 key-value 映射快速查找、更新和统计</p>
+    <div class="grid3" style="margin-top:1em">
+      <div class="skillcard"><div class="cn">映射</div><p>key -> value</p></div>
+      <div class="skillcard"><div class="cn">访问</div><p>[] / get()</p></div>
+      <div class="skillcard"><div class="cn">项目</div><p>word frequency</p></div>
+    </div>
+    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右上角留言 · Python lab 可直接运行</p>
+    ${notes("本课来自 Python Structure 的 dictionary 部分。核心问题：如何不用循环就直接通过名字找到值。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+
+  S.push(sec("class06-goals", `<div class="kicker">TODAY'S OUTPUT</div>
+    <h2>今天用 dictionary 做快速查找和统计</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>能建表</h3><p>把 name 和 score 组成 key-value 映射。</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能更新</h3><p>添加新 key，或修改已有 value。</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能统计</h3><p>用 dictionary 统计每个单词出现次数。</p></div>
+    </div>
+    <div class="callout"><b>课堂产出：</b>学生成绩字典、Inventory Manager、Word Frequency 函数。</div>
+    ${notes("把 dictionary 的价值放在“查找 Bob 的成绩”这个痛点上。")}`));
+
+  S.push(sec("why-dict", `<div class="kicker">WHY DICTIONARY</div>
+    <h2>list of tuples 能做，但查找不方便</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>list of tuples</h3><pre style="font-size:.54em"><code>students = [
+    ("Alice", 85),
+    ("Bob", 88),
+]</code></pre><p>找 Bob 要循环。</p></div>
+      <div class="box"><h3>dictionary</h3><pre style="font-size:.54em"><code>students = {
+    "Alice": 85,
+    "Bob": 88,
+}</code></pre><p><code>students["Bob"]</code> 直接找到。</p></div>
+    </div>
+    ${notes("这是原课件从 list/tuple 过渡到 dictionary 的关键逻辑。")}`));
+
+  S.push(sec("dict-model", `<div class="kicker">KEY-VALUE PAIRS</div>
+    <h2>dictionary 存的是 key -> value</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="box"><h3>key</h3><p>用于查找，必须唯一，通常是 string、number、tuple。</p></div>
+      <div class="box"><h3>value</h3><p>真正保存的数据，可以是数字、文字、list、dict 等。</p></div>
+      <div class="box"><h3>mapping</h3><p>通过 key 直接定位 value。</p></div>
+    </div>
+    <div class="callout"><b>注意：</b>list 是 mutable，不能作为 dictionary key。</div>
+    ${notes("连接上一课 tuple：tuple 可以当 key，是因为它 immutable。")}`));
+
+  S.push(quizSlide("dict-key-quiz", "DICTIONARY KEY",
+    "下面哪个通常不能作为 dictionary key？",
+    ["'Alice'", "42", "(1, 2)", "[1, 2]"],
+    3,
+    "list 是 mutable，不能作为 key；string、number、tuple 通常可以。",
+    "检查学生是否理解 key 的不可变要求。"));
+
+  S.push(labSlide("students-dict-lab", "PYTHON LAB", "学生成绩字典：访问、添加、更新、遍历",
+    "运行后新增一个学生，再改一个学生的分数。",
+    codeStudents, [], "让学生比较 [] 和 get()：找不到 key 时表现不同。"));
+
+  S.push(sec("dict-views", `<div class="kicker">KEYS / VALUES / ITEMS</div>
+    <h2>三种视角看同一个 dictionary</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="box"><h3>keys()</h3><p>只看所有 key，例如学生姓名。</p></div>
+      <div class="box"><h3>values()</h3><p>只看所有 value，例如所有分数。</p></div>
+      <div class="box"><h3>items()</h3><p>同时拿到 key 和 value，最适合遍历。</p></div>
+    </div>
+    <pre style="font-size:.5em;margin-top:.65em"><code>for name, score in students.items():
+    print(name, score)</code></pre>
+    ${notes("原课件强调 dict_keys/dict_values 是特殊 view，可以转成 list。课堂上不必展开太深。")}`));
+
+  S.push(sec("update-dict", `<div class="kicker">UPDATE DICTIONARY</div>
+    <h2>添加和更新都像给 key 赋值</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>添加</h3><pre style="font-size:.62em"><code>students["Eve"] = 86</code></pre><p>如果 key 不存在，就新增。</p></div>
+      <div class="box"><h3>更新</h3><pre style="font-size:.62em"><code>students["Bob"] = 99</code></pre><p>如果 key 已存在，就改 value。</p></div>
+    </div>
+    ${notes("对比 list 修改要靠 index，dictionary 修改靠 key。")}`));
+
+  S.push(labSlide("inventory-lab", "PYTHON LAB", "Inventory Manager：字典小工具",
+    "这个练习把 add、update、print 三个函数组合起来。",
+    codeInventory, [], "这是从 dictionary 操作到小项目的过渡。"));
+
+  S.push(sec("word-frequency-plan", `<div class="kicker">PROJECT THINKING</div>
+    <h2>词频统计为什么适合 dictionary？</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Clean</b><span>小写化，去掉标点</span></div>
+      <div class="step"><div class="n">2</div><b>Split</b><span>把句子拆成 words</span></div>
+      <div class="step"><div class="n">3</div><b>Count</b><span>word 作为 key，次数作为 value</span></div>
+    </div>
+    <div class="callout"><b>核心判断：</b>如果 word 不在字典里，新增为 1；否则次数 +1。</div>
+    ${notes("这是原课件最后的 word frequency practice，适合作为本节课最终产出。")}`));
+
+  S.push(labSlide("word-frequency-lab", "PYTHON LAB", "Word Frequency：统计每个单词出现次数",
+    "运行后换一段自己的句子，再观察结果字典。",
+    codeWordFrequency, [], "快的学生可以加入更多标点、排序输出或忽略常见停用词。"));
+
+  S.push(quizSlide("word-frequency-quiz", "WORD FREQUENCY",
+    "在词频统计里，dictionary 的 key 最适合存什么？",
+    ["每个单词", "每个单词出现次数", "整段原文", "标点符号"],
+    0,
+    "key 用来查找，词频统计里最自然的 key 是 word，value 是 count。",
+    "用这题检查 key-value 的建模能力。"));
+
+  S.push(sec("class06-homework", `<div class="kicker">HOMEWORK</div>
+    <h2>课后作业：完成一个 dictionary 小项目</h2>
+    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
+      <div class="box">${bullets([
+        "选择 Inventory Manager 或 Word Frequency",
+        "必须创建并更新至少一个 dictionary",
+        "必须使用 keys、values 或 items 中至少一个方法",
+        "至少写一个函数封装主要逻辑",
+        "写 3-5 句话解释 key 和 value 分别代表什么"
+      ])}</div>
+      <div class="box"><h3>加分挑战</h3><p>Word Frequency 结果按次数从高到低输出；Inventory Manager 支持删除物品。</p><h3>提交</h3><p>Colab notebook 链接。</p></div>
+    </div>
+    ${notes("作业应让学生说明数据结构选择，而不是只提交代码。")}`));
+
+  S.push(sec("class06-exit", `<div class="kicker">EXIT TICKET</div>
+    <h2>离开前确认三件事</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="skillcard"><div class="cn">我能建模</div><p>把问题转成 key-value。</p></div>
+      <div class="skillcard"><div class="cn">我能更新</div><p>添加或修改 dictionary。</p></div>
+      <div class="skillcard"><div class="cn">我能统计</div><p>用 dictionary 做词频计数。</p></div>
+    </div>
+    <div class="callout"><b>留言任务：</b>写一个现实中适合用 dictionary 表示的数据。</div>
+    ${notes("收集学生是否理解 dictionary 的场景：名字到分数、商品到库存、单词到次数。")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+
+  return S;
+}
+
 const DECK_BUILDERS = {
   "python-ai/lesson-01": { build: buildPythonClass01, title: "Class 01 · Python for AI Research" },
   "python-ai/lesson-02": { build: buildPythonClass02, title: "Class 02 · Python Control Flow" },
   "python-ai/lesson-03": { build: buildPythonClass03, title: "Class 03 · Python Functions" },
+  "python-ai/lesson-04": { build: buildPythonClass04, title: "Class 04 · Python Lists and 2D Lists" },
+  "python-ai/lesson-05": { build: buildPythonClass05, title: "Class 05 · Python Tuples and Unpacking" },
+  "python-ai/lesson-06": { build: buildPythonClass06, title: "Class 06 · Python Dictionaries and Word Frequency" },
 };
 
 // =====================================================================
