@@ -32,3 +32,5 @@ footer.site{color:var(--muted);font-size:12.5px;text-align:center;padding:40px 0
 .crumb{color:var(--muted);font-size:13px;margin:18px 0 0}.crumb a{color:var(--teal)}
 .donate-btn{margin-left:auto;background:var(--coral);color:#fff!important;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:700;text-decoration:none!important;box-shadow:0 4px 14px rgba(238,107,54,.35);white-space:nowrap}
 .donate-btn:hover{background:#d85a28}
+.main-btn{margin-left:auto;background:#fff;color:var(--teal)!important;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:700;text-decoration:none!important;white-space:nowrap}
+.main-btn:hover{background:var(--cloud);text-decoration:none!important}

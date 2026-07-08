@@ -114,6 +114,8 @@ footer.site{color:var(--muted);font-size:12.5px;text-align:center;padding:40px 0
 .crumb{color:var(--muted);font-size:13px;margin:18px 0 0}.crumb a{color:var(--teal)}
 .donate-btn{margin-left:auto;background:var(--coral);color:#fff!important;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:700;text-decoration:none!important;box-shadow:0 4px 14px rgba(238,107,54,.35);white-space:nowrap}
 .donate-btn:hover{background:#d85a28}
+.main-btn{margin-left:auto;background:#fff;color:var(--teal)!important;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:700;text-decoration:none!important;white-space:nowrap}
+.main-btn:hover{background:var(--cloud);text-decoration:none!important}
 `;
 
 function siteIndex() {
@@ -159,6 +161,7 @@ function courseIndex(co) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(co.title)} — Merit Point Academy</title><link rel="stylesheet" href="../assets/site.css"></head><body>
 <header class="site"><div class="wrap"><div class="logo">${esc(CATALOG.logo || "AI")}</div><div><h1>${esc(co.title)}</h1><p>${esc(co.subtitle || "")}</p></div>
+<a class="main-btn" href="../">← Main Page</a>
 ${DONATE_URL ? `<a class="donate-btn" href="${DONATE_URL}" target="_blank" rel="noopener">♥ Donate</a>` : ""}</div></header>
 <main class="wrap"><p class="crumb"><a href="../">← All courses</a></p><div class="grid" style="margin-top:22px">${cards}</div></main>
 <footer class="site">${esc(co.title)}</footer></body></html>`;
@@ -193,6 +196,15 @@ const deckCss = `
 .reveal blockquote{border:none;box-shadow:none;background:var(--cloud2);border-left:6px solid var(--teal);border-radius:8px;font-size:.76em;font-style:normal;width:100%;padding:.65em 1em}
 .reveal .speak{cursor:pointer;display:inline-flex;align-items:center;gap:.4em;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:.28em .85em;font-size:.52em;font-weight:700;font-family:-apple-system,sans-serif;box-shadow:0 4px 12px rgba(15,157,176,.3)}
 .reveal .speak:hover{background:#0d8a9b}.reveal .speak.playing{background:var(--coral)}
+.reveal .prof-quote{background:#fff;border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:12px;padding:.55em .75em;margin-top:.55em;box-shadow:0 6px 18px rgba(20,40,70,.07)}
+.reveal .prof-quote .label{font-size:.48em;color:var(--muted);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.22em}
+.reveal .prof-quote blockquote{margin:.12em 0;background:var(--cloud2);font-size:.68em}
+.reveal .prof-quote .explain{font-size:.58em;color:var(--muted);margin:.45em 0 0}
+.lang-en{display:none}
+body.lang-en .lang-zh{display:none!important}
+body.lang-en .lang-en{display:inline!important}
+body.lang-en .prof-quote .lang-en{display:block!important}
+body.lang-en .prof-quote .lang-zh{display:none!important}
 /* timeline */
 .reveal .tl{display:flex;gap:.4em;align-items:stretch;margin-top:.5em}
 .reveal .tl .ev{flex:1;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:10px;padding:.45em .5em}
@@ -285,6 +297,11 @@ const deckCss = `
 .reveal .hv-play{background:var(--teal)!important;color:#fff!important;border-color:var(--teal)!important}
 .reveal .hv-speed-label{font-size:11px;color:var(--muted);margin-left:6px}
 /* comments */
+#homeBtn,#langBtn{position:fixed;top:14px;z-index:60;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:800;font-family:-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(20,40,70,.24)}
+#homeBtn{left:16px;background:#fff;color:var(--teal);border:1px solid var(--line)}
+#homeBtn:hover{text-decoration:none;background:var(--cloud)}
+#langBtn{left:132px;background:var(--navy);color:#fff;border:none;cursor:pointer}
+#langBtn:hover{filter:brightness(1.1)}
 #commentBtn{position:fixed;right:16px;top:14px;z-index:60;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(15,157,176,.4)}
 #commentBtn:hover{background:#0d8a9b}#commentBtn .cnum{background:#fff;color:var(--teal);border-radius:999px;padding:0 6px;margin-left:5px;font-size:11px}
 #listenBtn{--p:0%;position:fixed;right:148px;bottom:14px;z-index:60;min-width:128px;justify-content:center;color:#fff;border:none;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(20,40,70,.34);display:none;align-items:center;gap:.45em;background:linear-gradient(to right,var(--teal) var(--p),var(--navy) var(--p));transition:background .15s linear}
@@ -379,6 +396,23 @@ function labSlide(sid, kicker, title, intro, code, packages, notes) {
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
   </div><aside class="notes">${esc(notes)}</aside>`);
+}
+
+function profQuote({ quoteZh, quoteEn, explainZh, explainEn }) {
+  return `<div class="prof-quote">
+    <div class="label"><span class="lang-zh">商博老师 · 朗读 / 解释</span><span class="lang-en">Professor Shangbo · Quote / Explanation</span></div>
+    <blockquote>
+      <span class="lang-zh">${esc(quoteZh)}</span>
+      <span class="lang-en">${esc(quoteEn)}</span>
+    </blockquote>
+    <p class="explain">
+      <span class="lang-zh">${esc(explainZh)}</span>
+      <span class="lang-en">${esc(explainEn)}</span>
+    </p>
+    <button class="speak" data-text-zh="${esc(quoteZh + " " + explainZh)}" data-text-en="${esc(quoteEn + " " + explainEn)}">
+      <span class="lang-zh">朗读这段话</span><span class="lang-en">Read this aloud</span>
+    </button>
+  </div>`;
 }
 
 function heapVizSlide(sid, kicker, title, intro, preset, notes) {
@@ -617,6 +651,8 @@ ${slides.join("\n")}
 
 ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noopener">♥ Donate</a>` : ""}
 <!-- per-slide comments -->
+<a id="homeBtn" href="../../">← Main</a>
+<button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
 <audio id="narratorAudio" preload="none" style="display:none"></audio>
 <div id="capBar"></div>
 <button id="ccBtn" title="Toggle captions">CC</button>
@@ -641,6 +677,21 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
   keyboardCondition:'focused', plugins:[ RevealNotes ] });
 
+/* ---------- Language toggle ----------
+ * Slide content remains teacher-authored, but shared UI and bilingual
+ * quote/explanation blocks can switch between Chinese and English. */
+const langBtn=document.getElementById('langBtn');
+let _lang=localStorage.getItem('deck_lang')||'zh';
+function activeLang(){ return document.body.classList.contains('lang-en')?'en':'zh'; }
+function setLang(lang){
+  _lang=lang==='en'?'en':'zh';
+  document.body.classList.toggle('lang-en',_lang==='en');
+  langBtn.textContent=_lang==='en'?'中文':'EN';
+  document.documentElement.lang=_lang==='en'?'en':'zh-CN';
+}
+langBtn.addEventListener('click',function(){ setLang(activeLang()==='en'?'zh':'en'); localStorage.setItem('deck_lang',_lang); });
+setLang(_lang);
+
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused
  * for every play. A bare detached Audio object is never used: on at least one
@@ -649,28 +700,54 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
  * never audibly played and the button silently reset to idle before anyone
  * noticed. Reusing an attached element avoids that path. */
 const _audio=document.getElementById('narratorAudio');
-let _btn=null,_playToken=0;
+let _btn=null,_playToken=0,_utter=null;
 function fmtClock(s){ s=Math.max(0,Math.floor(s||0)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
 function resetListenUI(){ listenBtn.style.setProperty('--p','0%'); listenBtn.querySelector('.li-ic').textContent='▶'; listenBtn.querySelector('.li-tx').textContent='Listen'; }
+function rememberSpeakLabels(b){
+  if(b.dataset.labelReady) return;
+  const zh=b.querySelector('.lang-zh'), en=b.querySelector('.lang-en'), first=b.querySelector('span');
+  b.dataset.labelZh=zh?zh.textContent:(first?first.textContent:'Speak');
+  b.dataset.labelEn=en?en.textContent:b.dataset.labelZh;
+  b.dataset.labelReady='1';
+}
+function setSpeakButtonState(b,playing){
+  const zh=b.querySelector('.lang-zh'), en=b.querySelector('.lang-en'), first=b.querySelector('span');
+  if(zh) zh.textContent=playing?'暂停':b.dataset.labelZh;
+  if(en) en.textContent=playing?'Pause':b.dataset.labelEn;
+  if(!zh && !en && first) first.textContent=playing?'Pause':(b.dataset.labelZh||'Speak');
+}
 function stopAudio(){
   _playToken++; // invalidate any in-flight play() for the old src
+  if(window.speechSynthesis){ window.speechSynthesis.cancel(); }
+  _utter=null;
   _audio.pause(); _audio.currentTime=0; _audio.removeAttribute('src'); _audio.load();
   _audio.removeEventListener('timeupdate',onListenTimeupdate); // else it'd animate listenBtn during a .speak clip
   capBar.style.display='none';
   if(_btn){
     _btn.classList.remove('playing');
     if(_btn===listenBtn) resetListenUI();
-    else if(_btn.querySelector('span')) _btn.querySelector('span').textContent=_btn.dataset.label||'Speak';
+    else if(_btn.querySelector('span')) setSpeakButtonState(_btn,false);
   }
   _btn=null;
 }
 document.addEventListener('click',function(e){
   const b=e.target.closest('.speak'); if(!b) return;
-  if(_btn===b && !_audio.paused){ stopAudio(); return; }
+  if(_btn===b && (!_audio.paused || _utter)){ stopAudio(); return; }
   stopAudio();
   const token=_playToken;
-  _btn=b; b.dataset.label=b.dataset.label||b.querySelector('span').textContent;
-  b.classList.add('playing'); b.querySelector('span').textContent='Pause';
+  rememberSpeakLabels(b);
+  _btn=b;
+  b.classList.add('playing'); setSpeakButtonState(b,true);
+  const lang=activeLang();
+  const text=(lang==='en'?b.dataset.textEn:b.dataset.textZh)||b.dataset.text;
+  if(text && window.speechSynthesis){
+    _utter=new SpeechSynthesisUtterance(text);
+    _utter.lang=lang==='en'?'en-US':'zh-CN';
+    _utter.onend=function(){ if(token===_playToken) stopAudio(); };
+    _utter.onerror=function(){ if(token===_playToken) stopAudio(); };
+    window.speechSynthesis.speak(_utter);
+    return;
+  }
   _audio.src=b.dataset.audio;
   _audio.addEventListener('ended',stopAudio,{once:true});
   _audio.play().catch(function(){ if(token===_playToken) stopAudio(); });
@@ -906,7 +983,7 @@ let counts={}, curSid='title';
 // a positional key would re-point old comments to a different slide whenever
 // the deck is reordered. Every slide is built with a sid (asserted at build);
 // the content-hash fallback below stays position-independent just in case.
-function _hashSid(s){ const t=((s&&s.textContent)||'').replace(/\s+/g,' ').trim().slice(0,400); let h=0; for(let i=0;i<t.length;i++){ h=(h*31+t.charCodeAt(i))|0; } return 'auto-'+(h>>>0).toString(36); }
+function _hashSid(s){ const t=((s&&s.textContent)||'').replace(/\\s+/g,' ').trim().slice(0,400); let h=0; for(let i=0;i<t.length;i++){ h=(h*31+t.charCodeAt(i))|0; } return 'auto-'+(h>>>0).toString(36); }
 function sidOf(){ const s=Reveal.getCurrentSlide(); if(s&&s.dataset.sid) return s.dataset.sid; console.warn('slide has no data-sid; using content-hash key'); return _hashSid(s); }
 function fmtTime(ts){ const d=new Date(ts); return d.toLocaleDateString()+' '+d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); }
 function escc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
@@ -1109,6 +1186,12 @@ print(f"Next week goal: {hours + 1} hours.")`;
       <div class="skillcard"><div class="cn">我能解释</div><p>说出 print、变量、input 的作用。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>点右下角 Comment，写下今天最清楚的一点，或一个还没解决的问题。</div>
+    ${profQuote({
+      quoteZh: "第一段代码不需要很长；它只需要证明一件事：你可以让计算机听懂你的指令。",
+      quoteEn: "Your first program does not need to be long; it only needs to prove one thing: you can make the computer understand your instructions.",
+      explainZh: "今天的重点不是背语法，而是建立信心：能运行、能修改、能解释，就是进入 Python 的第一步。",
+      explainEn: "The point today is not memorizing syntax. It is building confidence: run it, change it, and explain it."
+    })}
     ${notes("用留言收集课堂反馈。如果是 GitHub Pages 静态部署，评论功能会降级；本地 server 或后端部署时可持久保存。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1281,6 +1364,12 @@ while count &gt; 0:
       <div class="skillcard"><div class="cn">我能控制</div><p>说出 break 和 continue 的区别。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>点右下角 Comment，写一个今天最容易混淆的边界情况。</div>
+    ${profQuote({
+      quoteZh: "程序的分支像一次选择：先问清楚条件，再让代码沿着唯一的路径走下去。",
+      quoteEn: "A branch in a program is a choice: ask the condition clearly, then let the code follow one path.",
+      explainZh: "判断题、循环题最容易错在边界。每写一个条件，都要测试刚好等于阈值的情况。",
+      explainEn: "Most control-flow bugs live at the boundary. Whenever you write a condition, test the exact cutoff."
+    })}
     ${notes("收集学生对 range 边界、elif 顺序、while 终止条件的困惑。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1439,6 +1528,12 @@ print(f"Orange total: \${orange_total:.2f}")`;
       <div class="skillcard"><div class="cn">我能返回</div><p>把 return value 存入变量。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>点右下角 Comment，写一句“return 和 print 的区别”。</div>
+    ${profQuote({
+      quoteZh: "函数的价值不只是少写几行代码，而是给一个想法取名字，让它可以被反复使用。",
+      quoteEn: "The value of a function is not just fewer lines of code; it gives an idea a name so we can reuse it.",
+      explainZh: "当你能解释参数是什么、return 交回什么，你就不只是在运行代码，而是在设计代码。",
+      explainEn: "When you can explain the parameters and the return value, you are not just running code; you are designing it."
+    })}
     ${notes("用留言快速检查本课最关键误区。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1598,6 +1693,12 @@ for i in range(len(students)):
       <div class="skillcard"><div class="cn">我能嵌套</div><p>用 2D list 表示表格。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>写一句：什么时候用 for-each，什么时候用 index loop？</div>
+    ${profQuote({
+      quoteZh: "list 让我们把很多值放在一起；index 让我们精确地指向其中一个位置。",
+      quoteEn: "A list lets us keep many values together; an index lets us point to one exact position.",
+      explainZh: "只读取时可以 for-each；需要改原列表、需要位置、需要二维表格时，index loop 更清楚。",
+      explainEn: "Use for-each when you only read values. Use an index loop when position or updating the original list matters."
+    })}
     ${notes("收集学生对 for-each 和 index loop 的理解。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1753,6 +1854,12 @@ print("Raw tuple:", result)`;
       <div class="skillcard"><div class="cn">我能返回</div><p>用 tuple 返回多个结果。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>写一个你认为适合用 tuple 的数据例子。</div>
+    ${profQuote({
+      quoteZh: "tuple 像一张稳定的小卡片：顺序重要，内容不该被随手改掉。",
+      quoteEn: "A tuple is like a small stable card: the order matters, and the contents should not be casually changed.",
+      explainZh: "当数据代表坐标、记录或函数多个返回值时，不可变反而是一种保护。",
+      explainEn: "For coordinates, records, or multiple return values, immutability is not a limitation; it is protection."
+    })}
     ${notes("检查学生能否把 tuple 用到真实场景。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1936,6 +2043,12 @@ print(word_frequency(sample))`;
       <div class="skillcard"><div class="cn">我能统计</div><p>用 dictionary 做词频计数。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>写一个现实中适合用 dictionary 表示的数据。</div>
+    ${profQuote({
+      quoteZh: "dictionary 的核心问题是：我已经知道 key，怎样最快找到它对应的 value？",
+      quoteEn: "The central question of a dictionary is: if I know the key, how quickly can I find its value?",
+      explainZh: "从学生到分数、商品到库存、单词到次数，key-value 是把现实问题变成数据结构的桥。",
+      explainEn: "From students to scores, items to inventory, and words to counts, key-value pairs turn real problems into data structures."
+    })}
     ${notes("收集学生是否理解 dictionary 的场景：名字到分数、商品到库存、单词到次数。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
