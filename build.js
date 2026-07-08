@@ -1055,6 +1055,16 @@ print(f"Next week goal: {hours + 1} hours.")`;
     <div class="callout"><b>课堂节奏：</b>说明规则 -> 现场演示 -> 跟做练习 -> 提交一个小成果</div>
     ${notes("这一页用于建立预期：不是听完课就结束，每节课都要有一个可以提交的小成果。")}`));
 
+  S.push(sec("instructor-learning", `<div class="kicker">FROM QIN REFERENCE · LEARNING MODE</div>
+    <h2>先认识这门课的学习方式</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><h3>老师怎么教</h3>${bullets(["每节课都有可见产出", "少背概念，多做练习", "用真实代码训练科研表达"])}</div>
+      <div class="box"><h3>学生怎么学</h3>${bullets(["课堂跟做，不怕报错", "先预测，再运行", "能解释自己的代码最重要"])}</div>
+      <div class="box"><h3>遇到报错</h3><p>报错不是失败，而是 Python 正在告诉你下一步要检查哪里。</p></div>
+    </div>
+    <div class="callout"><b>口令：</b>Read -> Predict -> Run -> Explain</div>
+    ${notes("补入秦教授 Class 01 参考 deck 的学习方式页：强调跟做、预测、运行和解释。")}`));
+
   S.push(sec("learning-mode", `<div class="kicker">HOW WE LEARN</div>
     <h2>先认识这门课的学习方式</h2>
     <div class="grid3" style="margin-top:.6em">
@@ -1132,6 +1142,27 @@ print(f"Next week goal: {hours + 1} hours.")`;
   S.push(labSlide("hello-lab", "PYTHON LAB", "第一段 Python：让程序说话",
     "先不用安装任何软件，直接在这一页运行 Python。改掉文字，再点 Run。",
     codeHello, [], "让学生先预测输出，再运行。然后把第二行文字改成自己的英文或中文句子。"));
+
+  S.push(sec("print-practice", `<div class="kicker">FROM QIN REFERENCE · PRINT</div>
+    <h2>print() 的括号里放什么，就显示什么</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>先预测输出</h3><pre style="font-size:.6em"><code>print("Python")
+print(2026)
+print("AI" + " Research")</code></pre></div>
+      <div class="box"><h3>再运行验证</h3>${bullets(["会出现几行输出？", "字符串拼接后是什么？", "数字和文字显示有什么区别？"])}</div>
+    </div>
+    <div class="callout"><b>小习惯：</b>每段代码运行前，先在脑子里预测一次输出。</div>
+    ${notes("来自秦教授 Class 01 参考 deck 的 print 练习页。")}`));
+
+  S.push(sec("string-number-trap", `<div class="kicker">FROM QIN REFERENCE · COMMON ERROR</div>
+    <h2>字符串要加引号，数字不用加引号</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>可以运行</h3><pre style="font-size:.62em"><code>print("hello")
+print(100)
+print(3.14)</code></pre></div>
+      <div class="box"><h3>会报错</h3><pre style="font-size:.62em"><code>print(hello)</code></pre><p>Python 会以为 <code>hello</code> 是变量名，而不是文字。</p></div>
+    </div>
+    ${notes("补入参考 deck 的字符串/数字常见错误页，适合现场制造并解释 NameError。")}`));
 
   S.push(sec("variables", `<div class="kicker">PYTHON BASICS</div>
     <h2>变量像一个有名字的盒子</h2>
@@ -1268,6 +1299,17 @@ for i in range(10):
     "先预测 quarters、dimes、pennies 的数量，再运行代码验证。",
     codeCoin, [], "用第 1 课的整除和取余引出控制流：程序需要根据余数继续做下一步。"));
 
+  S.push(sec("coin-discussion", `<div class="kicker">FROM QIN REFERENCE · ASSIGNMENT DISCUSSION</div>
+    <h2>硬币找零：quotient 和 remainder 配合工作</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Quarters</b><span><code>quarters = cents // 25</code></span></div>
+      <div class="step"><div class="n">2</div><b>Left over</b><span><code>cents = cents % 25</code></span></div>
+      <div class="step"><div class="n">3</div><b>Dimes</b><span><code>dimes = cents // 10</code></span></div>
+      <div class="step loop"><div class="n">4</div><b>Repeat</b><span>每种硬币都重复“最多几个 + 剩多少”</span></div>
+    </div>
+    <div class="callout"><b>关键模型：</b><code>//</code> 问“最多能拿几个”；<code>%</code> 问“拿完以后还剩多少”。</div>
+    ${notes("源 deck 前 2-9 页逐步展开 coin change，这里合并成一页清晰模型。")}`));
+
   S.push(sec("if-mental-model", `<div class="kicker">IF STATEMENT</div>
     <h2>if 让程序选择是否进入一个代码块</h2>
     <div class="flow" style="margin-top:.7em">
@@ -1279,6 +1321,27 @@ for i in range(10):
     print("positive")
 print("always runs")</code></pre>
     ${notes("强调缩进是 Python 的结构，不是排版。让学生用手指出哪些行属于 if。")}`));
+
+  S.push(sec("if-syntax-anatomy", `<div class="kicker">FROM QIN REFERENCE · IF SYNTAX</div>
+    <h2>if statement 的语法拆解</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>if</h3><p>告诉 Python：接下来要做一次条件判断。</p></div>
+      <div class="box"><h3>condition</h3><p>必须能算出 <code>True</code> 或 <code>False</code>。</p></div>
+      <div class="box"><h3>:</h3><p>冒号表示 header 结束，下一行进入代码块。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>if number &gt; 0:
+    print("positive")</code></pre>
+    ${notes("源 deck 10-12 页逐步标注 if / condition / body / colon。")}`));
+
+  S.push(sec("boolean-expressions", `<div class="kicker">BOOLEAN EXPRESSIONS</div>
+    <h2>条件表达式的结果只有 True 或 False</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>比较</h3><p><code>x &gt; 0</code>, <code>x == 10</code>, <code>x != 0</code></p></div>
+      <div class="box"><h3>组合</h3><p><code>and</code> 两边都要 True；<code>or</code> 至少一个 True。</p></div>
+      <div class="box"><h3>取反</h3><p><code>not finished</code> 把 True/False 反过来。</p></div>
+    </div>
+    <div class="callout"><b>调试技巧：</b>不确定条件是否成立时，先 <code>print(condition)</code>。</div>
+    ${notes("把源 deck 的 Boolean expression 说明展开成可操作的调试方法。")}`));
 
   S.push(quizSlide("indent-quiz", "INDENTATION",
     "在 Python 里，哪件事决定一行代码是否属于 if 代码块？",
@@ -1296,6 +1359,33 @@ print("always runs")</code></pre>
     <div class="callout"><b>口诀：</b>从上到下检查，遇到第一个 True 就执行，然后离开整组分支。</div>
     ${notes("用 number = 5、-2、0 三个例子，让学生分别说出路径。")}`));
 
+  S.push(sec("elif-ladder", `<div class="kicker">FROM QIN REFERENCE · MULTIPLE ALTERNATIVES</div>
+    <h2>elif ladder：多条路里只走一条</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>if</b><span>先检查最重要或最具体的条件</span></div>
+      <div class="step"><div class="n">2</div><b>elif</b><span>前面没命中，再检查下一种情况</span></div>
+      <div class="step"><div class="n">3</div><b>else</b><span>所有条件都不满足时的默认出口</span></div>
+    </div>
+    <pre style="font-size:.5em;margin-top:.65em"><code>if score &gt;= 90:
+    grade = "A"
+elif score &gt;= 80:
+    grade = "B"
+else:
+    grade = "Needs practice"</code></pre>
+    ${notes("源 deck 25-27 页强调多分支选择，这里转成 grading 场景。")}`));
+
+  S.push(sec("conditional-expression", `<div class="kicker">FROM QIN REFERENCE · ONE-LINE IF</div>
+    <h2>简单赋值可以写成 conditional expression</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>普通写法</h3><pre style="font-size:.54em"><code>if score &gt;= 60:
+    result = "pass"
+else:
+    result = "retry"</code></pre></div>
+      <div class="box"><h3>一行写法</h3><pre style="font-size:.54em"><code>result = "pass" if score &gt;= 60 else "retry"</code></pre><p>适合非常短、非常清楚的选择。</p></div>
+    </div>
+    <div class="callout"><b>课堂建议：</b>初学时先写普通 if/else；看懂以后再用一行写法。</div>
+    ${notes("源 deck 28-29 页讲 one-line if/conditional assignment。")}`));
+
   S.push(labSlide("classify-lab", "PYTHON LAB", "正数、负数、零：三分类判断",
     "改动 numbers 列表里的值，观察每个输入如何走到不同分支。",
     codeClassify, [], "这里避免 input，让浏览器实验可以直接运行。学生可以把列表改成自己的测试值。"));
@@ -1309,6 +1399,39 @@ print("always runs")</code></pre>
     </div>
     <div class="callout"><b>stop 不包含：</b>这是 range 最常见的边界错误。</div>
     ${notes("让学生先写出 range(-10, 11) 的第一个和最后一个数字，再运行验证。")}`));
+
+  S.push(sec("for-syntax-anatomy", `<div class="kicker">FROM QIN REFERENCE · FOR LOOP SYNTAX</div>
+    <h2>for loop 的语法拆解</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>loop variable</h3><p><code>for number in numbers</code> 里的 <code>number</code> 每次接住一个值。</p></div>
+      <div class="box"><h3>sequence</h3><p>可以是 <code>range(...)</code>、list、string 或其他可遍历对象。</p></div>
+      <div class="box"><h3>body</h3><p>缩进部分会对每个值执行一次。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>for number in [2, 4, 6]:
+    print(number * 10)</code></pre>
+    ${notes("源 deck 31 之后逐步进入 for loop，这里补充 syntax anatomy。")}`));
+
+  S.push(sec("remove-repetition", `<div class="kicker">FROM QIN REFERENCE · WHY LOOPS</div>
+    <h2>loop 的价值：去掉重复代码</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>重复写法</h3><pre style="font-size:.54em"><code>print(scores[0])
+print(scores[1])
+print(scores[2])</code></pre></div>
+      <div class="box"><h3>循环写法</h3><pre style="font-size:.54em"><code>for score in scores:
+    print(score)</code></pre><p>数据多一百个，也不用多写一百行。</p></div>
+    </div>
+    <div class="callout"><b>判断标准：</b>看到相似代码重复三次，就应该想想能不能用 loop。</div>
+    ${notes("源 deck 48 页强调 loops remove repetitive code。")}`));
+
+  S.push(sec("accumulator-pattern", `<div class="kicker">LOOP PATTERN</div>
+    <h2>accumulator：循环里逐步累加结果</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Initialize</b><span><code>total = 0</code></span></div>
+      <div class="step"><div class="n">2</div><b>Update</b><span><code>total += score</code></span></div>
+      <div class="step"><div class="n">3</div><b>Use result</b><span><code>average = total / len(scores)</code></span></div>
+    </div>
+    <div class="callout"><b>常见用途：</b>sum、count、maximum、minimum 都是 accumulator pattern。</div>
+    ${notes("补足 for loop 从打印走向统计的关键模式。")}`));
 
   S.push(quizSlide("range-quiz", "RANGE",
     "list(range(0, 5)) 的结果是什么？",
@@ -1328,6 +1451,19 @@ while count &gt; 0:
     print(count)
     count -= 1</code></pre>
     ${notes("无限循环是重点风险：每次讲 while 都要问，这个条件什么时候会变成 False？")}`));
+
+  S.push(sec("while-checklist", `<div class="kicker">FROM QIN REFERENCE · WHILE LOOP</div>
+    <h2>写 while loop 前先检查三件事</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>Start</h3><p>循环开始前，控制变量是什么？</p></div>
+      <div class="box"><h3>Stop</h3><p>什么条件下应该停止？条件写反了吗？</p></div>
+      <div class="box"><h3>Update</h3><p>循环体里有没有改变控制变量？</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1</code></pre>
+    ${notes("源 deck 56 之后进入 while loop，这里提炼成 checklist。")}`));
 
   S.push(sec("break-continue", `<div class="kicker">BREAK / CONTINUE</div>
     <h2>两个词，控制循环的节奏</h2>
@@ -1434,6 +1570,16 @@ print(f"Orange total: \${orange_total:.2f}")`;
     <div class="callout"><b>关键句：</b>函数是“给一组步骤起名字”。</div>
     ${notes("可以展示重复 print 或重复计算，再问：哪一块值得封装？")}`));
 
+  S.push(sec("function-purpose", `<div class="kicker">FROM QIN REFERENCE · FUNCTION IDEA</div>
+    <h2>function 是一组完成特定任务的语句</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="box"><h3>Group</h3><p>把几行相关代码放在一起。</p></div>
+      <div class="box"><h3>Task</h3><p>每个函数最好只完成一个清楚任务。</p></div>
+      <div class="box"><h3>Name</h3><p>函数名应该让人猜到它会做什么。</p></div>
+    </div>
+    <div class="callout"><b>判断标准：</b>如果你能用一句动词短语描述它，就适合做成函数。</div>
+    ${notes("源 deck 第 2 页定义 functions；这里转成学生可用的判断标准。")}`));
+
   S.push(sec("function-syntax", `<div class="kicker">FUNCTION SYNTAX</div>
     <h2>函数定义后不会自动运行</h2>
     <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
@@ -1443,6 +1589,28 @@ print(f"Orange total: \${orange_total:.2f}")`;
     </div>
     <div class="callout"><b>常见错误：</b>只写了函数定义，但忘记在下面调用。</div>
     ${notes("分清 define 和 call。定义像写菜谱，调用才是真的做菜。")}`));
+
+  S.push(sec("function-header-parts", `<div class="kicker">FROM QIN REFERENCE · FUNCTION HEADER</div>
+    <h2>函数 header 的每一部分都有作用</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>def</h3><p>创建函数的关键字。</p></div>
+      <div class="box"><h3>function_name</h3><p>用 snake_case 命名，例如 <code>calculate_total</code>。</p></div>
+      <div class="box"><h3>(parameters):</h3><p>括号接收输入，冒号打开函数体。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>def function_name(parameters):
+    function_body</code></pre>
+    ${notes("源 deck 3-11 页逐项标注 def/name/parentheses/parameters/colon/body。")}`));
+
+  S.push(sec("snake-case", `<div class="kicker">NAMING</div>
+    <h2>函数名用 snake_case，并说清楚动作</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>不够清楚</h3><pre style="font-size:.62em"><code>def do_it(x):
+    ...</code></pre><p>别人不知道它做什么。</p></div>
+      <div class="box"><h3>更清楚</h3><pre style="font-size:.62em"><code>def calculate_average(scores):
+    ...</code></pre><p>动作和输入都写在名字里。</p></div>
+    </div>
+    <div class="callout"><b>科研代码习惯：</b>变量名和函数名本身就是说明文字。</div>
+    ${notes("源 deck 第 6 页强调 snake case；这里补成命名规范页。")}`));
 
   S.push(labSlide("greet-lab", "PYTHON LAB", "第一个自定义函数：greet",
     "改名字、增加一次调用，观察同一个函数如何复用。",
@@ -1455,6 +1623,18 @@ print(f"Orange total: \${orange_total:.2f}")`;
     "函数定义只是把步骤保存起来；调用函数时，函数体才会执行。",
     "这道题帮助学生区分函数定义和函数调用。"));
 
+  S.push(sec("built-in-vs-custom", `<div class="kicker">FROM QIN REFERENCE · CALLING FUNCTIONS</div>
+    <h2>调用函数：内置函数和自定义函数规则一样</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>Built-in</h3><pre style="font-size:.62em"><code>print("Hello World")
+input("Enter your name: ")</code></pre><p>Python 已经准备好的函数。</p></div>
+      <div class="box"><h3>Custom</h3><pre style="font-size:.62em"><code>def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Mia")</code></pre><p>我们自己定义，也用括号调用。</p></div>
+    </div>
+    ${notes("源 deck 13-16 页从 print/input 过渡到自定义函数调用。")}`));
+
   S.push(sec("params-args", `<div class="kicker">PARAMETERS VS ARGUMENTS</div>
     <h2>parameters 是占位名，arguments 是具体值</h2>
     <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
@@ -1463,6 +1643,26 @@ print(f"Orange total: \${orange_total:.2f}")`;
     </div>
     <div class="callout"><b>课堂问法：</b>这个名字是在函数定义里出现，还是调用时传进去？</div>
     ${notes("中文里都叫参数容易混淆，建议用“占位名/具体值”解释。")}`));
+
+  S.push(sec("parameter-binding", `<div class="kicker">FROM QIN REFERENCE · PARAMETER BINDING</div>
+    <h2>调用时，argument 会临时交给 parameter</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Call</b><span><code>greet("Sponge Bob")</code></span></div>
+      <div class="step"><div class="n">2</div><b>Bind</b><span><code>name = "Sponge Bob"</code> 只在函数这次运行里成立</span></div>
+      <div class="step"><div class="n">3</div><b>Run body</b><span><code>print(f"Hello, {name}!")</code></span></div>
+    </div>
+    <div class="callout"><b>重点：</b>同一个函数下次调用时，parameter 可以接住另一个 argument。</div>
+    ${notes("源 deck 17-20 页用 greet(name) 展示 parameter/argument 绑定。")}`));
+
+  S.push(sec("positional-arguments", `<div class="kicker">FROM QIN REFERENCE · POSITIONAL ARGUMENTS</div>
+    <h2>positional arguments 按位置对应</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>定义</h3><pre style="font-size:.62em"><code>def describe_student(name, topic):
+    print(name, topic)</code></pre></div>
+      <div class="box"><h3>调用</h3><pre style="font-size:.62em"><code>describe_student("Mia", "AI")
+describe_student("AI", "Mia")</code></pre><p>顺序变了，含义就变了。</p></div>
+    </div>
+    ${notes("源 deck 36 之后讲 positional arguments；这里把风险讲清楚。")}`));
 
   S.push(sec("return-model", `<div class="kicker">RETURN</div>
     <h2>return 把结果交回调用处</h2>
@@ -1485,6 +1685,17 @@ print(f"Orange total: \${orange_total:.2f}")`;
     "return 的作用是把值交回调用处；print 的作用是显示文本。return 后同级代码不会继续执行。",
     "如果时间允许，现场在 return 后加一行 print，验证它不会执行。"));
 
+  S.push(sec("return-vs-output", `<div class="kicker">FROM QIN REFERENCE · RETURN VALUES</div>
+    <h2>return value 可以继续参与后面的计算</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>只 print</h3><p>结果显示在屏幕上，但外部变量拿不到这个值。</p></div>
+      <div class="box"><h3>return</h3><p>结果交回调用处，可以存入变量、继续计算、写入报告。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>score = add_numbers(42, 8)
+if score &gt;= 50:
+    print("pass")</code></pre>
+    ${notes("源 deck 23 之后进入 return value；这里强调科研 notebook 里返回值还能继续被分析。")}`));
+
   S.push(sec("keyword-args", `<div class="kicker">KEYWORD ARGUMENTS</div>
     <h2>关键字参数让调用更清楚，也更不怕顺序错</h2>
     <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
@@ -1492,6 +1703,17 @@ print(f"Orange total: \${orange_total:.2f}")`;
       <div class="box"><h3>keyword</h3><pre style="font-size:.62em"><code>calculate_price(item="apple", quantity=3, price=0.5)</code></pre><p>长一点，但含义更清楚。</p></div>
     </div>
     ${notes("用 calculate_price 演示：顺序传错时可能不报错，但结果错，这比报错更危险。")}`));
+
+  S.push(sec("type-hints", `<div class="kicker">FROM QIN REFERENCE · TYPE HINTS</div>
+    <h2>type hints 让函数输入输出更容易读</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>没有提示</h3><pre style="font-size:.62em"><code>def calculate_price(item, quantity, price):
+    return quantity * price</code></pre></div>
+      <div class="box"><h3>有提示</h3><pre style="font-size:.62em"><code>def calculate_price(item: str, quantity: int, price: float) -> float:
+    return quantity * price</code></pre></div>
+    </div>
+    <div class="callout"><b>注意：</b>type hints 默认不是强制检查，而是给人、编辑器和工具看的说明。</div>
+    ${notes("源 deck 54 页提到 PEP 484 和 type hints，这里用 calculate_price 连接。")}`));
 
   S.push(labSlide("price-lab", "PYTHON LAB", "calculate_price：type hints + docstring",
     "观察 type hints、docstring 和 keyword arguments 如何让函数更容易读。",
@@ -1505,6 +1727,36 @@ print(f"Orange total: \${orange_total:.2f}")`;
     </div>
     <div class="callout"><b>好函数：</b>名字清楚，输入清楚，返回清楚，说明清楚。</div>
     ${notes("scope 不必讲太深，重点是为什么函数内部变量不能随便在外面用。")}`));
+
+  S.push(sec("scope-three-levels", `<div class="kicker">FROM QIN REFERENCE · SCOPE</div>
+    <h2>Python 变量有不同的作用范围</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>local</h3><p>函数内部创建，只在函数内部直接使用。</p></div>
+      <div class="box"><h3>global</h3><p>函数外部创建，整个文件都能看到。</p></div>
+      <div class="box"><h3>nonlocal</h3><p>嵌套函数里才常见，本课只做认识。</p></div>
+    </div>
+    <div class="callout"><b>初学建议：</b>尽量用 parameters 输入，用 return 输出，少依赖 global。</div>
+    ${notes("源 deck 69 之后讲 local/global/nonlocal；这里保留实用层级。")}`));
+
+  S.push(sec("docstring-anatomy", `<div class="kicker">FROM QIN REFERENCE · DOCSTRING</div>
+    <h2>docstring 是函数自带的说明书</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>写在哪里</h3><pre style="font-size:.58em"><code>def add_numbers(a, b):
+    """Return the sum of two numbers."""
+    return a + b</code></pre></div>
+      <div class="box"><h3>写什么</h3>${bullets(["函数做什么", "重要参数代表什么", "返回值是什么", "特殊限制或假设"])}</div>
+    </div>
+    ${notes("源 deck 95 页讲 docstring，这里变成可直接模仿的写法。")}`));
+
+  S.push(sec("function-practice-bank", `<div class="kicker">FROM QIN REFERENCE · PRACTICE</div>
+    <h2>函数练习库：选一个写进 notebook</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>rectangle_area</h3><p>输入 length 和 width，return 面积。</p></div>
+      <div class="box"><h3>is_even</h3><p>输入一个整数，return True 或 False。</p></div>
+      <div class="box"><h3>classify_score</h3><p>输入分数，return 等级或建议。</p></div>
+    </div>
+    <div class="callout"><b>提交要求：</b>至少调用 3 次，每次用不同 arguments。</div>
+    ${notes("源 deck 84-95 有多个练习页，这里整理成选择菜单。")}`));
 
   S.push(sec("class03-homework", `<div class="kicker">HOMEWORK</div>
     <h2>课后作业：新增一个自己的函数</h2>

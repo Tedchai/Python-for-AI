@@ -222,6 +222,18 @@ print(f"{pennies} pennies")</textarea>
     </div>
   </div><aside class="notes">用第 1 课的整除和取余引出控制流：程序需要根据余数继续做下一步。</aside>
 </section>
+<section id="coin-discussion" data-sid="coin-discussion">
+<div class="kicker">FROM QIN REFERENCE · ASSIGNMENT DISCUSSION</div>
+    <h2>硬币找零：quotient 和 remainder 配合工作</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Quarters</b><span><code>quarters = cents // 25</code></span></div>
+      <div class="step"><div class="n">2</div><b>Left over</b><span><code>cents = cents % 25</code></span></div>
+      <div class="step"><div class="n">3</div><b>Dimes</b><span><code>dimes = cents // 10</code></span></div>
+      <div class="step loop"><div class="n">4</div><b>Repeat</b><span>每种硬币都重复“最多几个 + 剩多少”</span></div>
+    </div>
+    <div class="callout"><b>关键模型：</b><code>//</code> 问“最多能拿几个”；<code>%</code> 问“拿完以后还剩多少”。</div>
+    <aside class="notes">源 deck 前 2-9 页逐步展开 coin change，这里合并成一页清晰模型。</aside>
+</section>
 <section id="if-mental-model" data-sid="if-mental-model">
 <div class="kicker">IF STATEMENT</div>
     <h2>if 让程序选择是否进入一个代码块</h2>
@@ -234,6 +246,29 @@ print(f"{pennies} pennies")</textarea>
     print("positive")
 print("always runs")</code></pre>
     <aside class="notes">强调缩进是 Python 的结构，不是排版。让学生用手指出哪些行属于 if。</aside>
+</section>
+<section id="if-syntax-anatomy" data-sid="if-syntax-anatomy">
+<div class="kicker">FROM QIN REFERENCE · IF SYNTAX</div>
+    <h2>if statement 的语法拆解</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>if</h3><p>告诉 Python：接下来要做一次条件判断。</p></div>
+      <div class="box"><h3>condition</h3><p>必须能算出 <code>True</code> 或 <code>False</code>。</p></div>
+      <div class="box"><h3>:</h3><p>冒号表示 header 结束，下一行进入代码块。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>if number &gt; 0:
+    print("positive")</code></pre>
+    <aside class="notes">源 deck 10-12 页逐步标注 if / condition / body / colon。</aside>
+</section>
+<section id="boolean-expressions" data-sid="boolean-expressions">
+<div class="kicker">BOOLEAN EXPRESSIONS</div>
+    <h2>条件表达式的结果只有 True 或 False</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>比较</h3><p><code>x &gt; 0</code>, <code>x == 10</code>, <code>x != 0</code></p></div>
+      <div class="box"><h3>组合</h3><p><code>and</code> 两边都要 True；<code>or</code> 至少一个 True。</p></div>
+      <div class="box"><h3>取反</h3><p><code>not finished</code> 把 True/False 反过来。</p></div>
+    </div>
+    <div class="callout"><b>调试技巧：</b>不确定条件是否成立时，先 <code>print(condition)</code>。</div>
+    <aside class="notes">把源 deck 的 Boolean expression 说明展开成可操作的调试方法。</aside>
 </section>
 <section id="indent-quiz" data-sid="indent-quiz">
 <div class="kicker">INDENTATION</div>
@@ -254,6 +289,35 @@ print("always runs")</code></pre>
     </div>
     <div class="callout"><b>口诀：</b>从上到下检查，遇到第一个 True 就执行，然后离开整组分支。</div>
     <aside class="notes">用 number = 5、-2、0 三个例子，让学生分别说出路径。</aside>
+</section>
+<section id="elif-ladder" data-sid="elif-ladder">
+<div class="kicker">FROM QIN REFERENCE · MULTIPLE ALTERNATIVES</div>
+    <h2>elif ladder：多条路里只走一条</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>if</b><span>先检查最重要或最具体的条件</span></div>
+      <div class="step"><div class="n">2</div><b>elif</b><span>前面没命中，再检查下一种情况</span></div>
+      <div class="step"><div class="n">3</div><b>else</b><span>所有条件都不满足时的默认出口</span></div>
+    </div>
+    <pre style="font-size:.5em;margin-top:.65em"><code>if score &gt;= 90:
+    grade = "A"
+elif score &gt;= 80:
+    grade = "B"
+else:
+    grade = "Needs practice"</code></pre>
+    <aside class="notes">源 deck 25-27 页强调多分支选择，这里转成 grading 场景。</aside>
+</section>
+<section id="conditional-expression" data-sid="conditional-expression">
+<div class="kicker">FROM QIN REFERENCE · ONE-LINE IF</div>
+    <h2>简单赋值可以写成 conditional expression</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>普通写法</h3><pre style="font-size:.54em"><code>if score &gt;= 60:
+    result = "pass"
+else:
+    result = "retry"</code></pre></div>
+      <div class="box"><h3>一行写法</h3><pre style="font-size:.54em"><code>result = "pass" if score &gt;= 60 else "retry"</code></pre><p>适合非常短、非常清楚的选择。</p></div>
+    </div>
+    <div class="callout"><b>课堂建议：</b>初学时先写普通 if/else；看懂以后再用一行写法。</div>
+    <aside class="notes">源 deck 28-29 页讲 one-line if/conditional assignment。</aside>
 </section>
 <section id="classify-lab" data-sid="classify-lab">
 <div class="kicker">PYTHON LAB</div>
@@ -298,6 +362,42 @@ for number in numbers:
     <div class="callout"><b>stop 不包含：</b>这是 range 最常见的边界错误。</div>
     <aside class="notes">让学生先写出 range(-10, 11) 的第一个和最后一个数字，再运行验证。</aside>
 </section>
+<section id="for-syntax-anatomy" data-sid="for-syntax-anatomy">
+<div class="kicker">FROM QIN REFERENCE · FOR LOOP SYNTAX</div>
+    <h2>for loop 的语法拆解</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>loop variable</h3><p><code>for number in numbers</code> 里的 <code>number</code> 每次接住一个值。</p></div>
+      <div class="box"><h3>sequence</h3><p>可以是 <code>range(...)</code>、list、string 或其他可遍历对象。</p></div>
+      <div class="box"><h3>body</h3><p>缩进部分会对每个值执行一次。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>for number in [2, 4, 6]:
+    print(number * 10)</code></pre>
+    <aside class="notes">源 deck 31 之后逐步进入 for loop，这里补充 syntax anatomy。</aside>
+</section>
+<section id="remove-repetition" data-sid="remove-repetition">
+<div class="kicker">FROM QIN REFERENCE · WHY LOOPS</div>
+    <h2>loop 的价值：去掉重复代码</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>重复写法</h3><pre style="font-size:.54em"><code>print(scores[0])
+print(scores[1])
+print(scores[2])</code></pre></div>
+      <div class="box"><h3>循环写法</h3><pre style="font-size:.54em"><code>for score in scores:
+    print(score)</code></pre><p>数据多一百个，也不用多写一百行。</p></div>
+    </div>
+    <div class="callout"><b>判断标准：</b>看到相似代码重复三次，就应该想想能不能用 loop。</div>
+    <aside class="notes">源 deck 48 页强调 loops remove repetitive code。</aside>
+</section>
+<section id="accumulator-pattern" data-sid="accumulator-pattern">
+<div class="kicker">LOOP PATTERN</div>
+    <h2>accumulator：循环里逐步累加结果</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Initialize</b><span><code>total = 0</code></span></div>
+      <div class="step"><div class="n">2</div><b>Update</b><span><code>total += score</code></span></div>
+      <div class="step"><div class="n">3</div><b>Use result</b><span><code>average = total / len(scores)</code></span></div>
+    </div>
+    <div class="callout"><b>常见用途：</b>sum、count、maximum、minimum 都是 accumulator pattern。</div>
+    <aside class="notes">补足 for loop 从打印走向统计的关键模式。</aside>
+</section>
 <section id="range-quiz" data-sid="range-quiz">
 <div class="kicker">RANGE</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
@@ -320,6 +420,20 @@ while count &gt; 0:
     print(count)
     count -= 1</code></pre>
     <aside class="notes">无限循环是重点风险：每次讲 while 都要问，这个条件什么时候会变成 False？</aside>
+</section>
+<section id="while-checklist" data-sid="while-checklist">
+<div class="kicker">FROM QIN REFERENCE · WHILE LOOP</div>
+    <h2>写 while loop 前先检查三件事</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>Start</h3><p>循环开始前，控制变量是什么？</p></div>
+      <div class="box"><h3>Stop</h3><p>什么条件下应该停止？条件写反了吗？</p></div>
+      <div class="box"><h3>Update</h3><p>循环体里有没有改变控制变量？</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1</code></pre>
+    <aside class="notes">源 deck 56 之后进入 while loop，这里提炼成 checklist。</aside>
 </section>
 <section id="break-continue" data-sid="break-continue">
 <div class="kicker">BREAK / CONTINUE</div>

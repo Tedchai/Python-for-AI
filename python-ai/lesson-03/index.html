@@ -200,6 +200,17 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
     <div class="callout"><b>关键句：</b>函数是“给一组步骤起名字”。</div>
     <aside class="notes">可以展示重复 print 或重复计算，再问：哪一块值得封装？</aside>
 </section>
+<section id="function-purpose" data-sid="function-purpose">
+<div class="kicker">FROM QIN REFERENCE · FUNCTION IDEA</div>
+    <h2>function 是一组完成特定任务的语句</h2>
+    <div class="grid3" style="margin-top:.75em">
+      <div class="box"><h3>Group</h3><p>把几行相关代码放在一起。</p></div>
+      <div class="box"><h3>Task</h3><p>每个函数最好只完成一个清楚任务。</p></div>
+      <div class="box"><h3>Name</h3><p>函数名应该让人猜到它会做什么。</p></div>
+    </div>
+    <div class="callout"><b>判断标准：</b>如果你能用一句动词短语描述它，就适合做成函数。</div>
+    <aside class="notes">源 deck 第 2 页定义 functions；这里转成学生可用的判断标准。</aside>
+</section>
 <section id="function-syntax" data-sid="function-syntax">
 <div class="kicker">FUNCTION SYNTAX</div>
     <h2>函数定义后不会自动运行</h2>
@@ -210,6 +221,30 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
     </div>
     <div class="callout"><b>常见错误：</b>只写了函数定义，但忘记在下面调用。</div>
     <aside class="notes">分清 define 和 call。定义像写菜谱，调用才是真的做菜。</aside>
+</section>
+<section id="function-header-parts" data-sid="function-header-parts">
+<div class="kicker">FROM QIN REFERENCE · FUNCTION HEADER</div>
+    <h2>函数 header 的每一部分都有作用</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>def</h3><p>创建函数的关键字。</p></div>
+      <div class="box"><h3>function_name</h3><p>用 snake_case 命名，例如 <code>calculate_total</code>。</p></div>
+      <div class="box"><h3>(parameters):</h3><p>括号接收输入，冒号打开函数体。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>def function_name(parameters):
+    function_body</code></pre>
+    <aside class="notes">源 deck 3-11 页逐项标注 def/name/parentheses/parameters/colon/body。</aside>
+</section>
+<section id="snake-case" data-sid="snake-case">
+<div class="kicker">NAMING</div>
+    <h2>函数名用 snake_case，并说清楚动作</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>不够清楚</h3><pre style="font-size:.62em"><code>def do_it(x):
+    ...</code></pre><p>别人不知道它做什么。</p></div>
+      <div class="box"><h3>更清楚</h3><pre style="font-size:.62em"><code>def calculate_average(scores):
+    ...</code></pre><p>动作和输入都写在名字里。</p></div>
+    </div>
+    <div class="callout"><b>科研代码习惯：</b>变量名和函数名本身就是说明文字。</div>
+    <aside class="notes">源 deck 第 6 页强调 snake case；这里补成命名规范页。</aside>
 </section>
 <section id="greet-lab" data-sid="greet-lab">
 <div class="kicker">PYTHON LAB</div>
@@ -248,6 +283,19 @@ greet("AI researcher")</textarea>
   </div>
   <aside class="notes">这道题帮助学生区分函数定义和函数调用。</aside>
 </section>
+<section id="built-in-vs-custom" data-sid="built-in-vs-custom">
+<div class="kicker">FROM QIN REFERENCE · CALLING FUNCTIONS</div>
+    <h2>调用函数：内置函数和自定义函数规则一样</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>Built-in</h3><pre style="font-size:.62em"><code>print("Hello World")
+input("Enter your name: ")</code></pre><p>Python 已经准备好的函数。</p></div>
+      <div class="box"><h3>Custom</h3><pre style="font-size:.62em"><code>def greet(name):
+    print(f"Hello, {name}!")
+
+greet("Mia")</code></pre><p>我们自己定义，也用括号调用。</p></div>
+    </div>
+    <aside class="notes">源 deck 13-16 页从 print/input 过渡到自定义函数调用。</aside>
+</section>
 <section id="params-args" data-sid="params-args">
 <div class="kicker">PARAMETERS VS ARGUMENTS</div>
     <h2>parameters 是占位名，arguments 是具体值</h2>
@@ -257,6 +305,28 @@ greet("AI researcher")</textarea>
     </div>
     <div class="callout"><b>课堂问法：</b>这个名字是在函数定义里出现，还是调用时传进去？</div>
     <aside class="notes">中文里都叫参数容易混淆，建议用“占位名/具体值”解释。</aside>
+</section>
+<section id="parameter-binding" data-sid="parameter-binding">
+<div class="kicker">FROM QIN REFERENCE · PARAMETER BINDING</div>
+    <h2>调用时，argument 会临时交给 parameter</h2>
+    <div class="flow" style="margin-top:.75em">
+      <div class="step"><div class="n">1</div><b>Call</b><span><code>greet("Sponge Bob")</code></span></div>
+      <div class="step"><div class="n">2</div><b>Bind</b><span><code>name = "Sponge Bob"</code> 只在函数这次运行里成立</span></div>
+      <div class="step"><div class="n">3</div><b>Run body</b><span><code>print(f"Hello, {name}!")</code></span></div>
+    </div>
+    <div class="callout"><b>重点：</b>同一个函数下次调用时，parameter 可以接住另一个 argument。</div>
+    <aside class="notes">源 deck 17-20 页用 greet(name) 展示 parameter/argument 绑定。</aside>
+</section>
+<section id="positional-arguments" data-sid="positional-arguments">
+<div class="kicker">FROM QIN REFERENCE · POSITIONAL ARGUMENTS</div>
+    <h2>positional arguments 按位置对应</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>定义</h3><pre style="font-size:.62em"><code>def describe_student(name, topic):
+    print(name, topic)</code></pre></div>
+      <div class="box"><h3>调用</h3><pre style="font-size:.62em"><code>describe_student("Mia", "AI")
+describe_student("AI", "Mia")</code></pre><p>顺序变了，含义就变了。</p></div>
+    </div>
+    <aside class="notes">源 deck 36 之后讲 positional arguments；这里把风险讲清楚。</aside>
 </section>
 <section id="return-model" data-sid="return-model">
 <div class="kicker">RETURN</div>
@@ -307,6 +377,18 @@ print(f"Sum: {total}")</textarea>
   </div>
   <aside class="notes">如果时间允许，现场在 return 后加一行 print，验证它不会执行。</aside>
 </section>
+<section id="return-vs-output" data-sid="return-vs-output">
+<div class="kicker">FROM QIN REFERENCE · RETURN VALUES</div>
+    <h2>return value 可以继续参与后面的计算</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>只 print</h3><p>结果显示在屏幕上，但外部变量拿不到这个值。</p></div>
+      <div class="box"><h3>return</h3><p>结果交回调用处，可以存入变量、继续计算、写入报告。</p></div>
+    </div>
+    <pre style="font-size:.52em;margin-top:.65em"><code>score = add_numbers(42, 8)
+if score &gt;= 50:
+    print("pass")</code></pre>
+    <aside class="notes">源 deck 23 之后进入 return value；这里强调科研 notebook 里返回值还能继续被分析。</aside>
+</section>
 <section id="keyword-args" data-sid="keyword-args">
 <div class="kicker">KEYWORD ARGUMENTS</div>
     <h2>关键字参数让调用更清楚，也更不怕顺序错</h2>
@@ -315,6 +397,18 @@ print(f"Sum: {total}")</textarea>
       <div class="box"><h3>keyword</h3><pre style="font-size:.62em"><code>calculate_price(item="apple", quantity=3, price=0.5)</code></pre><p>长一点，但含义更清楚。</p></div>
     </div>
     <aside class="notes">用 calculate_price 演示：顺序传错时可能不报错，但结果错，这比报错更危险。</aside>
+</section>
+<section id="type-hints" data-sid="type-hints">
+<div class="kicker">FROM QIN REFERENCE · TYPE HINTS</div>
+    <h2>type hints 让函数输入输出更容易读</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>没有提示</h3><pre style="font-size:.62em"><code>def calculate_price(item, quantity, price):
+    return quantity * price</code></pre></div>
+      <div class="box"><h3>有提示</h3><pre style="font-size:.62em"><code>def calculate_price(item: str, quantity: int, price: float) -> float:
+    return quantity * price</code></pre></div>
+    </div>
+    <div class="callout"><b>注意：</b>type hints 默认不是强制检查，而是给人、编辑器和工具看的说明。</div>
+    <aside class="notes">源 deck 54 页提到 PEP 484 和 type hints，这里用 calculate_price 连接。</aside>
 </section>
 <section id="price-lab" data-sid="price-lab">
 <div class="kicker">PYTHON LAB</div>
@@ -357,6 +451,39 @@ print(f"Orange total: ${orange_total:.2f}")</textarea>
     </div>
     <div class="callout"><b>好函数：</b>名字清楚，输入清楚，返回清楚，说明清楚。</div>
     <aside class="notes">scope 不必讲太深，重点是为什么函数内部变量不能随便在外面用。</aside>
+</section>
+<section id="scope-three-levels" data-sid="scope-three-levels">
+<div class="kicker">FROM QIN REFERENCE · SCOPE</div>
+    <h2>Python 变量有不同的作用范围</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>local</h3><p>函数内部创建，只在函数内部直接使用。</p></div>
+      <div class="box"><h3>global</h3><p>函数外部创建，整个文件都能看到。</p></div>
+      <div class="box"><h3>nonlocal</h3><p>嵌套函数里才常见，本课只做认识。</p></div>
+    </div>
+    <div class="callout"><b>初学建议：</b>尽量用 parameters 输入，用 return 输出，少依赖 global。</div>
+    <aside class="notes">源 deck 69 之后讲 local/global/nonlocal；这里保留实用层级。</aside>
+</section>
+<section id="docstring-anatomy" data-sid="docstring-anatomy">
+<div class="kicker">FROM QIN REFERENCE · DOCSTRING</div>
+    <h2>docstring 是函数自带的说明书</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>写在哪里</h3><pre style="font-size:.58em"><code>def add_numbers(a, b):
+    """Return the sum of two numbers."""
+    return a + b</code></pre></div>
+      <div class="box"><h3>写什么</h3><ul><li>函数做什么</li><li>重要参数代表什么</li><li>返回值是什么</li><li>特殊限制或假设</li></ul></div>
+    </div>
+    <aside class="notes">源 deck 95 页讲 docstring，这里变成可直接模仿的写法。</aside>
+</section>
+<section id="function-practice-bank" data-sid="function-practice-bank">
+<div class="kicker">FROM QIN REFERENCE · PRACTICE</div>
+    <h2>函数练习库：选一个写进 notebook</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>rectangle_area</h3><p>输入 length 和 width，return 面积。</p></div>
+      <div class="box"><h3>is_even</h3><p>输入一个整数，return True 或 False。</p></div>
+      <div class="box"><h3>classify_score</h3><p>输入分数，return 等级或建议。</p></div>
+    </div>
+    <div class="callout"><b>提交要求：</b>至少调用 3 次，每次用不同 arguments。</div>
+    <aside class="notes">源 deck 84-95 有多个练习页，这里整理成选择菜单。</aside>
 </section>
 <section id="class03-homework" data-sid="class03-homework">
 <div class="kicker">HOMEWORK</div>

@@ -190,6 +190,17 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
     <div class="callout"><b>课堂节奏：</b>说明规则 -> 现场演示 -> 跟做练习 -> 提交一个小成果</div>
     <aside class="notes">这一页用于建立预期：不是听完课就结束，每节课都要有一个可以提交的小成果。</aside>
 </section>
+<section id="instructor-learning" data-sid="instructor-learning">
+<div class="kicker">FROM QIN REFERENCE · LEARNING MODE</div>
+    <h2>先认识这门课的学习方式</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><h3>老师怎么教</h3><ul><li>每节课都有可见产出</li><li>少背概念，多做练习</li><li>用真实代码训练科研表达</li></ul></div>
+      <div class="box"><h3>学生怎么学</h3><ul><li>课堂跟做，不怕报错</li><li>先预测，再运行</li><li>能解释自己的代码最重要</li></ul></div>
+      <div class="box"><h3>遇到报错</h3><p>报错不是失败，而是 Python 正在告诉你下一步要检查哪里。</p></div>
+    </div>
+    <div class="callout"><b>口令：</b>Read -> Predict -> Run -> Explain</div>
+    <aside class="notes">补入秦教授 Class 01 参考 deck 的学习方式页：强调跟做、预测、运行和解释。</aside>
+</section>
 <section id="learning-mode" data-sid="learning-mode">
 <div class="kicker">HOW WE LEARN</div>
     <h2>先认识这门课的学习方式</h2>
@@ -293,6 +304,29 @@ print("My first Python notebook is running.")</textarea>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
   </div><aside class="notes">让学生先预测输出，再运行。然后把第二行文字改成自己的英文或中文句子。</aside>
+</section>
+<section id="print-practice" data-sid="print-practice">
+<div class="kicker">FROM QIN REFERENCE · PRINT</div>
+    <h2>print() 的括号里放什么，就显示什么</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>先预测输出</h3><pre style="font-size:.6em"><code>print("Python")
+print(2026)
+print("AI" + " Research")</code></pre></div>
+      <div class="box"><h3>再运行验证</h3><ul><li>会出现几行输出？</li><li>字符串拼接后是什么？</li><li>数字和文字显示有什么区别？</li></ul></div>
+    </div>
+    <div class="callout"><b>小习惯：</b>每段代码运行前，先在脑子里预测一次输出。</div>
+    <aside class="notes">来自秦教授 Class 01 参考 deck 的 print 练习页。</aside>
+</section>
+<section id="string-number-trap" data-sid="string-number-trap">
+<div class="kicker">FROM QIN REFERENCE · COMMON ERROR</div>
+    <h2>字符串要加引号，数字不用加引号</h2>
+    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
+      <div class="box"><h3>可以运行</h3><pre style="font-size:.62em"><code>print("hello")
+print(100)
+print(3.14)</code></pre></div>
+      <div class="box"><h3>会报错</h3><pre style="font-size:.62em"><code>print(hello)</code></pre><p>Python 会以为 <code>hello</code> 是变量名，而不是文字。</p></div>
+    </div>
+    <aside class="notes">补入参考 deck 的字符串/数字常见错误页，适合现场制造并解释 NameError。</aside>
 </section>
 <section id="variables" data-sid="variables">
 <div class="kicker">PYTHON BASICS</div>
