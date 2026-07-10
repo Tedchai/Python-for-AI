@@ -103,6 +103,101 @@
           "status": "ready"
         }
       ]
+    },
+    {
+      "id": "python-ai-en",
+      "title": "Python for AI Research (English)",
+      "subtitle": "A 15-class Python-first path from coding basics to small AI research projects.",
+      "tags": [
+        "Python",
+        "AI Research",
+        "English"
+      ],
+      "accent": "#1769C0",
+      "decks": [
+        {
+          "id": "lesson-01",
+          "n": 1,
+          "title": "Course Introduction and Your First Python Notebook",
+          "summary": "Colab setup, print, variables, data types, input, f-strings, and a first learning profile notebook.",
+          "tags": [
+            "Class 01",
+            "Colab",
+            "Python Basics",
+            "Lab"
+          ],
+          "duration": "2 hours",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-02",
+          "n": 2,
+          "title": "Python Control Flow",
+          "summary": "Conditions, comparisons, if / elif / else, for / while loops, break / continue, and rule-based classification.",
+          "tags": [
+            "Class 02",
+            "Control Flow",
+            "Lab"
+          ],
+          "duration": "2 hours",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-03",
+          "n": 3,
+          "title": "Python Functions",
+          "summary": "def, function calls, parameters, return values, scope, docstrings, and reusable helper functions.",
+          "tags": [
+            "Class 03",
+            "Functions",
+            "Lab"
+          ],
+          "duration": "2 hours",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-04",
+          "n": 4,
+          "title": "Python Lists and 2D Lists",
+          "summary": "Indexing, traversal, updating by index, nested lists, nested loops, and simple table-like data.",
+          "tags": [
+            "Class 04",
+            "Lists",
+            "2D Lists",
+            "Lab"
+          ],
+          "duration": "2 hours",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-05",
+          "n": 5,
+          "title": "Python Tuples and Unpacking",
+          "summary": "Ordered immutable records, unpacking, tuple updates, starred unpacking, and multiple return values.",
+          "tags": [
+            "Class 05",
+            "Tuples",
+            "Unpacking",
+            "Lab"
+          ],
+          "duration": "2 hours",
+          "status": "ready"
+        },
+        {
+          "id": "lesson-06",
+          "n": 6,
+          "title": "Python Dictionaries and Word Frequency",
+          "summary": "Key-value mapping, get / keys / values / items, updating dictionaries, and a word-frequency mini project.",
+          "tags": [
+            "Class 06",
+            "Dictionaries",
+            "Project",
+            "Lab"
+          ],
+          "duration": "2 hours",
+          "status": "ready"
+        }
+      ]
     }
   ]
 }

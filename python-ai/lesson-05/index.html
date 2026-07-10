@@ -164,6 +164,11 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
 #donateBtn:hover{background:#d85a28;text-decoration:none}
 /* slide number: default bottom-right collides with the comment/listen/cc button row, so move it to bottom-left */
 .reveal .slide-number{left:14px;right:auto;bottom:14px;z-index:58;background:rgba(255,255,255,.85);padding:2px 8px;border-radius:6px;color:var(--muted)}
+body{display:block!important}
+body.reveal-fallback{overflow:auto;background:#102f53;color:#fff}
+body.reveal-fallback .reveal,body.reveal-fallback .slides{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;transform:none!important}
+body.reveal-fallback .slides section{position:static!important;display:none!important;width:auto!important;height:auto!important;min-height:100vh!important;padding:7vh 8vw!important;transform:none!important}
+body.reveal-fallback .slides section.present,body.reveal-fallback .slides section:first-child{display:block!important}
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="class05-title" data-sid="class05-title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
@@ -414,24 +419,25 @@ print("Raw tuple:", result)</textarea>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
 const DECK = "python-ai/lesson-05";
+if(!window.Reveal){
+  document.body.classList.add('reveal-fallback');
+  window.Reveal={
+    initialize:function(){},
+    on:function(ev,cb){ if(ev==='ready') setTimeout(cb,0); },
+    getCurrentSlide:function(){ return document.querySelector('.slides section.present') || document.querySelector('.slides section'); }
+  };
+}
 Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
-  keyboardCondition:'focused', plugins:[ RevealNotes ] });
+  keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * Slide content remains teacher-authored, but shared UI and bilingual
- * quote/explanation blocks can switch between Chinese and English. */
+ * The full English course lives in python-ai-en. This button navigates to
+ * the matching lesson instead of pretending the current slide is translated. */
 const langBtn=document.getElementById('langBtn');
-let _lang=localStorage.getItem('deck_lang')||'zh';
-function activeLang(){ return document.body.classList.contains('lang-en')?'en':'zh'; }
-function setLang(lang){
-  _lang=lang==='en'?'en':'zh';
-  document.body.classList.toggle('lang-en',_lang==='en');
-  langBtn.textContent=_lang==='en'?'中文':'EN';
-  document.documentElement.lang=_lang==='en'?'en':'zh-CN';
-}
-langBtn.addEventListener('click',function(){ setLang(activeLang()==='en'?'zh':'en'); localStorage.setItem('deck_lang',_lang); });
-setLang(_lang);
+const ALT_DECK_URL="../../python-ai-en/lesson-05/";
+langBtn.textContent='EN';
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused

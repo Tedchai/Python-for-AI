@@ -74,6 +74,39 @@ const CATALOG = {
           duration: "60-75 min", status: "ready" },
       ],
     },
+    {
+      id: "python-ai-en",
+      title: "Python for AI Research (English)",
+      subtitle: "A 15-class Python-first path from coding basics to small AI research projects.",
+      tags: ["Python", "AI Research", "English"],
+      accent: C.blue,
+      decks: [
+        { id: "lesson-01", n: 1, title: "Course Introduction and Your First Python Notebook",
+          summary: "Colab setup, print, variables, data types, input, f-strings, and a first learning profile notebook.",
+          tags: ["Class 01", "Colab", "Python Basics", "Lab"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-02", n: 2, title: "Python Control Flow",
+          summary: "Conditions, comparisons, if / elif / else, for / while loops, break / continue, and rule-based classification.",
+          tags: ["Class 02", "Control Flow", "Lab"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-03", n: 3, title: "Python Functions",
+          summary: "def, function calls, parameters, return values, scope, docstrings, and reusable helper functions.",
+          tags: ["Class 03", "Functions", "Lab"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-04", n: 4, title: "Python Lists and 2D Lists",
+          summary: "Indexing, traversal, updating by index, nested lists, nested loops, and simple table-like data.",
+          tags: ["Class 04", "Lists", "2D Lists", "Lab"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-05", n: 5, title: "Python Tuples and Unpacking",
+          summary: "Ordered immutable records, unpacking, tuple updates, starred unpacking, and multiple return values.",
+          tags: ["Class 05", "Tuples", "Unpacking", "Lab"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-06", n: 6, title: "Python Dictionaries and Word Frequency",
+          summary: "Key-value mapping, get / keys / values / items, updating dictionaries, and a word-frequency mini project.",
+          tags: ["Class 06", "Dictionaries", "Project", "Lab"],
+          duration: "2 hours", status: "ready" },
+      ],
+    },
   ],
 };
 
@@ -331,6 +364,11 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
 #donateBtn:hover{background:#d85a28;text-decoration:none}
 /* slide number: default bottom-right collides with the comment/listen/cc button row, so move it to bottom-left */
 .reveal .slide-number{left:14px;right:auto;bottom:14px;z-index:58;background:rgba(255,255,255,.85);padding:2px 8px;border-radius:6px;color:var(--muted)}
+body{display:block!important}
+body.reveal-fallback{overflow:auto;background:#102f53;color:#fff}
+body.reveal-fallback .reveal,body.reveal-fallback .slides{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;transform:none!important}
+body.reveal-fallback .slides section{position:static!important;display:none!important;width:auto!important;height:auto!important;min-height:100vh!important;padding:7vh 8vw!important;transform:none!important}
+body.reveal-fallback .slides section.present,body.reveal-fallback .slides section:first-child{display:block!important}
 `;
 
 // =====================================================================
@@ -639,6 +677,10 @@ const REVEAL = "https://cdn.jsdelivr.net/npm/reveal.js@5.1.0";
 const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.2/full";
 
 function deckHtml(deckId, title, slides) {
+  const lessonId = deckId.split("/").pop();
+  const altDeckUrl = deckId.startsWith("python-ai/")
+    ? `../../python-ai-en/${lessonId}/`
+    : `../../python-ai/${lessonId}/`;
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
@@ -673,24 +715,25 @@ ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noop
 <script src="${PYODIDE}/pyodide.js"></script>
 <script>
 const DECK = ${JSON.stringify(deckId)};
+if(!window.Reveal){
+  document.body.classList.add('reveal-fallback');
+  window.Reveal={
+    initialize:function(){},
+    on:function(ev,cb){ if(ev==='ready') setTimeout(cb,0); },
+    getCurrentSlide:function(){ return document.querySelector('.slides section.present') || document.querySelector('.slides section'); }
+  };
+}
 Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
-  keyboardCondition:'focused', plugins:[ RevealNotes ] });
+  keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * Slide content remains teacher-authored, but shared UI and bilingual
- * quote/explanation blocks can switch between Chinese and English. */
+ * The full English course lives in python-ai-en. This button navigates to
+ * the matching lesson instead of pretending the current slide is translated. */
 const langBtn=document.getElementById('langBtn');
-let _lang=localStorage.getItem('deck_lang')||'zh';
-function activeLang(){ return document.body.classList.contains('lang-en')?'en':'zh'; }
-function setLang(lang){
-  _lang=lang==='en'?'en':'zh';
-  document.body.classList.toggle('lang-en',_lang==='en');
-  langBtn.textContent=_lang==='en'?'中文':'EN';
-  document.documentElement.lang=_lang==='en'?'en':'zh-CN';
-}
-langBtn.addEventListener('click',function(){ setLang(activeLang()==='en'?'zh':'en'); localStorage.setItem('deck_lang',_lang); });
-setLang(_lang);
+const ALT_DECK_URL=${JSON.stringify(altDeckUrl)};
+langBtn.textContent='EN';
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused
