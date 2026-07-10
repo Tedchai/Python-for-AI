@@ -171,115 +171,85 @@ body.reveal-fallback .slides section{position:static!important;display:none!impo
 body.reveal-fallback .slides section.present,body.reveal-fallback .slides section:first-child{display:block!important}
 </style></head><body>
 <div class="reveal"><div class="slides">
-<section id="class05-title" data-sid="class05-title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 05</div>
-    <h1 style="color:#fff">Tuples and<br>Unpacking</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">用不可变结构保存稳定记录，并让函数返回多个值</p>
-    <div class="grid3" style="margin-top:1em">
-      <div class="skillcard"><div class="cn">不可变</div><p>immutable</p></div>
-      <div class="skillcard"><div class="cn">解包</div><p>name, age = record</p></div>
-      <div class="skillcard"><div class="cn">返回</div><p>return q, r</p></div>
-    </div>
-    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右上角留言 · Python lab 可直接运行</p>
-    <aside class="notes">本课来自 Python Structure 的 tuple 部分。重点是 tuple 为什么存在，以及它和 list 的不同。</aside>
+<section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 05</div>
+    <h1 style="color:#fff">Python Tuples and Unpacking</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">用不可变记录和解包表达结构化数据</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">创建 tuple</div><p>创建 tuple</p></div><div class="skillcard"><div class="cn">理解不可变</div><p>理解不可变</p></div><div class="skillcard"><div class="cn">使用 unpacking</div><p>使用 unpacking</p></div></div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>
 </section>
-<section id="class05-goals" data-sid="class05-goals">
-<div class="kicker">TODAY'S OUTPUT</div>
-    <h2>今天用 tuple 表示稳定记录</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><span class="feature">1</span><h3>能区分</h3><p>说清 list mutable、tuple immutable。</p></div>
-      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能解包</h3><p>把 tuple 中的元素直接赋给多个变量。</p></div>
-      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能返回</h3><p>让函数用 tuple 返回多个结果。</p></div>
-    </div>
-    <div class="callout"><b>课堂产出：</b>学生记录 tuple、星号解包、除法函数返回商和余数。</div>
-    <aside class="notes">把 tuple 连接到稳定记录、坐标、函数返回值等真实使用场景。</aside>
+<section id="outputs" data-sid="outputs">
+<div class="kicker">TODAY'S OUTPUT</div><h2>完成一个 tuple record 与 unpacking 练习。</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>理解</h3><p>能用自己的话解释今天的 Python 概念。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>练习</h3><p>运行并修改课堂示例代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提交</h3><p>完成一个整洁 notebook，并加入一个小扩展。</p></div></div><aside class="notes">先给出本节课可见产出。</aside>
 </section>
-<section id="tuple-model" data-sid="tuple-model">
-<div class="kicker">TUPLE MODEL</div>
-    <h2>tuple 是有序、可索引、不可变的序列</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>像 list</h3><ul><li>有顺序</li><li>可以用 index 访问</li><li>可以切片</li><li>可以遍历</li></ul></div>
-      <div class="box"><h3>不像 list</h3><ul><li>创建后不能直接改某个元素</li><li>更适合稳定记录</li><li>常用于函数多返回值</li></ul></div>
-    </div>
-    <pre style="font-size:.52em;margin-top:.65em"><code>colors = ("red", "green", "blue")</code></pre>
-    <aside class="notes">不要只讲“括号”，要强调 tuple 的设计意图：稳定、不随便变。</aside>
+<section id="two-hour-pacing" data-sid="two-hour-pacing">
+<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div><aside class="notes">用于管理两小时课堂节奏。</aside>
 </section>
-<section id="tuple-basics-lab" data-sid="tuple-basics-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>tuple 基础：访问、count、不可变</h2>
-  <p class="lead" style="margin:.1em 0 .25em">运行后取消最后一行注释，观察 tuple 不能直接修改元素的报错。</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">colors = ("red", "green", "blue")
+<section id="recap" data-sid="recap">
+<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div><aside class="notes">把今天内容连接到 15 节课路线。</aside>
+</section>
+<section id="warmup" data-sid="warmup">
+<div class="kicker">WARM-UP</div><h2>先预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3><ul><li>先猜输出</li><li>改一个小地方</li><li>重新运行并比较</li></ul></div><div class="box"><h3>教师提问</h3><ul><li>你预期输出是什么？</li><li>哪一行最可能出错？</li><li>第一步会改哪里？</li></ul></div></div><aside class="notes">预测让学生主动阅读代码。</aside>
+</section>
+<section id="vocabulary" data-sid="vocabulary">
+<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Immutable</h3><p>创建后不能直接修改。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Record</h3><p>一组固定字段。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Starred unpacking</h3><p>用 * 接收剩余值。</p></div></div><aside class="notes">给学生解释代码的语言。</aside>
+</section>
+<section id="mental-model" data-sid="mental-model">
+<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>Tuple、Unpacking、Multiple return 是今天的三块拼图；先知道它们各自解决什么问题。</div><aside class="notes">用心智模型降低语法记忆负担。</aside>
+</section>
+<section id="concept-1" data-sid="concept-1">
+<div class="kicker">CONCEPT 1</div><h2>Tuple</h2><p class="lead">有顺序、不可变的记录。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 Tuple？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="concept-2" data-sid="concept-2">
+<div class="kicker">CONCEPT 2</div><h2>Unpacking</h2><p class="lead">一次把多个位置的值取出来。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 Unpacking？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="concept-3" data-sid="concept-3">
+<div class="kicker">CONCEPT 3</div><h2>Multiple return</h2><p class="lead">函数可以返回多个相关结果。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 Multiple return？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="syntax-pattern" data-sid="syntax-pattern">
+<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>student = ("Ava", 10, "AI")
+name, grade, topic = student
+print(name, topic)</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div><aside class="notes">先读结构，再运行。</aside>
+</section>
+<section id="teacher-demo" data-sid="teacher-demo">
+<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>def min_max(values):
+    return min(values), max(values)
 
-print(colors)
-print(type(colors))
-print("First color:", colors[0])
-print("How many red?", colors.count("red"))
-
-# Try uncommenting this line:
-# colors[0] = "yellow"</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">让学生把 colors 改成自己的三项稳定记录，例如坐标或学生信息。</aside>
+low, high = min_max([4, 9, 2, 7])
+print(low, high)</code></pre><aside class="notes">先整体运行，再逐行解释。</aside>
 </section>
-<section id="tuple-quiz" data-sid="tuple-quiz">
-<div class="kicker">IMMUTABLE</div>
+<section id="trace-table" data-sid="trace-table">
+<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>这一行运行前有哪些值？</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>创建或改变了什么？</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>输出是否符合预测？</p></div></div><aside class="notes">训练调试和阅读代码能力。</aside>
+</section>
+<section id="prediction-quiz" data-sid="prediction-quiz">
+<div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="2">
-    <p class="qq">colors = ('red', 'green', 'blue')，下面哪行会报错？</p>
-    <div class="opts"><button class="opt" data-i="0">print(colors[0])</button><button class="opt" data-i="1">colors.count('red')</button><button class="opt" data-i="2">colors[0] = 'yellow'</button><button class="opt" data-i="3">len(colors)</button></div>
-    <p class="quiz-exp">tuple 是 immutable，不能用 index 直接改某个元素。</p>
+  <div class="quiz" data-correct="0">
+    <p class="qq">tuple 和 list 最大区别之一是什么？</p>
+    <div class="opts"><button class="opt" data-i="0">tuple 不可变</button><button class="opt" data-i="1">tuple 不能保存文字</button><button class="opt" data-i="2">list 没有顺序</button></div>
+    <p class="quiz-exp">tuple 是不可变的有序结构。</p>
   </div>
-  <aside class="notes">这道题区分访问和修改。</aside>
+  <aside class="notes">快速形成性检查。</aside>
 </section>
-<section id="update-tuples" data-sid="update-tuples">
-<div class="kicker">UPDATE TUPLES</div>
-    <h2>tuple 不能原地改，但可以创建新的 tuple</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><h3>拼接</h3><p><code>colors + ('yellow',)</code></p></div>
-      <div class="box"><h3>转 list</h3><p><code>list(colors)</code> 改完再 <code>tuple(...)</code></p></div>
-      <div class="box"><h3>重新赋值</h3><p>变量可以指向一个新的 tuple。</p></div>
-    </div>
-    <div class="callout"><b>注意：</b>单元素 tuple 要写 <code>('yellow',)</code>，逗号很重要。</div>
-    <aside class="notes">原课件对 yellow 单元素 tuple 有多个反例，课堂上可以现场运行对比。</aside>
+<section id="guided-practice-1" data-sid="guided-practice-1">
+<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box"><ul><li>只改一个变量或一条规则</li><li>重新运行并观察变化</li><li>把变化说给旁边同学听</li></ul></div><aside class="notes">一次只做一个小改动。</aside>
 </section>
-<section id="unpacking" data-sid="unpacking">
-<div class="kicker">UNPACKING</div>
-    <h2>tuple unpacking 让记录更容易读</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>记录</h3><pre style="font-size:.58em"><code>person = ("Alice", 30, "New York")</code></pre></div>
-      <div class="box"><h3>解包</h3><pre style="font-size:.58em"><code>name, age, city = person</code></pre><p>变量数量要和元素数量对应。</p></div>
-    </div>
-    <aside class="notes">强调 unpacking 是按位置对应，不是按变量名对应。</aside>
+<section id="guided-practice-2" data-sid="guided-practice-2">
+<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div><aside class="notes">每次修改都要能解释。</aside>
 </section>
-<section id="unpacking-lab" data-sid="unpacking-lab">
+<section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>unpacking 与星号解包</h2>
-  <p class="lead" style="margin:.1em 0 .25em">改 person 和 numbers，观察普通解包与 *middle 的结果。</p>
+  <h2>Tuple Record Reader</h2>
+  <p class="lead" style="margin:.1em 0 .25em">用 tuple 保存固定记录，再用 unpacking 读出字段。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">person = ("Alice", 30, "New York")
-name, age, city = person
-print(f"Name: {name}, Age: {age}, City: {city}")
+      <textarea class="code" spellcheck="false">records = [
+    ("Ava", 10, "vision"),
+    ("Ben", 11, "robotics"),
+    ("Mia", 10, "language"),
+]
 
-numbers = (1, 2, 3, 4, 5)
-start, *middle, end = numbers
-print("start:", start)
-print("middle:", middle)
-print("end:", end)</textarea>
+for name, grade, topic in records:
+    print(f"{name} studies {topic} in grade {grade}.")</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -294,104 +264,95 @@ print("end:", end)</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">让学生解释 middle 为什么是 list，而不是 tuple。</aside>
+  </div><aside class="notes">两小时课堂的主要跟做实验。</aside>
 </section>
-<section id="unpack-quiz" data-sid="unpack-quiz">
-<div class="kicker">UNPACKING</div>
+<section id="mistake-clinic" data-sid="mistake-clinic">
+<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>尝试直接修改 tuple</h3><p>需要创建新的 tuple。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>解包数量不匹配</h3><p>变量数量要和元素数量匹配。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>字段顺序忘记</h3><p>固定记录要写清字段含义。</p></div></div><aside class="notes">把错误正常化，并给出修复路线。</aside>
+</section>
+<section id="debug-routine" data-sid="debug-routine">
+<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div><aside class="notes">每周重复这个调试流程。</aside>
+</section>
+<section id="pair-programming" data-sid="pair-programming">
+<div class="kicker">PAIR PROGRAMMING</div><h2>Driver 写代码，Navigator 读逻辑</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>输入并运行代码。</p></div><div class="box"><h3>Navigator</h3><p>预测输出并检查逻辑。</p></div></div><div class="callout"><b>5 分钟后交换角色。</b></div><aside class="notes">保持课堂参与度。</aside>
+</section>
+<section id="mini-project-brief" data-sid="mini-project-brief">
+<div class="kicker">MINI PROJECT</div><h2>Research Team Records</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>成员姓名、年级、研究兴趣。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>用 tuple 表示固定字段，用 unpacking 读取。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>生成团队成员简介。</p></div></div><aside class="notes">把项目都讲成 input -&gt; process -&gt; output。</aside>
+</section>
+<section id="mini-project-lab" data-sid="mini-project-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>Research Team Records Starter</h2>
+  <p class="lead" style="margin:.1em 0 .25em">从这里开始，再在自己的 notebook 里扩展。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">team = [
+    ("Lina", "data cleaning", 3),
+    ("Marco", "visualization", 2),
+    ("Nora", "modeling", 4),
+]
+
+for name, task, hours in team:
+    print(f"{name}: {task}, {hours} hours")</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">独立项目 starter。</aside>
+</section>
+<section id="test-cases" data-sid="test-cases">
+<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>普通情况</h3><p>一个典型输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>边界情况</h3><p>刚好在阈值附近。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>自定义情况</h3><p>你自己的例子。</p></div></div><aside class="notes">测试能避免碰巧正确。</aside>
+</section>
+<section id="challenge-ladder" data-sid="challenge-ladder">
+<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div><aside class="notes">让不同速度的学生都有任务。</aside>
+</section>
+<section id="concept-check" data-sid="concept-check">
+<div class="kicker">CONCEPT CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="1">
-    <p class="qq">name, age, city = ('Alice', 30, 'New York') 中，age 得到什么？</p>
-    <div class="opts"><button class="opt" data-i="0">Alice</button><button class="opt" data-i="1">30</button><button class="opt" data-i="2">New York</button><button class="opt" data-i="3">整个 tuple</button></div>
-    <p class="quiz-exp">unpacking 按位置赋值，第二个变量 age 得到第二个元素 30。</p>
+  <div class="quiz" data-correct="0">
+    <p class="qq">name, age = person 这种写法叫？</p>
+    <div class="opts"><button class="opt" data-i="0">unpacking</button><button class="opt" data-i="1">looping</button><button class="opt" data-i="2">rounding</button></div>
+    <p class="quiz-exp">把 tuple/list 中的位置值拆到多个变量里。</p>
   </div>
-  <aside class="notes">检查学生是否理解位置对应。</aside>
+  <aside class="notes">独立练习前的理解检查。</aside>
 </section>
-<section id="tuple-return" data-sid="tuple-return">
-<div class="kicker">RETURN VALUES</div>
-    <h2>tuple 很适合函数返回多个结果</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><div class="n">1</div><b>Compute</b><span>计算 quotient 和 remainder</span></div>
-      <div class="step"><div class="n">2</div><b>Return</b><span><code>return quotient, remainder</code></span></div>
-      <div class="step"><div class="n">3</div><b>Unpack</b><span><code>q, r = divide(...)</code></span></div>
-    </div>
-    <div class="callout"><b>Python 习惯：</b>多个返回值其实常常是一个 tuple。</div>
-    <aside class="notes">连接第 3 课 return：这次 return 的不是一个数，而是一组结果。</aside>
+<section id="independent-work" data-sid="independent-work">
+<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div><aside class="notes">这是主要独立练习时间。</aside>
 </section>
-<section id="return-tuple-lab" data-sid="return-tuple-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>函数返回商和余数</h2>
-  <p class="lead" style="margin:.1em 0 .25em">运行后换几组数字，再把返回值 unpack 到不同变量名。</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">def divide_with_remainder(a: int, b: int) -&gt; tuple[int, int]:
-    quotient = a // b
-    remainder = a % b
-    return quotient, remainder
-
-q, r = divide_with_remainder(17, 5)
-print(f"Quotient: {q}, Remainder: {r}")
-
-result = divide_with_remainder(23, 4)
-print("Raw tuple:", result)</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">让学生比较 q, r = ... 和 result = ... 两种写法。</aside>
+<section id="explain-code" data-sid="explain-code">
+<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div><aside class="notes">解释也是作业的一部分。</aside>
 </section>
-<section id="when-tuple" data-sid="when-tuple">
-<div class="kicker">WHEN TO USE TUPLE</div>
-    <h2>什么时候应该考虑 tuple？</h2>
-    <div class="grid3" style="margin-top:.75em">
-      <div class="box"><h3>稳定记录</h3><p>坐标、日期、学生基本信息等不希望被随便改的数据。</p></div>
-      <div class="box"><h3>函数返回</h3><p>一个函数自然产生多个相关结果。</p></div>
-      <div class="box"><h3>字典 key</h3><p>tuple 不可变，所以可以作为 dictionary key。</p></div>
-    </div>
-    <aside class="notes">预告 dictionary：key 必须是 immutable，tuple 可以当 key，list 不可以。</aside>
+<section id="notebook-hygiene" data-sid="notebook-hygiene">
+<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>从上到下能运行</li><li>变量名可读</li><li>删掉无关草稿</li><li>输出清楚</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 句 Markdown 说明</li><li>解释输入和输出</li><li>标出自己的扩展</li><li>写一个问题</li></ul></div></div><aside class="notes">预留整理时间。</aside>
 </section>
-<section id="class05-homework" data-sid="class05-homework">
-<div class="kicker">HOMEWORK</div>
-    <h2>课后作业：用 tuple 表示稳定记录</h2>
-    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
-      <div class="box"><ul><li>创建至少 3 个学生记录 tuple，例如 (name, age, topic)</li><li>对其中一个记录做 unpacking，并输出自然语言句子</li><li>写一个函数返回两个相关结果，并 unpack 返回值</li><li>至少演示一次 tuple 不能直接修改元素的报错或说明</li><li>写 3-5 句话说明 list 和 tuple 的选择标准</li></ul></div>
-      <div class="box"><h3>检查重点</h3><p>能不能解释 immutable，以及为什么 return 多个值时 tuple 很自然。</p><h3>提交</h3><p>Colab notebook 链接。</p></div>
-    </div>
-    <aside class="notes">作业不要过度强调复杂方法，重点是数据结构选择。</aside>
+<section id="ai-helper" data-sid="ai-helper">
+<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3><ul><li>像初学者一样解释这个错误</li><li>给我一道类似练习题</li><li>先给提示，不要直接给答案</li></ul></div><div class="box"><h3>避免</h3><ul><li>直接写完整作业</li><li>改同学代码当成自己的</li><li>提交自己不能解释的代码</li></ul></div></div><aside class="notes">让 AI 使用服务于学习。</aside>
 </section>
-<section id="class05-exit" data-sid="class05-exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div>
-    <h2>离开前确认三句话</h2>
-    <div class="grid3" style="margin-top:.75em">
-      <div class="skillcard"><div class="cn">我能区分</div><p>list 可变，tuple 不可变。</p></div>
-      <div class="skillcard"><div class="cn">我能解包</div><p>按位置把元素赋给变量。</p></div>
-      <div class="skillcard"><div class="cn">我能返回</div><p>用 tuple 返回多个结果。</p></div>
-    </div>
-    <div class="callout"><b>留言任务：</b>写一个你认为适合用 tuple 的数据例子。</div>
-    <div class="prof-quote">
-    <div class="label"><span class="lang-zh">商博老师 · 朗读 / 解释</span><span class="lang-en">Professor Shangbo · Quote / Explanation</span></div>
-    <blockquote>
-      <span class="lang-zh">tuple 像一张稳定的小卡片：顺序重要，内容不该被随手改掉。</span>
-      <span class="lang-en">A tuple is like a small stable card: the order matters, and the contents should not be casually changed.</span>
-    </blockquote>
-    <p class="explain">
-      <span class="lang-zh">当数据代表坐标、记录或函数多个返回值时，不可变反而是一种保护。</span>
-      <span class="lang-en">For coordinates, records, or multiple return values, immutability is not a limitation; it is protection.</span>
-    </p>
-    <button class="speak" data-text-zh="tuple 像一张稳定的小卡片：顺序重要，内容不该被随手改掉。 当数据代表坐标、记录或函数多个返回值时，不可变反而是一种保护。" data-text-en="A tuple is like a small stable card: the order matters, and the contents should not be casually changed. For coordinates, records, or multiple return values, immutability is not a limitation; it is protection.">
-      <span class="lang-zh">朗读这段话</span><span class="lang-en">Read this aloud</span>
-    </button>
-  </div>
-    <aside class="notes">检查学生能否把 tuple 用到真实场景。</aside>
+<section id="rubric" data-sid="rubric">
+<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div><aside class="notes">明确期待。</aside>
+</section>
+<section id="homework" data-sid="homework">
+<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box"><ul><li>创建 tuple records</li><li>至少使用一次 unpacking</li><li>写一个返回多个值的函数</li><li>解释为什么用 tuple</li><li>提交 notebook 链接</li></ul></div><aside class="notes">作业要可完成，但不能只是复制。</aside>
+</section>
+<section id="submission-checklist" data-sid="submission-checklist">
+<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div><aside class="notes">减少坏链接和无法运行的提交。</aside>
+</section>
+<section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
+<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div><aside class="notes">收集快速反馈。</aside>
+</section>
+<section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">tuple 适合保存字段固定、不该随意改动的记录。</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">一句话收束。</aside>
+</section>
+<section id="buffer" data-sid="buffer">
+<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>需要帮助</h3><p>展示最后一行错误。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>快完成了</h3><p>向同伴解释代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提前完成</h3><p>完成 Level 3 并写改进想法。</p></div></div><aside class="notes">两小时课堂的收尾缓冲页。</aside>
 </section>
 </div></div>
 
@@ -432,12 +393,24 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * The full English course lives in python-ai-en. This button navigates to
- * the matching lesson instead of pretending the current slide is translated. */
+ * Switch to the matching lesson in the other language and preserve the
+ * current horizontal slide index. IDs differ between old decks, but index
+ * stays stable now that both languages use the same 35-slide structure. */
 const langBtn=document.getElementById('langBtn');
 const ALT_DECK_URL="../../python-ai-en/lesson-05/";
-langBtn.textContent='EN';
-langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
+langBtn.textContent="EN";
+function currentSlideIndex(){
+  if(window.Reveal&&Reveal.getIndices){
+    const idx=Reveal.getIndices();
+    if(idx&&typeof idx.h==='number') return idx.h;
+  }
+  const hashMatch=location.hash.match(/^#/(d+)/);
+  if(hashMatch) return Number(hashMatch[1]);
+  const slides=[...document.querySelectorAll('.slides > section')];
+  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+  return Math.max(0, slides.indexOf(cur));
+}
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused

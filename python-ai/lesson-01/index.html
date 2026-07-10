@@ -172,128 +172,86 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">MERITPOINT ACADEMY / CLASS 01</div>
-    <h1 style="color:#fff">Python for<br>AI Research</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">课程导入与第一个 Python Notebook</p>
-    <div class="grid2" style="grid-template-columns:1.05fr .95fr;align-items:center;margin-top:.8em">
-      <div>
-        <span class="pill" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.24)">当堂产出：首个可运行 Notebook</span>
-        <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右下角留言 · Python lab 可直接运行</p>
-      </div>
-      <img src="assets/course-overview.png" alt="Python for AI Research course overview" style="width:100%;max-height:430px;object-fit:contain;border-radius:10px;background:#fff;padding:10px">
-    </div>
-    <aside class="notes">开场目标：让学生知道这不是单纯语法课，而是用代码逐步完成可展示的 AI 科研项目。</aside>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 01</div>
+    <h1 style="color:#fff">Python for AI Research</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">Colab、print、变量、input 和第一个可运行 notebook</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">运行真实 Python 代码</div><p>运行真实 Python 代码</p></div><div class="skillcard"><div class="cn">读懂变量和输出</div><p>读懂变量和输出</p></div><div class="skillcard"><div class="cn">做一次有意义的修改</div><p>做一次有意义的修改</p></div></div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>
 </section>
-<section id="goals" data-sid="goals">
-<div class="kicker">TODAY</div>
-    <h2>今天这节课要完成三件事</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><span class="feature">1</span><h3>了解课程</h3><p>知道 15 节课怎样从 Python 走到 AI 科研项目。</p></div>
-      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>明确提交方式</h3><p>了解作业要求、提交节奏和 AI 使用规范。</p></div>
-      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>写出代码</h3><p>在浏览器或 Colab 里运行第一个 Python notebook。</p></div>
-    </div>
-    <div class="callout"><b>课堂节奏：</b>说明规则 -> 现场演示 -> 跟做练习 -> 提交一个小成果</div>
-    <aside class="notes">这一页用于建立预期：不是听完课就结束，每节课都要有一个可以提交的小成果。</aside>
+<section id="outputs" data-sid="outputs">
+<div class="kicker">TODAY'S OUTPUT</div><h2>完成并提交一个 Python 学习档案 notebook。</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>理解</h3><p>能用自己的话解释今天的 Python 概念。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>练习</h3><p>运行并修改课堂示例代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提交</h3><p>完成一个整洁 notebook，并加入一个小扩展。</p></div></div><aside class="notes">先给出本节课可见产出。</aside>
 </section>
-<section id="instructor-learning" data-sid="instructor-learning">
-<div class="kicker">FROM QIN REFERENCE · LEARNING MODE</div>
-    <h2>先认识这门课的学习方式</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><h3>老师怎么教</h3><ul><li>每节课都有可见产出</li><li>少背概念，多做练习</li><li>用真实代码训练科研表达</li></ul></div>
-      <div class="box"><h3>学生怎么学</h3><ul><li>课堂跟做，不怕报错</li><li>先预测，再运行</li><li>能解释自己的代码最重要</li></ul></div>
-      <div class="box"><h3>遇到报错</h3><p>报错不是失败，而是 Python 正在告诉你下一步要检查哪里。</p></div>
-    </div>
-    <div class="callout"><b>口令：</b>Read -> Predict -> Run -> Explain</div>
-    <aside class="notes">补入秦教授 Class 01 参考 deck 的学习方式页：强调跟做、预测、运行和解释。</aside>
+<section id="two-hour-pacing" data-sid="two-hour-pacing">
+<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div><aside class="notes">用于管理两小时课堂节奏。</aside>
 </section>
-<section id="learning-mode" data-sid="learning-mode">
-<div class="kicker">HOW WE LEARN</div>
-    <h2>先认识这门课的学习方式</h2>
-    <div class="grid3" style="margin-top:.6em">
-      <div class="skillcard"><div class="cn">少背概念</div><p>先跑起来，再解释为什么。</p></div>
-      <div class="skillcard"><div class="cn">小步提交</div><p>每节课都有一个可见产出。</p></div>
-      <div class="skillcard"><div class="cn">能讲清楚</div><p>能解释自己的代码比复制答案更重要。</p></div>
-    </div>
-    <blockquote>课堂里遇到报错很正常。关键不是不出错，而是能读懂、定位、修正。</blockquote>
-    <aside class="notes">提醒学生：代码错误不是失败，而是学习材料。后面遇到报错时，教师可以公开示范如何读错误信息。</aside>
+<section id="recap" data-sid="recap">
+<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div><aside class="notes">把今天内容连接到 15 节课路线。</aside>
 </section>
-<section id="course-map" data-sid="course-map">
-<div class="kicker">15-CLASS ROADMAP</div>
-    <h2>15 节课会完成一个完整 AI 科研闭环</h2>
-    <div class="tl">
-      <div class="ev"><div class="yr">1-4</div><b>Python 基础入门</b><span>notebook、控制流、函数、数据结构</span></div>
-      <div class="ev winter"><div class="yr">5-7</div><b>数据处理与分析</b><span>NumPy、pandas、清洗与变量说明</span></div>
-      <div class="ev"><div class="yr">8</div><b>可视化与 EDA</b><span>核心图表、观察和初步结论</span></div>
-      <div class="ev boom"><div class="yr">9-13</div><b>机器学习建模</b><span>baseline、模型训练、评价指标</span></div>
-      <div class="ev"><div class="yr">14-15</div><b>AI 科研项目实战</b><span>报告、PPT、展示与反思</span></div>
-    </div>
-    <aside class="notes">这一页解释课程结构，让学生知道每个阶段的产出如何连接到最终项目。</aside>
+<section id="warmup" data-sid="warmup">
+<div class="kicker">WARM-UP</div><h2>先预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3><ul><li>先猜输出</li><li>改一个小地方</li><li>重新运行并比较</li></ul></div><div class="box"><h3>教师提问</h3><ul><li>你预期输出是什么？</li><li>哪一行最可能出错？</li><li>第一步会改哪里？</li></ul></div></div><aside class="notes">预测让学生主动阅读代码。</aside>
 </section>
-<section id="deliverables" data-sid="deliverables">
-<div class="kicker">OUTPUTS</div>
-    <h2>每节课都有一个可以提交的小成果</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><span class="n">1</span><b>第一个 notebook</b><span>变量、print、注释、输入输出</span></div>
-      <div class="step"><span class="n">2</span><b>评分/分类小程序</b><span>if、for、while、逻辑判断</span></div>
-      <div class="step"><span class="n">3</span><b>函数 + 文件输出</b><span>参数、返回值、简单文件读写</span></div>
-      <div class="step"><span class="n">4</span><b>样本记录表</b><span>list、dict、set、基础统计</span></div>
-      <div class="step loop"><span class="n">5+</span><b>AI 科研项目</b><span>数据、建模、报告、展示</span></div>
-    </div>
-    <div class="callout"><b>作业原则：</b>能运行、能解释、能按时提交。</div>
-    <aside class="notes">如果学生问评分标准，强调持续产出和最终项目都重要。</aside>
+<section id="vocabulary" data-sid="vocabulary">
+<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Notebook</h3><p>混合代码、输出和说明的文档。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Variable</h3><p>保存值的名字。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>f-string</h3><p>把变量嵌入文字的写法。</p></div></div><aside class="notes">给学生解释代码的语言。</aside>
 </section>
-<section id="grading" data-sid="grading">
-<div class="kicker">GRADING</div>
-    <h2>评分标准看重持续产出和最终项目</h2>
-    <div class="grid2" style="margin-top:.65em">
-      <div class="box"><h3>35% 周度作业</h3><p>每节课的小成果、notebook 是否能运行、是否按时提交。</p></div>
-      <div class="box"><h3>20% 数据部分</h3><p>数据来源、变量说明、清洗记录、EDA 图表和观察。</p></div>
-      <div class="box"><h3>25% 建模部分</h3><p>模型选择、baseline 对比、评价指标和结果解释。</p></div>
-      <div class="box"><h3>20% 期末展示</h3><p>报告/PPT 是否清楚，是否能说明限制和改进方向。</p></div>
-    </div>
-    <aside class="notes">这一页可以快速讲，不要停留太久；重点是让学生知道平时作业不能拖到最后。</aside>
+<section id="mental-model" data-sid="mental-model">
+<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>print、变量、input 是今天的三块拼图；先知道它们各自解决什么问题。</div><aside class="notes">用心智模型降低语法记忆负担。</aside>
 </section>
-<section id="ai-policy-quiz" data-sid="ai-policy-quiz">
-<div class="kicker">AI USE POLICY</div>
+<section id="concept-1" data-sid="concept-1">
+<div class="kicker">CONCEPT 1</div><h2>print</h2><p class="lead">把结果显示出来，让人能读懂程序在做什么。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 print？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="concept-2" data-sid="concept-2">
+<div class="kicker">CONCEPT 2</div><h2>变量</h2><p class="lead">用有意义的名字保存一个值，后面可以重复使用。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 变量？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="concept-3" data-sid="concept-3">
+<div class="kicker">CONCEPT 3</div><h2>input</h2><p class="lead">从用户那里读取文字，需要计算时再做类型转换。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 input？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="syntax-pattern" data-sid="syntax-pattern">
+<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>name = "Lina"
+age = 16
+print(f"{name} is {age} years old.")</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div><aside class="notes">先读结构，再运行。</aside>
+</section>
+<section id="teacher-demo" data-sid="teacher-demo">
+<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>name = "Mia"
+topic = "AI research"
+hours = 3
+
+print(f"{name} is learning Python for {topic}.")
+print(f"Next week goal: {hours + 1} hours.")</code></pre><aside class="notes">先整体运行，再逐行解释。</aside>
+</section>
+<section id="trace-table" data-sid="trace-table">
+<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>这一行运行前有哪些值？</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>创建或改变了什么？</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>输出是否符合预测？</p></div></div><aside class="notes">训练调试和阅读代码能力。</aside>
+</section>
+<section id="prediction-quiz" data-sid="prediction-quiz">
+<div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="1">
-    <p class="qq">下面哪一种 AI 使用方式最符合这门课的要求？</p>
-    <div class="opts"><button class="opt" data-i="0">直接让 AI 写完作业，自己不运行也不解释</button><button class="opt" data-i="1">用 AI 帮忙理解报错，但提交前自己运行并解释代码</button><button class="opt" data-i="2">复制同学代码，再让 AI 改变量名</button></div>
-    <p class="quiz-exp">可以使用 AI 帮助理解和调试，但最终 notebook 必须能运行，并且你要能解释关键代码。</p>
+  <div class="quiz" data-correct="0">
+    <p class="qq">name = "Alex" 之后，name 里保存的值是什么？</p>
+    <div class="opts"><button class="opt" data-i="0">Alex</button><button class="opt" data-i="1">name</button><button class="opt" data-i="2">一个数字</button></div>
+    <p class="quiz-exp">等号右边的值会保存到左边的变量名中。</p>
   </div>
-  <aside class="notes">这里引导学生建立 AI 使用边界：AI 是学习助手，不是替代提交者。</aside>
+  <aside class="notes">快速形成性检查。</aside>
 </section>
-<section id="classroom" data-sid="classroom">
-<div class="kicker">SETUP</div>
-    <h2>加入 Google Classroom</h2>
-    <div class="flow" style="margin-top:.65em">
-      <div class="step"><span class="n">1</span><b>打开</b><span>classroom.google.com</span></div>
-      <div class="step"><span class="n">2</span><b>点击 +</b><span>Join class</span></div>
-      <div class="step"><span class="n">3</span><b>输入班级码</b><span>kday73zp</span></div>
-      <div class="step"><span class="n">4</span><b>确认栏目</b><span>Classwork / Assignments / Materials</span></div>
-    </div>
-    <div class="callout"><b>提交提醒：</b>作业统一交到 Google Classroom 的 Classwork -> Assignments。</div>
-    <aside class="notes">如果学生已经加入，可以让他们帮助旁边同学。教师确认大家都能看到课程主页。</aside>
+<section id="guided-practice-1" data-sid="guided-practice-1">
+<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box"><ul><li>只改一个变量或一条规则</li><li>重新运行并观察变化</li><li>把变化说给旁边同学听</li></ul></div><aside class="notes">一次只做一个小改动。</aside>
 </section>
-<section id="colab" data-sid="colab">
-<div class="kicker">COLAB</div>
-    <h2>Google Colab 是我们的云端 Python 教室</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><ul><li>不用安装 Python</li><li>浏览器里写代码</li><li>文件存在 Google Drive</li><li>方便提交 notebook 链接</li></ul></div>
-      <div class="box"><ul><li>新建 notebook</li><li>重命名为 Class01_FirstNotebook</li><li>运行第一个 code cell</li><li>从上到下重新运行检查</li></ul></div>
-    </div>
-    <p class="src">课堂演示地址：colab.research.google.com</p>
-    <aside class="notes">先演示一个最小 notebook：新建、重命名、插入 code cell、运行。</aside>
+<section id="guided-practice-2" data-sid="guided-practice-2">
+<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div><aside class="notes">每次修改都要能解释。</aside>
 </section>
-<section id="hello-lab" data-sid="hello-lab">
+<section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>第一段 Python：让程序说话</h2>
-  <p class="lead" style="margin:.1em 0 .25em">先不用安装任何软件，直接在这一页运行 Python。改掉文字，再点 Run。</p>
+  <h2>Profile Builder</h2>
+  <p class="lead" style="margin:.1em 0 .25em">修改变量值，运行代码，观察 f-string 如何把变量组合成句子。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false"># Class 01
-print("Hello, AI Research!")
-print("My first Python notebook is running.")</textarea>
+      <textarea class="code" spellcheck="false">name = "Lina"
+grade = 10
+interest = "computer vision"
+weekly_hours = 4
+
+print(f"My name is {name}.")
+print(f"I am in grade {grade}.")
+print(f"I want to explore {interest}.")
+print(f"This week I will study Python for {weekly_hours} hours.")</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -308,65 +266,35 @@ print("My first Python notebook is running.")</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">让学生先预测输出，再运行。然后把第二行文字改成自己的英文或中文句子。</aside>
+  </div><aside class="notes">两小时课堂的主要跟做实验。</aside>
 </section>
-<section id="print-practice" data-sid="print-practice">
-<div class="kicker">FROM QIN REFERENCE · PRINT</div>
-    <h2>print() 的括号里放什么，就显示什么</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>先预测输出</h3><pre style="font-size:.6em"><code>print("Python")
-print(2026)
-print("AI" + " Research")</code></pre></div>
-      <div class="box"><h3>再运行验证</h3><ul><li>会出现几行输出？</li><li>字符串拼接后是什么？</li><li>数字和文字显示有什么区别？</li></ul></div>
-    </div>
-    <div class="callout"><b>小习惯：</b>每段代码运行前，先在脑子里预测一次输出。</div>
-    <aside class="notes">来自秦教授 Class 01 参考 deck 的 print 练习页。</aside>
+<section id="mistake-clinic" data-sid="mistake-clinic">
+<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>缺少引号</h3><p>文字值需要引号。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>变量拼错</h3><p>topic 和 topics 是两个不同名字。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>没有重跑</h3><p>修改后要从上到下运行 notebook。</p></div></div><aside class="notes">把错误正常化，并给出修复路线。</aside>
 </section>
-<section id="string-number-trap" data-sid="string-number-trap">
-<div class="kicker">FROM QIN REFERENCE · COMMON ERROR</div>
-    <h2>字符串要加引号，数字不用加引号</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>可以运行</h3><pre style="font-size:.62em"><code>print("hello")
-print(100)
-print(3.14)</code></pre></div>
-      <div class="box"><h3>会报错</h3><pre style="font-size:.62em"><code>print(hello)</code></pre><p>Python 会以为 <code>hello</code> 是变量名，而不是文字。</p></div>
-    </div>
-    <aside class="notes">补入参考 deck 的字符串/数字常见错误页，适合现场制造并解释 NameError。</aside>
+<section id="debug-routine" data-sid="debug-routine">
+<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div><aside class="notes">每周重复这个调试流程。</aside>
 </section>
-<section id="variables" data-sid="variables">
-<div class="kicker">PYTHON BASICS</div>
-    <h2>变量像一个有名字的盒子</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><h3>name</h3><p>保存文字：<code>"Lina"</code></p></div>
-      <div class="box"><h3>age</h3><p>保存整数：<code>16</code></p></div>
-      <div class="box"><h3>hours</h3><p>保存小数：<code>3.5</code></p></div>
-    </div>
-    <div class="callout"><b>关键句：</b>变量名帮助我们在后面的代码中再次使用这个值。</div>
-    <aside class="notes">强调变量不是数学里的未知数，而是程序里的命名存储。</aside>
+<section id="pair-programming" data-sid="pair-programming">
+<div class="kicker">PAIR PROGRAMMING</div><h2>Driver 写代码，Navigator 读逻辑</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>输入并运行代码。</p></div><div class="box"><h3>Navigator</h3><p>预测输出并检查逻辑。</p></div></div><div class="callout"><b>5 分钟后交换角色。</b></div><aside class="notes">保持课堂参与度。</aside>
 </section>
-<section id="types-quiz" data-sid="types-quiz">
-<div class="kicker">DATA TYPES</div>
-  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="2">
-    <p class="qq">如果代码是 age = input("Age: ")，那么 age 默认是什么类型？</p>
-    <div class="opts"><button class="opt" data-i="0">int</button><button class="opt" data-i="1">float</button><button class="opt" data-i="2">str</button></div>
-    <p class="quiz-exp">input() 读到的内容默认是字符串 str。要做数学计算，需要 int(age) 或 float(age)。</p>
-  </div>
-  <aside class="notes">这道题为 mini profile 中的 int(input(...)) 做铺垫。</aside>
+<section id="mini-project-brief" data-sid="mini-project-brief">
+<div class="kicker">MINI PROJECT</div><h2>My Python Learning Profile</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>姓名、年级、研究兴趣、每周学习时间。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>用变量保存输入，需要数字时转换类型。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>打印清楚的学习档案和下周目标。</p></div></div><aside class="notes">把项目都讲成 input -&gt; process -&gt; output。</aside>
 </section>
-<section id="profile-lab" data-sid="profile-lab">
+<section id="mini-project-lab" data-sid="mini-project-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>Mini profile：输入、类型转换与 f-string</h2>
-  <p class="lead" style="margin:.1em 0 .25em">这个小程序会询问姓名、年龄、研究兴趣和每周学习时间，然后生成一段自我介绍。</p>
+  <h2>My Python Learning Profile Starter</h2>
+  <p class="lead" style="margin:.1em 0 .25em">从这里开始，再在自己的 notebook 里扩展。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
       <textarea class="code" spellcheck="false">name = input("Name: ")
-age = int(input("Age: "))
-topic = input("Research interest: ")
-hours = float(input("Weekly study hours: "))
+grade = input("Grade: ")
+interest = input("AI or data interest: ")
+hours = float(input("Weekly Python hours: "))
 
-print(f"{name}, age {age}, wants to study {topic}.")
-print(f"Next week goal: {hours + 1} hours.")</textarea>
+print("---- Learning Profile ----")
+print(f"Student: {name}, grade {grade}")
+print(f"Interest: {interest}")
+print(f"Next week goal: {hours + 1} hours")</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -381,52 +309,53 @@ print(f"Next week goal: {hours + 1} hours.")</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">提醒学生：age 使用 int，hours 使用 float。让他们把输出句子改得更自然。</aside>
+  </div><aside class="notes">独立项目 starter。</aside>
 </section>
-<section id="debug" data-sid="debug">
-<div class="kicker">DEBUGGING MINDSET</div>
-    <h2>报错不是终点，是线索</h2>
-    <div class="grid2" style="margin-top:.65em">
-      <div class="box"><h3>先读最后一行</h3><p>通常最后一行告诉你错误类型和最直接原因。</p></div>
-      <div class="box"><h3>再看行号</h3><p>定位是哪一行触发了问题，不要全篇乱改。</p></div>
-      <div class="box"><h3>小步重跑</h3><p>一次只改一个地方，确认修复是否有效。</p></div>
-      <div class="box"><h3>能解释再提交</h3><p>修好代码后，说清楚为什么错、怎么改。</p></div>
-    </div>
-    <aside class="notes">可以现场故意制造一个 ValueError 或 SyntaxError，让学生按这四步找线索。</aside>
+<section id="test-cases" data-sid="test-cases">
+<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>普通情况</h3><p>一个典型输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>边界情况</h3><p>刚好在阈值附近。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>自定义情况</h3><p>你自己的例子。</p></div></div><aside class="notes">测试能避免碰巧正确。</aside>
+</section>
+<section id="challenge-ladder" data-sid="challenge-ladder">
+<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div><aside class="notes">让不同速度的学生都有任务。</aside>
+</section>
+<section id="concept-check" data-sid="concept-check">
+<div class="kicker">CONCEPT CHECK</div>
+  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
+  <div class="quiz" data-correct="0">
+    <p class="qq">input() 默认返回什么类型？</p>
+    <div class="opts"><button class="opt" data-i="0">str</button><button class="opt" data-i="1">int</button><button class="opt" data-i="2">float</button></div>
+    <p class="quiz-exp">input() 返回字符串；需要数学计算时再用 int() 或 float()。</p>
+  </div>
+  <aside class="notes">独立练习前的理解检查。</aside>
+</section>
+<section id="independent-work" data-sid="independent-work">
+<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div><aside class="notes">这是主要独立练习时间。</aside>
+</section>
+<section id="explain-code" data-sid="explain-code">
+<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div><aside class="notes">解释也是作业的一部分。</aside>
+</section>
+<section id="notebook-hygiene" data-sid="notebook-hygiene">
+<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>从上到下能运行</li><li>变量名可读</li><li>删掉无关草稿</li><li>输出清楚</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 句 Markdown 说明</li><li>解释输入和输出</li><li>标出自己的扩展</li><li>写一个问题</li></ul></div></div><aside class="notes">预留整理时间。</aside>
+</section>
+<section id="ai-helper" data-sid="ai-helper">
+<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3><ul><li>像初学者一样解释这个错误</li><li>给我一道类似练习题</li><li>先给提示，不要直接给答案</li></ul></div><div class="box"><h3>避免</h3><ul><li>直接写完整作业</li><li>改同学代码当成自己的</li><li>提交自己不能解释的代码</li></ul></div></div><aside class="notes">让 AI 使用服务于学习。</aside>
+</section>
+<section id="rubric" data-sid="rubric">
+<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div><aside class="notes">明确期待。</aside>
 </section>
 <section id="homework" data-sid="homework">
-<div class="kicker">HOMEWORK</div>
-    <h2>课后作业：变量与输出练习</h2>
-    <div class="grid2" style="grid-template-columns:1.2fr .8fr;margin-top:.65em">
-      <div class="box"><ul><li>完成 8-10 个变量与输出练习</li><li>至少包含 str、int、float、bool 三类数据</li><li>至少写 3-5 行 print 输出</li><li>加入 2-3 行注释说明代码意图</li><li>从上到下重新运行，确认没有错误</li></ul></div>
-      <div class="box"><h3>提交位置</h3><p>Google Classroom -> Classwork -> Class 01 Assignment</p><h3>提交内容</h3><p>Google Colab notebook 链接</p></div>
-    </div>
-    <aside class="notes">最后确认学生知道在哪里交作业，以及 notebook 链接权限需要可访问。</aside>
+<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box"><ul><li>完成 starter task</li><li>加入一个自己的扩展</li><li>从上到下运行所有 cells</li><li>写 3-5 句话解释代码</li><li>提交 Colab notebook 链接</li></ul></div><aside class="notes">作业要可完成，但不能只是复制。</aside>
+</section>
+<section id="submission-checklist" data-sid="submission-checklist">
+<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div><aside class="notes">减少坏链接和无法运行的提交。</aside>
 </section>
 <section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div>
-    <h2>离开教室前，完成一个小检查</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="skillcard"><div class="cn">我能运行</div><p>运行 hello lab 或 Colab 第一段代码。</p></div>
-      <div class="skillcard"><div class="cn">我能修改</div><p>把变量值改成自己的信息。</p></div>
-      <div class="skillcard"><div class="cn">我能解释</div><p>说出 print、变量、input 的作用。</p></div>
-    </div>
-    <div class="callout"><b>留言任务：</b>点右下角 Comment，写下今天最清楚的一点，或一个还没解决的问题。</div>
-    <div class="prof-quote">
-    <div class="label"><span class="lang-zh">商博老师 · 朗读 / 解释</span><span class="lang-en">Professor Shangbo · Quote / Explanation</span></div>
-    <blockquote>
-      <span class="lang-zh">第一段代码不需要很长；它只需要证明一件事：你可以让计算机听懂你的指令。</span>
-      <span class="lang-en">Your first program does not need to be long; it only needs to prove one thing: you can make the computer understand your instructions.</span>
-    </blockquote>
-    <p class="explain">
-      <span class="lang-zh">今天的重点不是背语法，而是建立信心：能运行、能修改、能解释，就是进入 Python 的第一步。</span>
-      <span class="lang-en">The point today is not memorizing syntax. It is building confidence: run it, change it, and explain it.</span>
-    </p>
-    <button class="speak" data-text-zh="第一段代码不需要很长；它只需要证明一件事：你可以让计算机听懂你的指令。 今天的重点不是背语法，而是建立信心：能运行、能修改、能解释，就是进入 Python 的第一步。" data-text-en="Your first program does not need to be long; it only needs to prove one thing: you can make the computer understand your instructions. The point today is not memorizing syntax. It is building confidence: run it, change it, and explain it.">
-      <span class="lang-zh">朗读这段话</span><span class="lang-en">Read this aloud</span>
-    </button>
-  </div>
-    <aside class="notes">用留言收集课堂反馈。如果是 GitHub Pages 静态部署，评论功能会降级；本地 server 或后端部署时可持久保存。</aside>
+<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div><aside class="notes">收集快速反馈。</aside>
+</section>
+<section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">先运行，再修改，最后能解释。</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">一句话收束。</aside>
+</section>
+<section id="buffer" data-sid="buffer">
+<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>需要帮助</h3><p>展示最后一行错误。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>快完成了</h3><p>向同伴解释代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提前完成</h3><p>完成 Level 3 并写改进想法。</p></div></div><aside class="notes">两小时课堂的收尾缓冲页。</aside>
 </section>
 </div></div>
 
@@ -467,12 +396,24 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * The full English course lives in python-ai-en. This button navigates to
- * the matching lesson instead of pretending the current slide is translated. */
+ * Switch to the matching lesson in the other language and preserve the
+ * current horizontal slide index. IDs differ between old decks, but index
+ * stays stable now that both languages use the same 35-slide structure. */
 const langBtn=document.getElementById('langBtn');
 const ALT_DECK_URL="../../python-ai-en/lesson-01/";
-langBtn.textContent='EN';
-langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
+langBtn.textContent="EN";
+function currentSlideIndex(){
+  if(window.Reveal&&Reveal.getIndices){
+    const idx=Reveal.getIndices();
+    if(idx&&typeof idx.h==='number') return idx.h;
+  }
+  const hashMatch=location.hash.match(/^#/(d+)/);
+  if(hashMatch) return Number(hashMatch[1]);
+  const slides=[...document.querySelectorAll('.slides > section')];
+  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+  return Math.max(0, slides.indexOf(cur));
+}
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused

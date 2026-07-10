@@ -171,166 +171,52 @@ body.reveal-fallback .slides section{position:static!important;display:none!impo
 body.reveal-fallback .slides section.present,body.reveal-fallback .slides section:first-child{display:block!important}
 </style></head><body>
 <div class="reveal"><div class="slides">
-<section id="class02-title" data-sid="class02-title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 02</div>
-    <h1 style="color:#fff">Python<br>Control Flow</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">条件判断、循环与程序选择路径</p>
-    <div class="grid3" style="margin-top:1em">
-      <div class="skillcard"><div class="cn">判断</div><p>if / elif / else</p></div>
-      <div class="skillcard"><div class="cn">重复</div><p>for / while / range</p></div>
-      <div class="skillcard"><div class="cn">控制</div><p>break / continue</p></div>
-    </div>
-    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右下角留言 · Python lab 可直接运行</p>
-    <aside class="notes">第 2 课核心：让学生从顺序执行转向选择执行。保持先预测、再运行、再解释的节奏。</aside>
+<section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 02</div>
+    <h1 style="color:#fff">Python Control Flow</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">条件、分支、循环和程序路径选择</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">预测 True / False 路径</div><p>预测 True / False 路径</p></div><div class="skillcard"><div class="cn">写出 if / elif / else</div><p>写出 if / elif / else</p></div><div class="skillcard"><div class="cn">用 for / while 减少重复</div><p>用 for / while 减少重复</p></div></div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>
 </section>
-<section id="class02-goals" data-sid="class02-goals">
-<div class="kicker">TODAY'S OUTPUT</div>
-    <h2>今天完成一个会做判断的小程序</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><span class="feature">1</span><h3>预测路径</h3><p>能说出条件为 True / False 时哪几行会执行。</p></div>
-      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>写出分支</h3><p>用 if / elif / else 完成二分类或三分类。</p></div>
-      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>写出循环</h3><p>用 for / while 减少重复，并控制何时停止。</p></div>
-    </div>
-    <div class="callout"><b>课堂产出：</b>硬币兑换、正负数判断、循环打印和一个评分/分类练习。</div>
-    <aside class="notes">明确产出后，学生会更容易理解每个语法点服务于什么任务。</aside>
+<section id="outputs" data-sid="outputs">
+<div class="kicker">TODAY'S OUTPUT</div><h2>完成一个会根据规则做判断的小程序。</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>理解</h3><p>能用自己的话解释今天的 Python 概念。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>练习</h3><p>运行并修改课堂示例代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提交</h3><p>完成一个整洁 notebook，并加入一个小扩展。</p></div></div><aside class="notes">先给出本节课可见产出。</aside>
 </section>
-<section id="coin-lab" data-sid="coin-lab">
-<div class="kicker">WARM-UP LAB</div>
-  <h2>87 cents：// 和 % 的真实用途</h2>
-  <p class="lead" style="margin:.1em 0 .25em">先预测 quarters、dimes、pennies 的数量，再运行代码验证。</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">cents = 87
-
-quarters = cents // 25
-left_after_quarters = cents % 25
-dimes = left_after_quarters // 10
-pennies = left_after_quarters % 10
-
-print(f"Input: {cents} cents")
-print(f"{quarters} quarters")
-print(f"{dimes} dime(s)")
-print(f"{pennies} pennies")</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">用第 1 课的整除和取余引出控制流：程序需要根据余数继续做下一步。</aside>
+<section id="two-hour-pacing" data-sid="two-hour-pacing">
+<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div><aside class="notes">用于管理两小时课堂节奏。</aside>
 </section>
-<section id="coin-discussion" data-sid="coin-discussion">
-<div class="kicker">FROM QIN REFERENCE · ASSIGNMENT DISCUSSION</div>
-    <h2>硬币找零：quotient 和 remainder 配合工作</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><div class="n">1</div><b>Quarters</b><span><code>quarters = cents // 25</code></span></div>
-      <div class="step"><div class="n">2</div><b>Left over</b><span><code>cents = cents % 25</code></span></div>
-      <div class="step"><div class="n">3</div><b>Dimes</b><span><code>dimes = cents // 10</code></span></div>
-      <div class="step loop"><div class="n">4</div><b>Repeat</b><span>每种硬币都重复“最多几个 + 剩多少”</span></div>
-    </div>
-    <div class="callout"><b>关键模型：</b><code>//</code> 问“最多能拿几个”；<code>%</code> 问“拿完以后还剩多少”。</div>
-    <aside class="notes">源 deck 前 2-9 页逐步展开 coin change，这里合并成一页清晰模型。</aside>
+<section id="recap" data-sid="recap">
+<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div><aside class="notes">把今天内容连接到 15 节课路线。</aside>
 </section>
-<section id="if-mental-model" data-sid="if-mental-model">
-<div class="kicker">IF STATEMENT</div>
-    <h2>if 让程序选择是否进入一个代码块</h2>
-    <div class="flow" style="margin-top:.7em">
-      <div class="step"><div class="n">1</div><b>Evaluate</b><span>条件表达式得到 True 或 False</span></div>
-      <div class="step"><div class="n">2</div><b>Enter or skip</b><span>True 执行缩进代码块，False 跳过</span></div>
-      <div class="step"><div class="n">3</div><b>Continue</b><span>代码块结束后继续往下走</span></div>
-    </div>
-    <pre style="font-size:.48em;margin-top:.7em"><code>if number &gt; 0:
-    print("positive")
-print("always runs")</code></pre>
-    <aside class="notes">强调缩进是 Python 的结构，不是排版。让学生用手指出哪些行属于 if。</aside>
+<section id="warmup" data-sid="warmup">
+<div class="kicker">WARM-UP</div><h2>先预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3><ul><li>先猜输出</li><li>改一个小地方</li><li>重新运行并比较</li></ul></div><div class="box"><h3>教师提问</h3><ul><li>你预期输出是什么？</li><li>哪一行最可能出错？</li><li>第一步会改哪里？</li></ul></div></div><aside class="notes">预测让学生主动阅读代码。</aside>
 </section>
-<section id="if-syntax-anatomy" data-sid="if-syntax-anatomy">
-<div class="kicker">FROM QIN REFERENCE · IF SYNTAX</div>
-    <h2>if statement 的语法拆解</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>if</h3><p>告诉 Python：接下来要做一次条件判断。</p></div>
-      <div class="box"><h3>condition</h3><p>必须能算出 <code>True</code> 或 <code>False</code>。</p></div>
-      <div class="box"><h3>:</h3><p>冒号表示 header 结束，下一行进入代码块。</p></div>
-    </div>
-    <pre style="font-size:.52em;margin-top:.65em"><code>if number &gt; 0:
-    print("positive")</code></pre>
-    <aside class="notes">源 deck 10-12 页逐步标注 if / condition / body / colon。</aside>
+<section id="vocabulary" data-sid="vocabulary">
+<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Boolean</h3><p>True 或 False 的值。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Branch</h3><p>程序选择的一条路径。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Loop</h3><p>重复执行的代码结构。</p></div></div><aside class="notes">给学生解释代码的语言。</aside>
 </section>
-<section id="boolean-expressions" data-sid="boolean-expressions">
-<div class="kicker">BOOLEAN EXPRESSIONS</div>
-    <h2>条件表达式的结果只有 True 或 False</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>比较</h3><p><code>x &gt; 0</code>, <code>x == 10</code>, <code>x != 0</code></p></div>
-      <div class="box"><h3>组合</h3><p><code>and</code> 两边都要 True；<code>or</code> 至少一个 True。</p></div>
-      <div class="box"><h3>取反</h3><p><code>not finished</code> 把 True/False 反过来。</p></div>
-    </div>
-    <div class="callout"><b>调试技巧：</b>不确定条件是否成立时，先 <code>print(condition)</code>。</div>
-    <aside class="notes">把源 deck 的 Boolean expression 说明展开成可操作的调试方法。</aside>
+<section id="mental-model" data-sid="mental-model">
+<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>条件表达式、分支、循环 是今天的三块拼图；先知道它们各自解决什么问题。</div><aside class="notes">用心智模型降低语法记忆负担。</aside>
 </section>
-<section id="indent-quiz" data-sid="indent-quiz">
-<div class="kicker">INDENTATION</div>
-  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="1">
-    <p class="qq">在 Python 里，哪件事决定一行代码是否属于 if 代码块？</p>
-    <div class="opts"><button class="opt" data-i="0">括号数量</button><button class="opt" data-i="1">缩进层级</button><button class="opt" data-i="2">变量名长度</button><button class="opt" data-i="3">代码颜色</button></div>
-    <p class="quiz-exp">Python 用缩进表示代码块。缩进不同，程序逻辑就可能完全不同。</p>
-  </div>
-  <aside class="notes">可以现场把 print('always runs') 缩进进去，再让学生预测输出变化。</aside>
+<section id="concept-1" data-sid="concept-1">
+<div class="kicker">CONCEPT 1</div><h2>条件表达式</h2><p class="lead">结果只有 True 或 False。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 条件表达式？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
 </section>
-<section id="branching" data-sid="branching">
-<div class="kicker">IF / ELIF / ELSE</div>
-    <h2>多分支判断：只选择一条路径</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>二分支</h3><ul><li>if 条件成立：走第一条路</li><li>否则 else：走备用路线</li><li>适合 pass / fail、yes / no</li></ul></div>
-      <div class="box"><h3>多分支</h3><ul><li>先检查 if</li><li>再逐个检查 elif</li><li>都不满足时走 else</li><li>适合 positive / negative / zero</li></ul></div>
-    </div>
-    <div class="callout"><b>口诀：</b>从上到下检查，遇到第一个 True 就执行，然后离开整组分支。</div>
-    <aside class="notes">用 number = 5、-2、0 三个例子，让学生分别说出路径。</aside>
+<section id="concept-2" data-sid="concept-2">
+<div class="kicker">CONCEPT 2</div><h2>分支</h2><p class="lead">根据条件选择一条代码路径。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 分支？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
 </section>
-<section id="elif-ladder" data-sid="elif-ladder">
-<div class="kicker">FROM QIN REFERENCE · MULTIPLE ALTERNATIVES</div>
-    <h2>elif ladder：多条路里只走一条</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><div class="n">1</div><b>if</b><span>先检查最重要或最具体的条件</span></div>
-      <div class="step"><div class="n">2</div><b>elif</b><span>前面没命中，再检查下一种情况</span></div>
-      <div class="step"><div class="n">3</div><b>else</b><span>所有条件都不满足时的默认出口</span></div>
-    </div>
-    <pre style="font-size:.5em;margin-top:.65em"><code>if score &gt;= 90:
-    grade = "A"
-elif score &gt;= 80:
-    grade = "B"
+<section id="concept-3" data-sid="concept-3">
+<div class="kicker">CONCEPT 3</div><h2>循环</h2><p class="lead">让同一段逻辑重复执行。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 循环？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="syntax-pattern" data-sid="syntax-pattern">
+<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>score = 86
+if score &gt;= 90:
+    label = "excellent"
+elif score &gt;= 70:
+    label = "good"
 else:
-    grade = "Needs practice"</code></pre>
-    <aside class="notes">源 deck 25-27 页强调多分支选择，这里转成 grading 场景。</aside>
+    label = "practice more"
+print(label)</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div><aside class="notes">先读结构，再运行。</aside>
 </section>
-<section id="conditional-expression" data-sid="conditional-expression">
-<div class="kicker">FROM QIN REFERENCE · ONE-LINE IF</div>
-    <h2>简单赋值可以写成 conditional expression</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>普通写法</h3><pre style="font-size:.54em"><code>if score &gt;= 60:
-    result = "pass"
-else:
-    result = "retry"</code></pre></div>
-      <div class="box"><h3>一行写法</h3><pre style="font-size:.54em"><code>result = "pass" if score &gt;= 60 else "retry"</code></pre><p>适合非常短、非常清楚的选择。</p></div>
-    </div>
-    <div class="callout"><b>课堂建议：</b>初学时先写普通 if/else；看懂以后再用一行写法。</div>
-    <aside class="notes">源 deck 28-29 页讲 one-line if/conditional assignment。</aside>
-</section>
-<section id="classify-lab" data-sid="classify-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>正数、负数、零：三分类判断</h2>
-  <p class="lead" style="margin:.1em 0 .25em">改动 numbers 列表里的值，观察每个输入如何走到不同分支。</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">numbers = [5, -2, 0]
+<section id="teacher-demo" data-sid="teacher-demo">
+<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>numbers = [5, -2, 0]
 
 for number in numbers:
     if number &gt; 0:
@@ -339,121 +225,31 @@ for number in numbers:
         label = "negative"
     else:
         label = "zero"
-    print(f"{number}: {label}")</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">这里避免 input，让浏览器实验可以直接运行。学生可以把列表改成自己的测试值。</aside>
+    print(f"{number}: {label}")</code></pre><aside class="notes">先整体运行，再逐行解释。</aside>
 </section>
-<section id="range-model" data-sid="range-model">
-<div class="kicker">FOR LOOP</div>
-    <h2>for loop 适合已知次数或已知序列</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>range(5)</h3><p>0, 1, 2, 3, 4</p></div>
-      <div class="box"><h3>range(-10, 11)</h3><p>-10 到 10，包含 -10，不包含 11</p></div>
-      <div class="box"><h3>range(0, 10, 2)</h3><p>0, 2, 4, 6, 8</p></div>
-    </div>
-    <div class="callout"><b>stop 不包含：</b>这是 range 最常见的边界错误。</div>
-    <aside class="notes">让学生先写出 range(-10, 11) 的第一个和最后一个数字，再运行验证。</aside>
+<section id="trace-table" data-sid="trace-table">
+<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>这一行运行前有哪些值？</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>创建或改变了什么？</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>输出是否符合预测？</p></div></div><aside class="notes">训练调试和阅读代码能力。</aside>
 </section>
-<section id="for-syntax-anatomy" data-sid="for-syntax-anatomy">
-<div class="kicker">FROM QIN REFERENCE · FOR LOOP SYNTAX</div>
-    <h2>for loop 的语法拆解</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>loop variable</h3><p><code>for number in numbers</code> 里的 <code>number</code> 每次接住一个值。</p></div>
-      <div class="box"><h3>sequence</h3><p>可以是 <code>range(...)</code>、list、string 或其他可遍历对象。</p></div>
-      <div class="box"><h3>body</h3><p>缩进部分会对每个值执行一次。</p></div>
-    </div>
-    <pre style="font-size:.52em;margin-top:.65em"><code>for number in [2, 4, 6]:
-    print(number * 10)</code></pre>
-    <aside class="notes">源 deck 31 之后逐步进入 for loop，这里补充 syntax anatomy。</aside>
-</section>
-<section id="remove-repetition" data-sid="remove-repetition">
-<div class="kicker">FROM QIN REFERENCE · WHY LOOPS</div>
-    <h2>loop 的价值：去掉重复代码</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>重复写法</h3><pre style="font-size:.54em"><code>print(scores[0])
-print(scores[1])
-print(scores[2])</code></pre></div>
-      <div class="box"><h3>循环写法</h3><pre style="font-size:.54em"><code>for score in scores:
-    print(score)</code></pre><p>数据多一百个，也不用多写一百行。</p></div>
-    </div>
-    <div class="callout"><b>判断标准：</b>看到相似代码重复三次，就应该想想能不能用 loop。</div>
-    <aside class="notes">源 deck 48 页强调 loops remove repetitive code。</aside>
-</section>
-<section id="accumulator-pattern" data-sid="accumulator-pattern">
-<div class="kicker">LOOP PATTERN</div>
-    <h2>accumulator：循环里逐步累加结果</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><div class="n">1</div><b>Initialize</b><span><code>total = 0</code></span></div>
-      <div class="step"><div class="n">2</div><b>Update</b><span><code>total += score</code></span></div>
-      <div class="step"><div class="n">3</div><b>Use result</b><span><code>average = total / len(scores)</code></span></div>
-    </div>
-    <div class="callout"><b>常见用途：</b>sum、count、maximum、minimum 都是 accumulator pattern。</div>
-    <aside class="notes">补足 for loop 从打印走向统计的关键模式。</aside>
-</section>
-<section id="range-quiz" data-sid="range-quiz">
-<div class="kicker">RANGE</div>
+<section id="prediction-quiz" data-sid="prediction-quiz">
+<div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="0">
-    <p class="qq">list(range(0, 5)) 的结果是什么？</p>
-    <div class="opts"><button class="opt" data-i="0">[0, 1, 2, 3, 4]</button><button class="opt" data-i="1">[1, 2, 3, 4, 5]</button><button class="opt" data-i="2">[0, 1, 2, 3, 4, 5]</button><button class="opt" data-i="3">[5]</button></div>
-    <p class="quiz-exp">range 的 stop 是 exclusive，不包含 5。</p>
+  <div class="quiz" data-correct="1">
+    <p class="qq">Python 用什么决定一行是否属于 if 代码块？</p>
+    <div class="opts"><button class="opt" data-i="0">括号</button><button class="opt" data-i="1">缩进</button><button class="opt" data-i="2">颜色</button></div>
+    <p class="quiz-exp">Python 用缩进表示代码块。</p>
   </div>
-  <aside class="notes">如果学生混淆，可以和切片、半开区间做类比。</aside>
+  <aside class="notes">快速形成性检查。</aside>
 </section>
-<section id="while-model" data-sid="while-model">
-<div class="kicker">WHILE LOOP</div>
-    <h2>while 适合“不知道要重复几次”的任务</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>for</h3><ul><li>遍历已知序列</li><li>通常知道循环范围</li><li>例如检查 scores 列表</li></ul></div>
-      <div class="box"><h3>while</h3><ul><li>只要条件为 True 就继续</li><li>适合输入验证</li><li>必须设计终止条件</li></ul></div>
-    </div>
-    <pre style="font-size:.46em;margin-top:.6em"><code>count = 3
-while count &gt; 0:
-    print(count)
-    count -= 1</code></pre>
-    <aside class="notes">无限循环是重点风险：每次讲 while 都要问，这个条件什么时候会变成 False？</aside>
+<section id="guided-practice-1" data-sid="guided-practice-1">
+<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box"><ul><li>只改一个变量或一条规则</li><li>重新运行并观察变化</li><li>把变化说给旁边同学听</li></ul></div><aside class="notes">一次只做一个小改动。</aside>
 </section>
-<section id="while-checklist" data-sid="while-checklist">
-<div class="kicker">FROM QIN REFERENCE · WHILE LOOP</div>
-    <h2>写 while loop 前先检查三件事</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>Start</h3><p>循环开始前，控制变量是什么？</p></div>
-      <div class="box"><h3>Stop</h3><p>什么条件下应该停止？条件写反了吗？</p></div>
-      <div class="box"><h3>Update</h3><p>循环体里有没有改变控制变量？</p></div>
-    </div>
-    <pre style="font-size:.52em;margin-top:.65em"><code>count = 3
-while count &gt; 0:
-    print(count)
-    count -= 1</code></pre>
-    <aside class="notes">源 deck 56 之后进入 while loop，这里提炼成 checklist。</aside>
+<section id="guided-practice-2" data-sid="guided-practice-2">
+<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div><aside class="notes">每次修改都要能解释。</aside>
 </section>
-<section id="break-continue" data-sid="break-continue">
-<div class="kicker">BREAK / CONTINUE</div>
-    <h2>两个词，控制循环的节奏</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
-      <div class="box"><h3>break</h3><p>提前结束整个循环。常用于“已经找到了，不用继续”。</p></div>
-      <div class="box"><h3>continue</h3><p>跳过当前这一轮剩下的代码，直接进入下一轮。</p></div>
-    </div>
-    <div class="callout"><b>课堂问法：</b>它是离开整个循环，还是只跳过这一次？</div>
-    <aside class="notes">用 0-9 只打印奇数的例子解释 continue；用找到第一个合格分数解释 break。</aside>
-</section>
-<section id="grading-lab" data-sid="grading-lab">
+<section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>评分/分类程序：分支 + 循环</h2>
-  <p class="lead" style="margin:.1em 0 .25em">这是本课作业的雏形。改分数、改等级边界，再运行观察输出。</p>
+  <h2>Score Classifier</h2>
+  <p class="lead" style="margin:.1em 0 .25em">修改分数列表，观察不同条件路径如何影响输出。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
       <textarea class="code" spellcheck="false">scores = [42, 50, 67, 81, 93]
@@ -467,13 +263,7 @@ for score in scores:
         grade = "good"
     else:
         grade = "excellent"
-    print(f"{score} -&gt; {grade}")
-
-print("Odd numbers from 0 to 9:")
-for i in range(10):
-    if i % 2 == 0:
-        continue
-    print(i)</textarea>
+    print(f"{score} -&gt; {grade}")</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -488,41 +278,97 @@ for i in range(10):
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">让学生选择成绩、风险、温度或学习时间建议作为作业主题。</aside>
+  </div><aside class="notes">两小时课堂的主要跟做实验。</aside>
 </section>
-<section id="class02-homework" data-sid="class02-homework">
-<div class="kicker">HOMEWORK</div>
-    <h2>课后作业：写一个简单评分/分类程序</h2>
-    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
-      <div class="box"><ul><li>必须包含至少一个 if / elif / else</li><li>至少测试 3 个不同输入，并保留输出结果</li><li>主题可以是成绩等级、风险等级、温度分类或学习时间建议</li><li>写 3-5 句话解释你的判断规则</li><li>说明哪些边界输入最容易出错</li></ul></div>
-      <div class="box"><h3>检查重点</h3><p>边界是否清楚，例如 50 分到底算 pass 还是 fail。</p><h3>提交</h3><p>Google Classroom -> Classwork -> Assignments</p></div>
-    </div>
-    <aside class="notes">强调边界测试：刚好等于阈值的输入最能暴露逻辑问题。</aside>
+<section id="mistake-clinic" data-sid="mistake-clinic">
+<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>漏写冒号</h3><p>if / elif / else 行末需要冒号。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>缩进不一致</h3><p>同一代码块要保持相同缩进。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>边界条件漏掉</h3><p>检查等于阈值时走哪条路。</p></div></div><aside class="notes">把错误正常化，并给出修复路线。</aside>
 </section>
-<section id="class02-exit" data-sid="class02-exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div>
-    <h2>离开前确认三件事</h2>
-    <div class="grid3" style="margin-top:.75em">
-      <div class="skillcard"><div class="cn">我能预测</div><p>判断 True / False 后程序走哪条路。</p></div>
-      <div class="skillcard"><div class="cn">我能循环</div><p>用 range 或列表让代码重复执行。</p></div>
-      <div class="skillcard"><div class="cn">我能控制</div><p>说出 break 和 continue 的区别。</p></div>
+<section id="debug-routine" data-sid="debug-routine">
+<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div><aside class="notes">每周重复这个调试流程。</aside>
+</section>
+<section id="pair-programming" data-sid="pair-programming">
+<div class="kicker">PAIR PROGRAMMING</div><h2>Driver 写代码，Navigator 读逻辑</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>输入并运行代码。</p></div><div class="box"><h3>Navigator</h3><p>预测输出并检查逻辑。</p></div></div><div class="callout"><b>5 分钟后交换角色。</b></div><aside class="notes">保持课堂参与度。</aside>
+</section>
+<section id="mini-project-brief" data-sid="mini-project-brief">
+<div class="kicker">MINI PROJECT</div><h2>Rule-Based Classifier</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>一组分数、价格、年龄或测量值。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>用 if / elif / else 写出清楚规则，用循环处理每个值。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>输出每个输入对应的分类标签。</p></div></div><aside class="notes">把项目都讲成 input -&gt; process -&gt; output。</aside>
+</section>
+<section id="mini-project-lab" data-sid="mini-project-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>Rule-Based Classifier Starter</h2>
+  <p class="lead" style="margin:.1em 0 .25em">从这里开始，再在自己的 notebook 里扩展。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">values = [12, 25, 40, 65]
+
+for value in values:
+    if value &lt; 20:
+        label = "low"
+    elif value &lt; 50:
+        label = "medium"
+    else:
+        label = "high"
+    print(value, "-&gt;", label)</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
     </div>
-    <div class="callout"><b>留言任务：</b>点右下角 Comment，写一个今天最容易混淆的边界情况。</div>
-    <div class="prof-quote">
-    <div class="label"><span class="lang-zh">商博老师 · 朗读 / 解释</span><span class="lang-en">Professor Shangbo · Quote / Explanation</span></div>
-    <blockquote>
-      <span class="lang-zh">程序的分支像一次选择：先问清楚条件，再让代码沿着唯一的路径走下去。</span>
-      <span class="lang-en">A branch in a program is a choice: ask the condition clearly, then let the code follow one path.</span>
-    </blockquote>
-    <p class="explain">
-      <span class="lang-zh">判断题、循环题最容易错在边界。每写一个条件，都要测试刚好等于阈值的情况。</span>
-      <span class="lang-en">Most control-flow bugs live at the boundary. Whenever you write a condition, test the exact cutoff.</span>
-    </p>
-    <button class="speak" data-text-zh="程序的分支像一次选择：先问清楚条件，再让代码沿着唯一的路径走下去。 判断题、循环题最容易错在边界。每写一个条件，都要测试刚好等于阈值的情况。" data-text-en="A branch in a program is a choice: ask the condition clearly, then let the code follow one path. Most control-flow bugs live at the boundary. Whenever you write a condition, test the exact cutoff.">
-      <span class="lang-zh">朗读这段话</span><span class="lang-en">Read this aloud</span>
-    </button>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">独立项目 starter。</aside>
+</section>
+<section id="test-cases" data-sid="test-cases">
+<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>普通情况</h3><p>一个典型输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>边界情况</h3><p>刚好在阈值附近。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>自定义情况</h3><p>你自己的例子。</p></div></div><aside class="notes">测试能避免碰巧正确。</aside>
+</section>
+<section id="challenge-ladder" data-sid="challenge-ladder">
+<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div><aside class="notes">让不同速度的学生都有任务。</aside>
+</section>
+<section id="concept-check" data-sid="concept-check">
+<div class="kicker">CONCEPT CHECK</div>
+  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
+  <div class="quiz" data-correct="0">
+    <p class="qq">for loop 最适合做什么？</p>
+    <div class="opts"><button class="opt" data-i="0">重复处理一组值</button><button class="opt" data-i="1">只显示标题</button><button class="opt" data-i="2">删除 notebook</button></div>
+    <p class="quiz-exp">for loop 让同一段逻辑依次处理多个值。</p>
   </div>
-    <aside class="notes">收集学生对 range 边界、elif 顺序、while 终止条件的困惑。</aside>
+  <aside class="notes">独立练习前的理解检查。</aside>
+</section>
+<section id="independent-work" data-sid="independent-work">
+<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div><aside class="notes">这是主要独立练习时间。</aside>
+</section>
+<section id="explain-code" data-sid="explain-code">
+<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div><aside class="notes">解释也是作业的一部分。</aside>
+</section>
+<section id="notebook-hygiene" data-sid="notebook-hygiene">
+<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>从上到下能运行</li><li>变量名可读</li><li>删掉无关草稿</li><li>输出清楚</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 句 Markdown 说明</li><li>解释输入和输出</li><li>标出自己的扩展</li><li>写一个问题</li></ul></div></div><aside class="notes">预留整理时间。</aside>
+</section>
+<section id="ai-helper" data-sid="ai-helper">
+<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3><ul><li>像初学者一样解释这个错误</li><li>给我一道类似练习题</li><li>先给提示，不要直接给答案</li></ul></div><div class="box"><h3>避免</h3><ul><li>直接写完整作业</li><li>改同学代码当成自己的</li><li>提交自己不能解释的代码</li></ul></div></div><aside class="notes">让 AI 使用服务于学习。</aside>
+</section>
+<section id="rubric" data-sid="rubric">
+<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div><aside class="notes">明确期待。</aside>
+</section>
+<section id="homework" data-sid="homework">
+<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box"><ul><li>完成一个分类小程序</li><li>至少包含 3 条规则</li><li>至少处理 5 个输入</li><li>解释一个边界条件</li><li>提交 notebook 链接</li></ul></div><aside class="notes">作业要可完成，但不能只是复制。</aside>
+</section>
+<section id="submission-checklist" data-sid="submission-checklist">
+<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div><aside class="notes">减少坏链接和无法运行的提交。</aside>
+</section>
+<section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
+<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div><aside class="notes">收集快速反馈。</aside>
+</section>
+<section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">控制流让程序不只会往下走，还会做选择。</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">一句话收束。</aside>
+</section>
+<section id="buffer" data-sid="buffer">
+<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>需要帮助</h3><p>展示最后一行错误。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>快完成了</h3><p>向同伴解释代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提前完成</h3><p>完成 Level 3 并写改进想法。</p></div></div><aside class="notes">两小时课堂的收尾缓冲页。</aside>
 </section>
 </div></div>
 
@@ -563,12 +409,24 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * The full English course lives in python-ai-en. This button navigates to
- * the matching lesson instead of pretending the current slide is translated. */
+ * Switch to the matching lesson in the other language and preserve the
+ * current horizontal slide index. IDs differ between old decks, but index
+ * stays stable now that both languages use the same 35-slide structure. */
 const langBtn=document.getElementById('langBtn');
 const ALT_DECK_URL="../../python-ai-en/lesson-02/";
-langBtn.textContent='EN';
-langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
+langBtn.textContent="EN";
+function currentSlideIndex(){
+  if(window.Reveal&&Reveal.getIndices){
+    const idx=Reveal.getIndices();
+    if(idx&&typeof idx.h==='number') return idx.h;
+  }
+  const hashMatch=location.hash.match(/^#/(d+)/);
+  if(hashMatch) return Number(hashMatch[1]);
+  const slides=[...document.querySelectorAll('.slides > section')];
+  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+  return Math.max(0, slides.indexOf(cur));
+}
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused

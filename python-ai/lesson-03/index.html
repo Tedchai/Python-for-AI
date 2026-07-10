@@ -171,191 +171,84 @@ body.reveal-fallback .slides section{position:static!important;display:none!impo
 body.reveal-fallback .slides section.present,body.reveal-fallback .slides section:first-child{display:block!important}
 </style></head><body>
 <div class="reveal"><div class="slides">
-<section id="class03-title" data-sid="class03-title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker">PYTHON FOR AI RESEARCH · CLASS 03</div>
-    <h1 style="color:#fff">Python<br>Functions</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">把重复逻辑封装成可以复用的工具</p>
-    <div class="grid3" style="margin-top:1em">
-      <div class="skillcard"><div class="cn">定义</div><p>def + 函数名</p></div>
-      <div class="skillcard"><div class="cn">传入</div><p>parameters / arguments</p></div>
-      <div class="skillcard"><div class="cn">传回</div><p>return value</p></div>
-    </div>
-    <p style="color:#9db8d6;font-size:.58em;margin-top:1em">按 S 看讲稿 · 右下角留言 · Python lab 可直接运行</p>
-    <aside class="notes">第 3 课的主线：函数不是新语法炫技，而是给一段逻辑命名、复用、测试。</aside>
+<section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 03</div>
+    <h1 style="color:#fff">Python Functions</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">命名逻辑、复用代码、返回结果</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">定义函数</div><p>定义函数</p></div><div class="skillcard"><div class="cn">传入参数</div><p>传入参数</p></div><div class="skillcard"><div class="cn">返回结果</div><p>返回结果</p></div></div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>
 </section>
-<section id="class03-goals" data-sid="class03-goals">
-<div class="kicker">TODAY'S OUTPUT</div>
-    <h2>今天把重复代码变成函数</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><span class="feature">1</span><h3>能定义</h3><p>写出 def function_name(parameters): 的基本结构。</p></div>
-      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>能调用</h3><p>用 arguments 传入不同值，让同一函数处理多种情况。</p></div>
-      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>能返回</h3><p>用 return 把计算结果交回调用处。</p></div>
-    </div>
-    <div class="callout"><b>课堂产出：</b>greet、add_numbers、calculate_price，以及一个自己的可复用函数。</div>
-    <aside class="notes">把成果讲清楚：学生最后不是只会背 def，而是能封装一个小任务。</aside>
+<section id="outputs" data-sid="outputs">
+<div class="kicker">TODAY'S OUTPUT</div><h2>写出并调用一个可复用的 helper function。</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>理解</h3><p>能用自己的话解释今天的 Python 概念。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>练习</h3><p>运行并修改课堂示例代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提交</h3><p>完成一个整洁 notebook，并加入一个小扩展。</p></div></div><aside class="notes">先给出本节课可见产出。</aside>
 </section>
-<section id="why-functions" data-sid="why-functions">
-<div class="kicker">WHY FUNCTIONS</div>
-    <h2>函数解决三个真实问题</h2>
-    <div class="grid3" style="margin-top:.75em">
-      <div class="box"><h3>减少重复</h3><p>同一段逻辑不用复制很多遍。</p></div>
-      <div class="box"><h3>命名逻辑</h3><p>函数名告诉别人这段代码想做什么。</p></div>
-      <div class="box"><h3>方便测试</h3><p>给不同输入，观察输出是否符合预期。</p></div>
-    </div>
-    <div class="callout"><b>关键句：</b>函数是“给一组步骤起名字”。</div>
-    <aside class="notes">可以展示重复 print 或重复计算，再问：哪一块值得封装？</aside>
+<section id="two-hour-pacing" data-sid="two-hour-pacing">
+<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div><aside class="notes">用于管理两小时课堂节奏。</aside>
 </section>
-<section id="function-purpose" data-sid="function-purpose">
-<div class="kicker">FROM QIN REFERENCE · FUNCTION IDEA</div>
-    <h2>function 是一组完成特定任务的语句</h2>
-    <div class="grid3" style="margin-top:.75em">
-      <div class="box"><h3>Group</h3><p>把几行相关代码放在一起。</p></div>
-      <div class="box"><h3>Task</h3><p>每个函数最好只完成一个清楚任务。</p></div>
-      <div class="box"><h3>Name</h3><p>函数名应该让人猜到它会做什么。</p></div>
-    </div>
-    <div class="callout"><b>判断标准：</b>如果你能用一句动词短语描述它，就适合做成函数。</div>
-    <aside class="notes">源 deck 第 2 页定义 functions；这里转成学生可用的判断标准。</aside>
+<section id="recap" data-sid="recap">
+<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div><aside class="notes">把今天内容连接到 15 节课路线。</aside>
 </section>
-<section id="function-syntax" data-sid="function-syntax">
-<div class="kicker">FUNCTION SYNTAX</div>
-    <h2>函数定义后不会自动运行</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>定义</h3><pre style="font-size:.68em"><code>def greet(name):
-    print(f"Hello, {name}!")</code></pre></div>
-      <div class="box"><h3>调用</h3><pre style="font-size:.68em"><code>greet("Sponge Bob")</code></pre></div>
-    </div>
-    <div class="callout"><b>常见错误：</b>只写了函数定义，但忘记在下面调用。</div>
-    <aside class="notes">分清 define 和 call。定义像写菜谱，调用才是真的做菜。</aside>
+<section id="warmup" data-sid="warmup">
+<div class="kicker">WARM-UP</div><h2>先预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3><ul><li>先猜输出</li><li>改一个小地方</li><li>重新运行并比较</li></ul></div><div class="box"><h3>教师提问</h3><ul><li>你预期输出是什么？</li><li>哪一行最可能出错？</li><li>第一步会改哪里？</li></ul></div></div><aside class="notes">预测让学生主动阅读代码。</aside>
 </section>
-<section id="function-header-parts" data-sid="function-header-parts">
-<div class="kicker">FROM QIN REFERENCE · FUNCTION HEADER</div>
-    <h2>函数 header 的每一部分都有作用</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>def</h3><p>创建函数的关键字。</p></div>
-      <div class="box"><h3>function_name</h3><p>用 snake_case 命名，例如 <code>calculate_total</code>。</p></div>
-      <div class="box"><h3>(parameters):</h3><p>括号接收输入，冒号打开函数体。</p></div>
-    </div>
-    <pre style="font-size:.52em;margin-top:.65em"><code>def function_name(parameters):
-    function_body</code></pre>
-    <aside class="notes">源 deck 3-11 页逐项标注 def/name/parentheses/parameters/colon/body。</aside>
+<section id="vocabulary" data-sid="vocabulary">
+<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Call</h3><p>运行一个函数。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Parameter</h3><p>函数定义中的输入名字。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Scope</h3><p>变量有效的范围。</p></div></div><aside class="notes">给学生解释代码的语言。</aside>
 </section>
-<section id="snake-case" data-sid="snake-case">
-<div class="kicker">NAMING</div>
-    <h2>函数名用 snake_case，并说清楚动作</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>不够清楚</h3><pre style="font-size:.62em"><code>def do_it(x):
-    ...</code></pre><p>别人不知道它做什么。</p></div>
-      <div class="box"><h3>更清楚</h3><pre style="font-size:.62em"><code>def calculate_average(scores):
-    ...</code></pre><p>动作和输入都写在名字里。</p></div>
-    </div>
-    <div class="callout"><b>科研代码习惯：</b>变量名和函数名本身就是说明文字。</div>
-    <aside class="notes">源 deck 第 6 页强调 snake case；这里补成命名规范页。</aside>
+<section id="mental-model" data-sid="mental-model">
+<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>def、参数、return 是今天的三块拼图；先知道它们各自解决什么问题。</div><aside class="notes">用心智模型降低语法记忆负担。</aside>
 </section>
-<section id="greet-lab" data-sid="greet-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>第一个自定义函数：greet</h2>
-  <p class="lead" style="margin:.1em 0 .25em">改名字、增加一次调用，观察同一个函数如何复用。</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">def greet(name):
-    print(f"Hello, {name}!")
+<section id="concept-1" data-sid="concept-1">
+<div class="kicker">CONCEPT 1</div><h2>def</h2><p class="lead">创建一个带名字的代码块。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 def？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="concept-2" data-sid="concept-2">
+<div class="kicker">CONCEPT 2</div><h2>参数</h2><p class="lead">函数运行时需要的输入。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 参数？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="concept-3" data-sid="concept-3">
+<div class="kicker">CONCEPT 3</div><h2>return</h2><p class="lead">把结果交还给调用者。</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 return？</div><aside class="notes">短暂停顿，让学生口头解释。</aside>
+</section>
+<section id="syntax-pattern" data-sid="syntax-pattern">
+<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>def add_bonus(score, bonus):
+    return score + bonus
 
-greet("Sponge Bob")
-greet("AI researcher")</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">让学生增加第三个 greet 调用，并把函数名改成更具体的名字。</aside>
+print(add_bonus(85, 5))</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div><aside class="notes">先读结构，再运行。</aside>
 </section>
-<section id="call-quiz" data-sid="call-quiz">
-<div class="kicker">CALLING FUNCTIONS</div>
+<section id="teacher-demo" data-sid="teacher-demo">
+<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>def greet(name):
+    return f"Hello, {name}!"
+
+students = ["Ava", "Ben", "Mia"]
+for student in students:
+    print(greet(student))</code></pre><aside class="notes">先整体运行，再逐行解释。</aside>
+</section>
+<section id="trace-table" data-sid="trace-table">
+<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>这一行运行前有哪些值？</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>创建或改变了什么？</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>输出是否符合预测？</p></div></div><aside class="notes">训练调试和阅读代码能力。</aside>
+</section>
+<section id="prediction-quiz" data-sid="prediction-quiz">
+<div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="1">
-    <p class="qq">如果只写 def greet(name): 但没有写 greet("Mia")，会发生什么？</p>
-    <div class="opts"><button class="opt" data-i="0">函数会自动运行一次</button><button class="opt" data-i="1">不会输出任何东西</button><button class="opt" data-i="2">Python 一定报错</button><button class="opt" data-i="3">变量 name 会变成全局变量</button></div>
-    <p class="quiz-exp">函数定义只是把步骤保存起来；调用函数时，函数体才会执行。</p>
+    <p class="qq">函数里的 return 有什么作用？</p>
+    <div class="opts"><button class="opt" data-i="0">打印标题</button><button class="opt" data-i="1">把结果返回给调用处</button><button class="opt" data-i="2">停止电脑</button></div>
+    <p class="quiz-exp">return 会把结果交还给调用函数的那一行。</p>
   </div>
-  <aside class="notes">这道题帮助学生区分函数定义和函数调用。</aside>
+  <aside class="notes">快速形成性检查。</aside>
 </section>
-<section id="built-in-vs-custom" data-sid="built-in-vs-custom">
-<div class="kicker">FROM QIN REFERENCE · CALLING FUNCTIONS</div>
-    <h2>调用函数：内置函数和自定义函数规则一样</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>Built-in</h3><pre style="font-size:.62em"><code>print("Hello World")
-input("Enter your name: ")</code></pre><p>Python 已经准备好的函数。</p></div>
-      <div class="box"><h3>Custom</h3><pre style="font-size:.62em"><code>def greet(name):
-    print(f"Hello, {name}!")
-
-greet("Mia")</code></pre><p>我们自己定义，也用括号调用。</p></div>
-    </div>
-    <aside class="notes">源 deck 13-16 页从 print/input 过渡到自定义函数调用。</aside>
+<section id="guided-practice-1" data-sid="guided-practice-1">
+<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box"><ul><li>只改一个变量或一条规则</li><li>重新运行并观察变化</li><li>把变化说给旁边同学听</li></ul></div><aside class="notes">一次只做一个小改动。</aside>
 </section>
-<section id="params-args" data-sid="params-args">
-<div class="kicker">PARAMETERS VS ARGUMENTS</div>
-    <h2>parameters 是占位名，arguments 是具体值</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.7em">
-      <div class="box"><h3>定义时</h3><p><code>def add_numbers(num_1, num_2):</code></p><p><b>num_1</b> 和 <b>num_2</b> 是 parameters。</p></div>
-      <div class="box"><h3>调用时</h3><p><code>add_numbers(3, 5)</code></p><p><b>3</b> 和 <b>5</b> 是 arguments。</p></div>
-    </div>
-    <div class="callout"><b>课堂问法：</b>这个名字是在函数定义里出现，还是调用时传进去？</div>
-    <aside class="notes">中文里都叫参数容易混淆，建议用“占位名/具体值”解释。</aside>
+<section id="guided-practice-2" data-sid="guided-practice-2">
+<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div><aside class="notes">每次修改都要能解释。</aside>
 </section>
-<section id="parameter-binding" data-sid="parameter-binding">
-<div class="kicker">FROM QIN REFERENCE · PARAMETER BINDING</div>
-    <h2>调用时，argument 会临时交给 parameter</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><div class="n">1</div><b>Call</b><span><code>greet("Sponge Bob")</code></span></div>
-      <div class="step"><div class="n">2</div><b>Bind</b><span><code>name = "Sponge Bob"</code> 只在函数这次运行里成立</span></div>
-      <div class="step"><div class="n">3</div><b>Run body</b><span><code>print(f"Hello, {name}!")</code></span></div>
-    </div>
-    <div class="callout"><b>重点：</b>同一个函数下次调用时，parameter 可以接住另一个 argument。</div>
-    <aside class="notes">源 deck 17-20 页用 greet(name) 展示 parameter/argument 绑定。</aside>
-</section>
-<section id="positional-arguments" data-sid="positional-arguments">
-<div class="kicker">FROM QIN REFERENCE · POSITIONAL ARGUMENTS</div>
-    <h2>positional arguments 按位置对应</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>定义</h3><pre style="font-size:.62em"><code>def describe_student(name, topic):
-    print(name, topic)</code></pre></div>
-      <div class="box"><h3>调用</h3><pre style="font-size:.62em"><code>describe_student("Mia", "AI")
-describe_student("AI", "Mia")</code></pre><p>顺序变了，含义就变了。</p></div>
-    </div>
-    <aside class="notes">源 deck 36 之后讲 positional arguments；这里把风险讲清楚。</aside>
-</section>
-<section id="return-model" data-sid="return-model">
-<div class="kicker">RETURN</div>
-    <h2>return 把结果交回调用处</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><div class="n">1</div><b>Call</b><span>add_numbers(3, 5)</span></div>
-      <div class="step"><div class="n">2</div><b>Compute</b><span>函数内部算出 result = 8</span></div>
-      <div class="step"><div class="n">3</div><b>Return</b><span>把 8 交回外部变量 total</span></div>
-    </div>
-    <div class="callout"><b>return 不等于 print：</b>print 是显示；return 是把值传回去。</div>
-    <aside class="notes">这是本课最容易混淆的地方。反复用“屏幕输出”和“交回结果”区分。</aside>
-</section>
-<section id="return-lab" data-sid="return-lab">
+<section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>add_numbers：保存返回值再输出</h2>
-  <p class="lead" style="margin:.1em 0 .25em">把 3 和 5 改成别的数字，再新增一次调用。</p>
+  <h2>Helper Function Builder</h2>
+  <p class="lead" style="margin:.1em 0 .25em">把重复逻辑放进函数，再用不同输入调用它。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">def add_numbers(num_1, num_2):
-    result = num_1 + num_2
-    return result
+      <textarea class="code" spellcheck="false">def study_message(name, topic, hours):
+    return f"{name} will study {topic} for {hours} hours."
 
-total = add_numbers(3, 5)
-print(f"Sum: {total}")</textarea>
+print(study_message("Lina", "Python", 3))
+print(study_message("Marco", "data", 4))</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -370,159 +263,95 @@ print(f"Sum: {total}")</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">让学生先删掉 print 观察没有输出，再把返回值存入变量。</aside>
+  </div><aside class="notes">两小时课堂的主要跟做实验。</aside>
 </section>
-<section id="return-quiz" data-sid="return-quiz">
-<div class="kicker">RETURN</div>
+<section id="mistake-clinic" data-sid="mistake-clinic">
+<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>忘记调用</h3><p>定义函数不会自动运行。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>参数数量不对</h3><p>调用时要匹配需要的参数。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>print 和 return 混淆</h3><p>print 显示结果，return 传回结果。</p></div></div><aside class="notes">把错误正常化，并给出修复路线。</aside>
+</section>
+<section id="debug-routine" data-sid="debug-routine">
+<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div><aside class="notes">每周重复这个调试流程。</aside>
+</section>
+<section id="pair-programming" data-sid="pair-programming">
+<div class="kicker">PAIR PROGRAMMING</div><h2>Driver 写代码，Navigator 读逻辑</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>输入并运行代码。</p></div><div class="box"><h3>Navigator</h3><p>预测输出并检查逻辑。</p></div></div><div class="callout"><b>5 分钟后交换角色。</b></div><aside class="notes">保持课堂参与度。</aside>
+</section>
+<section id="mini-project-brief" data-sid="mini-project-brief">
+<div class="kicker">MINI PROJECT</div><h2>Reusable Score Helper</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>学生姓名、原始分数和加分规则。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>用函数封装计算和格式化输出。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>返回可读的结果句子。</p></div></div><aside class="notes">把项目都讲成 input -&gt; process -&gt; output。</aside>
+</section>
+<section id="mini-project-lab" data-sid="mini-project-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>Reusable Score Helper Starter</h2>
+  <p class="lead" style="margin:.1em 0 .25em">从这里开始，再在自己的 notebook 里扩展。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">def final_score(raw_score, bonus):
+    score = raw_score + bonus
+    if score &gt; 100:
+        score = 100
+    return score
+
+print(final_score(88, 7))
+print(final_score(98, 5))</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">独立项目 starter。</aside>
+</section>
+<section id="test-cases" data-sid="test-cases">
+<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>普通情况</h3><p>一个典型输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>边界情况</h3><p>刚好在阈值附近。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>自定义情况</h3><p>你自己的例子。</p></div></div><aside class="notes">测试能避免碰巧正确。</aside>
+</section>
+<section id="challenge-ladder" data-sid="challenge-ladder">
+<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div><aside class="notes">让不同速度的学生都有任务。</aside>
+</section>
+<section id="concept-check" data-sid="concept-check">
+<div class="kicker">CONCEPT CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="2">
-    <p class="qq">下面哪句话最准确？</p>
-    <div class="opts"><button class="opt" data-i="0">return 会把结果显示到屏幕上</button><button class="opt" data-i="1">print 会把值传回调用处</button><button class="opt" data-i="2">return 把结果传回调用处，print 只是显示</button><button class="opt" data-i="3">return 后面的同级代码一定继续执行</button></div>
-    <p class="quiz-exp">return 的作用是把值交回调用处；print 的作用是显示文本。return 后同级代码不会继续执行。</p>
+  <div class="quiz" data-correct="0">
+    <p class="qq">什么时候值得写函数？</p>
+    <div class="opts"><button class="opt" data-i="0">有重复逻辑时</button><button class="opt" data-i="1">只写一次 print 时</button><button class="opt" data-i="2">不想命名变量时</button></div>
+    <p class="quiz-exp">函数适合封装会重复使用的逻辑。</p>
   </div>
-  <aside class="notes">如果时间允许，现场在 return 后加一行 print，验证它不会执行。</aside>
+  <aside class="notes">独立练习前的理解检查。</aside>
 </section>
-<section id="return-vs-output" data-sid="return-vs-output">
-<div class="kicker">FROM QIN REFERENCE · RETURN VALUES</div>
-    <h2>return value 可以继续参与后面的计算</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>只 print</h3><p>结果显示在屏幕上，但外部变量拿不到这个值。</p></div>
-      <div class="box"><h3>return</h3><p>结果交回调用处，可以存入变量、继续计算、写入报告。</p></div>
-    </div>
-    <pre style="font-size:.52em;margin-top:.65em"><code>score = add_numbers(42, 8)
-if score &gt;= 50:
-    print("pass")</code></pre>
-    <aside class="notes">源 deck 23 之后进入 return value；这里强调科研 notebook 里返回值还能继续被分析。</aside>
+<section id="independent-work" data-sid="independent-work">
+<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div><aside class="notes">这是主要独立练习时间。</aside>
 </section>
-<section id="keyword-args" data-sid="keyword-args">
-<div class="kicker">KEYWORD ARGUMENTS</div>
-    <h2>关键字参数让调用更清楚，也更不怕顺序错</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>positional</h3><pre style="font-size:.62em"><code>calculate_price("apple", 3, 0.5)</code></pre><p>短，但读者需要记住顺序。</p></div>
-      <div class="box"><h3>keyword</h3><pre style="font-size:.62em"><code>calculate_price(item="apple", quantity=3, price=0.5)</code></pre><p>长一点，但含义更清楚。</p></div>
-    </div>
-    <aside class="notes">用 calculate_price 演示：顺序传错时可能不报错，但结果错，这比报错更危险。</aside>
+<section id="explain-code" data-sid="explain-code">
+<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div><aside class="notes">解释也是作业的一部分。</aside>
 </section>
-<section id="type-hints" data-sid="type-hints">
-<div class="kicker">FROM QIN REFERENCE · TYPE HINTS</div>
-    <h2>type hints 让函数输入输出更容易读</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>没有提示</h3><pre style="font-size:.62em"><code>def calculate_price(item, quantity, price):
-    return quantity * price</code></pre></div>
-      <div class="box"><h3>有提示</h3><pre style="font-size:.62em"><code>def calculate_price(item: str, quantity: int, price: float) -> float:
-    return quantity * price</code></pre></div>
-    </div>
-    <div class="callout"><b>注意：</b>type hints 默认不是强制检查，而是给人、编辑器和工具看的说明。</div>
-    <aside class="notes">源 deck 54 页提到 PEP 484 和 type hints，这里用 calculate_price 连接。</aside>
+<section id="notebook-hygiene" data-sid="notebook-hygiene">
+<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>从上到下能运行</li><li>变量名可读</li><li>删掉无关草稿</li><li>输出清楚</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 句 Markdown 说明</li><li>解释输入和输出</li><li>标出自己的扩展</li><li>写一个问题</li></ul></div></div><aside class="notes">预留整理时间。</aside>
 </section>
-<section id="price-lab" data-sid="price-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>calculate_price：type hints + docstring</h2>
-  <p class="lead" style="margin:.1em 0 .25em">观察 type hints、docstring 和 keyword arguments 如何让函数更容易读。</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">def calculate_price(item: str, quantity: int, price: float) -&gt; float:
-    """Return the total price for an item order."""
-    total = quantity * price
-    return total
-
-apple_total = calculate_price(item="apple", quantity=3, price=0.5)
-orange_total = calculate_price(quantity=7, item="orange", price=1.2)
-
-print(f"Apple total: ${apple_total:.2f}")
-print(f"Orange total: ${orange_total:.2f}")</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">提醒学生：type hints 是给人和工具看的提示，Python 默认不会强制检查。</aside>
+<section id="ai-helper" data-sid="ai-helper">
+<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3><ul><li>像初学者一样解释这个错误</li><li>给我一道类似练习题</li><li>先给提示，不要直接给答案</li></ul></div><div class="box"><h3>避免</h3><ul><li>直接写完整作业</li><li>改同学代码当成自己的</li><li>提交自己不能解释的代码</li></ul></div></div><aside class="notes">让 AI 使用服务于学习。</aside>
 </section>
-<section id="scope-docstring" data-sid="scope-docstring">
-<div class="kicker">SCOPE + DOCSTRING</div>
-    <h2>函数内部变量通常只在函数内部有效</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>scope</h3><ul><li>函数内创建的变量是 local</li><li>外部直接访问通常会 NameError</li><li>返回值是更清楚的数据出口</li></ul></div>
-      <div class="box"><h3>docstring</h3><ul><li>写在函数开头的三引号字符串</li><li>说明函数做什么</li><li>说明输入和返回值</li></ul></div>
-    </div>
-    <div class="callout"><b>好函数：</b>名字清楚，输入清楚，返回清楚，说明清楚。</div>
-    <aside class="notes">scope 不必讲太深，重点是为什么函数内部变量不能随便在外面用。</aside>
+<section id="rubric" data-sid="rubric">
+<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div><aside class="notes">明确期待。</aside>
 </section>
-<section id="scope-three-levels" data-sid="scope-three-levels">
-<div class="kicker">FROM QIN REFERENCE · SCOPE</div>
-    <h2>Python 变量有不同的作用范围</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>local</h3><p>函数内部创建，只在函数内部直接使用。</p></div>
-      <div class="box"><h3>global</h3><p>函数外部创建，整个文件都能看到。</p></div>
-      <div class="box"><h3>nonlocal</h3><p>嵌套函数里才常见，本课只做认识。</p></div>
-    </div>
-    <div class="callout"><b>初学建议：</b>尽量用 parameters 输入，用 return 输出，少依赖 global。</div>
-    <aside class="notes">源 deck 69 之后讲 local/global/nonlocal；这里保留实用层级。</aside>
+<section id="homework" data-sid="homework">
+<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box"><ul><li>写 2 个函数</li><li>每个函数至少调用 2 次</li><li>至少一个函数有 return</li><li>写 docstring 或注释</li><li>提交 notebook 链接</li></ul></div><aside class="notes">作业要可完成，但不能只是复制。</aside>
 </section>
-<section id="docstring-anatomy" data-sid="docstring-anatomy">
-<div class="kicker">FROM QIN REFERENCE · DOCSTRING</div>
-    <h2>docstring 是函数自带的说明书</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>写在哪里</h3><pre style="font-size:.58em"><code>def add_numbers(a, b):
-    """Return the sum of two numbers."""
-    return a + b</code></pre></div>
-      <div class="box"><h3>写什么</h3><ul><li>函数做什么</li><li>重要参数代表什么</li><li>返回值是什么</li><li>特殊限制或假设</li></ul></div>
-    </div>
-    <aside class="notes">源 deck 95 页讲 docstring，这里变成可直接模仿的写法。</aside>
+<section id="submission-checklist" data-sid="submission-checklist">
+<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div><aside class="notes">减少坏链接和无法运行的提交。</aside>
 </section>
-<section id="function-practice-bank" data-sid="function-practice-bank">
-<div class="kicker">FROM QIN REFERENCE · PRACTICE</div>
-    <h2>函数练习库：选一个写进 notebook</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><h3>rectangle_area</h3><p>输入 length 和 width，return 面积。</p></div>
-      <div class="box"><h3>is_even</h3><p>输入一个整数，return True 或 False。</p></div>
-      <div class="box"><h3>classify_score</h3><p>输入分数，return 等级或建议。</p></div>
-    </div>
-    <div class="callout"><b>提交要求：</b>至少调用 3 次，每次用不同 arguments。</div>
-    <aside class="notes">源 deck 84-95 有多个练习页，这里整理成选择菜单。</aside>
+<section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
+<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div><aside class="notes">收集快速反馈。</aside>
 </section>
-<section id="class03-homework" data-sid="class03-homework">
-<div class="kicker">HOMEWORK</div>
-    <h2>课后作业：新增一个自己的函数</h2>
-    <div class="grid2" style="grid-template-columns:1.15fr .85fr;margin-top:.65em">
-      <div class="box"><ul><li>新增一个函数，例如 calculate_average、classify_score 或 calculate_study_goal</li><li>函数至少有 1 个参数，并至少调用 3 次</li><li>至少一次把返回值存入变量，再输出解释性句子</li><li>写 3-5 句话说明参数、返回值和封装理由</li><li>可选：把一次结果写入 class03_result.txt</li></ul></div>
-      <div class="box"><h3>提交检查</h3><p>notebook 能从上到下运行；函数名、参数名能看出含义。</p><h3>重点</h3><p>能解释 return 和 print 的区别。</p></div>
-    </div>
-    <aside class="notes">如果时间不足，File I/O 只做预告，不要挤占函数核心练习。</aside>
+<section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">函数把一段会重复的想法变成工具。</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">一句话收束。</aside>
 </section>
-<section id="class03-exit" data-sid="class03-exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div>
-    <h2>离开前确认三句话</h2>
-    <div class="grid3" style="margin-top:.75em">
-      <div class="skillcard"><div class="cn">我能定义</div><p>写出一个带参数的函数。</p></div>
-      <div class="skillcard"><div class="cn">我能调用</div><p>传入不同 arguments 测试函数。</p></div>
-      <div class="skillcard"><div class="cn">我能返回</div><p>把 return value 存入变量。</p></div>
-    </div>
-    <div class="callout"><b>留言任务：</b>点右下角 Comment，写一句“return 和 print 的区别”。</div>
-    <div class="prof-quote">
-    <div class="label"><span class="lang-zh">商博老师 · 朗读 / 解释</span><span class="lang-en">Professor Shangbo · Quote / Explanation</span></div>
-    <blockquote>
-      <span class="lang-zh">函数的价值不只是少写几行代码，而是给一个想法取名字，让它可以被反复使用。</span>
-      <span class="lang-en">The value of a function is not just fewer lines of code; it gives an idea a name so we can reuse it.</span>
-    </blockquote>
-    <p class="explain">
-      <span class="lang-zh">当你能解释参数是什么、return 交回什么，你就不只是在运行代码，而是在设计代码。</span>
-      <span class="lang-en">When you can explain the parameters and the return value, you are not just running code; you are designing it.</span>
-    </p>
-    <button class="speak" data-text-zh="函数的价值不只是少写几行代码，而是给一个想法取名字，让它可以被反复使用。 当你能解释参数是什么、return 交回什么，你就不只是在运行代码，而是在设计代码。" data-text-en="The value of a function is not just fewer lines of code; it gives an idea a name so we can reuse it. When you can explain the parameters and the return value, you are not just running code; you are designing it.">
-      <span class="lang-zh">朗读这段话</span><span class="lang-en">Read this aloud</span>
-    </button>
-  </div>
-    <aside class="notes">用留言快速检查本课最关键误区。</aside>
+<section id="buffer" data-sid="buffer">
+<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>需要帮助</h3><p>展示最后一行错误。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>快完成了</h3><p>向同伴解释代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提前完成</h3><p>完成 Level 3 并写改进想法。</p></div></div><aside class="notes">两小时课堂的收尾缓冲页。</aside>
 </section>
 </div></div>
 
@@ -563,12 +392,24 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * The full English course lives in python-ai-en. This button navigates to
- * the matching lesson instead of pretending the current slide is translated. */
+ * Switch to the matching lesson in the other language and preserve the
+ * current horizontal slide index. IDs differ between old decks, but index
+ * stays stable now that both languages use the same 35-slide structure. */
 const langBtn=document.getElementById('langBtn');
 const ALT_DECK_URL="../../python-ai-en/lesson-03/";
-langBtn.textContent='EN';
-langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
+langBtn.textContent="EN";
+function currentSlideIndex(){
+  if(window.Reveal&&Reveal.getIndices){
+    const idx=Reveal.getIndices();
+    if(idx&&typeof idx.h==='number') return idx.h;
+  }
+  const hashMatch=location.hash.match(/^#/(d+)/);
+  if(hashMatch) return Number(hashMatch[1]);
+  const slides=[...document.querySelectorAll('.slides > section')];
+  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+  return Math.max(0, slides.indexOf(cur));
+}
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused

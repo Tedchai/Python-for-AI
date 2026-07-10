@@ -728,12 +728,24 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
 
 /* ---------- Language toggle ----------
- * The full English course lives in python-ai-en. This button navigates to
- * the matching lesson instead of pretending the current slide is translated. */
+ * Switch to the matching lesson in the other language and preserve the
+ * current horizontal slide index. IDs differ between old decks, but index
+ * stays stable now that both languages use the same 35-slide structure. */
 const langBtn=document.getElementById('langBtn');
 const ALT_DECK_URL=${JSON.stringify(altDeckUrl)};
-langBtn.textContent='EN';
-langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+(location.hash||''); });
+langBtn.textContent=${JSON.stringify(deckId.startsWith("python-ai-en/") ? "中文" : "EN")};
+function currentSlideIndex(){
+  if(window.Reveal&&Reveal.getIndices){
+    const idx=Reveal.getIndices();
+    if(idx&&typeof idx.h==='number') return idx.h;
+  }
+  const hashMatch=location.hash.match(/^#\/(\d+)/);
+  if(hashMatch) return Number(hashMatch[1]);
+  const slides=[...document.querySelectorAll('.slides > section')];
+  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+  return Math.max(0, slides.indexOf(cur));
+}
+langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused
@@ -2350,13 +2362,361 @@ print(word_frequency(sample))`;
   return S;
 }
 
+const syncedZhLessons = {
+  "01": {
+    classNo: "01",
+    title: "Python for AI Research",
+    subtitle: "Colab、print、变量、input 和第一个可运行 notebook",
+    output: "完成并提交一个 Python 学习档案 notebook。",
+    skills: ["运行真实 Python 代码", "读懂变量和输出", "做一次有意义的修改"],
+    concepts: [
+      ["print", "把结果显示出来，让人能读懂程序在做什么。"],
+      ["变量", "用有意义的名字保存一个值，后面可以重复使用。"],
+      ["input", "从用户那里读取文字，需要计算时再做类型转换。"],
+    ],
+    vocab: [["Notebook", "混合代码、输出和说明的文档。"], ["Variable", "保存值的名字。"], ["f-string", "把变量嵌入文字的写法。"]],
+    syntax: `name = "Lina"
+age = 16
+print(f"{name} is {age} years old.")`,
+    demo: `name = "Mia"
+topic = "AI research"
+hours = 3
+
+print(f"{name} is learning Python for {topic}.")
+print(f"Next week goal: {hours + 1} hours.")`,
+    labTitle: "Profile Builder",
+    labIntro: "修改变量值，运行代码，观察 f-string 如何把变量组合成句子。",
+    labCode: `name = "Lina"
+grade = 10
+interest = "computer vision"
+weekly_hours = 4
+
+print(f"My name is {name}.")
+print(f"I am in grade {grade}.")
+print(f"I want to explore {interest}.")
+print(f"This week I will study Python for {weekly_hours} hours.")`,
+    projectTitle: "My Python Learning Profile",
+    projectInput: "姓名、年级、研究兴趣、每周学习时间。",
+    projectProcess: "用变量保存输入，需要数字时转换类型。",
+    projectOutput: "打印清楚的学习档案和下周目标。",
+    projectCode: `name = input("Name: ")
+grade = input("Grade: ")
+interest = input("AI or data interest: ")
+hours = float(input("Weekly Python hours: "))
+
+print("---- Learning Profile ----")
+print(f"Student: {name}, grade {grade}")
+print(f"Interest: {interest}")
+print(f"Next week goal: {hours + 1} hours")`,
+    quiz1: ["name = \"Alex\" 之后，name 里保存的值是什么？", ["Alex", "name", "一个数字"], 0, "等号右边的值会保存到左边的变量名中。"],
+    quiz2: ["input() 默认返回什么类型？", ["str", "int", "float"], 0, "input() 返回字符串；需要数学计算时再用 int() 或 float()。"],
+    mistakes: [["缺少引号", "文字值需要引号。"], ["变量拼错", "topic 和 topics 是两个不同名字。"], ["没有重跑", "修改后要从上到下运行 notebook。"]],
+    homework: ["完成 starter task", "加入一个自己的扩展", "从上到下运行所有 cells", "写 3-5 句话解释代码", "提交 Colab notebook 链接"],
+    line: "先运行，再修改，最后能解释。",
+  },
+  "02": {
+    classNo: "02",
+    title: "Python Control Flow",
+    subtitle: "条件、分支、循环和程序路径选择",
+    output: "完成一个会根据规则做判断的小程序。",
+    skills: ["预测 True / False 路径", "写出 if / elif / else", "用 for / while 减少重复"],
+    concepts: [["条件表达式", "结果只有 True 或 False。"], ["分支", "根据条件选择一条代码路径。"], ["循环", "让同一段逻辑重复执行。"]],
+    vocab: [["Boolean", "True 或 False 的值。"], ["Branch", "程序选择的一条路径。"], ["Loop", "重复执行的代码结构。"]],
+    syntax: `score = 86
+if score >= 90:
+    label = "excellent"
+elif score >= 70:
+    label = "good"
+else:
+    label = "practice more"
+print(label)`,
+    demo: `numbers = [5, -2, 0]
+
+for number in numbers:
+    if number > 0:
+        label = "positive"
+    elif number < 0:
+        label = "negative"
+    else:
+        label = "zero"
+    print(f"{number}: {label}")`,
+    labTitle: "Score Classifier",
+    labIntro: "修改分数列表，观察不同条件路径如何影响输出。",
+    labCode: `scores = [42, 50, 67, 81, 93]
+
+for score in scores:
+    if score < 50:
+        grade = "fail"
+    elif score < 70:
+        grade = "pass"
+    elif score < 90:
+        grade = "good"
+    else:
+        grade = "excellent"
+    print(f"{score} -> {grade}")`,
+    projectTitle: "Rule-Based Classifier",
+    projectInput: "一组分数、价格、年龄或测量值。",
+    projectProcess: "用 if / elif / else 写出清楚规则，用循环处理每个值。",
+    projectOutput: "输出每个输入对应的分类标签。",
+    projectCode: `values = [12, 25, 40, 65]
+
+for value in values:
+    if value < 20:
+        label = "low"
+    elif value < 50:
+        label = "medium"
+    else:
+        label = "high"
+    print(value, "->", label)`,
+    quiz1: ["Python 用什么决定一行是否属于 if 代码块？", ["括号", "缩进", "颜色"], 1, "Python 用缩进表示代码块。"],
+    quiz2: ["for loop 最适合做什么？", ["重复处理一组值", "只显示标题", "删除 notebook"], 0, "for loop 让同一段逻辑依次处理多个值。"],
+    mistakes: [["漏写冒号", "if / elif / else 行末需要冒号。"], ["缩进不一致", "同一代码块要保持相同缩进。"], ["边界条件漏掉", "检查等于阈值时走哪条路。"]],
+    homework: ["完成一个分类小程序", "至少包含 3 条规则", "至少处理 5 个输入", "解释一个边界条件", "提交 notebook 链接"],
+    line: "控制流让程序不只会往下走，还会做选择。",
+  },
+  "03": {
+    classNo: "03",
+    title: "Python Functions",
+    subtitle: "命名逻辑、复用代码、返回结果",
+    output: "写出并调用一个可复用的 helper function。",
+    skills: ["定义函数", "传入参数", "返回结果"],
+    concepts: [["def", "创建一个带名字的代码块。"], ["参数", "函数运行时需要的输入。"], ["return", "把结果交还给调用者。"]],
+    vocab: [["Call", "运行一个函数。"], ["Parameter", "函数定义中的输入名字。"], ["Scope", "变量有效的范围。"]],
+    syntax: `def add_bonus(score, bonus):
+    return score + bonus
+
+print(add_bonus(85, 5))`,
+    demo: `def greet(name):
+    return f"Hello, {name}!"
+
+students = ["Ava", "Ben", "Mia"]
+for student in students:
+    print(greet(student))`,
+    labTitle: "Helper Function Builder",
+    labIntro: "把重复逻辑放进函数，再用不同输入调用它。",
+    labCode: `def study_message(name, topic, hours):
+    return f"{name} will study {topic} for {hours} hours."
+
+print(study_message("Lina", "Python", 3))
+print(study_message("Marco", "data", 4))`,
+    projectTitle: "Reusable Score Helper",
+    projectInput: "学生姓名、原始分数和加分规则。",
+    projectProcess: "用函数封装计算和格式化输出。",
+    projectOutput: "返回可读的结果句子。",
+    projectCode: `def final_score(raw_score, bonus):
+    score = raw_score + bonus
+    if score > 100:
+        score = 100
+    return score
+
+print(final_score(88, 7))
+print(final_score(98, 5))`,
+    quiz1: ["函数里的 return 有什么作用？", ["打印标题", "把结果返回给调用处", "停止电脑"], 1, "return 会把结果交还给调用函数的那一行。"],
+    quiz2: ["什么时候值得写函数？", ["有重复逻辑时", "只写一次 print 时", "不想命名变量时"], 0, "函数适合封装会重复使用的逻辑。"],
+    mistakes: [["忘记调用", "定义函数不会自动运行。"], ["参数数量不对", "调用时要匹配需要的参数。"], ["print 和 return 混淆", "print 显示结果，return 传回结果。"]],
+    homework: ["写 2 个函数", "每个函数至少调用 2 次", "至少一个函数有 return", "写 docstring 或注释", "提交 notebook 链接"],
+    line: "函数把一段会重复的想法变成工具。",
+  },
+  "04": {
+    classNo: "04",
+    title: "Python Lists and 2D Lists",
+    subtitle: "用索引、循环和嵌套结构管理多项数据",
+    output: "完成一个 list / 2D list 数据表小练习。",
+    skills: ["访问 list 元素", "遍历并修改", "理解 2D list"],
+    concepts: [["List", "按顺序保存多个值。"], ["Index", "元素在 list 中的位置，从 0 开始。"], ["2D List", "list 里面再放 list，像表格。"]],
+    vocab: [["Append", "在末尾添加元素。"], ["Traversal", "逐个访问元素。"], ["Nested loop", "循环里面再写循环。"]],
+    syntax: `scores = [85, 88, 92]
+scores.append(95)
+for score in scores:
+    print(score)`,
+    demo: `table = [
+    ["Ava", 85],
+    ["Ben", 92],
+    ["Mia", 88],
+]
+
+for row in table:
+    print(row[0], row[1])`,
+    labTitle: "Score List Analyzer",
+    labIntro: "修改分数列表，计算平均分和最高分。",
+    labCode: `scores = [85, 88, 92, 76, 90]
+
+total = 0
+for score in scores:
+    total = total + score
+
+average = total / len(scores)
+print("Average:", round(average, 1))
+print("Best:", max(scores))`,
+    projectTitle: "Mini Grade Table",
+    projectInput: "若干学生姓名和分数。",
+    projectProcess: "用 2D list 保存表格，用 nested loop 或索引读取。", 
+    projectOutput: "输出每个学生和班级统计。",
+    projectCode: `students = [
+    ["Ava", 85],
+    ["Ben", 92],
+    ["Mia", 88],
+]
+
+for row in students:
+    name = row[0]
+    score = row[1]
+    print(f"{name}: {score}")`,
+    quiz1: ["scores[0] 访问的是哪个元素？", ["第一个", "第二个", "最后一个"], 0, "Python list 的索引从 0 开始。"],
+    quiz2: ["2D list 适合表示什么？", ["表格数据", "单个数字", "一个布尔值"], 0, "2D list 可以表示行和列。"],
+    mistakes: [["索引越界", "最后一个索引是 len(list)-1。"], ["修改副本", "确认你修改的是原 list。"], ["嵌套层级混乱", "先取 row，再取 row 里的元素。"]],
+    homework: ["创建一个 2D list", "至少 4 行数据", "用循环输出每行", "计算一个统计值", "解释索引如何工作"],
+    line: "list 让一组数据有顺序，2D list 让数据像表格。",
+  },
+  "05": {
+    classNo: "05",
+    title: "Python Tuples and Unpacking",
+    subtitle: "用不可变记录和解包表达结构化数据",
+    output: "完成一个 tuple record 与 unpacking 练习。",
+    skills: ["创建 tuple", "理解不可变", "使用 unpacking"],
+    concepts: [["Tuple", "有顺序、不可变的记录。"], ["Unpacking", "一次把多个位置的值取出来。"], ["Multiple return", "函数可以返回多个相关结果。"]],
+    vocab: [["Immutable", "创建后不能直接修改。"], ["Record", "一组固定字段。"], ["Starred unpacking", "用 * 接收剩余值。"]],
+    syntax: `student = ("Ava", 10, "AI")
+name, grade, topic = student
+print(name, topic)`,
+    demo: `def min_max(values):
+    return min(values), max(values)
+
+low, high = min_max([4, 9, 2, 7])
+print(low, high)`,
+    labTitle: "Tuple Record Reader",
+    labIntro: "用 tuple 保存固定记录，再用 unpacking 读出字段。",
+    labCode: `records = [
+    ("Ava", 10, "vision"),
+    ("Ben", 11, "robotics"),
+    ("Mia", 10, "language"),
+]
+
+for name, grade, topic in records:
+    print(f"{name} studies {topic} in grade {grade}.")`,
+    projectTitle: "Research Team Records",
+    projectInput: "成员姓名、年级、研究兴趣。",
+    projectProcess: "用 tuple 表示固定字段，用 unpacking 读取。",
+    projectOutput: "生成团队成员简介。",
+    projectCode: `team = [
+    ("Lina", "data cleaning", 3),
+    ("Marco", "visualization", 2),
+    ("Nora", "modeling", 4),
+]
+
+for name, task, hours in team:
+    print(f"{name}: {task}, {hours} hours")`,
+    quiz1: ["tuple 和 list 最大区别之一是什么？", ["tuple 不可变", "tuple 不能保存文字", "list 没有顺序"], 0, "tuple 是不可变的有序结构。"],
+    quiz2: ["name, age = person 这种写法叫？", ["unpacking", "looping", "rounding"], 0, "把 tuple/list 中的位置值拆到多个变量里。"],
+    mistakes: [["尝试直接修改 tuple", "需要创建新的 tuple。"], ["解包数量不匹配", "变量数量要和元素数量匹配。"], ["字段顺序忘记", "固定记录要写清字段含义。"]],
+    homework: ["创建 tuple records", "至少使用一次 unpacking", "写一个返回多个值的函数", "解释为什么用 tuple", "提交 notebook 链接"],
+    line: "tuple 适合保存字段固定、不该随意改动的记录。",
+  },
+  "06": {
+    classNo: "06",
+    title: "Python Dictionaries and Word Frequency",
+    subtitle: "用 key-value 映射表示现实数据并做统计",
+    output: "完成一个 dictionary 或词频统计小项目。",
+    skills: ["创建 key-value 映射", "更新 dictionary", "统计词频"],
+    concepts: [["Key", "用来查找 value 的名字。"], ["Value", "key 对应的数据。"], ["items()", "同时遍历 key 和 value。"]],
+    vocab: [["Mapping", "从 key 到 value 的关系。"], ["Lookup", "根据 key 找 value。"], ["Frequency", "某个词出现的次数。"]],
+    syntax: `scores = {"Ava": 85, "Ben": 92}
+scores["Mia"] = 88
+for name, score in scores.items():
+    print(name, score)`,
+    demo: `text = "ai helps ai research"
+counts = {}
+
+for word in text.split():
+    counts[word] = counts.get(word, 0) + 1
+
+print(counts)`,
+    labTitle: "Dictionary Builder",
+    labIntro: "添加和修改 key-value，观察 dictionary 如何组织数据。",
+    labCode: `inventory = {
+    "notebook": 12,
+    "marker": 8,
+    "laptop": 3,
+}
+
+inventory["marker"] = inventory["marker"] + 2
+inventory["charger"] = 5
+
+for item, count in inventory.items():
+    print(f"{item}: {count}")`,
+    projectTitle: "Word Frequency Counter",
+    projectInput: "一段英文或中文分词后的文字。",
+    projectProcess: "用 dictionary 记录每个词出现次数。",
+    projectOutput: "输出词频表。",
+    projectCode: `text = "python ai python data ai python"
+counts = {}
+
+for word in text.split():
+    counts[word] = counts.get(word, 0) + 1
+
+for word, count in counts.items():
+    print(word, count)`,
+    quiz1: ["dictionary 最适合表示什么关系？", ["key 到 value", "只有一个数字", "没有名字的顺序"], 0, "dictionary 用 key 快速找到对应 value。"],
+    quiz2: ["counts.get(word, 0) 的 0 表示什么？", ["找不到 key 时的默认值", "删除 key", "停止循环"], 0, "如果 word 不存在，就从 0 开始计数。"],
+    mistakes: [["key 拼写不一致", "同义但不同拼写会变成不同 key。"], ["覆盖旧值", "更新前确认是否需要累加。"], ["遍历方式混淆", "keys、values、items 各有用途。"]],
+    homework: ["选择库存或词频项目", "创建并更新 dictionary", "使用 keys / values / items 至少一个", "用函数封装主要逻辑", "解释 key 和 value 的含义"],
+    line: "dictionary 的核心问题是：我知道 key，怎样最快找到 value？",
+  },
+};
+
+function buildSyncedChineseLesson(spec) {
+  const S = [];
+  const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const list = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  const box3 = (items) => items.map(([h, p], i) => `<div class="box"><span class="feature"${i === 1 ? ' style="background:var(--green)"' : i === 2 ? ' style="background:var(--amber)"' : ""}>${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
+
+  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div>
+    <h1 style="color:#fff">${esc(spec.title)}</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">${esc(spec.subtitle)}</p>
+    <div class="grid3" style="margin-top:1em">${spec.skills.map((s) => `<div class="skillcard"><div class="cn">${esc(s.split(/[，,]/)[0])}</div><p>${esc(s)}</p></div>`).join("")}</div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+  S.push(sec("outputs", `<div class="kicker">TODAY'S OUTPUT</div><h2>${esc(spec.output)}</h2><div class="grid3" style="margin-top:.65em">${box3([["理解", "能用自己的话解释今天的 Python 概念。"], ["练习", "运行并修改课堂示例代码。"], ["提交", "完成一个整洁 notebook，并加入一个小扩展。"]])}</div>${notes("先给出本节课可见产出。")}`));
+  S.push(sec("two-hour-pacing", `<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div>${notes("用于管理两小时课堂节奏。")}`));
+  S.push(sec("recap", `<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div>${notes("把今天内容连接到 15 节课路线。")}`));
+  S.push(sec("warmup", `<div class="kicker">WARM-UP</div><h2>先预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3>${list(["先猜输出", "改一个小地方", "重新运行并比较"])}</div><div class="box"><h3>教师提问</h3>${list(["你预期输出是什么？", "哪一行最可能出错？", "第一步会改哪里？"])}</div></div>${notes("预测让学生主动阅读代码。")}`));
+  S.push(sec("vocabulary", `<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em">${box3(spec.vocab)}</div>${notes("给学生解释代码的语言。")}`));
+  S.push(sec("mental-model", `<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>${esc(spec.concepts.map((c) => c[0]).join("、"))} 是今天的三块拼图；先知道它们各自解决什么问题。</div>${notes("用心智模型降低语法记忆负担。")}`));
+  spec.concepts.forEach(([name, desc], i) => S.push(sec(`concept-${i + 1}`, `<div class="kicker">CONCEPT ${i + 1}</div><h2>${esc(name)}</h2><p class="lead">${esc(desc)}</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 ${esc(name)}？</div>${notes("短暂停顿，让学生口头解释。")}`)));
+  S.push(sec("syntax-pattern", `<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.syntax)}</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div>${notes("先读结构，再运行。")}`));
+  S.push(sec("teacher-demo", `<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.demo)}</code></pre>${notes("先整体运行，再逐行解释。")}`));
+  S.push(sec("trace-table", `<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em">${box3([["Before", "这一行运行前有哪些值？"], ["During", "创建或改变了什么？"], ["After", "输出是否符合预测？"]])}</div>${notes("训练调试和阅读代码能力。")}`));
+  S.push(quizSlide("prediction-quiz", "PREDICTION CHECK", spec.quiz1[0], spec.quiz1[1], spec.quiz1[2], spec.quiz1[3], "快速形成性检查。"));
+  S.push(sec("guided-practice-1", `<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box">${list(["只改一个变量或一条规则", "重新运行并观察变化", "把变化说给旁边同学听"])}</div>${notes("一次只做一个小改动。")}`));
+  S.push(sec("guided-practice-2", `<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div>${notes("每次修改都要能解释。")}`));
+  S.push(labSlide("guided-lab", "PYTHON LAB", spec.labTitle, spec.labIntro, spec.labCode, [], "两小时课堂的主要跟做实验。"));
+  S.push(sec("mistake-clinic", `<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em">${box3(spec.mistakes)}</div>${notes("把错误正常化，并给出修复路线。")}`));
+  S.push(sec("debug-routine", `<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div>${notes("每周重复这个调试流程。")}`));
+  S.push(sec("pair-programming", `<div class="kicker">PAIR PROGRAMMING</div><h2>Driver 写代码，Navigator 读逻辑</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>输入并运行代码。</p></div><div class="box"><h3>Navigator</h3><p>预测输出并检查逻辑。</p></div></div><div class="callout"><b>5 分钟后交换角色。</b></div>${notes("保持课堂参与度。")}`));
+  S.push(sec("mini-project-brief", `<div class="kicker">MINI PROJECT</div><h2>${esc(spec.projectTitle)}</h2><div class="grid3" style="margin-top:.65em">${box3([["Input", spec.projectInput], ["Process", spec.projectProcess], ["Output", spec.projectOutput]])}</div>${notes("把项目都讲成 input -> process -> output。")}`));
+  S.push(labSlide("mini-project-lab", "PYTHON LAB", `${spec.projectTitle} Starter`, "从这里开始，再在自己的 notebook 里扩展。", spec.projectCode, [], "独立项目 starter。"));
+  S.push(sec("test-cases", `<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em">${box3([["普通情况", "一个典型输入。"], ["边界情况", "刚好在阈值附近。"], ["自定义情况", "你自己的例子。"]])}</div>${notes("测试能避免碰巧正确。")}`));
+  S.push(sec("challenge-ladder", `<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div>${notes("让不同速度的学生都有任务。")}`));
+  S.push(quizSlide("concept-check", "CONCEPT CHECK", spec.quiz2[0], spec.quiz2[1], spec.quiz2[2], spec.quiz2[3], "独立练习前的理解检查。"));
+  S.push(sec("independent-work", `<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div>${notes("这是主要独立练习时间。")}`));
+  S.push(sec("explain-code", `<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div>${notes("解释也是作业的一部分。")}`));
+  S.push(sec("notebook-hygiene", `<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3>${list(["从上到下能运行", "变量名可读", "删掉无关草稿", "输出清楚"])}</div><div class="box"><h3>Notes</h3>${list(["2-3 句 Markdown 说明", "解释输入和输出", "标出自己的扩展", "写一个问题"])}</div></div>${notes("预留整理时间。")}`));
+  S.push(sec("ai-helper", `<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3>${list(["像初学者一样解释这个错误", "给我一道类似练习题", "先给提示，不要直接给答案"])}</div><div class="box"><h3>避免</h3>${list(["直接写完整作业", "改同学代码当成自己的", "提交自己不能解释的代码"])}</div></div>${notes("让 AI 使用服务于学习。")}`));
+  S.push(sec("rubric", `<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div>${notes("明确期待。")}`));
+  S.push(sec("homework", `<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box">${list(spec.homework)}</div>${notes("作业要可完成，但不能只是复制。")}`));
+  S.push(sec("submission-checklist", `<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div>${notes("减少坏链接和无法运行的提交。")}`));
+  S.push(sec("exit-ticket", `<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div>${notes("收集快速反馈。")}`, "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+  S.push(sec("line-to-remember", `<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">${esc(spec.line)}</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p>${notes("一句话收束。")}`, "center", 'data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)"'));
+  S.push(sec("buffer", `<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em">${box3([["需要帮助", "展示最后一行错误。"], ["快完成了", "向同伴解释代码。"], ["提前完成", "完成 Level 3 并写改进想法。"]])}</div>${notes("两小时课堂的收尾缓冲页。")}`));
+  return S;
+}
+
 const DECK_BUILDERS = {
-  "python-ai/lesson-01": { build: buildPythonClass01, title: "Class 01 · Python for AI Research" },
-  "python-ai/lesson-02": { build: buildPythonClass02, title: "Class 02 · Python Control Flow" },
-  "python-ai/lesson-03": { build: buildPythonClass03, title: "Class 03 · Python Functions" },
-  "python-ai/lesson-04": { build: buildPythonClass04, title: "Class 04 · Python Lists and 2D Lists" },
-  "python-ai/lesson-05": { build: buildPythonClass05, title: "Class 05 · Python Tuples and Unpacking" },
-  "python-ai/lesson-06": { build: buildPythonClass06, title: "Class 06 · Python Dictionaries and Word Frequency" },
+  "python-ai/lesson-01": { build: () => buildSyncedChineseLesson(syncedZhLessons["01"]), title: "Class 01 · Python for AI Research" },
+  "python-ai/lesson-02": { build: () => buildSyncedChineseLesson(syncedZhLessons["02"]), title: "Class 02 · Python Control Flow" },
+  "python-ai/lesson-03": { build: () => buildSyncedChineseLesson(syncedZhLessons["03"]), title: "Class 03 · Python Functions" },
+  "python-ai/lesson-04": { build: () => buildSyncedChineseLesson(syncedZhLessons["04"]), title: "Class 04 · Python Lists and 2D Lists" },
+  "python-ai/lesson-05": { build: () => buildSyncedChineseLesson(syncedZhLessons["05"]), title: "Class 05 · Python Tuples and Unpacking" },
+  "python-ai/lesson-06": { build: () => buildSyncedChineseLesson(syncedZhLessons["06"]), title: "Class 06 · Python Dictionaries and Word Frequency" },
 };
 
 // =====================================================================

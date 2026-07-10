@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head>
+﻿<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Class 03 · Python Functions</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -411,7 +411,19 @@ if(!window.Reveal){
   };
 }
 const langBtn=document.getElementById('langBtn');
-if(langBtn) langBtn.addEventListener('click',function(){ location.href='../../python-ai/lesson-03/'+(location.hash||''); });
+const ALT_DECK_URL='../../python-ai/lesson-03/';
+function currentSlideIndex(){
+  if(window.Reveal&&Reveal.getIndices){
+    const idx=Reveal.getIndices();
+    if(idx&&typeof idx.h==='number') return idx.h;
+  }
+  const hashMatch=location.hash.match(/^#\/(\d+)/);
+  if(hashMatch) return Number(hashMatch[1]);
+  const slides=[...document.querySelectorAll('.slides > section')];
+  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+  return Math.max(0, slides.indexOf(cur));
+}
+if(langBtn) langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
 Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
