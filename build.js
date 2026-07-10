@@ -710,6 +710,46 @@ ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noop
   </form>
 </div>
 
+<script>
+(function(){
+  const langBtn=document.getElementById('langBtn');
+  const ALT_DECK_URL=${JSON.stringify(altDeckUrl)};
+  const requestedSlide=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
+  function slides(){ return [...document.querySelectorAll('.reveal .slides section')]; }
+  function showRequestedSlide(){
+    if(!requestedSlide) return;
+    const all=slides();
+    const target=all.find((slide)=>slide.id===requestedSlide||slide.dataset.sid===requestedSlide);
+    if(!target) return;
+    all.forEach((slide)=>{ slide.classList.remove('present'); slide.style.display='none'; });
+    target.classList.add('present');
+    target.style.display='block';
+    location.hash='#/'+requestedSlide;
+  }
+  setTimeout(showRequestedSlide,0);
+  setTimeout(showRequestedSlide,300);
+  if(!langBtn) return;
+  langBtn.textContent=${JSON.stringify(deckId.startsWith("python-ai-en/") ? "中文" : "EN")};
+  function currentSlideIndex(){
+    const slides=[...document.querySelectorAll('.reveal .slides section')];
+    const hashPart=(location.hash.split('/')[1]||'').split('/')[0]||'';
+    const hashIndex=Number(hashPart);
+    if(Number.isFinite(hashIndex)&&slides[hashIndex]) return slides[hashIndex].id||slides[hashIndex].dataset.sid||hashIndex;
+    if(hashPart){
+      const sidIndex=slides.findIndex((slide)=>slide.id===hashPart||slide.dataset.sid===hashPart);
+      if(sidIndex>=0) return hashPart;
+    }
+    if(typeof Reveal!=='undefined'&&Reveal.getIndices){
+      const idx=Reveal.getIndices();
+      if(idx&&typeof idx.h==='number'&&slides[idx.h]) return slides[idx.h].id||slides[idx.h].dataset.sid||idx.h;
+    }
+    const cur=typeof Reveal!=='undefined'&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+    if(cur) return cur.id||cur.dataset.sid||Math.max(0, slides.indexOf(cur));
+    return 0;
+  }
+  langBtn.addEventListener('click',function(){ const key=currentSlideIndex(); location.href=ALT_DECK_URL+'?slide='+key+'#/'+key; });
+})();
+</script>
 <script src="${REVEAL}/dist/reveal.js"></script>
 <script src="${REVEAL}/plugin/notes/notes.js"></script>
 <script src="${PYODIDE}/pyodide.js"></script>
@@ -726,26 +766,18 @@ if(!window.Reveal){
 Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
-
-/* ---------- Language toggle ----------
- * Switch to the matching lesson in the other language and preserve the
- * current horizontal slide index. IDs differ between old decks, but index
- * stays stable now that both languages use the same 35-slide structure. */
-const langBtn=document.getElementById('langBtn');
-const ALT_DECK_URL=${JSON.stringify(altDeckUrl)};
-langBtn.textContent=${JSON.stringify(deckId.startsWith("python-ai-en/") ? "中文" : "EN")};
-function currentSlideIndex(){
-  if(window.Reveal&&Reveal.getIndices){
-    const idx=Reveal.getIndices();
-    if(idx&&typeof idx.h==='number') return idx.h;
+(function(){
+  const requested=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
+  if(!requested) return;
+  function goRequestedSlide(){
+    const slides=[...document.querySelectorAll('.reveal .slides section')];
+    const idx=slides.findIndex((slide)=>slide.id===requested||slide.dataset.sid===requested);
+    if(idx>=0&&typeof Reveal!=='undefined'&&Reveal.slide) Reveal.slide(idx);
   }
-  const hashMatch=location.hash.match(/^#\/(\d+)/);
-  if(hashMatch) return Number(hashMatch[1]);
-  const slides=[...document.querySelectorAll('.slides > section')];
-  const cur=window.Reveal&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
-  return Math.max(0, slides.indexOf(cur));
-}
-langBtn.addEventListener('click',function(){ location.href=ALT_DECK_URL+'#/'+currentSlideIndex(); });
+  if(typeof Reveal!=='undefined'&&Reveal.on) Reveal.on('ready',goRequestedSlide);
+  setTimeout(goRequestedSlide,250);
+  setTimeout(goRequestedSlide,1000);
+})();
 
 /* ---------- Shared audio player ----------
  * One audio element, already attached to the DOM (see markup above), reused
