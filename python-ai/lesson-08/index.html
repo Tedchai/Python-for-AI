@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Class 2 · Pandas DataFrame 数据分析</title>
+<title>Class 8 · Dictionary 与词频项目</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
 <style>
@@ -172,55 +172,57 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 02</div><h1 style="color:#fff">Pandas DataFrame 数据分析</h1><p style="color:#cfe0ef;margin-top:.45em">构建、检查、筛选、转换、汇总、排序和组合 DataFrame。</p><div class="callout" style="margin-top:1em"><b>秦教授原始材料:</b> 6450_slides.pdf · 14-37</div><aside class="notes">秦教授原始材料: 6450_slides.pdf, 14-37.</aside>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 08</div><h1 style="color:#fff">Dictionary 与词频项目</h1><p style="color:#cfe0ef;margin-top:.45em">用 key-value 建模，访问、增改、删除和遍历字典，并完成库存与词频项目。</p><div class="callout" style="margin-top:1em"><b>秦教授原始材料:</b> Python Structure.ppsx · 279-366</div><aside class="notes">秦教授原始材料: Python Structure.ppsx, 279-366.</aside>
 </section>
 <section id="outcome" data-sid="outcome">
-<div class="kicker">本节课产出</div><h2>完成一个从表格构建到筛选、统计与排序的小型分析流程。</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · 复现</h3><p>不看答案重新写出核心示例。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · 修改</h3><p>改变数据、边界或参数并验证结果。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · 迁移</h3><p>把同一知识点用于一个新场景。</p></div></div><aside class="notes">完成一个从表格构建到筛选、统计与排序的小型分析流程。</aside>
+<div class="kicker">本节课产出</div><h2>把现实关系建模为 dictionary，并构建经过文本预处理的词频统计器。</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · 复现</h3><p>不看答案重新写出核心示例。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · 修改</h3><p>改变数据、边界或参数并验证结果。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · 迁移</h3><p>把同一知识点用于一个新场景。</p></div></div><aside class="notes">把现实关系建模为 dictionary，并构建经过文本预处理的词频统计器。</aside>
 </section>
 <section id="source-map" data-sid="source-map">
-<div class="kicker">SOURCE COVERAGE</div><h2>知识点地图</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>构建与检查</h3><p>DataFrame/from_records；shape、columns、info、dtypes、describe。</p></div><div class="box"><h3>索引与筛选</h3><p>set_index/reset_index/rename；loc/iloc、布尔条件、isin、query。</p></div><div class="box"><h3>类型与统计</h3><p>astype、to_numeric、category；mean/median/std 与 agg。</p></div><div class="box"><h3>转换与组合</h3><p>sort_values、map/apply、insert/drop、concat。</p></div></div><aside class="notes">This lesson covers 6450_slides.pdf 14-37.</aside>
+<div class="kicker">SOURCE COVERAGE</div><h2>知识点地图</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Key-value</h3><p>dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</p></div><div class="box"><h3>访问与更新</h3><p>[]、get、keys/values/items；赋值新增/更新；pop/popitem 删除。</p></div><div class="box"><h3>遍历</h3><p>直接迭代 key；values() 迭代值；items() 迭代并解包键值对。</p></div><div class="box"><h3>词频</h3><p>转小写、清理标点、split，再用 get(word, 0)+1 累计。</p></div></div><aside class="notes">This lesson covers Python Structure.ppsx 279-366.</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
-<div class="kicker">CONCEPT 1</div><h2>构建与检查</h2><p class="lead">DataFrame/from_records；shape、columns、info、dtypes、describe。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">DataFrame/from_records；shape、columns、info、dtypes、describe。</aside>
+<div class="kicker">CONCEPT 1</div><h2>Key-value</h2><p class="lead">dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</aside>
 </section>
 <section id="concept-2" data-sid="concept-2">
-<div class="kicker">CONCEPT 2</div><h2>索引与筛选</h2><p class="lead">set_index/reset_index/rename；loc/iloc、布尔条件、isin、query。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">set_index/reset_index/rename；loc/iloc、布尔条件、isin、query。</aside>
+<div class="kicker">CONCEPT 2</div><h2>访问与更新</h2><p class="lead">[]、get、keys/values/items；赋值新增/更新；pop/popitem 删除。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">[]、get、keys/values/items；赋值新增/更新；pop/popitem 删除。</aside>
 </section>
 <section id="concept-3" data-sid="concept-3">
-<div class="kicker">CONCEPT 3</div><h2>类型与统计</h2><p class="lead">astype、to_numeric、category；mean/median/std 与 agg。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">astype、to_numeric、category；mean/median/std 与 agg。</aside>
+<div class="kicker">CONCEPT 3</div><h2>遍历</h2><p class="lead">直接迭代 key；values() 迭代值；items() 迭代并解包键值对。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">直接迭代 key；values() 迭代值；items() 迭代并解包键值对。</aside>
 </section>
 <section id="concept-4" data-sid="concept-4">
-<div class="kicker">CONCEPT 4</div><h2>转换与组合</h2><p class="lead">sort_values、map/apply、insert/drop、concat。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">sort_values、map/apply、insert/drop、concat。</aside>
+<div class="kicker">CONCEPT 4</div><h2>词频</h2><p class="lead">转小写、清理标点、split，再用 get(word, 0)+1 累计。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">转小写、清理标点、split，再用 get(word, 0)+1 累计。</aside>
 </section>
 <section id="teacher-demo" data-sid="teacher-demo">
-<div class="kicker">教师示范</div><h2>Pandas DataFrame 数据分析</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>import pandas as pd
-
-df = pd.DataFrame({"name":["Alice","Bob","Cathy","Dan"], "age":[24,29,22,31], "city":["NYC","LA","NYC","Chicago"]})
-print(df[df["age"] &gt;= 25].sort_values("age", ascending=False))
-print(df.agg({"age":["min","max","mean"]}))</code></pre><div class="callout"><b>Predict → Run → Explain:</b> 先预测输出，再运行代码，并逐行解释状态如何变化。</div><aside class="notes">先预测输出，再运行代码，并逐行解释状态如何变化。</aside>
+<div class="kicker">教师示范</div><h2>Dictionary 与词频项目</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>students = {"Zoe": 99, "Yara": 88, "Diana": 92}
+students["Alice"] = 85
+for name, score in students.items():
+    print(f"{name}: {score}")</code></pre><div class="callout"><b>Predict → Run → Explain:</b> 先预测输出，再运行代码，并逐行解释状态如何变化。</div><aside class="notes">先预测输出，再运行代码，并逐行解释状态如何变化。</aside>
 </section>
 <section id="concept-check" data-sid="concept-check">
 <div class="kicker">CONCEPT CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">同时筛选两个条件时应使用什么？</p>
-    <div class="opts"><button class="opt" data-i="0">&amp; 并给每个条件加括号</button><button class="opt" data-i="1">and</button><button class="opt" data-i="2">逗号</button></div>
-    <p class="quiz-exp">Pandas 布尔 Series 使用 &amp; 或 |，每个比较要加括号。</p>
+    <p class="qq">items() 迭代得到什么？</p>
+    <div class="opts"><button class="opt" data-i="0">key-value pair</button><button class="opt" data-i="1">只有 key</button><button class="opt" data-i="2">只有 value</button></div>
+    <p class="quiz-exp">items() 返回可解包的键值对视图。</p>
   </div>
-  <aside class="notes">Pandas 布尔 Series 使用 &amp; 或 |，每个比较要加括号。</aside>
+  <aside class="notes">items() 返回可解包的键值对视图。</aside>
 </section>
 <section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
   <h2>课堂 Python 实验</h2>
   <p class="lead" style="margin:.1em 0 .25em">先运行 starter，再修改数据或规则，最后解释输出为什么改变。</p>
-  <div class="lab" data-packages="pandas,numpy">
+  <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">import pandas as pd
-
-df = pd.DataFrame({"product":["A","B","C","D"], "price":[10,25,18,32], "city":["NYC","LA","NYC","LA"]})
-df["price_usd"] = df["price"] * 1.1
-result = df[df["price_usd"] &gt;= 20].sort_values(["city","price_usd"], ascending=[True,False])
-print(result)</textarea>
+      <textarea class="code" spellcheck="false">text = "The quick brown fox jumps over the lazy dog. The dog barked!"
+clean = text.lower()
+for mark in ".,!?:;":
+    clean = clean.replace(mark, "")
+counts = {}
+for word in clean.split():
+    counts[word] = counts.get(word, 0) + 1
+for word, count in sorted(counts.items()):
+    print(word, count)</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -244,13 +246,13 @@ print(result)</textarea>
 <div class="kicker">DEBUG ROUTINE</div><h2>Read → Locate → Isolate → Rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the final error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Find the failing line.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest example.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Run top to bottom.</span></div></div><aside class="notes">Use the same debugging routine every week.</aside>
 </section>
 <section id="homework" data-sid="homework">
-<div class="kicker">课后任务</div><h2>Pandas DataFrame 数据分析</h2><div class="box"><p class="lead">创建 product/price/city 表；选择两列；分别用 loc 与 iloc 取行；增加 price_usd；按城市升序和价格降序排序。</p></div><div class="callout"><b>Submission:</b> runnable notebook + short explanation + test evidence.</div><aside class="notes">创建 product/price/city 表；选择两列；分别用 loc 与 iloc 取行；增加 price_usd；按城市升序和价格降序排序。</aside>
+<div class="kicker">课后任务</div><h2>Dictionary 与词频项目</h2><div class="box"><p class="lead">完成 Inventory Manager 或 Word Frequency；必须使用函数、dictionary 更新、items() 遍历和至少三个测试案例。</p></div><div class="callout"><b>Submission:</b> runnable notebook + short explanation + test evidence.</div><aside class="notes">完成 Inventory Manager 或 Word Frequency；必须使用函数、dictionary 更新、items() 遍历和至少三个测试案例。</aside>
 </section>
 <section id="exit" data-sid="exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div><h2>离开前，你应该能做到</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>构建与检查</h3><p>DataFrame/from_records；shape、columns、info、dtypes、describe。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>索引与筛选</h3><p>set_index/reset_index/rename；loc/iloc、布尔条件、isin、query。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>转换与组合</h3><p>sort_values、map/apply、insert/drop、concat。</p></div></div><aside class="notes">完成一个从表格构建到筛选、统计与排序的小型分析流程。</aside>
+<div class="kicker">EXIT TICKET</div><h2>离开前，你应该能做到</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Key-value</h3><p>dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>访问与更新</h3><p>[]、get、keys/values/items；赋值新增/更新；pop/popitem 删除。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>词频</h3><p>转小写、清理标点、split，再用 get(word, 0)+1 累计。</p></div></div><aside class="notes">把现实关系建模为 dictionary，并构建经过文本预处理的词频统计器。</aside>
 </section>
 <section id="close" data-sid="close" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
-<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">把语法变成可解释、可测试的研究工具。</h2><p style="color:#cfe0ef;margin-top:.5em">完成一个从表格构建到筛选、统计与排序的小型分析流程。</p><aside class="notes">把语法变成可解释、可测试的研究工具。</aside>
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">把语法变成可解释、可测试的研究工具。</h2><p style="color:#cfe0ef;margin-top:.5em">把现实关系建模为 dictionary，并构建经过文本预处理的词频统计器。</p><aside class="notes">把语法变成可解释、可测试的研究工具。</aside>
 </section>
 </div></div>
 
@@ -276,7 +278,7 @@ print(result)</textarea>
 <script>
 (function(){
   const langBtn=document.getElementById('langBtn');
-  const ALT_DECK_URL="../../python-ai-en/lesson-02/";
+  const ALT_DECK_URL="../../python-ai-en/lesson-08/";
   const requestedSlide=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   function slides(){ return [...document.querySelectorAll('.reveal .slides section')]; }
   function showRequestedSlide(){
@@ -317,7 +319,7 @@ print(result)</textarea>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
-const DECK = "python-ai/lesson-02";
+const DECK = "python-ai/lesson-08";
 if(!window.Reveal){
   document.body.classList.add('reveal-fallback');
   window.Reveal={

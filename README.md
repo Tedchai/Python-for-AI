@@ -198,16 +198,25 @@ Live site:
 
 ## Course Content
 
-The first 6 lessons are currently generated:
+The first 8 lessons are currently generated from Professor Qin's four source decks:
 
 | Lesson | Title |
 |---|---|
-| 01 | Course Introduction and Your First Python Notebook |
-| 02 | Python Control Flow |
-| 03 | Python Functions |
-| 04 | Python Lists and 2D Lists |
-| 05 | Python Tuples and Unpacking |
-| 06 | Python Dictionaries and Word Frequency |
+| 01 | Pandas Series and Time Data |
+| 02 | Pandas DataFrame Analysis |
+| 03 | Conditions and Branching |
+| 04 | for, while, and Loop Control |
+| 05 | Defining, Calling, and Returning |
+| 06 | Advanced Arguments, Scope, and Documentation |
+| 07 | Lists, 2D Lists, and Tuples |
+| 08 | Dictionaries and a Word-Frequency Project |
+
+Source coverage is intentionally split into two lessons per source:
+
+- `6450_slides.pdf` → Lessons 01-02
+- `Python Control Flow.ppsx` → Lessons 03-04
+- `Python Functions.ppsx` → Lessons 05-06
+- `Python Structure.ppsx` → Lessons 07-08
 
 The course roadmap targets a 15-class sequence. Additional lessons can be added in `build.js` and registered in `DECK_BUILDERS`.
 
@@ -262,8 +271,8 @@ npm run narrate    # Optional: generate narration audio after configuration
 The main editing entry point is `build.js`:
 
 - `CATALOG` controls the site title, course list, lesson metadata, tags, and status.
-- `buildPythonClass01()` through `buildPythonClass06()` generate the current Chinese lessons.
-- English pages are under `python-ai-en/` and can be maintained through the same build workflow.
+- `curriculum-mapped.js` contains the bilingual, source-mapped lesson specifications.
+- `buildMappedLesson()` generates the synchronized Chinese and English lesson pages.
 - `DECK_BUILDERS` registers the lessons that should be generated.
 
 After editing, run:

@@ -2742,14 +2742,62 @@ function buildSyncedChineseLesson(spec) {
   return S;
 }
 
-const DECK_BUILDERS = {
-  "python-ai/lesson-01": { build: () => buildSyncedChineseLesson(syncedZhLessons["01"]), title: "Class 01 · Python for AI Research" },
-  "python-ai/lesson-02": { build: () => buildSyncedChineseLesson(syncedZhLessons["02"]), title: "Class 02 · Python Control Flow" },
-  "python-ai/lesson-03": { build: () => buildSyncedChineseLesson(syncedZhLessons["03"]), title: "Class 03 · Python Functions" },
-  "python-ai/lesson-04": { build: () => buildSyncedChineseLesson(syncedZhLessons["04"]), title: "Class 04 · Python Lists and 2D Lists" },
-  "python-ai/lesson-05": { build: () => buildSyncedChineseLesson(syncedZhLessons["05"]), title: "Class 05 · Python Tuples and Unpacking" },
-  "python-ai/lesson-06": { build: () => buildSyncedChineseLesson(syncedZhLessons["06"]), title: "Class 06 · Python Dictionaries and Word Frequency" },
+const { lessons: mappedLessons } = require("./curriculum-mapped");
+
+const localeText = {
+  zh: {
+    source: "秦教授原始材料", outcome: "本节课产出", map: "知识点地图", demo: "教师示范",
+    predict: "先预测输出，再运行代码，并逐行解释状态如何变化。", lab: "课堂 Python 实验",
+    labIntro: "先运行 starter，再修改数据或规则，最后解释输出为什么改变。", practice: "分层练习",
+    levels: [["Level 1 · 复现", "不看答案重新写出核心示例。"], ["Level 2 · 修改", "改变数据、边界或参数并验证结果。"], ["Level 3 · 迁移", "把同一知识点用于一个新场景。"]],
+    homework: "课后任务", exit: "离开前，你应该能做到", close: "把语法变成可解释、可测试的研究工具。",
+  },
+  en: {
+    source: "Professor Qin source", outcome: "Today's outcome", map: "Concept map", demo: "Teacher demo",
+    predict: "Predict the output first, then run the code and explain each state change.", lab: "In-browser Python lab",
+    labIntro: "Run the starter, change data or rules, and explain why the output changes.", practice: "Challenge ladder",
+    levels: [["Level 1 · Rebuild", "Recreate the core example without the answer."], ["Level 2 · Modify", "Change data, boundaries, or parameters and verify the result."], ["Level 3 · Transfer", "Apply the same idea to a new context."]],
+    homework: "Homework", exit: "Before leaving, you should be able to", close: "Turn syntax into an explainable, testable research tool.",
+  },
 };
+
+function buildMappedLesson(record, lang) {
+  const spec = record[lang];
+  const ui = localeText[lang];
+  const S = [];
+  const notes = (t) => `<aside class="notes">${esc(t)}</aside>`;
+  const cards = (items) => items.map(([h, p], i) => `<div class="box"><span class="feature"${i === 1 ? ' style="background:var(--green)"' : i === 2 ? ' style="background:var(--amber)"' : ""}>${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
+  const packages = record.n <= 2 ? ["pandas", "numpy"] : [];
+
+  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${String(record.n).padStart(2, "0")}</div><h1 style="color:#fff">${esc(spec.title)}</h1><p style="color:#cfe0ef;margin-top:.45em">${esc(spec.summary)}</p><div class="callout" style="margin-top:1em"><b>${esc(ui.source)}:</b> ${esc(record.source)} · ${esc(record.sourcePages)}</div>${notes(`${ui.source}: ${record.source}, ${record.sourcePages}.`)}`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+  S.push(sec("outcome", `<div class="kicker">${esc(ui.outcome)}</div><h2>${esc(spec.outcome)}</h2><div class="grid3" style="margin-top:.75em">${cards(ui.levels)}</div>${notes(spec.outcome)}`));
+  S.push(sec("source-map", `<div class="kicker">SOURCE COVERAGE</div><h2>${esc(ui.map)}</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">${spec.topics.map(([h,p]) => `<div class="box"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("")}</div>${notes(`This lesson covers ${record.source} ${record.sourcePages}.`)}`));
+  spec.topics.forEach(([h, p], i) => S.push(sec(`concept-${i + 1}`, `<div class="kicker">CONCEPT ${i + 1}</div><h2>${esc(h)}</h2><p class="lead">${esc(p)}</p><div class="callout"><b>Explain:</b> ${esc(lang === "zh" ? "用一个自己的例子说明这个概念。" : "Explain this concept with an example of your own.")}</div>${notes(p)}`)));
+  S.push(sec("teacher-demo", `<div class="kicker">${esc(ui.demo)}</div><h2>${esc(spec.title)}</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.demo)}</code></pre><div class="callout"><b>Predict → Run → Explain:</b> ${esc(ui.predict)}</div>${notes(ui.predict)}`));
+  S.push(quizSlide("concept-check", "CONCEPT CHECK", spec.quiz[0], spec.quiz[1], spec.quiz[2], spec.quiz[3], spec.quiz[3]));
+  S.push(labSlide("guided-lab", "PYTHON LAB", ui.lab, ui.labIntro, spec.lab, packages, ui.labIntro));
+  S.push(sec("practice", `<div class="kicker">PRACTICE</div><h2>${esc(ui.practice)}</h2><div class="grid3" style="margin-top:.75em">${cards(ui.levels)}</div>${notes(ui.practice)}`));
+  S.push(sec("debug", `<div class="kicker">DEBUG ROUTINE</div><h2>Read → Locate → Isolate → Rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the final error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Find the failing line.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest example.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Run top to bottom.</span></div></div>${notes("Use the same debugging routine every week.")}`));
+  S.push(sec("homework", `<div class="kicker">${esc(ui.homework)}</div><h2>${esc(spec.title)}</h2><div class="box"><p class="lead">${esc(spec.homework)}</p></div><div class="callout"><b>Submission:</b> runnable notebook + short explanation + test evidence.</div>${notes(spec.homework)}`));
+  S.push(sec("exit", `<div class="kicker">EXIT TICKET</div><h2>${esc(ui.exit)}</h2><div class="grid3" style="margin-top:.75em">${cards([[spec.topics[0][0], spec.topics[0][1]], [spec.topics[1][0], spec.topics[1][1]], [spec.topics.at(-1)[0], spec.topics.at(-1)[1]]])}</div>${notes(spec.outcome)}`, "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+  S.push(sec("close", `<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">${esc(ui.close)}</h2><p style="color:#cfe0ef;margin-top:.5em">${esc(spec.outcome)}</p>${notes(ui.close)}`, "center", 'data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)"'));
+  return S;
+}
+
+const mappedCatalog = (lang) => mappedLessons.map((record) => {
+  const spec = record[lang];
+  return { id: `lesson-${String(record.n).padStart(2, "0")}`, n: record.n, title: spec.title, summary: spec.summary,
+    tags: [`Class ${String(record.n).padStart(2, "0")}`, record.source.replace(/\.(pdf|ppsx)$/i, ""), "Quiz", "Lab"], duration: "2 hours", status: "ready" };
+});
+CATALOG.courses.find((course) => course.id === "python-ai").decks = mappedCatalog("zh");
+CATALOG.courses.find((course) => course.id === "python-ai-en").decks = mappedCatalog("en");
+
+const DECK_BUILDERS = {};
+mappedLessons.forEach((record) => {
+  const lessonId = `lesson-${String(record.n).padStart(2, "0")}`;
+  DECK_BUILDERS[`python-ai/${lessonId}`] = { build: () => buildMappedLesson(record, "zh"), title: `Class ${record.n} · ${record.zh.title}` };
+  DECK_BUILDERS[`python-ai-en/${lessonId}`] = { build: () => buildMappedLesson(record, "en"), title: `Class ${record.n} · ${record.en.title}` };
+});
 
 // =====================================================================
 // WRITE
