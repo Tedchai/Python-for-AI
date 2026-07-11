@@ -1,6 +1,6 @@
-﻿<!doctype html><html lang="en"><head>
+<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Class 06 · Python Dictionaries and Word Frequency</title>
+<title>Class 6 · Advanced Arguments, Scope, and Documentation</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
 <style>
@@ -29,6 +29,15 @@
 .reveal blockquote{border:none;box-shadow:none;background:var(--cloud2);border-left:6px solid var(--teal);border-radius:8px;font-size:.76em;font-style:normal;width:100%;padding:.65em 1em}
 .reveal .speak{cursor:pointer;display:inline-flex;align-items:center;gap:.4em;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:.28em .85em;font-size:.52em;font-weight:700;font-family:-apple-system,sans-serif;box-shadow:0 4px 12px rgba(15,157,176,.3)}
 .reveal .speak:hover{background:#0d8a9b}.reveal .speak.playing{background:var(--coral)}
+.reveal .prof-quote{background:#fff;border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:12px;padding:.55em .75em;margin-top:.55em;box-shadow:0 6px 18px rgba(20,40,70,.07)}
+.reveal .prof-quote .label{font-size:.48em;color:var(--muted);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.22em}
+.reveal .prof-quote blockquote{margin:.12em 0;background:var(--cloud2);font-size:.68em}
+.reveal .prof-quote .explain{font-size:.58em;color:var(--muted);margin:.45em 0 0}
+.lang-en{display:none}
+body.lang-en .lang-zh{display:none!important}
+body.lang-en .lang-en{display:inline!important}
+body.lang-en .prof-quote .lang-en{display:block!important}
+body.lang-en .prof-quote .lang-zh{display:none!important}
 /* timeline */
 .reveal .tl{display:flex;gap:.4em;align-items:stretch;margin-top:.5em}
 .reveal .tl .ev{flex:1;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:10px;padding:.45em .5em}
@@ -121,6 +130,11 @@
 .reveal .hv-play{background:var(--teal)!important;color:#fff!important;border-color:var(--teal)!important}
 .reveal .hv-speed-label{font-size:11px;color:var(--muted);margin-left:6px}
 /* comments */
+#homeBtn,#langBtn{position:fixed;top:14px;z-index:60;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:800;font-family:-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(20,40,70,.24)}
+#homeBtn{left:16px;background:#fff;color:var(--teal);border:1px solid var(--line)}
+#homeBtn:hover{text-decoration:none;background:var(--cloud)}
+#langBtn{left:132px;background:var(--navy);color:#fff;border:none;cursor:pointer}
+#langBtn:hover{filter:brightness(1.1)}
 #commentBtn{position:fixed;right:16px;top:14px;z-index:60;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(15,157,176,.4)}
 #commentBtn:hover{background:#0d8a9b}#commentBtn .cnum{background:#fff;color:var(--teal);border-radius:999px;padding:0 6px;margin-left:5px;font-size:11px}
 #listenBtn{--p:0%;position:fixed;right:148px;bottom:14px;z-index:60;min-width:128px;justify-content:center;color:#fff;border:none;border-radius:999px;padding:9px 15px;font-size:13px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(20,40,70,.34);display:none;align-items:center;gap:.45em;background:linear-gradient(to right,var(--teal) var(--p),var(--navy) var(--p));transition:background .15s linear}
@@ -155,236 +169,98 @@ body.reveal-fallback{overflow:auto;background:#102f53;color:#fff}
 body.reveal-fallback .reveal,body.reveal-fallback .slides{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;transform:none!important}
 body.reveal-fallback .slides section{position:static!important;display:none!important;width:auto!important;height:auto!important;min-height:100vh!important;padding:7vh 8vw!important;transform:none!important}
 body.reveal-fallback .slides section.present,body.reveal-fallback .slides section:first-child{display:block!important}
-#homeBtn,#langBtn{position:fixed;top:14px;z-index:60;border-radius:999px;padding:8px 14px;font-size:12.5px;font-weight:800;font-family:-apple-system,sans-serif;text-decoration:none;box-shadow:0 6px 18px rgba(20,40,70,.24)}
-#homeBtn{left:16px;background:#fff;color:var(--teal)}#homeBtn:hover{background:var(--cloud);text-decoration:none}
-#langBtn{left:132px;z-index:60;background:transparent;color:#fff;border:none;border-radius:999px;padding:8px 12px;font-size:12.5px;font-weight:700;font-family:-apple-system,sans-serif;cursor:pointer}
-#langBtn:hover{background:rgba(255,255,255,.12)}
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 06</div>
-    <h1 style="color:#fff">Dictionaries</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">Map keys to values and count text data</p>
-    <div class="grid3" style="margin-top:1em">
-      <div class="skillcard"><div class="cn">Map Keys</div><p>Create key-value mappings.</p></div>
-      <div class="skillcard"><div class="cn">Update Values</div><p>Update entries in a dictionary.</p></div>
-      <div class="skillcard"><div class="cn">Count Words</div><p>Build a word-frequency counter.</p></div>
-    </div>
-    <aside class="notes">English version. Keep the class Python-first: AI is the context, but the main goal is code fluency.</aside>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 06</div><h1 style="color:#fff">Advanced Arguments, Scope, and Documentation</h1><p style="color:#cfe0ef;margin-top:.45em">Type hints, keyword arguments, local/global/nonlocal scope, docstrings, and reasons to use functions.</p><div class="callout" style="margin-top:1em"><b>Professor Qin source:</b> Python Functions.ppsx · 54-107</div><aside class="notes">Professor Qin source: Python Functions.ppsx, 54-107.</aside>
 </section>
-<section id="outputs" data-sid="outputs">
-<div class="kicker">TODAY'S OUTPUT</div><h2>Build a dictionary-based word frequency counter.</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><span class="feature">1</span><h3>Understand</h3><p>Explain the key Python idea in plain English.</p></div>
-      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Practice</h3><p>Run and modify guided code examples.</p></div>
-      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Submit</h3><p>Turn in a clean notebook with one small extension.</p></div>
-    </div><aside class="notes">Set the outcome before teaching syntax.</aside>
+<section id="outcome" data-sid="outcome">
+<div class="kicker">Today's outcome</div><h2>Write readable, documented functions with clear interfaces and predictable scope.</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · Rebuild</h3><p>Recreate the core example without the answer.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · Modify</h3><p>Change data, boundaries, or parameters and verify the result.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · Transfer</h3><p>Apply the same idea to a new context.</p></div></div><aside class="notes">Write readable, documented functions with clear interfaces and predictable scope.</aside>
 </section>
-<section id="two-hour-pacing" data-sid="two-hour-pacing">
-<div class="kicker">2-HOUR PACING</div><h2>Lecture, guided practice, independent challenge, submission</h2>
-    <div class="flow" style="margin-top:.75em">
-      <div class="step"><span class="n">0-20</span><b>Warm-up</b><span>Predict, run, and discuss.</span></div>
-      <div class="step"><span class="n">20-55</span><b>Demo</b><span>Watch the full idea once.</span></div>
-      <div class="step"><span class="n">55-90</span><b>Guided lab</b><span>Edit code and observe output.</span></div>
-      <div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>Build, explain, and submit.</span></div>
-    </div><aside class="notes">Use this page to manage the longer two-hour session.</aside>
-</section>
-<section id="recap" data-sid="recap">
-<div class="kicker">RECAP</div><h2>Where this class fits</h2><p class="lead">Last class we used tuples for fixed records. Today we use dictionaries when lookup by name or label matters.</p>
-    <div class="callout"><b>Python-first reminder:</b> We are learning AI through code, one Python skill at a time.</div><aside class="notes">Keep the recap short and connect directly to today's Python skill.</aside>
-</section>
-<section id="warmup" data-sid="warmup">
-<div class="kicker">WARM-UP</div><h2>Predict first, then run</h2>
-    <div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em">
-      <div class="box"><h3>Student actions</h3><ul><li>Use get() with a default value.</li><li>Update an existing key.</li><li>Loop through items().</li></ul></div>
-      <div class="box"><h3>Teacher prompts</h3><ul><li>What output do you expect?</li><li>Which line might fail?</li><li>What would you change first?</li></ul></div>
-    </div><aside class="notes">Prediction before execution makes students active.</aside>
-</section>
-<section id="vocabulary" data-sid="vocabulary">
-<div class="kicker">VOCABULARY</div><h2>Three terms to use today</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Key</h3><p>The lookup name.</p></div><div class="box"><span class="feature">2</span><h3>Value</h3><p>The data stored for a key.</p></div><div class="box"><span class="feature">3</span><h3>items()</h3><p>A way to loop over key-value pairs.</p></div></div><aside class="notes">Give students language for explaining code.</aside>
-</section>
-<section id="mental-model" data-sid="mental-model">
-<div class="kicker">MENTAL MODEL</div><h2>Understand the idea before memorizing syntax</h2><div class="callout"><b>Core model:</b> A dictionary is like a contact list: use a key to quickly find the matching information.</div><aside class="notes">Mental models make syntax less random.</aside>
+<section id="source-map" data-sid="source-map">
+<div class="kicker">SOURCE COVERAGE</div><h2>Concept map</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Type hints</h3><p>Use name: type and -&gt; return_type to document expected types; they are usually not enforced at runtime.</p></div><div class="box"><h3>Keyword arguments</h3><p>Name arguments explicitly for clarity and flexible ordering.</p></div><div class="box"><h3>Scope</h3><p>local lives inside a function; global at module level; nonlocal targets an enclosing function.</p></div><div class="box"><h3>Docstrings</h3><p>The first string documents purpose, parameters, and return value for help().</p></div></div><aside class="notes">This lesson covers Python Functions.ppsx 54-107.</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
-<div class="kicker">CONCEPT 1</div><h2>key</h2><p class="lead">The name used for lookup.</p>
-      <div class="callout"><b>Say it aloud:</b> How would you explain key to someone who missed class?</div><aside class="notes">Stop for a short student explanation.</aside>
+<div class="kicker">CONCEPT 1</div><h2>Type hints</h2><p class="lead">Use name: type and -&gt; return_type to document expected types; they are usually not enforced at runtime.</p><div class="callout"><b>Explain:</b> Explain this concept with an example of your own.</div><aside class="notes">Use name: type and -&gt; return_type to document expected types; they are usually not enforced at runtime.</aside>
 </section>
 <section id="concept-2" data-sid="concept-2">
-<div class="kicker">CONCEPT 2</div><h2>value</h2><p class="lead">The data connected to that key.</p>
-      <div class="callout"><b>Say it aloud:</b> How would you explain value to someone who missed class?</div><aside class="notes">Stop for a short student explanation.</aside>
+<div class="kicker">CONCEPT 2</div><h2>Keyword arguments</h2><p class="lead">Name arguments explicitly for clarity and flexible ordering.</p><div class="callout"><b>Explain:</b> Explain this concept with an example of your own.</div><aside class="notes">Name arguments explicitly for clarity and flexible ordering.</aside>
 </section>
 <section id="concept-3" data-sid="concept-3">
-<div class="kicker">CONCEPT 3</div><h2>items</h2><p class="lead">Loop through both key and value together.</p>
-      <div class="callout"><b>Say it aloud:</b> How would you explain items to someone who missed class?</div><aside class="notes">Stop for a short student explanation.</aside>
+<div class="kicker">CONCEPT 3</div><h2>Scope</h2><p class="lead">local lives inside a function; global at module level; nonlocal targets an enclosing function.</p><div class="callout"><b>Explain:</b> Explain this concept with an example of your own.</div><aside class="notes">local lives inside a function; global at module level; nonlocal targets an enclosing function.</aside>
 </section>
-<section id="syntax-pattern" data-sid="syntax-pattern">
-<div class="kicker">SYNTAX PATTERN</div><h2>The Python pattern for today</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>scores = {"Ana": 88, "Bo": 72}
-scores["Bo"] = 80
-print(scores.get("Cleo", 0))</code></pre>
-    <div class="callout"><b>Read before running:</b> identify the variables, inputs, and output.</div><aside class="notes">Read code structurally before executing it.</aside>
+<section id="concept-4" data-sid="concept-4">
+<div class="kicker">CONCEPT 4</div><h2>Docstrings</h2><p class="lead">The first string documents purpose, parameters, and return value for help().</p><div class="callout"><b>Explain:</b> Explain this concept with an example of your own.</div><aside class="notes">The first string documents purpose, parameters, and return value for help().</aside>
 </section>
 <section id="teacher-demo" data-sid="teacher-demo">
-<div class="kicker">TEACHER DEMO</div><h2>Watch the complete flow once</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>scores = {"Ana": 88, "Bo": 72, "Cleo": 95}
+<div class="kicker">Teacher demo</div><h2>Advanced Arguments, Scope, and Documentation</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>def area(width: float, height: float = 1.0) -&gt; float:
+    """Return rectangle area from width and height."""
+    return width * height
 
-scores["Bo"] = 80
-scores["Dani"] = 91
-
-for name, score in scores.items():
-    print(name, score)</code></pre><aside class="notes">Run once, then explain line by line.</aside>
-</section>
-<section id="trace-table" data-sid="trace-table">
-<div class="kicker">TRACE THE CODE</div><h2>What changes after each line?</h2>
-    <div class="grid3" style="margin-top:.65em">
-      <div class="box"><h3>Before</h3><p>What values exist before this line runs?</p></div>
-      <div class="box"><h3>During</h3><p>What value is created or changed?</p></div>
-      <div class="box"><h3>After</h3><p>Does the output match your prediction?</p></div>
-    </div><aside class="notes">Tracing builds debugging skill.</aside>
-</section>
-<section id="prediction-quiz" data-sid="prediction-quiz">
-<div class="kicker">PREDICTION CHECK</div>
-  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
-  <div class="quiz" data-correct="0">
-    <p class="qq">In word frequency, what is the best dictionary key?</p>
-    <div class="opts"><button class="opt" data-i="0">The word</button><button class="opt" data-i="1">The count</button><button class="opt" data-i="2">The whole paragraph</button></div>
-    <p class="quiz-exp">Use the word as the lookup key and the count as its value.</p>
-  </div>
-  <aside class="notes">Use this as a quick formative check.</aside>
-</section>
-<section id="guided-practice-1" data-sid="guided-practice-1">
-<div class="kicker">GUIDED PRACTICE 1</div><h2>Small edit, then rerun</h2><div class="box"><ul><li>Use get() with a default value.</li><li>Update an existing key.</li><li>Loop through items().</li></ul></div><aside class="notes">One small change at a time.</aside>
-</section>
-<section id="guided-practice-2" data-sid="guided-practice-2">
-<div class="kicker">GUIDED PRACTICE 2</div><h2>Explain the change</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Change</div><p>What did you edit?</p></div><div class="skillcard"><div class="cn">Output</div><p>What changed?</p></div><div class="skillcard"><div class="cn">Why</div><p>Why did it change?</p></div></div><aside class="notes">Every edit should have a reason.</aside>
-</section>
-<section id="guided-lab" data-sid="guided-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>Dictionary Counter</h2>
-  <p class="lead" style="margin:.1em 0 .25em">Count labels or words using a dictionary.</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">labels = ["cat", "dog", "cat", "bird", "dog", "cat"]
-counts = {}
-
-for label in labels:
-    counts[label] = counts.get(label, 0) + 1
-
-print(counts)
-
-for label, count in counts.items():
-    print(f"{label}: {count}")</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">Main guided lab for the two-hour class.</aside>
-</section>
-<section id="mistake-clinic" data-sid="mistake-clinic">
-<div class="kicker">MISTAKE CLINIC</div><h2>Common errors to expect</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>KeyError</h3><p>Reading a missing key directly can fail; use get().</p></div><div class="box"><span class="feature">2</span><h3>Key/value reversed</h3><p>For word count, word is the key and count is the value.</p></div><div class="box"><span class="feature">3</span><h3>Unclean text</h3><p>Case and punctuation affect counts.</p></div></div><aside class="notes">Normalize errors and teach a response routine.</aside>
-</section>
-<section id="debug-routine" data-sid="debug-routine">
-<div class="kicker">DEBUG ROUTINE</div><h2>Read, locate, isolate, rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the last error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Find the line number.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest piece.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Run top to bottom.</span></div></div><aside class="notes">Repeat this routine every week.</aside>
-</section>
-<section id="pair-programming" data-sid="pair-programming">
-<div class="kicker">PAIR PROGRAMMING</div><h2>Driver writes, Navigator reads</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>Types and runs the code.</p></div><div class="box"><h3>Navigator</h3><p>Predicts output and checks logic.</p></div></div><div class="callout"><b>Switch roles after 5 minutes.</b></div><aside class="notes">This keeps the two-hour session active.</aside>
-</section>
-<section id="mini-project-brief" data-sid="mini-project-brief">
-<div class="kicker">MINI PROJECT</div><h2>Word Frequency Counter</h2><div class="grid3" style="margin-top:.65em"><div class="box"><h3>Input</h3><p>A sentence or short paragraph.</p></div><div class="box"><h3>Process</h3><p>Clean, split, loop, and count.</p></div><div class="box"><h3>Output</h3><p>Print each word and its count.</p></div></div><aside class="notes">Frame every project as input -&gt; process -&gt; output.</aside>
-</section>
-<section id="mini-project-lab" data-sid="mini-project-lab">
-<div class="kicker">PYTHON LAB</div>
-  <h2>Word Frequency Counter Starter</h2>
-  <p class="lead" style="margin:.1em 0 .25em">Start here, then extend the code in your own notebook.</p>
-  <div class="lab" data-packages="">
-    <div class="lab-main">
-      <textarea class="code" spellcheck="false">text = "AI helps students learn Python and Python helps students understand AI"
-text = text.lower()
-words = text.split()
-
-counts = {}
-for word in words:
-    counts[word] = counts.get(word, 0) + 1
-
-for word, count in counts.items():
-    print(f"{word}: {count}")</textarea>
-      <div class="lab-bar">
-        <button class="run">▶ Run</button>
-        <button class="ai-explain">✨ Explain</button>
-        <button class="ai-debug">🐞 Debug</button>
-        <button class="ai-improve">⚡ Improve</button>
-        <span class="lab-status">Python loads on first Run</span>
-      </div>
-      <pre class="out">▶ Run the code to see the output here.</pre>
-    </div>
-    <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
-    </div>
-  </div><aside class="notes">Independent project starter.</aside>
-</section>
-<section id="test-cases" data-sid="test-cases">
-<div class="kicker">TEST CASES</div><h2>Try more than one input</h2><div class="grid3" style="margin-top:.65em"><div class="box"><h3>Normal</h3><p>A typical input.</p></div><div class="box"><h3>Boundary</h3><p>An edge or threshold value.</p></div><div class="box"><h3>Custom</h3><p>Your own example.</p></div></div><aside class="notes">Testing prevents lucky code.</aside>
-</section>
-<section id="challenge-ladder" data-sid="challenge-ladder">
-<div class="kicker">CHALLENGE LADDER</div><h2>Everyone completes Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>Complete the base version and make sure it runs from top to bottom.</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>Change the data and add one meaningful extension.</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>Add a second test case and explain what changed.</span></div></div><aside class="notes">Different students can move at different speeds.</aside>
+print(area(height=3, width=4))
+print(area.__doc__)</code></pre><div class="callout"><b>Predict → Run → Explain:</b> Predict the output first, then run the code and explain each state change.</div><aside class="notes">Predict the output first, then run the code and explain each state change.</aside>
 </section>
 <section id="concept-check" data-sid="concept-check">
 <div class="kicker">CONCEPT CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">What does counts.get(word, 0) do?</p>
-    <div class="opts"><button class="opt" data-i="0">Uses 0 if the word is not in the dictionary yet</button><button class="opt" data-i="1">Deletes the word</button><button class="opt" data-i="2">Turns every value into 0</button></div>
-    <p class="quiz-exp">get provides a default value, which prevents KeyError on the first occurrence.</p>
+    <p class="qq">Do type hints normally block wrong types at runtime?</p>
+    <div class="opts"><button class="opt" data-i="0">No; they mainly document and support tools</button><button class="opt" data-i="1">Always</button><button class="opt" data-i="2">Only inside while loops</button></div>
+    <p class="quiz-exp">Python annotations are not runtime enforcement by default.</p>
   </div>
-  <aside class="notes">Check understanding before independent work.</aside>
+  <aside class="notes">Python annotations are not runtime enforcement by default.</aside>
 </section>
-<section id="independent-work" data-sid="independent-work">
-<div class="kicker">INDEPENDENT WORK</div><h2>Build your version</h2><div class="callout"><b>Rule:</b> do not only copy the starter code. Make one meaningful change and explain it.</div><aside class="notes">This is the main work block.</aside>
+<section id="guided-lab" data-sid="guided-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>In-browser Python lab</h2>
+  <p class="lead" style="margin:.1em 0 .25em">Run the starter, change data or rules, and explain why the output changes.</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">tax_rate = 0.06
+
+def total_price(price: float, quantity: int = 1) -&gt; float:
+    """Return price with sales tax for a quantity."""
+    subtotal = price * quantity
+    return round(subtotal * (1 + tax_rate), 2)
+
+print(total_price(12.5, quantity=3))</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">Run the starter, change data or rules, and explain why the output changes.</aside>
 </section>
-<section id="explain-code" data-sid="explain-code">
-<div class="kicker">EXPLAIN YOUR CODE</div><h2>Run it, then explain it</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>What does it do?</p></div><div class="skillcard"><div class="cn">Why</div><p>Why did you write it this way?</p></div><div class="skillcard"><div class="cn">Change</div><p>What did you customize?</p></div></div><aside class="notes">Explanation is part of the assignment.</aside>
+<section id="practice" data-sid="practice">
+<div class="kicker">PRACTICE</div><h2>Challenge ladder</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · Rebuild</h3><p>Recreate the core example without the answer.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · Modify</h3><p>Change data, boundaries, or parameters and verify the result.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · Transfer</h3><p>Apply the same idea to a new context.</p></div></div><aside class="notes">Challenge ladder</aside>
 </section>
-<section id="notebook-hygiene" data-sid="notebook-hygiene">
-<div class="kicker">NOTEBOOK HYGIENE</div><h2>Clean the notebook before submitting</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>Runs top to bottom</li><li>Readable variable names</li><li>No unrelated scratch code</li><li>Readable output</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 Markdown sentences</li><li>Explain input and output</li><li>Mark your extension</li><li>Write one question</li></ul></div></div><aside class="notes">Reserve time for cleanup.</aside>
-</section>
-<section id="ai-helper" data-sid="ai-helper">
-<div class="kicker">AI AS STUDY HELPER</div><h2>Use AI to learn Python, not to skip Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Good prompts</h3><ul><li>Explain this error like I am a beginner.</li><li>Give me a similar practice problem.</li><li>Ask me hints before giving the answer.</li></ul></div><div class="box"><h3>Avoid</h3><ul><li>Write the whole homework for me.</li><li>Rewrite someone else's code so I can submit it.</li><li>Give me code I cannot explain.</li></ul></div></div><aside class="notes">Keep AI use aligned with learning.</aside>
-</section>
-<section id="rubric" data-sid="rubric">
-<div class="kicker">RUBRIC</div><h2>How this assignment is evaluated</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% Runs</h3><p>The notebook runs top to bottom.</p></div><div class="box"><h3>25% Explains</h3><p>You can explain key lines.</p></div><div class="box"><h3>20% Extends</h3><p>You made one meaningful change.</p></div><div class="box"><h3>15% Clean</h3><p>The notebook is organized.</p></div></div><aside class="notes">Make expectations explicit.</aside>
+<section id="debug" data-sid="debug">
+<div class="kicker">DEBUG ROUTINE</div><h2>Read → Locate → Isolate → Rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the final error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Find the failing line.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest example.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Run top to bottom.</span></div></div><aside class="notes">Use the same debugging routine every week.</aside>
 </section>
 <section id="homework" data-sid="homework">
-<div class="kicker">HOMEWORK</div><h2>Finish the mini project notebook</h2><div class="box"><ul><li>Complete the starter task.</li><li>Add one extension.</li><li>Run all cells from top to bottom.</li><li>Write 3-5 sentences explaining your code.</li><li>Submit the Colab notebook link.</li></ul></div><aside class="notes">Homework should be achievable but not just copied.</aside>
+<div class="kicker">Homework</div><h2>Advanced Arguments, Scope, and Documentation</h2><div class="box"><p class="lead">Revise an earlier function with hints, a default, a keyword call, and a docstring; verify it with three test cases.</p></div><div class="callout"><b>Submission:</b> runnable notebook + short explanation + test evidence.</div><aside class="notes">Revise an earlier function with hints, a default, a keyword call, and a docstring; verify it with three test cases.</aside>
 </section>
-<section id="submission-checklist" data-sid="submission-checklist">
-<div class="kicker">SUBMISSION CHECKLIST</div><h2>Before you submit</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>All cells run.</p></div><div class="skillcard"><div class="cn">Share</div><p>Link permissions work.</p></div><div class="skillcard"><div class="cn">Explain</div><p>Your notes are clear.</p></div></div><aside class="notes">Use this to reduce broken submissions.</aside>
+<section id="exit" data-sid="exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
+<div class="kicker">EXIT TICKET</div><h2>Before leaving, you should be able to</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Type hints</h3><p>Use name: type and -&gt; return_type to document expected types; they are usually not enforced at runtime.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Keyword arguments</h3><p>Name arguments explicitly for clarity and flexible ordering.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Docstrings</h3><p>The first string documents purpose, parameters, and return value for help().</p></div></div><aside class="notes">Write readable, documented functions with clear interfaces and predictable scope.</aside>
 </section>
-<section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div><h2>One clear thing, one question</h2><div class="callout"><b>Comment task:</b> Write one thing you understand now and one question you still have.</div><aside class="notes">Collect quick feedback.</aside>
-</section>
-<section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
-<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">Dictionaries help Python remember relationships.</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">A simple closing line.</aside>
-</section>
-<section id="buffer" data-sid="buffer">
-<div class="kicker">BUFFER / CATCH-UP</div><h2>Use the last minutes wisely</h2><div class="grid3" style="margin-top:.65em"><div class="box"><h3>Need help</h3><p>Show the last error line.</p></div><div class="box"><h3>Almost done</h3><p>Explain your code to a partner.</p></div><div class="box"><h3>Finished early</h3><p>Complete Level 3 and write an improvement idea.</p></div></div><aside class="notes">A useful ending slide for a two-hour class.</aside>
+<section id="close" data-sid="close" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">Turn syntax into an explainable, testable research tool.</h2><p style="color:#cfe0ef;margin-top:.5em">Write readable, documented functions with clear interfaces and predictable scope.</p><aside class="notes">Turn syntax into an explainable, testable research tool.</aside>
 </section>
 </div></div>
 
 
 <!-- per-slide comments -->
 <a id="homeBtn" href="../../">← Main</a>
-<button id="langBtn" type="button" title="Switch to Chinese">中文</button>
+<button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
 <audio id="narratorAudio" preload="none" style="display:none"></audio>
 <div id="capBar"></div>
 <button id="ccBtn" title="Toggle captions">CC</button>
@@ -401,10 +277,9 @@ for word, count in counts.items():
 </div>
 
 <script>
-/* early language switch: runs before CDN scripts can block the page */
 (function(){
   const langBtn=document.getElementById('langBtn');
-  const ALT_DECK_URL='../../python-ai/lesson-06/';
+  const ALT_DECK_URL="../../python-ai/lesson-06/";
   const requestedSlide=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   function slides(){ return [...document.querySelectorAll('.reveal .slides section')]; }
   function showRequestedSlide(){
@@ -420,27 +295,28 @@ for word, count in counts.items():
   setTimeout(showRequestedSlide,0);
   setTimeout(showRequestedSlide,300);
   if(!langBtn) return;
-  langBtn.textContent='中文';
-  function currentSlideKey(){
-    const all=slides();
+  langBtn.textContent="中文";
+  function currentSlideIndex(){
+    const slides=[...document.querySelectorAll('.reveal .slides section')];
     const hashPart=(location.hash.split('/')[1]||'').split('/')[0]||'';
     const hashIndex=Number(hashPart);
-    if(Number.isFinite(hashIndex)&&all[hashIndex]) return all[hashIndex].id||all[hashIndex].dataset.sid||hashIndex;
+    if(Number.isFinite(hashIndex)&&slides[hashIndex]) return slides[hashIndex].id||slides[hashIndex].dataset.sid||hashIndex;
     if(hashPart){
-      const sidIndex=all.findIndex((slide)=>slide.id===hashPart||slide.dataset.sid===hashPart);
+      const sidIndex=slides.findIndex((slide)=>slide.id===hashPart||slide.dataset.sid===hashPart);
       if(sidIndex>=0) return hashPart;
     }
     if(typeof Reveal!=='undefined'&&Reveal.getIndices){
       const idx=Reveal.getIndices();
-      if(idx&&typeof idx.h==='number'&&all[idx.h]) return all[idx.h].id||all[idx.h].dataset.sid||idx.h;
+      if(idx&&typeof idx.h==='number'&&slides[idx.h]) return slides[idx.h].id||slides[idx.h].dataset.sid||idx.h;
     }
-    const cur=typeof Reveal!=='undefined'&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides section.present');
-    if(cur) return cur.id||cur.dataset.sid||Math.max(0, all.indexOf(cur));
+    const cur=typeof Reveal!=='undefined'&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
+    if(cur) return cur.id||cur.dataset.sid||Math.max(0, slides.indexOf(cur));
     return 0;
   }
-  langBtn.addEventListener('click',function(){ const key=currentSlideKey(); location.href=ALT_DECK_URL+'?slide='+key+'#/'+key; });
+  langBtn.addEventListener('click',function(){ const key=currentSlideIndex(); location.href=ALT_DECK_URL+'?slide='+key+'#/'+key; });
 })();
-</script><script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
@@ -477,31 +353,57 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
  * never audibly played and the button silently reset to idle before anyone
  * noticed. Reusing an attached element avoids that path. */
 const _audio=document.getElementById('narratorAudio');
-let _btn=null,_playToken=0;
+let _btn=null,_playToken=0,_utter=null;
 function fmtClock(s){ s=Math.max(0,Math.floor(s||0)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
 function resetListenUI(){ listenBtn.style.setProperty('--p','0%'); listenBtn.querySelector('.li-ic').textContent='▶'; listenBtn.querySelector('.li-tx').textContent='Listen'; }
+function rememberSpeakLabels(b){
+  if(b.dataset.labelReady) return;
+  const zh=b.querySelector('.lang-zh'), en=b.querySelector('.lang-en'), first=b.querySelector('span');
+  b.dataset.labelZh=zh?zh.textContent:(first?first.textContent:'Speak');
+  b.dataset.labelEn=en?en.textContent:b.dataset.labelZh;
+  b.dataset.labelReady='1';
+}
+function setSpeakButtonState(b,playing){
+  const zh=b.querySelector('.lang-zh'), en=b.querySelector('.lang-en'), first=b.querySelector('span');
+  if(zh) zh.textContent=playing?'暂停':b.dataset.labelZh;
+  if(en) en.textContent=playing?'Pause':b.dataset.labelEn;
+  if(!zh && !en && first) first.textContent=playing?'Pause':(b.dataset.labelZh||'Speak');
+}
 function stopAudio(){
   _playToken++; // invalidate any in-flight play() for the old src
+  if(window.speechSynthesis){ window.speechSynthesis.cancel(); }
+  _utter=null;
   _audio.pause(); _audio.currentTime=0; _audio.removeAttribute('src'); _audio.load();
   _audio.removeEventListener('timeupdate',onListenTimeupdate); // else it'd animate listenBtn during a .speak clip
   capBar.style.display='none';
   if(_btn){
     _btn.classList.remove('playing');
     if(_btn===listenBtn) resetListenUI();
-    else if(_btn.querySelector('span')) _btn.querySelector('span').textContent=_btn.dataset.label||'Speak';
+    else if(_btn.querySelector('span')) setSpeakButtonState(_btn,false);
   }
   _btn=null;
 }
 document.addEventListener('click',function(e){
   const b=e.target.closest('.speak'); if(!b) return;
-  if(_btn===b && !_audio.paused){ stopAudio(); return; }
+  if(_btn===b && (!_audio.paused || _utter)){ stopAudio(); return; }
   stopAudio();
   const token=_playToken;
-  _btn=b; b.dataset.label=b.dataset.label||b.querySelector('span').textContent;
-  b.classList.add('playing'); b.querySelector('span').textContent='Pause';
+  rememberSpeakLabels(b);
+  _btn=b;
+  b.classList.add('playing'); setSpeakButtonState(b,true);
+  const lang=activeLang();
+  const text=(lang==='en'?b.dataset.textEn:b.dataset.textZh)||b.dataset.text;
+  if(text && window.speechSynthesis){
+    _utter=new SpeechSynthesisUtterance(text);
+    _utter.lang=lang==='en'?'en-US':'zh-CN';
+    _utter.onend=function(){ if(token===_playToken) stopAudio(); };
+    _utter.onerror=function(){ if(token===_playToken) stopAudio(); };
+    window.speechSynthesis.speak(_utter);
+    return;
+  }
   _audio.src=b.dataset.audio;
   _audio.addEventListener('ended',stopAudio,{once:true});
-  _audio.play().catch(function(err){ console.warn('Speak audio playback failed:', err && (err.name || err.message) || err); if(token===_playToken) stopAudio(); });
+  _audio.play().catch(function(){ if(token===_playToken) stopAudio(); });
 });
 
 /* ---------- Per-slide narration ("Listen") + captions ---------- */
@@ -553,8 +455,7 @@ listenBtn.addEventListener('click',function(){
   _audio.src='audio/'+encodeURIComponent(curSid)+'.mp3';
   _audio.addEventListener('timeupdate',onListenTimeupdate);
   _audio.addEventListener('ended',stopAudio,{once:true});
-  _audio.play().catch(function(err){
-    console.warn('Narration playback failed:', err && (err.name || err.message) || err);
+  _audio.play().catch(function(){
     if(token!==_playToken) return; // superseded by a newer click/stop — ignore
     _audio.removeEventListener('timeupdate',onListenTimeupdate);
     stopAudio();
@@ -735,7 +636,7 @@ let counts={}, curSid='title';
 // a positional key would re-point old comments to a different slide whenever
 // the deck is reordered. Every slide is built with a sid (asserted at build);
 // the content-hash fallback below stays position-independent just in case.
-function _hashSid(s){ const t=((s&&s.textContent)||'').replace(/s+/g,' ').trim().slice(0,400); let h=0; for(let i=0;i<t.length;i++){ h=(h*31+t.charCodeAt(i))|0; } return 'auto-'+(h>>>0).toString(36); }
+function _hashSid(s){ const t=((s&&s.textContent)||'').replace(/\s+/g,' ').trim().slice(0,400); let h=0; for(let i=0;i<t.length;i++){ h=(h*31+t.charCodeAt(i))|0; } return 'auto-'+(h>>>0).toString(36); }
 function sidOf(){ const s=Reveal.getCurrentSlide(); if(s&&s.dataset.sid) return s.dataset.sid; console.warn('slide has no data-sid; using content-hash key'); return _hashSid(s); }
 function fmtTime(ts){ const d=new Date(ts); return d.toLocaleDateString()+' '+d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); }
 function escc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
