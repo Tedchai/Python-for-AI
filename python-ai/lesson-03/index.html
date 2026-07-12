@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Class 3 · 条件判断与程序分支</title>
+<title>Class 03 · Functions &amp; File I/O</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
 <style>
@@ -164,6 +164,18 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
 #donateBtn:hover{background:#d85a28;text-decoration:none}
 /* slide number: default bottom-right collides with the comment/listen/cc button row, so move it to bottom-left */
 .reveal .slide-number{left:14px;right:auto;bottom:14px;z-index:58;background:rgba(255,255,255,.85);padding:2px 8px;border-radius:6px;color:var(--muted)}
+#jumpBar{position:fixed;right:14px;top:12px;z-index:70;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 6px 20px rgba(20,40,70,.15);font-family:-apple-system,"Segoe UI",sans-serif}
+#jumpBar a,#jumpBar button{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700;text-decoration:none;cursor:pointer}
+#jumpBar a.disabled{opacity:.35;pointer-events:none}#jumpBar button:hover,#jumpBar a:hover{border-color:var(--teal);color:var(--teal)}
+#jumpSelect{max-width:260px;border:1px solid var(--line);border-radius:7px;padding:6px 8px;color:var(--ink);background:#fff;font-size:12px}
+#overviewPanel{position:fixed;inset:0;z-index:100;background:rgba(12,45,82,.92);display:none;padding:34px;overflow:auto;font-family:-apple-system,"Segoe UI",sans-serif}
+#overviewPanel.open{display:block}#overviewPanel .ov-wrap{max-width:1100px;margin:0 auto;background:#fff;border-radius:16px;padding:22px}
+#overviewPanel .ov-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}#overviewPanel h2{margin:0;color:var(--navy)}
+#overviewClose{border:none;background:var(--navy);color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer}
+#overviewGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+#overviewGrid button{text-align:left;background:var(--cloud2);border:1px solid var(--line);border-radius:10px;padding:11px;color:var(--ink);cursor:pointer;line-height:1.35}
+#overviewGrid button:hover{border-color:var(--teal);background:var(--cloud)}#overviewGrid .ov-n{display:block;color:var(--teal);font-size:11px;font-weight:800;margin-bottom:3px}
+@media(max-width:760px){#jumpSelect{max-width:120px}#jumpBar{right:6px;top:6px}#overviewPanel{padding:10px}}
 body{display:block!important}
 body.reveal-fallback{overflow:auto;background:#102f53;color:#fff}
 body.reveal-fallback .reveal,body.reveal-fallback .slides{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;transform:none!important}
@@ -172,56 +184,83 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 03</div><h1 style="color:#fff">条件判断与程序分支</h1><p style="color:#cfe0ef;margin-top:.45em">布尔表达式、缩进、if/elif/else、紧凑 if 与三元表达式。</p>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 03</div>
+    <h1 style="color:#fff">Functions &amp; File I/O</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">把重复分析变成函数，并保存可复现结果</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">定义和调用函数</div><p>定义和调用函数</p></div><div class="skillcard"><div class="cn">return 分析结果</div><p>return 分析结果</p></div><div class="skillcard"><div class="cn">读取与保存 CSV</div><p>读取与保存 CSV</p></div></div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>
 </section>
-<section id="outcome" data-sid="outcome">
-<div class="kicker">本节课产出</div><h2>把现实规则写成边界清楚、可测试的分支程序。</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · 复现</h3><p>不看答案重新写出核心示例。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · 修改</h3><p>改变数据、边界或参数并验证结果。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · 迁移</h3><p>把同一知识点用于一个新场景。</p></div></div><aside class="notes">把现实规则写成边界清楚、可测试的分支程序。</aside>
+<section id="outputs" data-sid="outputs">
+<div class="kicker">TODAY'S OUTPUT</div><h2>完成一个读取小型 CSV、调用函数并保存结果的 notebook。</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>理解</h3><p>能用自己的话解释今天的 Python 概念。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>练习</h3><p>运行并修改课堂示例代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提交</h3><p>完成一个整洁 notebook，并加入一个小扩展。</p></div></div><aside class="notes">先给出本节课可见产出。</aside>
+</section>
+<section id="two-hour-pacing" data-sid="two-hour-pacing">
+<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div><aside class="notes">用于管理两小时课堂节奏。</aside>
+</section>
+<section id="recap" data-sid="recap">
+<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div><aside class="notes">把今天内容连接到 15 节课路线。</aside>
+</section>
+<section id="warmup" data-sid="warmup">
+<div class="kicker">ONLINE WARM-UP</div><h2>先在聊天框预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3><ul><li>在聊天框提交预测</li><li>独立修改一个地方</li><li>重新运行并比较</li></ul></div><div class="box"><h3>教师提问</h3><ul><li>你预期输出是什么？</li><li>哪一行最可能出错？</li><li>第一步会改哪里？</li></ul></div></div><aside class="notes">线上课堂通过聊天框收集预测；需要帮助时学生可共享屏幕。</aside>
+</section>
+<section id="vocabulary" data-sid="vocabulary">
+<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Parameter</h3><p>函数需要的输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Docstring</h3><p>说明函数用途的文字。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>CSV</h3><p>用逗号分隔的表格文本文件。</p></div></div><aside class="notes">给学生解释代码的语言。</aside>
+</section>
+<section id="mental-model" data-sid="mental-model">
+<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>函数、return、文件 是今天的三块拼图；先知道它们各自解决什么问题。</div><aside class="notes">用心智模型降低语法记忆负担。</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
-<div class="kicker">CONCEPT 1</div><h2>布尔条件</h2><p class="lead">比较表达式产生 True/False，决定代码块是否运行。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">比较表达式产生 True/False，决定代码块是否运行。</aside>
+<div class="kicker">CONCEPT 1</div><h2>函数</h2><p class="lead">给一段可重复逻辑起名字。</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 函数。</div><aside class="notes">短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。</aside>
 </section>
 <section id="concept-2" data-sid="concept-2">
-<div class="kicker">CONCEPT 2</div><h2>缩进</h2><p class="lead">Python 用一致的四空格缩进定义代码块。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">Python 用一致的四空格缩进定义代码块。</aside>
+<div class="kicker">CONCEPT 2</div><h2>return</h2><p class="lead">把计算结果交给后续代码。</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 return。</div><aside class="notes">短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。</aside>
 </section>
 <section id="concept-3" data-sid="concept-3">
-<div class="kicker">CONCEPT 3</div><h2>多分支</h2><p class="lead">if/elif/else 从上到下选择第一条成立路径。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">if/elif/else 从上到下选择第一条成立路径。</aside>
+<div class="kicker">CONCEPT 3</div><h2>文件</h2><p class="lead">让数据和结果在 notebook 之外保留下来。</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 文件。</div><aside class="notes">短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。</aside>
 </section>
-<section id="concept-4" data-sid="concept-4">
-<div class="kicker">CONCEPT 4</div><h2>简洁表达</h2><p class="lead">简单赋值可用 value_if_true if condition else value_if_false。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">简单赋值可用 value_if_true if condition else value_if_false。</aside>
+<section id="syntax-pattern" data-sid="syntax-pattern">
+<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>def mean_value(values):
+    return sum(values) / len(values)
+
+print(mean_value([2, 4, 6]))</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div><aside class="notes">先读结构，再运行。</aside>
 </section>
 <section id="teacher-demo" data-sid="teacher-demo">
-<div class="kicker">教师示范</div><h2>条件判断与程序分支</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>score = 86
-if score &gt;= 90:
-    grade = "A"
-elif score &gt;= 70:
-    grade = "B"
-else:
-    grade = "C"
-print(grade)</code></pre><div class="callout"><b>Predict → Run → Explain:</b> 先预测输出，再运行代码，并逐行解释状态如何变化。</div><aside class="notes">先预测输出，再运行代码，并逐行解释状态如何变化。</aside>
+<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>def classify(value, cutoff=50):
+    """Return high or low using one cutoff."""
+    return "high" if value &gt;= cutoff else "low"
+
+for value in [42, 67, 81]:
+    print(value, classify(value))</code></pre><aside class="notes">先整体运行，再逐行解释。</aside>
 </section>
-<section id="concept-check" data-sid="concept-check">
-<div class="kicker">CONCEPT CHECK</div>
+<section id="trace-table" data-sid="trace-table">
+<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>这一行运行前有哪些值？</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>创建或改变了什么？</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>输出是否符合预测？</p></div></div><aside class="notes">训练调试和阅读代码能力。</aside>
+</section>
+<section id="prediction-quiz" data-sid="prediction-quiz">
+<div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">elif 链会执行几条成立分支？</p>
-    <div class="opts"><button class="opt" data-i="0">第一条成立分支</button><button class="opt" data-i="1">所有成立分支</button><button class="opt" data-i="2">最后一条成立分支</button></div>
-    <p class="quiz-exp">Python 从上到下选择第一条成立分支。</p>
+    <p class="qq">print 和 return 的主要区别？</p>
+    <div class="opts"><button class="opt" data-i="0">print 显示，return 交回结果</button><button class="opt" data-i="1">完全相同</button><button class="opt" data-i="2">return 只能处理文字</button></div>
+    <p class="quiz-exp">return 让结果可以继续被其他代码使用。</p>
   </div>
-  <aside class="notes">Python 从上到下选择第一条成立分支。</aside>
+  <aside class="notes">快速形成性检查。</aside>
+</section>
+<section id="guided-practice-1" data-sid="guided-practice-1">
+<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box"><ul><li>只改一个变量或一条规则</li><li>重新运行并观察变化</li><li>在聊天框提交一句变化说明</li></ul></div><aside class="notes">一次只做一个小改动；教师通过聊天框快速检查理解。</aside>
+</section>
+<section id="guided-practice-2" data-sid="guided-practice-2">
+<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div><aside class="notes">每次修改都要能解释。</aside>
 </section>
 <section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>课堂 Python 实验</h2>
-  <p class="lead" style="margin:.1em 0 .25em">先运行 starter，再修改数据或规则，最后解释输出为什么改变。</p>
+  <h2>Reusable Sample Summary</h2>
+  <p class="lead" style="margin:.1em 0 .25em">把平均值和标签逻辑封装成函数，再用不同数据测试。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">cents = 87
-quarters = cents // 25
-cents %= 25
-dimes = cents // 10
-cents %= 10
-pennies = cents
-print(quarters, "quarters", dimes, "dimes", pennies, "pennies")</textarea>
+      <textarea class="code" spellcheck="false">def summarize(values):
+    return min(values), sum(values) / len(values), max(values)
+
+low, avg, high = summarize([12, 18, 15, 21])
+print(low, round(avg, 1), high)</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -236,26 +275,108 @@ print(quarters, "quarters", dimes, "dimes", pennies, "pennies")</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">先运行 starter，再修改数据或规则，最后解释输出为什么改变。</aside>
+  </div><aside class="notes">两小时课堂的主要跟做实验。</aside>
 </section>
-<section id="practice" data-sid="practice">
-<div class="kicker">PRACTICE</div><h2>分层练习</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · 复现</h3><p>不看答案重新写出核心示例。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · 修改</h3><p>改变数据、边界或参数并验证结果。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · 迁移</h3><p>把同一知识点用于一个新场景。</p></div></div><aside class="notes">分层练习</aside>
+<section id="mistake-clinic" data-sid="mistake-clinic">
+<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>定义后忘记调用</h3><p>def 只创建函数，不会自动运行。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>路径错误</h3><p>先确认文件名和当前目录。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>异常被忽略</h3><p>显示可理解的错误，不要静默失败。</p></div></div><aside class="notes">把错误正常化，并给出修复路线。</aside>
 </section>
-<section id="debug" data-sid="debug">
-<div class="kicker">DEBUG ROUTINE</div><h2>Read → Locate → Isolate → Rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the final error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Find the failing line.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest example.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Run top to bottom.</span></div></div><aside class="notes">Use the same debugging routine every week.</aside>
+<section id="debug-routine" data-sid="debug-routine">
+<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div><aside class="notes">每周重复这个调试流程。</aside>
+</section>
+<section id="online-checkpoint" data-sid="online-checkpoint">
+<div class="kicker">ONLINE CHECKPOINT</div><h2>独立编码，教师在线巡检</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生</h3><p>独立输入、运行并在表单或聊天框提交输出。</p></div><div class="box"><h3>需要帮助时</h3><p>粘贴最后一行错误，或共享屏幕让教师定位。</p></div></div><div class="callout"><b>5 分钟后统一核对答案与常见错误。</b></div><aside class="notes">线上教学不依赖学生互相配对；教师用聊天框、表单或屏幕共享巡检。</aside>
+</section>
+<section id="mini-project-brief" data-sid="mini-project-brief">
+<div class="kicker">MINI PROJECT</div><h2>可复现分析小工具</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>一个小型 CSV 或样本数值列表。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>函数计算摘要；try/except 给出友好错误。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>保存 summary.csv 或文本结果。</p></div></div><aside class="notes">把项目都讲成 input -&gt; process -&gt; output。</aside>
+</section>
+<section id="mini-project-lab" data-sid="mini-project-lab">
+<div class="kicker">PYTHON LAB</div>
+  <h2>可复现分析小工具 Starter</h2>
+  <p class="lead" style="margin:.1em 0 .25em">从这里开始，再在自己的 notebook 里扩展。</p>
+  <div class="lab" data-packages="">
+    <div class="lab-main">
+      <textarea class="code" spellcheck="false">import csv
+
+def save_summary(values, filename):
+    average = sum(values) / len(values)
+    with open(filename, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["count", "average"])
+        writer.writerow([len(values), average])
+
+save_summary([12, 18, 15, 21], "summary.csv")</textarea>
+      <div class="lab-bar">
+        <button class="run">▶ Run</button>
+        <button class="ai-explain">✨ Explain</button>
+        <button class="ai-debug">🐞 Debug</button>
+        <button class="ai-improve">⚡ Improve</button>
+        <span class="lab-status">Python loads on first Run</span>
+      </div>
+      <pre class="out">▶ Run the code to see the output here.</pre>
+    </div>
+    <div class="assist">
+      <div class="assist-head">✨ AI Assistant</div>
+      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
+      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+    </div>
+  </div><aside class="notes">独立项目 starter。</aside>
+</section>
+<section id="test-cases" data-sid="test-cases">
+<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>普通情况</h3><p>一个典型输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>边界情况</h3><p>刚好在阈值附近。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>自定义情况</h3><p>你自己的例子。</p></div></div><aside class="notes">测试能避免碰巧正确。</aside>
+</section>
+<section id="challenge-ladder" data-sid="challenge-ladder">
+<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div><aside class="notes">让不同速度的学生都有任务。</aside>
+</section>
+<section id="concept-check" data-sid="concept-check">
+<div class="kicker">CONCEPT CHECK</div>
+  <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
+  <div class="quiz" data-correct="0">
+    <p class="qq">为什么保存结果文件？</p>
+    <div class="opts"><button class="opt" data-i="0">便于复查和分享</button><button class="opt" data-i="1">让代码更长</button><button class="opt" data-i="2">避免变量</button></div>
+    <p class="quiz-exp">文件让分析过程更可追踪。</p>
+  </div>
+  <aside class="notes">独立练习前的理解检查。</aside>
+</section>
+<section id="independent-work" data-sid="independent-work">
+<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div><aside class="notes">这是主要独立练习时间。</aside>
+</section>
+<section id="explain-code" data-sid="explain-code">
+<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div><aside class="notes">解释也是作业的一部分。</aside>
+</section>
+<section id="notebook-hygiene" data-sid="notebook-hygiene">
+<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>从上到下能运行</li><li>变量名可读</li><li>删掉无关草稿</li><li>输出清楚</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 句 Markdown 说明</li><li>解释输入和输出</li><li>标出自己的扩展</li><li>写一个问题</li></ul></div></div><aside class="notes">预留整理时间。</aside>
+</section>
+<section id="ai-helper" data-sid="ai-helper">
+<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3><ul><li>像初学者一样解释这个错误</li><li>给我一道类似练习题</li><li>先给提示，不要直接给答案</li></ul></div><div class="box"><h3>避免</h3><ul><li>直接写完整作业</li><li>改同学代码当成自己的</li><li>提交自己不能解释的代码</li></ul></div></div><aside class="notes">让 AI 使用服务于学习。</aside>
+</section>
+<section id="rubric" data-sid="rubric">
+<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div><aside class="notes">明确期待。</aside>
 </section>
 <section id="homework" data-sid="homework">
-<div class="kicker">课后任务</div><h2>条件判断与程序分支</h2><div class="box"><p class="lead">写一个包含至少三种结果的分类器，并测试正常值、边界值和异常值。</p></div><div class="callout"><b>Submission:</b> runnable notebook + short explanation + test evidence.</div><aside class="notes">写一个包含至少三种结果的分类器，并测试正常值、边界值和异常值。</aside>
+<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box"><ul><li>完成 Level 1 基础任务</li><li>完成一个自己的数据或问题扩展</li><li>从上到下运行全部 cells</li><li>写 3-5 句结果解释</li><li>提交可访问的 Colab 链接</li></ul></div><aside class="notes">作业要可完成，但不能只是复制。</aside>
 </section>
-<section id="exit" data-sid="exit" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div><h2>离开前，你应该能做到</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>布尔条件</h3><p>比较表达式产生 True/False，决定代码块是否运行。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>缩进</h3><p>Python 用一致的四空格缩进定义代码块。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>简洁表达</h3><p>简单赋值可用 value_if_true if condition else value_if_false。</p></div></div><aside class="notes">把现实规则写成边界清楚、可测试的分支程序。</aside>
+<section id="submission-checklist" data-sid="submission-checklist">
+<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div><aside class="notes">减少坏链接和无法运行的提交。</aside>
 </section>
-<section id="close" data-sid="close" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
-<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">把语法变成可解释、可测试的研究工具。</h2><p style="color:#cfe0ef;margin-top:.5em">把现实规则写成边界清楚、可测试的分支程序。</p><aside class="notes">把语法变成可解释、可测试的研究工具。</aside>
+<section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
+<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div><aside class="notes">收集快速反馈。</aside>
+</section>
+<section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">函数让分析可重复，文件让结果可追踪。</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">一句话收束。</aside>
+</section>
+<section id="buffer" data-sid="buffer">
+<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>需要帮助</h3><p>在聊天框提交最后一行错误。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>快完成了</h3><p>录制或口述 30 秒代码解释。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提前完成</h3><p>完成 Level 3 并写改进想法。</p></div></div><aside class="notes">线上课堂用聊天框、语音或屏幕共享完成收尾检查。</aside>
 </section>
 </div></div>
 
 
+<nav id="jumpBar" aria-label="Course and slide navigation">
+  <a id="prevLesson" class="" href="../../python-ai/lesson-02/" title="Previous lesson">← Lesson</a>
+  <button id="overviewBtn" type="button">Overview</button>
+  <select id="jumpSelect" aria-label="Jump to slide"><option>Jump to slide…</option></select>
+  <a id="nextLesson" class="" href="../../python-ai/lesson-04/" title="Next lesson">Lesson →</a>
+</nav>
+<div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>Class 03 · Functions &amp; File I/O · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
 <!-- per-slide comments -->
 <a id="homeBtn" href="../../">← Main</a>
 <button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
@@ -270,7 +391,7 @@ print(quarters, "quarters", dimes, "dimes", pennies, "pennies")</textarea>
   <form id="commentForm">
     <div class="row"><input id="cname" placeholder="Your name (optional)" maxlength="40"></div>
     <textarea id="cbody" placeholder="Leave a comment or question about this slide…" maxlength="2000"></textarea>
-    <div class="row"><button type="submit">Post</button><span class="msg" id="cmsg">Visible to your instructor &amp; classmates.</span></div>
+    <div class="row"><button type="submit">Post</button><span class="msg" id="cmsg">Visible to your instructor.</span></div>
   </form>
 </div>
 
@@ -330,6 +451,23 @@ if(!window.Reveal){
 Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
+(function(){
+  const select=document.getElementById('jumpSelect'),panel=document.getElementById('overviewPanel'),grid=document.getElementById('overviewGrid');
+  const openBtn=document.getElementById('overviewBtn'),closeBtn=document.getElementById('overviewClose');
+  const all=[...document.querySelectorAll('.reveal .slides > section')];
+  all.forEach(function(slide,index){
+    const heading=slide.querySelector('h1,h2,h3');
+    const label=(heading&&heading.textContent.trim())||slide.dataset.sid||('Slide '+(index+1));
+    const option=document.createElement('option'); option.value=index; option.textContent=(index+1)+'. '+label; select.appendChild(option);
+    const button=document.createElement('button'); button.innerHTML='<span class="ov-n">SLIDE '+String(index+1).padStart(2,'0')+'</span>'+label;
+    button.addEventListener('click',function(){ Reveal.slide(index); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); }); grid.appendChild(button);
+  });
+  select.addEventListener('change',function(){ if(this.value!=='') Reveal.slide(Number(this.value)); });
+  openBtn.addEventListener('click',function(){ panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); });
+  closeBtn.addEventListener('click',function(){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); });
+  panel.addEventListener('click',function(e){ if(e.target===panel) closeBtn.click(); });
+  if(typeof Reveal!=='undefined'&&Reveal.on) Reveal.on('slidechanged',function(e){ if(e&&e.indexh!=null) select.value=String(e.indexh); });
+})();
 (function(){
   const requested=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   if(!requested) return;

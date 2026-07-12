@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Class 5 · NumPy for Scientific Computing</title>
+<title>Class 09 · ML Workflow &amp; Baseline</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
 <style>
@@ -184,82 +184,88 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 05</div>
-    <h1 style="color:#fff">NumPy for Scientific Computing</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">Use arrays for fast simulation and statistics</p>
-    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">Create an ndarray</div><p>Create an ndarray</p></div><div class="skillcard"><div class="cn">Use vectorized calculations</div><p>Use vectorized calculations</p></div><div class="skillcard"><div class="cn">Filter arrays with conditions</div><p>Filter arrays with conditions</p></div></div>
-    <aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 09</div>
+    <h1 style="color:#fff">Machine Learning Workflow &amp; Baseline</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">让模型回答问题，而不是把模型当成魔法</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">区分特征与标签</div><p>区分特征与标签</p></div><div class="skillcard"><div class="cn">正确拆分训练测试集</div><p>正确拆分训练测试集</p></div><div class="skillcard"><div class="cn">建立简单 baseline</div><p>建立简单 baseline</p></div></div>
+    <aside class="notes">中文 35 页同步版，页码与英文课件对齐，方便中英切换。</aside>
 </section>
 <section id="outputs" data-sid="outputs">
-<div class="kicker">TODAY'S OUTPUT</div><h2>Run a random simulation and use a boolean mask to find unusual values.</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Understand</h3><p>Explain today's core idea in your own words.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Practice</h3><p>Run and modify the lesson code.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Submit</h3><p>Complete a clean notebook with one extension.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">TODAY'S OUTPUT</div><h2>跑通第一个 sklearn baseline，并解释每一步的目的。</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>理解</h3><p>能用自己的话解释今天的 Python 概念。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>练习</h3><p>运行并修改课堂示例代码。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提交</h3><p>完成一个整洁 notebook，并加入一个小扩展。</p></div></div><aside class="notes">先给出本节课可见产出。</aside>
 </section>
 <section id="two-hour-pacing" data-sid="two-hour-pacing">
-<div class="kicker">2-HOUR PACING</div><h2>Explain, practice, independent challenge, submit</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>Predict, run, respond in chat.</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>Watch one complete worked example.</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>Modify code and observe output.</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>Build, explain, and submit.</span></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div><aside class="notes">用于管理两小时课堂节奏。</aside>
 </section>
 <section id="recap" data-sid="recap">
-<div class="kicker">RECAP</div><h2>Where this lesson fits</h2><p class="lead">Each Python skill supports the final AI research project: write clear code, then explain the evidence.</p><div class="callout"><b>Python-first reminder:</b> Build one reliable coding skill in every lesson.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div><aside class="notes">把今天内容连接到 15 节课路线。</aside>
 </section>
 <section id="warmup" data-sid="warmup">
-<div class="kicker">ONLINE WARM-UP</div><h2>Predict in chat, then run</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Student actions</h3><ul><li>Post a prediction in chat</li><li>Change one detail independently</li><li>Rerun and compare</li></ul></div><div class="box"><h3>Instructor prompts</h3><ul><li>What output do you expect?</li><li>Which line is most likely to fail?</li><li>What would you change first?</li></ul></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">ONLINE WARM-UP</div><h2>先在聊天框预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3><ul><li>在聊天框提交预测</li><li>独立修改一个地方</li><li>重新运行并比较</li></ul></div><div class="box"><h3>教师提问</h3><ul><li>你预期输出是什么？</li><li>哪一行最可能出错？</li><li>第一步会改哪里？</li></ul></div></div><aside class="notes">线上课堂通过聊天框收集预测；需要帮助时学生可共享屏幕。</aside>
 </section>
 <section id="vocabulary" data-sid="vocabulary">
-<div class="kicker">VOCABULARY</div><h2>Three words to use today</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>shape</h3><p>The size of each array dimension.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>mean</h3><p>The arithmetic average.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>random seed</h3><p>A setting that makes a simulation reproducible.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Supervised learning</h3><p>用带答案的数据学习。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>fit</h3><p>让模型从训练数据学习。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>predict</h3><p>让模型对新数据给出结果。</p></div></div><aside class="notes">给学生解释代码的语言。</aside>
 </section>
 <section id="mental-model" data-sid="mental-model">
-<div class="kicker">MENTAL MODEL</div><h2>Understand the model before memorizing syntax</h2><div class="callout"><b>Core model: </b>Array, Vectorization, Boolean mask  are today's three pieces; first identify the problem each one solves.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>Feature / label、Train / test、Baseline 是今天的三块拼图；先知道它们各自解决什么问题。</div><aside class="notes">用心智模型降低语法记忆负担。</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
-<div class="kicker">CONCEPT 1</div><h2>Array</h2><p class="lead">An efficient container for similar numeric values.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Array.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CONCEPT 1</div><h2>Feature / label</h2><p class="lead">输入信息和希望预测的结果。</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 Feature / label。</div><aside class="notes">短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。</aside>
 </section>
 <section id="concept-2" data-sid="concept-2">
-<div class="kicker">CONCEPT 2</div><h2>Vectorization</h2><p class="lead">Calculate on an entire group at once.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Vectorization.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CONCEPT 2</div><h2>Train / test</h2><p class="lead">一部分学习，一部分检查新数据表现。</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 Train / test。</div><aside class="notes">短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。</aside>
 </section>
 <section id="concept-3" data-sid="concept-3">
-<div class="kicker">CONCEPT 3</div><h2>Boolean mask</h2><p class="lead">Use True and False to select values.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Boolean mask.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CONCEPT 3</div><h2>Baseline</h2><p class="lead">用最简单方法建立可比较的起点。</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 Baseline。</div><aside class="notes">短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。</aside>
 </section>
 <section id="syntax-pattern" data-sid="syntax-pattern">
-<div class="kicker">SYNTAX PATTERN</div><h2>Today's Python pattern</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>import numpy as np
-values = np.array([2.1, 2.4, 3.8])
-print(values.mean())
-print(values[values &gt; 3])</code></pre><div class="callout"><b>Read before running: </b>Identify the input, process, and output.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, random_state=42)
+model.fit(X_train, y_train)
+pred = model.predict(X_test)</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div><aside class="notes">先读结构，再运行。</aside>
 </section>
 <section id="teacher-demo" data-sid="teacher-demo">
-<div class="kicker">TEACHER DEMO</div><h2>Watch one complete workflow</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>import numpy as np
-rng = np.random.default_rng(42)
-data = rng.normal(50, 5, 20)
-print(data.mean(), data.std())
-print(data[data &gt; 58])</code></pre><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>from sklearn.datasets import load_diabetes
+from sklearn.dummy import DummyRegressor
+from sklearn.model_selection import train_test_split
+X, y = load_diabetes(return_X_y=True)
+Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=.2, random_state=42)
+model = DummyRegressor(strategy="mean").fit(Xtr, ytr)
+print(model.score(Xte, yte))</code></pre><aside class="notes">先整体运行，再逐行解释。</aside>
 </section>
 <section id="trace-table" data-sid="trace-table">
-<div class="kicker">TRACE THE CODE</div><h2>What changes after each line runs?</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>What values exist before this line?</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>What is created or changed?</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>Does the output match the prediction?</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>这一行运行前有哪些值？</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>创建或改变了什么？</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>输出是否符合预测？</p></div></div><aside class="notes">训练调试和阅读代码能力。</aside>
 </section>
 <section id="prediction-quiz" data-sid="prediction-quiz">
 <div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">What is a main benefit of vectorization?</p>
-    <div class="opts"><button class="opt" data-i="0">Less looping and efficient calculation</button><button class="opt" data-i="1">Turning numbers into text</button><button class="opt" data-i="2">Deleting arrays</button></div>
-    <p class="quiz-exp">NumPy operates on whole arrays.</p>
+    <p class="qq">为什么测试集不能参与训练？</p>
+    <div class="opts"><button class="opt" data-i="0">要检查模型面对新数据的表现</button><button class="opt" data-i="1">测试集不能有数字</button><button class="opt" data-i="2">为了代码更短</button></div>
+    <p class="quiz-exp">测试集模拟模型没见过的新数据。</p>
   </div>
-  <aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+  <aside class="notes">快速形成性检查。</aside>
 </section>
 <section id="guided-practice-1" data-sid="guided-practice-1">
-<div class="kicker">GUIDED PRACTICE 1</div><h2>Make one small change, then rerun</h2><div class="box"><ul><li>Change only one variable or rule</li><li>Rerun and observe the change</li><li>Post one change statement in chat</li></ul></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box"><ul><li>只改一个变量或一条规则</li><li>重新运行并观察变化</li><li>在聊天框提交一句变化说明</li></ul></div><aside class="notes">一次只做一个小改动；教师通过聊天框快速检查理解。</aside>
 </section>
 <section id="guided-practice-2" data-sid="guided-practice-2">
-<div class="kicker">GUIDED PRACTICE 2</div><h2>Explain your change</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What changed</div><p>Identify the exact line.</p></div><div class="skillcard"><div class="cn">Output change</div><p>Observe the result.</p></div><div class="skillcard"><div class="cn">Why</div><p>Explain the rule behind it.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div><aside class="notes">每次修改都要能解释。</aside>
 </section>
 <section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>Small Simulation</h2>
-  <p class="lead" style="margin:.1em 0 .25em">Fix the random seed, simulate 100 measurements, and compare summaries.</p>
+  <h2>First Baseline</h2>
+  <p class="lead" style="margin:.1em 0 .25em">先用 Dummy 模型建立起点，再换一个简单模型比较。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">import numpy as np
-rng = np.random.default_rng(7)
-measurements = rng.normal(100, 10, 100)
-print("mean:", measurements.mean())
-print("high count:", (measurements &gt; 120).sum())</textarea>
+      <textarea class="code" spellcheck="false">from sklearn.datasets import load_diabetes
+from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyRegressor
+from sklearn.linear_model import LinearRegression
+X, y = load_diabetes(return_X_y=True)
+Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=.2, random_state=42)
+for model in [DummyRegressor(), LinearRegression()]:
+    model.fit(Xtr, ytr)
+    print(type(model).__name__, round(model.score(Xte, yte), 3))</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -274,31 +280,30 @@ print("high count:", (measurements &gt; 120).sum())</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+  </div><aside class="notes">两小时课堂的主要跟做实验。</aside>
 </section>
 <section id="mistake-clinic" data-sid="mistake-clinic">
-<div class="kicker">MISTAKE CLINIC</div><h2>Today's common mistakes</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Copying without understanding</h3><p>Change one meaningful value and explain the output.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Changing too much at once</h3><p>Change one factor, rerun, and observe.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Not recording results</h3><p>Write the observation, evidence, and next question in Markdown.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>先标准化全数据</h3><p>预处理只能在训练集 fit，避免数据泄漏。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>只看训练分数</h3><p>必须检查未见过的测试数据。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>模型越复杂越好</h3><p>先从最简单、可解释的 baseline 开始。</p></div></div><aside class="notes">把错误正常化，并给出修复路线。</aside>
 </section>
 <section id="debug-routine" data-sid="debug-routine">
-<div class="kicker">DEBUG ROUTINE</div><h2>Read, locate, isolate, rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the final error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Locate the line number.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest code block.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Rerun from top to bottom.</span></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div><aside class="notes">每周重复这个调试流程。</aside>
 </section>
 <section id="online-checkpoint" data-sid="online-checkpoint">
-<div class="kicker">ONLINE CHECKPOINT</div><h2>Code independently with instructor check-ins</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Student</h3><p>Type and run independently, then submit output in chat or a form.</p></div><div class="box"><h3>When help is needed</h3><p>Paste the final error line or share the screen with the instructor.</p></div></div><div class="callout"><b>After five minutes, review the answer and common errors.</b></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">ONLINE CHECKPOINT</div><h2>独立编码，教师在线巡检</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生</h3><p>独立输入、运行并在表单或聊天框提交输出。</p></div><div class="box"><h3>需要帮助时</h3><p>粘贴最后一行错误，或共享屏幕让教师定位。</p></div></div><div class="callout"><b>5 分钟后统一核对答案与常见错误。</b></div><aside class="notes">线上教学不依赖学生互相配对；教师用聊天框、表单或屏幕共享巡检。</aside>
 </section>
 <section id="mini-project-brief" data-sid="mini-project-brief">
-<div class="kicker">MINI PROJECT</div><h2>Experimental Measurement Simulator</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>A mean, standard deviation, and sample size.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>Generate data, summarize it, and flag unusual values.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>Reproducible statistics and an unusual-value count.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">MINI PROJECT</div><h2>第一个可比较模型</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>sklearn 内置小数据集。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>拆分、训练 Dummy 和一个简单模型。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>两行结果和一段不超过 100 字解释。</p></div></div><aside class="notes">把项目都讲成 input -&gt; process -&gt; output。</aside>
 </section>
 <section id="mini-project-lab" data-sid="mini-project-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>Experimental Measurement Simulator Starter</h2>
-  <p class="lead" style="margin:.1em 0 .25em">Start here, then extend it in your own notebook.</p>
+  <h2>第一个可比较模型 Starter</h2>
+  <p class="lead" style="margin:.1em 0 .25em">从这里开始，再在自己的 notebook 里扩展。</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">import numpy as np
-rng = np.random.default_rng(42)
-data = rng.normal(37, 1.5, 50)
-normal = data[(data &gt;= 35) &amp; (data &lt;= 39)]
-print(f"Normal: {len(normal)}/{len(data)}")</textarea>
+      <textarea class="code" spellcheck="false">models = {"dummy": DummyRegressor(), "linear": LinearRegression()}
+for name, model in models.items():
+    model.fit(Xtr, ytr)
+    print(name, model.score(Xte, yte))</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -313,64 +318,64 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
       <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
       <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
     </div>
-  </div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+  </div><aside class="notes">独立项目 starter。</aside>
 </section>
 <section id="test-cases" data-sid="test-cases">
-<div class="kicker">TEST CASES</div><h2>Do not test only one example</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Typical case</h3><p>A typical input.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Boundary case</h3><p>A value at or near the threshold.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Custom case</h3><p>Your own example.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>普通情况</h3><p>一个典型输入。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>边界情况</h3><p>刚好在阈值附近。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>自定义情况</h3><p>你自己的例子。</p></div></div><aside class="notes">测试能避免碰巧正确。</aside>
 </section>
 <section id="challenge-ladder" data-sid="challenge-ladder">
-<div class="kicker">CHALLENGE LADDER</div><h2>Everyone completes at least Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>Complete and run the core version.</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>Modify the data and add one extension.</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>Add tests and explain the change.</span></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CHALLENGE LADDER</div><h2>每个人至少完成 Level 1</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Level 1</b><span>完成基础版并能运行。</span></div><div class="step"><span class="n">2</span><b>Level 2</b><span>修改数据并加入一个扩展。</span></div><div class="step"><span class="n">3</span><b>Level 3</b><span>加入测试并解释变化。</span></div></div><aside class="notes">让不同速度的学生都有任务。</aside>
 </section>
 <section id="concept-check" data-sid="concept-check">
 <div class="kicker">CONCEPT CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">Why fix a random seed?</p>
-    <div class="opts"><button class="opt" data-i="0">To reproduce the simulation</button><button class="opt" data-i="1">To make every value zero</button><button class="opt" data-i="2">To increase the sample</button></div>
-    <p class="quiz-exp">The same seed reproduces the same random sequence.</p>
+    <p class="qq">Baseline 的作用？</p>
+    <div class="opts"><button class="opt" data-i="0">提供比较起点</button><button class="opt" data-i="1">保证模型完美</button><button class="opt" data-i="2">代替研究问题</button></div>
+    <p class="quiz-exp">没有 baseline，就不知道改进是否真的有价值。</p>
   </div>
-  <aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+  <aside class="notes">独立练习前的理解检查。</aside>
 </section>
 <section id="independent-work" data-sid="independent-work">
-<div class="kicker">INDEPENDENT WORK</div><h2>Build your own version</h2><div class="callout"><b>Rule: </b>Do not only copy the starter code; make and explain one meaningful change.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">INDEPENDENT WORK</div><h2>构建你自己的版本</h2><div class="callout"><b>规则：</b>不要只复制 starter code；至少做一个有意义的修改，并解释它。</div><aside class="notes">这是主要独立练习时间。</aside>
 </section>
 <section id="explain-code" data-sid="explain-code">
-<div class="kicker">EXPLAIN YOUR CODE</div><h2>Run first, then explain</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>What does it do?</p></div><div class="skillcard"><div class="cn">Why</div><p>Why is it written this way?</p></div><div class="skillcard"><div class="cn">Change</div><p>What did you change?</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">EXPLAIN YOUR CODE</div><h2>先运行，再解释</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">What</div><p>它做什么？</p></div><div class="skillcard"><div class="cn">Why</div><p>为什么这样写？</p></div><div class="skillcard"><div class="cn">Change</div><p>你改了哪里？</p></div></div><aside class="notes">解释也是作业的一部分。</aside>
 </section>
 <section id="notebook-hygiene" data-sid="notebook-hygiene">
-<div class="kicker">NOTEBOOK HYGIENE</div><h2>Clean the notebook before submission</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>Runs from top to bottom</li><li>Readable variable names</li><li>Remove unrelated drafts</li><li>Clear output</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2–3 Markdown explanation sentences</li><li>Explain input and output</li><li>Identify your extension</li><li>Write one question</li></ul></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">NOTEBOOK HYGIENE</div><h2>提交前整理 notebook</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Code</h3><ul><li>从上到下能运行</li><li>变量名可读</li><li>删掉无关草稿</li><li>输出清楚</li></ul></div><div class="box"><h3>Notes</h3><ul><li>2-3 句 Markdown 说明</li><li>解释输入和输出</li><li>标出自己的扩展</li><li>写一个问题</li></ul></div></div><aside class="notes">预留整理时间。</aside>
 </section>
 <section id="ai-helper" data-sid="ai-helper">
-<div class="kicker">AI AS STUDY HELPER</div><h2>Use AI to learn Python, not to skip it</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Good uses</h3><ul><li>Explain this error for a beginner</li><li>Give me a similar practice problem</li><li>Give a hint before the answer</li></ul></div><div class="box"><h3>Avoid</h3><ul><li>Generating the entire assignment</li><li>Submitting someone else's code</li><li>Submitting code you cannot explain</li></ul></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">AI AS STUDY HELPER</div><h2>用 AI 学 Python，不是跳过 Python</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>好用法</h3><ul><li>像初学者一样解释这个错误</li><li>给我一道类似练习题</li><li>先给提示，不要直接给答案</li></ul></div><div class="box"><h3>避免</h3><ul><li>直接写完整作业</li><li>改同学代码当成自己的</li><li>提交自己不能解释的代码</li></ul></div></div><aside class="notes">让 AI 使用服务于学习。</aside>
 </section>
 <section id="rubric" data-sid="rubric">
-<div class="kicker">RUBRIC</div><h2>How this assignment is assessed</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% Runs</h3><p>The notebook runs from top to bottom.</p></div><div class="box"><h3>25% Explanation</h3><p>Explains the key code.</p></div><div class="box"><h3>20% Extension</h3><p>Includes one meaningful change.</p></div><div class="box"><h3>15% Clarity</h3><p>Clear structure and readable output.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">RUBRIC</div><h2>这次作业怎么评价</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>40% 能运行</h3><p>notebook 从上到下能跑通。</p></div><div class="box"><h3>25% 能解释</h3><p>能说清关键代码。</p></div><div class="box"><h3>20% 有扩展</h3><p>有一个自己的有意义修改。</p></div><div class="box"><h3>15% 整洁</h3><p>结构清楚，输出可读。</p></div></div><aside class="notes">明确期待。</aside>
 </section>
 <section id="homework" data-sid="homework">
-<div class="kicker">HOMEWORK</div><h2>Complete the mini-project notebook</h2><div class="box"><ul><li>Complete the Level 1 task</li><li>Add one meaningful extension</li><li>Run all cells from top to bottom</li><li>Write a 3–5 sentence interpretation</li><li>Submit an accessible Colab link</li></ul></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">HOMEWORK</div><h2>完成 mini project notebook</h2><div class="box"><ul><li>完成 Level 1 基础任务</li><li>完成一个自己的数据或问题扩展</li><li>从上到下运行全部 cells</li><li>写 3-5 句结果解释</li><li>提交可访问的 Colab 链接</li></ul></div><aside class="notes">作业要可完成，但不能只是复制。</aside>
 </section>
 <section id="submission-checklist" data-sid="submission-checklist">
-<div class="kicker">SUBMISSION CHECKLIST</div><h2>Confirm before submitting</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>All cells run.</p></div><div class="skillcard"><div class="cn">Share</div><p>The link is accessible.</p></div><div class="skillcard"><div class="cn">Explain</div><p>The explanation is clear.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div><aside class="notes">减少坏链接和无法运行的提交。</aside>
 </section>
 <section id="exit-ticket" data-sid="exit-ticket" class="center" data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)">
-<div class="kicker">EXIT TICKET</div><h2>One clear point and one question</h2><div class="callout"><b>Exit response: </b>Submit one idea that is clear and one remaining question.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div><aside class="notes">收集快速反馈。</aside>
 </section>
 <section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
-<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">NumPy helps us reason about measurements as a group.</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">先建立简单而诚实的起点，再谈模型改进。</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">一句话收束。</aside>
 </section>
 <section id="buffer" data-sid="buffer">
-<div class="kicker">BUFFER / CATCH-UP</div><h2>Use the final minutes this way</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Need help</h3><p>Post the final error line in chat.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Almost done</h3><p>Record or deliver a 30-second code explanation.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Finished early</h3><p>Complete Level 3 and write an improvement idea.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>需要帮助</h3><p>在聊天框提交最后一行错误。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>快完成了</h3><p>录制或口述 30 秒代码解释。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>提前完成</h3><p>完成 Level 3 并写改进想法。</p></div></div><aside class="notes">线上课堂用聊天框、语音或屏幕共享完成收尾检查。</aside>
 </section>
 </div></div>
 
 
 <nav id="jumpBar" aria-label="Course and slide navigation">
-  <a id="prevLesson" class="" href="../../python-ai-en/lesson-04/" title="Previous lesson">← Lesson</a>
+  <a id="prevLesson" class="" href="../../python-ai/lesson-08/" title="Previous lesson">← Lesson</a>
   <button id="overviewBtn" type="button">Overview</button>
   <select id="jumpSelect" aria-label="Jump to slide"><option>Jump to slide…</option></select>
-  <a id="nextLesson" class="" href="../../python-ai-en/lesson-06/" title="Next lesson">Lesson →</a>
+  <a id="nextLesson" class="" href="../../python-ai/lesson-10/" title="Next lesson">Lesson →</a>
 </nav>
-<div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>Class 5 · NumPy for Scientific Computing · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
+<div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>Class 09 · ML Workflow &amp; Baseline · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
 <!-- per-slide comments -->
 <a id="homeBtn" href="../../">← Main</a>
 <button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
@@ -392,7 +397,7 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 <script>
 (function(){
   const langBtn=document.getElementById('langBtn');
-  const ALT_DECK_URL="../../python-ai/lesson-05/";
+  const ALT_DECK_URL="../../python-ai-en/lesson-09/";
   const requestedSlide=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   function slides(){ return [...document.querySelectorAll('.reveal .slides section')]; }
   function showRequestedSlide(){
@@ -408,7 +413,7 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
   setTimeout(showRequestedSlide,0);
   setTimeout(showRequestedSlide,300);
   if(!langBtn) return;
-  langBtn.textContent="中文";
+  langBtn.textContent="EN";
   function currentSlideIndex(){
     const slides=[...document.querySelectorAll('.reveal .slides section')];
     const hashPart=(location.hash.split('/')[1]||'').split('/')[0]||'';
@@ -433,7 +438,7 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
-const DECK = "python-ai-en/lesson-05";
+const DECK = "python-ai/lesson-09";
 if(!window.Reveal){
   document.body.classList.add('reveal-fallback');
   window.Reveal={
