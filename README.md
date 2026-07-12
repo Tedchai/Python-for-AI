@@ -47,17 +47,16 @@ npm run serve
 ├── .github/workflows/   # GitHub Pages自动部署
 ├── assets/              # 全站样式与交互脚本
 ├── docs/                # 课程大纲等文档
-├── python-ai/           # 中文生成页面
-├── python-ai-en/        # 英文生成页面
-├── build.js             # 课程内容与页面生成器
-├── catalog.json         # 生成后的课程目录
-├── server.js            # 本地服务、评论与可选AI助教
-└── narrate.js           # 可选语音讲解生成器
+├── scripts/             # 构建、本地服务与语音脚本
+├── .env.example         # 可选服务配置示例
+├── .gitignore           # 本地素材与生成结果规则
+├── README.md            # 项目说明
+└── package.json         # npm命令与Node版本
 ```
 
 ## 修改课程
 
-主要编辑入口是`build.js`。修改后运行：
+主要编辑入口是`scripts/build.js`。修改后运行：
 
 ```bash
 npm run build
@@ -72,7 +71,7 @@ npm run build
 
 ## 部署
 
-推送到`main`后，GitHub Actions会运行`node build.js`并发布GitHub Pages。仓库也包含Netlify、Vercel和Render配置。
+推送到`main`后，GitHub Actions会运行`npm run build`并发布GitHub Pages。`python-ai/`、`python-ai-en/`、`index.html`和`catalog.json`均为生成结果，不提交到Git。
 
 评论、AI助教和自动语音讲解属于可选功能；未配置API密钥时，课程、测验、导航和浏览器Python实验仍可正常使用。
 
