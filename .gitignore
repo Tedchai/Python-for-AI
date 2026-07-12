@@ -15,6 +15,16 @@ work/**/tmp/
 
 # Professor Qin source materials are local-only
 秦教授PPT/
+郭老师PPT/
+
+# Reference repositories and downloaded archives
+reference-repos/
+*.zip
+
+# Generated review artifacts
+outputs/
+Python Functions/
+*.inspect.ndjson
 
 # OS/editor noise
 .DS_Store
