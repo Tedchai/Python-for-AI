@@ -1,358 +1,84 @@
-# Python for AI Research 互动网页课件
+# Python for AI Research
 
-[English](#python-for-ai-research-interactive-web-deck)
+面向高中生与AI科研初学者的中英双语互动课程。课程从Python基础开始，逐步进入数据分析、机器学习评价与完整科研项目。
 
-这是一个面向 **Python for AI Research** 课程的互动网页课件仓库。课程从 Python 基础出发，逐步覆盖控制流、函数、列表、元组、字典等核心概念，并通过浏览器内 Python 实验、随堂测验和项目练习，把编程能力连接到 AI 科研入门场景。
+**在线课程：** [GitHub Pages](https://tedchai.github.io/Python-for-AI/)
 
-本仓库同时提供中文和英文两套课程入口：
+## 课程特点
 
-- 中文课程：`/python-ai/`
-- English course: `/python-ai-en/`
+- 中文、英文各15节，每节约2小时
+- 浏览器内Python实验（Pyodide），无需本地安装
+- 随堂测验、分层挑战、Debug流程与项目作业
+- 适配线上教学：聊天框、表单、麦克风、屏幕共享与教师巡检
+- 每课支持上一课/下一课、指定页跳转、35页总览及中英文同页切换
+- 高级算法为选讲；必修重点是会运行、会比较、会解释
 
-在线部署入口：
+## 15节课程路线
 
-- GitHub Pages: `https://tedchai.github.io/Python-for-AI/`
+| 阶段 | 课次 | 内容 |
+|---|---:|---|
+| Python基础 | 1–4 | Colab、基础语法、控制流、函数、文件读写、科研数据结构 |
+| 数据分析 | 5–8 | NumPy、pandas、数据清洗、可视化与EDA |
+| 机器学习 | 9–10 | sklearn工作流、Baseline、模型评价与算法选择 |
+| 科研项目 | 11–14 | 研究问题、数据处理、建模、评价与IMRaD报告 |
+| 成果展示 | 15 | 最终报告、Notebook、PPT展示与Q&A |
 
-## 功能特点
+完整课程大纲见 [docs/course-outline.docx](docs/course-outline.docx)。
 
-- 互动网页课件：每节课都是可在浏览器中打开的演示页面。
-- 随堂测验：学生可以在课件中直接答题并看到反馈。
-- 浏览器 Python 实验：基于 Pyodide，无需本地安装 Python 即可运行练习代码。
-- 中英文课程版本：`python-ai` 与 `python-ai-en` 分别维护中文和英文课件。
-- 线上课堂互动：使用聊天框、表单、麦克风、屏幕共享和教师巡检，不依赖学生结对活动。
-- 快速导航：每课提供上一课/下一课、指定页下拉菜单和 35 页总览。
-- 可选 AI 助教：配置 Anthropic API key 后，可在实验页启用代码答疑能力。
-- 可选语音讲解：可用 `narrate.js` 为课件生成逐页讲解音频。
-- 多平台部署：支持 GitHub Pages、Netlify、Vercel 和 Render。
+## 本地运行
 
-## 课程内容
-
-中文和英文课程均已生成完整 15 节：
-
-| 课次 | 中文标题 | English Title |
-|---|---|---|
-| 01 | Python Basics & Google Colab | Python Basics & Google Colab |
-| 02 | Python Control Flow | Python Control Flow |
-| 03 | Functions & File I/O | Functions & File I/O |
-| 04 | Data Structures for Research | Data Structures for Research |
-| 05 | NumPy for Scientific Computing | NumPy for Scientific Computing |
-| 06 | pandas for Data Analysis | pandas for Data Analysis |
-| 07 | Data Cleaning & Reproducible Decisions | Data Cleaning & Reproducible Decisions |
-| 08 | Data Visualization & EDA | Data Visualization & EDA |
-| 09 | Machine Learning Workflow & Baseline | Machine Learning Workflow & Baseline |
-| 10 | Model Evaluation & Algorithm Choice | Model Evaluation & Algorithm Choice |
-| 11 | Project 1 · Research Question & Dataset | Project 1 · Research Question & Dataset |
-| 12 | Project 2 · Data Processing & EDA | Project 2 · Data Processing & EDA |
-| 13 | Project 3 · Modeling as a Tool | Project 3 · Modeling as a Tool |
-| 14 | Project 4 · Evaluation & Research Report | Project 4 · Evaluation & Research Report |
-| 15 | Final Project Presentation | Final Project Presentation |
-
-课程目录和首页信息由 `catalog.json` 与 `build.js` 生成。中文路线按高中生可完成的项目制节奏设计；SVM、XGBoost 等内容仅作为进阶选讲。
-
-## 快速开始
-
-需要 Node.js 18 或更高版本。
+需要Node.js 18或更高版本。
 
 ```bash
 npm run build
 npm run serve
 ```
 
-启动后打开：
+打开：
 
-```text
-http://localhost:3100/
-http://localhost:3100/python-ai/lesson-01/
-http://localhost:3100/python-ai-en/lesson-01/
-```
+- 课程首页：`http://localhost:3100/`
+- 中文第1课：`http://localhost:3100/python-ai/lesson-01/`
+- English Class 01：`http://localhost:3100/python-ai-en/lesson-01/`
 
-本项目没有 npm 依赖包，`package.json` 中的脚本会直接调用仓库内的构建和服务文件。
-
-## 常用命令
-
-```bash
-npm run build      # 重新生成首页和所有课件页面
-npm run serve      # 启动本地服务器，默认端口 3100
-npm run narrate    # 可选：生成语音讲解，需要额外配置
-```
-
-## 目录结构
+## 项目结构
 
 ```text
 .
-├── assets/                 # 全站 CSS 与前端交互脚本
-├── data/                   # 本地评论等运行数据
-├── python-ai/              # 中文课程生成页面
-├── python-ai-en/           # 英文课程生成页面
-├── 课件/                    # PowerPoint 原始课件
-├── build.js                # 课程内容、组件与静态页面生成逻辑
-├── catalog.json            # 课程目录数据
-├── index.html              # 生成后的课程首页
-├── narrate.js              # 可选语音讲解生成脚本
-├── server.js               # 本地/Render 服务端，支持评论和 AI 助教
-├── netlify.toml            # Netlify 静态部署配置
-├── render.yaml             # Render 全功能服务部署配置
-└── vercel.json             # Vercel 静态部署配置
+├── .github/workflows/   # GitHub Pages自动部署
+├── assets/              # 全站样式与交互脚本
+├── docs/                # 课程大纲等文档
+├── python-ai/           # 中文生成页面
+├── python-ai-en/        # 英文生成页面
+├── build.js             # 课程内容与页面生成器
+├── catalog.json         # 生成后的课程目录
+├── server.js            # 本地服务、评论与可选AI助教
+└── narrate.js           # 可选语音讲解生成器
 ```
 
-## 编辑课程
+## 修改课程
 
-主要编辑入口是 `build.js`：
-
-- `CATALOG` 控制站点标题、课程列表、课程标题、标签和状态。
-- `syncedZhLessons` 定义 15 节中文课程内容，`buildSyncedChineseLesson()` 使用统一模板生成页面。
-- 英文课程页面位于 `python-ai-en/`，可通过构建流程继续维护。
-- `DECK_BUILDERS` 注册哪些课程会被生成。
-
-修改内容后运行：
+主要编辑入口是`build.js`。修改后运行：
 
 ```bash
 npm run build
 ```
 
-如果新增课程，请确保：
+请同时检查：
 
-1. 在 `CATALOG` 中新增或更新对应 lesson。
-2. 把课程状态设为 `"ready"`。
-3. 在 `DECK_BUILDERS` 中注册对应构建函数。
-4. 重新运行 `npm run build`。
-
-## 可选 AI 功能
-
-AI 助教和自动语音讲解需要 Anthropic API key。复制环境变量示例文件：
-
-```bash
-cp .env.example .env
-```
-
-然后填写：
-
-```text
-ANTHROPIC_API_KEY=sk-ant-...
-```
-
-说明：
-
-- 不配置 key 时，课件、测验、导航和浏览器 Python 实验仍可正常使用。
-- `server.js` 会在本地服务中启用评论与实验页 AI 助教。
-- `narrate.js` 可生成逐页语音讲解。
-- 静态托管平台如 GitHub Pages、Netlify、Vercel 不运行 Node 后端，因此评论和 AI 助教会自动降级或隐藏。
+1. 中文和英文标题、目标、实验与作业是否对应。
+2. Notebook代码能否从上到下运行。
+3. 线上互动是否不依赖学生结对。
+4. 每课导航、Overview与语言切换是否正常。
 
 ## 部署
 
-### GitHub Pages
+推送到`main`后，GitHub Actions会运行`node build.js`并发布GitHub Pages。仓库也包含Netlify、Vercel和Render配置。
 
-仓库已包含 `.github/workflows/deploy-pages.yml`。在 GitHub 仓库中设置：
+评论、AI助教和自动语音讲解属于可选功能；未配置API密钥时，课程、测验、导航和浏览器Python实验仍可正常使用。
 
-```text
-Settings -> Pages -> Source -> GitHub Actions
-```
+## English
 
-之后每次 push 到 `main`，GitHub Actions 会自动运行 `node build.js` 并发布静态站点。
-
-### Netlify
-
-直接从 Git 导入仓库即可，`netlify.toml` 已配置：
-
-```text
-Build command: node build.js
-Publish directory: .
-```
-
-### Vercel
-
-导入项目即可，`vercel.json` 已配置：
-
-```text
-buildCommand: node build.js
-outputDirectory: .
-```
-
-### Render
-
-如果需要评论和 AI 助教等后端能力，可以使用 Render。仓库已提供 `render.yaml`：
-
-- Build command: `node build.js`
-- Start command: `node server.js`
-- 可选环境变量：`ANTHROPIC_API_KEY`
-
-## License
-
-MIT
-
----
-
-# Python for AI Research Interactive Web Deck
-
-[简体中文](#python-for-ai-research-互动网页课件)
-
-This repository contains an interactive web lecture deck for **Python for AI Research**. The course starts with Python fundamentals, then moves through control flow, functions, lists, tuples, dictionaries, browser-based coding labs, in-slide quizzes, and small research-oriented programming activities.
-
-The repo includes both Chinese and English course paths:
-
-- Chinese course: `/python-ai/`
-- English course: `/python-ai-en/`
-
-Live site:
-
-- GitHub Pages: `https://tedchai.github.io/Python-for-AI/`
-
-## Features
-
-- Interactive browser-based lecture decks.
-- In-slide quizzes with immediate feedback.
-- Browser Python labs powered by Pyodide, with no local Python setup required.
-- Chinese and English course versions.
-- Optional AI teaching assistant for coding labs when an Anthropic API key is configured.
-- Optional per-slide narration generated with `narrate.js`.
-- Deployment-ready configuration for GitHub Pages, Netlify, Vercel, and Render.
-
-## Course Content
-
-The Chinese and English courses both contain the full 15-class sequence.
-
-| Lesson | Title |
-|---|---|
-| 01 | Python Basics & Google Colab |
-| 02 | Python Control Flow |
-| 03 | Functions & File I/O |
-| 04 | Data Structures for Research |
-| 05 | NumPy for Scientific Computing |
-| 06 | pandas for Data Analysis |
-| 07 | Data Cleaning & Reproducible Decisions |
-| 08 | Data Visualization & EDA |
-| 09 | Machine Learning Workflow & Baseline |
-| 10 | Model Evaluation & Algorithm Choice |
-| 11–15 | Staged AI research project and final presentation |
-
-The Chinese route is calibrated for high-school learners. Advanced algorithms such as SVM and XGBoost are optional extension topics rather than required outcomes.
-
-## Quick Start
-
-Requires Node.js 18 or newer.
-
-```bash
-npm run build
-npm run serve
-```
-
-Then open:
-
-```text
-http://localhost:3100/
-http://localhost:3100/python-ai/lesson-01/
-http://localhost:3100/python-ai-en/lesson-01/
-```
-
-The project has no npm package dependencies. The npm scripts call the local build and server scripts directly.
-
-## Scripts
-
-```bash
-npm run build      # Regenerate the home page and lesson pages
-npm run serve      # Start the local server on port 3100 by default
-npm run narrate    # Optional: generate narration audio after configuration
-```
-
-## Project Structure
-
-```text
-.
-├── assets/                 # Shared CSS and client-side interaction scripts
-├── data/                   # Runtime data such as local comments
-├── python-ai/              # Generated Chinese course pages
-├── python-ai-en/           # Generated English course pages
-├── 课件/                    # Original PowerPoint decks
-├── build.js                # Course content, components, and static page generation
-├── catalog.json            # Course catalog data
-├── index.html              # Generated course home page
-├── narrate.js              # Optional narration generation script
-├── server.js               # Local/Render backend for comments and AI assistant
-├── netlify.toml            # Netlify static hosting config
-├── render.yaml             # Render full server config
-└── vercel.json             # Vercel static hosting config
-```
-
-## Editing Lessons
-
-The main editing entry point is `build.js`:
-
-- `CATALOG` controls the site title, course list, lesson metadata, tags, and status.
-- `syncedZhLessons` defines all 15 Chinese lessons, rendered through the shared `buildSyncedChineseLesson()` template.
-- English pages are under `python-ai-en/` and can be maintained through the same build workflow.
-- `DECK_BUILDERS` registers the lessons that should be generated.
-
-After editing, run:
-
-```bash
-npm run build
-```
-
-When adding a new lesson:
-
-1. Add or update the lesson in `CATALOG`.
-2. Set its status to `"ready"`.
-3. Register its build function in `DECK_BUILDERS`.
-4. Run `npm run build`.
-
-## Optional AI Features
-
-The AI assistant and automatic narration require an Anthropic API key. Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-Then set:
-
-```text
-ANTHROPIC_API_KEY=sk-ant-...
-```
-
-Notes:
-
-- Without a key, slides, quizzes, navigation, and browser Python labs still work.
-- `server.js` enables comments and the coding-lab AI assistant when served locally or on Render.
-- `narrate.js` can generate per-slide narration audio.
-- Static hosts such as GitHub Pages, Netlify, and Vercel do not run the Node backend, so comments and the AI assistant degrade gracefully or stay hidden.
-
-## Deployment
-
-### GitHub Pages
-
-The repo includes `.github/workflows/deploy-pages.yml`. In the GitHub repo settings, choose:
-
-```text
-Settings -> Pages -> Source -> GitHub Actions
-```
-
-Every push to `main` will run `node build.js` and publish the static site.
-
-### Netlify
-
-Import the repository from Git. `netlify.toml` already configures:
-
-```text
-Build command: node build.js
-Publish directory: .
-```
-
-### Vercel
-
-Import the project. `vercel.json` already configures:
-
-```text
-buildCommand: node build.js
-outputDirectory: .
-```
-
-### Render
-
-Use Render if you want backend-powered comments and the AI assistant. `render.yaml` configures:
-
-- Build command: `node build.js`
-- Start command: `node server.js`
-- Optional environment variable: `ANTHROPIC_API_KEY`
+This repository contains a bilingual 15-class online course for high-school students and beginning AI researchers. It covers Python, data analysis, introductory machine learning, research workflow, reproducibility, and a final project. Run `npm run build` and `npm run serve` for local development.
 
 ## License
 
