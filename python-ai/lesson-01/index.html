@@ -172,13 +172,10 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 01</div><h1 style="color:#fff">Pandas Series 与时间数据</h1><p style="color:#cfe0ef;margin-top:.45em">导入 Pandas/NumPy，创建 Series，使用标签/位置索引，并解析与生成日期时间。</p><div class="callout" style="margin-top:1em"><b>秦教授原始材料:</b> 6450_slides.pdf · 3-13</div><aside class="notes">秦教授原始材料: 6450_slides.pdf, 3-13.</aside>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 01</div><h1 style="color:#fff">Pandas Series 与时间数据</h1><p style="color:#cfe0ef;margin-top:.45em">导入 Pandas/NumPy，创建 Series，使用标签/位置索引，并解析与生成日期时间。</p>
 </section>
 <section id="outcome" data-sid="outcome">
 <div class="kicker">本节课产出</div><h2>创建带标签的一维数据，并准确区分 loc/iloc 与日期解析。</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · 复现</h3><p>不看答案重新写出核心示例。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · 修改</h3><p>改变数据、边界或参数并验证结果。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · 迁移</h3><p>把同一知识点用于一个新场景。</p></div></div><aside class="notes">创建带标签的一维数据，并准确区分 loc/iloc 与日期解析。</aside>
-</section>
-<section id="source-map" data-sid="source-map">
-<div class="kicker">SOURCE COVERAGE</div><h2>知识点地图</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>环境与导入</h3><p>import pandas as pd；import numpy as np；检查版本。</p></div><div class="box"><h3>Series</h3><p>从 list、dict 或 scalar 创建带 index、dtype、name 的一维数组。</p></div><div class="box"><h3>四种索引</h3><p>loc/at 按标签；iloc/iat 按位置；标签切片含末端，位置切片不含末端。</p></div><div class="box"><h3>时间数据</h3><p>to_datetime 解析日期；date_range 按频率生成 DatetimeIndex。</p></div></div><aside class="notes">This lesson covers 6450_slides.pdf 3-13.</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
 <div class="kicker">CONCEPT 1</div><h2>环境与导入</h2><p class="lead">import pandas as pd；import numpy as np；检查版本。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">import pandas as pd；import numpy as np；检查版本。</aside>

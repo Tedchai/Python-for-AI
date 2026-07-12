@@ -13,6 +13,9 @@ data/
 # Local/generated presentation scratch folders
 work/**/tmp/
 
+# Professor Qin source materials are local-only
+秦教授PPT/
+
 # OS/editor noise
 .DS_Store
 Thumbs.db

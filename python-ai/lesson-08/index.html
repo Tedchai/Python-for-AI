@@ -172,13 +172,10 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 08</div><h1 style="color:#fff">Dictionary 与词频项目</h1><p style="color:#cfe0ef;margin-top:.45em">用 key-value 建模，访问、增改、删除和遍历字典，并完成库存与词频项目。</p><div class="callout" style="margin-top:1em"><b>秦教授原始材料:</b> Python Structure.ppsx · 279-366</div><aside class="notes">秦教授原始材料: Python Structure.ppsx, 279-366.</aside>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 08</div><h1 style="color:#fff">Dictionary 与词频项目</h1><p style="color:#cfe0ef;margin-top:.45em">用 key-value 建模，访问、增改、删除和遍历字典，并完成库存与词频项目。</p>
 </section>
 <section id="outcome" data-sid="outcome">
 <div class="kicker">本节课产出</div><h2>把现实关系建模为 dictionary，并构建经过文本预处理的词频统计器。</h2><div class="grid3" style="margin-top:.75em"><div class="box"><span class="feature">1</span><h3>Level 1 · 复现</h3><p>不看答案重新写出核心示例。</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Level 2 · 修改</h3><p>改变数据、边界或参数并验证结果。</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Level 3 · 迁移</h3><p>把同一知识点用于一个新场景。</p></div></div><aside class="notes">把现实关系建模为 dictionary，并构建经过文本预处理的词频统计器。</aside>
-</section>
-<section id="source-map" data-sid="source-map">
-<div class="kicker">SOURCE COVERAGE</div><h2>知识点地图</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Key-value</h3><p>dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</p></div><div class="box"><h3>访问与更新</h3><p>[]、get、keys/values/items；赋值新增/更新；pop/popitem 删除。</p></div><div class="box"><h3>遍历</h3><p>直接迭代 key；values() 迭代值；items() 迭代并解包键值对。</p></div><div class="box"><h3>词频</h3><p>转小写、清理标点、split，再用 get(word, 0)+1 累计。</p></div></div><aside class="notes">This lesson covers Python Structure.ppsx 279-366.</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
 <div class="kicker">CONCEPT 1</div><h2>Key-value</h2><p class="lead">dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</p><div class="callout"><b>Explain:</b> 用一个自己的例子说明这个概念。</div><aside class="notes">dictionary 有序（现代 Python）、可变、key 唯一；值可重复。</aside>
