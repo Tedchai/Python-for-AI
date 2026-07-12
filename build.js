@@ -48,30 +48,66 @@ const CATALOG = {
       tags: ["Python", "AI Research", "MeritPoint"],
       accent: C.blue,
       decks: [
-        { id: "lesson-01", n: 1, title: "课程导入与第一个 Python Notebook",
-          summary: "课程规则、Google Classroom、Colab 入门、print、变量、数据类型、input、f-string 和 mini profile 小练习。",
-          tags: ["Class 01", "Colab", "Python Basics", "Quiz", "Lab"],
-          duration: "60 min", status: "ready" },
+        { id: "lesson-01", n: 1, title: "Python Basics & Google Colab",
+          summary: "Colab、变量、基本类型、type、print、input、f-string、命名规则与科研实验日志。",
+          tags: ["Class 01", "Colab", "Python Basics", "Research Log"],
+          duration: "2 hours", status: "ready" },
         { id: "lesson-02", n: 2, title: "Python Control Flow",
-          summary: "条件判断、比较运算、for / while 循环、break / continue，以及评分/分类小程序。",
-          tags: ["Class 02", "Control Flow", "Quiz", "Lab"],
-          duration: "60-75 min", status: "ready" },
-        { id: "lesson-03", n: 3, title: "Python Functions",
-          summary: "def、函数调用、参数、return、keyword arguments、scope、docstring 和函数作业。",
-          tags: ["Class 03", "Functions", "Quiz", "Lab"],
-          duration: "60-75 min", status: "ready" },
-        { id: "lesson-04", n: 4, title: "Python Lists and 2D Lists",
-          summary: "list 索引、遍历、按 index 修改元素、二维列表和 nested loop。",
-          tags: ["Class 04", "List", "2D List", "Quiz", "Lab"],
-          duration: "60-75 min", status: "ready" },
-        { id: "lesson-05", n: 5, title: "Python Tuples and Unpacking",
-          summary: "tuple 的有序与不可变、count、更新策略、unpacking、星号解包和函数多返回值。",
-          tags: ["Class 05", "Tuple", "Unpacking", "Quiz", "Lab"],
-          duration: "60-75 min", status: "ready" },
-        { id: "lesson-06", n: 6, title: "Python Dictionaries and Word Frequency",
-          summary: "key-value 映射、get / keys / values / items、增改字典，以及词频统计小项目。",
-          tags: ["Class 06", "Dictionary", "Project", "Quiz", "Lab"],
-          duration: "60-75 min", status: "ready" },
+          summary: "条件、循环、链式比较、enumerate、边界测试与传感器数据质量检查。",
+          tags: ["Class 02", "Control Flow", "Sensor QA", "Debug"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-03", n: 3, title: "Functions & File I/O",
+          summary: "函数、参数、return、scope、docstring、异常处理，以及 CSV 结果读写。",
+          tags: ["Class 03", "Functions", "File I/O", "Reproducibility"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-04", n: 4, title: "Data Structures for Research",
+          summary: "list、dict、tuple、set、切片、推导式与多组学样本记录管理。",
+          tags: ["Class 04", "Data Structures", "Research Records"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-05", n: 5, title: "NumPy for Scientific Computing",
+          summary: "ndarray、向量化、布尔索引、广播、统计与随机模拟。",
+          tags: ["Class 05", "NumPy", "Simulation"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-06", n: 6, title: "pandas for Data Analysis",
+          summary: "读取 CSV、DataFrame、筛选、排序、groupby、merge 与统计解释。",
+          tags: ["Class 06", "pandas", "Data Analysis"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-07", n: 7, title: "Data Cleaning & Reproducible Decisions",
+          summary: "缺失值、重复值、类型、异常值、编码、标准化与清洗决策日志。",
+          tags: ["Class 07", "Data Cleaning", "Decision Log"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-08", n: 8, title: "Data Visualization & EDA",
+          summary: "matplotlib、seaborn、分布、关系、相关性，以及从图表形成研究问题。",
+          tags: ["Class 08", "Visualization", "EDA", "Research Question"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-09", n: 9, title: "Machine Learning Workflow & Baseline",
+          summary: "监督学习、特征与标签、train/test split、Pipeline、Dummy baseline 与交叉验证。",
+          tags: ["Class 09", "scikit-learn", "Baseline", "Pipeline"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-10", n: 10, title: "Model Evaluation & Algorithm Choice",
+          summary: "回归与分类指标、混淆矩阵、ROC-AUC、残差、树模型和公平模型比较。",
+          tags: ["Class 10", "Evaluation", "Model Choice", "Metrics"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-11", n: 11, title: "Project 1 · Research Question & Dataset",
+          summary: "FINER 选题、问题收窄、数据来源、变量字典、伦理与 AI 使用核查。",
+          tags: ["Class 11", "FINER", "Dataset", "Project"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-12", n: 12, title: "Project 2 · Data Processing & EDA",
+          summary: "导入项目数据、清洗、编码、标准化、EDA 与处理决策记录。",
+          tags: ["Class 12", "Project", "Cleaning", "EDA"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-13", n: 13, title: "Project 3 · Modeling as a Tool",
+          summary: "Baseline、线性/逻辑回归、树模型与选讲 SVM/XGBoost，统一框架比较。",
+          tags: ["Class 13", "Modeling", "Comparison", "Project"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-14", n: 14, title: "Project 4 · Evaluation & Research Report",
+          summary: "控制变量实验、调优、残差与特征重要性、限制分析和 IMRaD 报告草稿。",
+          tags: ["Class 14", "Evaluation", "IMRaD", "Reproducibility"],
+          duration: "2 hours", status: "ready" },
+        { id: "lesson-15", n: 15, title: "Final Project Presentation",
+          summary: "最终项目检查、研究故事、5–8 分钟展示、Q&A、复现说明与成果提交。",
+          tags: ["Class 15", "Final Project", "Presentation", "Checklist"],
+          duration: "2 hours", status: "ready" },
       ],
     },
     {
@@ -109,6 +145,26 @@ const CATALOG = {
     },
   ],
 };
+
+// Keep the English route aligned with the complete 15-class Chinese route.
+const englishCourse = CATALOG.courses.find((course) => course.id === "python-ai-en");
+englishCourse.decks = [
+  [1, "Python Basics & Google Colab", "Colab, variables, basic types, formatted output, and a research log.", ["Colab", "Python Basics", "Research Log"]],
+  [2, "Python Control Flow", "Conditions, loops, boundary tests, and a sensor quality checker.", ["Control Flow", "Sensor QA", "Debug"]],
+  [3, "Functions & File I/O", "Reusable functions, return values, CSV files, and reproducible outputs.", ["Functions", "File I/O", "Reproducibility"]],
+  [4, "Data Structures for Research", "Lists, dictionaries, tuples, sets, and structured sample records.", ["Data Structures", "Research Records"]],
+  [5, "NumPy for Scientific Computing", "Arrays, vectorized operations, boolean masks, statistics, and simulation.", ["NumPy", "Simulation"]],
+  [6, "pandas for Data Analysis", "CSV files, DataFrames, filtering, grouping, and result interpretation.", ["pandas", "Data Analysis"]],
+  [7, "Data Cleaning & Reproducible Decisions", "Missing data, duplicates, outliers, and a cleaning decision log.", ["Data Cleaning", "Decision Log"]],
+  [8, "Data Visualization & EDA", "Plots, distributions, relationships, and evidence-based research questions.", ["Visualization", "EDA"]],
+  [9, "Machine Learning Workflow & Baseline", "Features, targets, train/test splits, simple baselines, and sklearn workflow.", ["scikit-learn", "Baseline"]],
+  [10, "Model Evaluation & Algorithm Choice", "Regression and classification metrics, error patterns, and fair comparison.", ["Evaluation", "Metrics"]],
+  [11, "Project 1 · Research Question & Dataset", "FINER questions, dataset fit, variable dictionaries, ethics, and limitations.", ["FINER", "Dataset", "Project"]],
+  [12, "Project 2 · Data Processing & EDA", "Project cleaning, preprocessing, EDA, and leakage checks.", ["Project", "Cleaning", "EDA"]],
+  [13, "Project 3 · Modeling as a Tool", "A baseline, one core model, and optional advanced model exploration.", ["Modeling", "Comparison"]],
+  [14, "Project 4 · Evaluation & Research Report", "Controlled experiments, limitations, reproducibility, and an IMRaD draft.", ["Evaluation", "IMRaD"]],
+  [15, "Final Project Presentation", "Final checks, a 5–8 minute research story, Q&A, and submission.", ["Final Project", "Presentation"]],
+].map(([n, title, summary, tags]) => ({ id: `lesson-${String(n).padStart(2, "0")}`, n, title, summary, tags: [`Class ${String(n).padStart(2, "0")}`, ...tags], duration: "2 hours", status: "ready" }));
 
 // =====================================================================
 // SHARED CSS (index + course pages)
@@ -187,17 +243,13 @@ const siteJs = `
 })();`;
 
 function courseIndex(co) {
-  const cards = co.decks.map((d) => {
-    const ready = d.status === "ready"; const href = ready ? d.id + "/" : "#";
-    return `<a class="card ${ready ? "ready" : "planned"}" href="${href}"><div class="num">CLASS ${String(d.n).padStart(2, "0")}</div><h3>${esc(d.title)}</h3><p>${esc(d.summary || "")}</p><div class="ct">${(d.tags || []).slice(0, 4).map((t) => `<span class="t">${esc(t)}</span>`).join("")}</div></a>`;
-  }).join("\n");
+  const firstReady = co.decks.find((d) => d.status === "ready");
+  const target = firstReady ? `${firstReady.id}/` : "../";
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(co.title)} — Merit Point Academy</title><link rel="stylesheet" href="../assets/site.css"></head><body>
-<header class="site"><div class="wrap"><div class="logo">${esc(CATALOG.logo || "AI")}</div><div><h1>${esc(co.title)}</h1><p>${esc(co.subtitle || "")}</p></div>
-<a class="main-btn" href="../">← Main Page</a>
-${DONATE_URL ? `<a class="donate-btn" href="${DONATE_URL}" target="_blank" rel="noopener">♥ Donate</a>` : ""}</div></header>
-<main class="wrap"><p class="crumb"><a href="../">← All courses</a></p><div class="grid" style="margin-top:22px">${cards}</div></main>
-<footer class="site">${esc(co.title)}</footer></body></html>`;
+<title>${esc(co.title)} — Merit Point Academy</title><meta http-equiv="refresh" content="0;url=${target}">
+<link rel="stylesheet" href="../assets/site.css"></head><body>
+<main class="wrap" style="padding-top:60px;text-align:center"><h1>${esc(co.title)}</h1><p>Opening Class 01…</p><p><a class="main-btn" style="background:var(--teal);color:#fff!important" href="${target}">Open Class 01</a></p></main>
+<script>location.replace(${JSON.stringify(target)});</script></body></html>`;
 }
 
 // =====================================================================
@@ -364,6 +416,18 @@ body.lang-en .prof-quote .lang-zh{display:none!important}
 #donateBtn:hover{background:#d85a28;text-decoration:none}
 /* slide number: default bottom-right collides with the comment/listen/cc button row, so move it to bottom-left */
 .reveal .slide-number{left:14px;right:auto;bottom:14px;z-index:58;background:rgba(255,255,255,.85);padding:2px 8px;border-radius:6px;color:var(--muted)}
+#jumpBar{position:fixed;right:14px;top:12px;z-index:70;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:10px;padding:6px;box-shadow:0 6px 20px rgba(20,40,70,.15);font-family:-apple-system,"Segoe UI",sans-serif}
+#jumpBar a,#jumpBar button{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:7px;padding:6px 9px;font-size:12px;font-weight:700;text-decoration:none;cursor:pointer}
+#jumpBar a.disabled{opacity:.35;pointer-events:none}#jumpBar button:hover,#jumpBar a:hover{border-color:var(--teal);color:var(--teal)}
+#jumpSelect{max-width:260px;border:1px solid var(--line);border-radius:7px;padding:6px 8px;color:var(--ink);background:#fff;font-size:12px}
+#overviewPanel{position:fixed;inset:0;z-index:100;background:rgba(12,45,82,.92);display:none;padding:34px;overflow:auto;font-family:-apple-system,"Segoe UI",sans-serif}
+#overviewPanel.open{display:block}#overviewPanel .ov-wrap{max-width:1100px;margin:0 auto;background:#fff;border-radius:16px;padding:22px}
+#overviewPanel .ov-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}#overviewPanel h2{margin:0;color:var(--navy)}
+#overviewClose{border:none;background:var(--navy);color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer}
+#overviewGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+#overviewGrid button{text-align:left;background:var(--cloud2);border:1px solid var(--line);border-radius:10px;padding:11px;color:var(--ink);cursor:pointer;line-height:1.35}
+#overviewGrid button:hover{border-color:var(--teal);background:var(--cloud)}#overviewGrid .ov-n{display:block;color:var(--teal);font-size:11px;font-weight:800;margin-bottom:3px}
+@media(max-width:760px){#jumpSelect{max-width:120px}#jumpBar{right:6px;top:6px}#overviewPanel{padding:10px}}
 body{display:block!important}
 body.reveal-fallback{overflow:auto;background:#102f53;color:#fff}
 body.reveal-fallback .reveal,body.reveal-fallback .slides{position:static!important;width:100%!important;height:auto!important;overflow:visible!important;transform:none!important}
@@ -678,6 +742,11 @@ const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.2/full";
 
 function deckHtml(deckId, title, slides) {
   const lessonId = deckId.split("/").pop();
+  const courseId = deckId.split("/")[0];
+  const lessonNumber = Number((lessonId.match(/\d+/) || [1])[0]);
+  const lessonHref = (n) => `../../${courseId}/lesson-${String(n).padStart(2, "0")}/`;
+  const prevLessonUrl = lessonNumber > 1 ? lessonHref(lessonNumber - 1) : "";
+  const nextLessonUrl = lessonNumber < 15 ? lessonHref(lessonNumber + 1) : "";
   const altDeckUrl = deckId.startsWith("python-ai/")
     ? `../../python-ai-en/${lessonId}/`
     : `../../python-ai/${lessonId}/`;
@@ -692,6 +761,13 @@ ${slides.join("\n")}
 </div></div>
 
 ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noopener">♥ Donate</a>` : ""}
+<nav id="jumpBar" aria-label="Course and slide navigation">
+  <a id="prevLesson" class="${prevLessonUrl ? "" : "disabled"}" href="${prevLessonUrl || "#"}" title="Previous lesson">← Lesson</a>
+  <button id="overviewBtn" type="button">Overview</button>
+  <select id="jumpSelect" aria-label="Jump to slide"><option>Jump to slide…</option></select>
+  <a id="nextLesson" class="${nextLessonUrl ? "" : "disabled"}" href="${nextLessonUrl || "#"}" title="Next lesson">Lesson →</a>
+</nav>
+<div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>${esc(title)} · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
 <!-- per-slide comments -->
 <a id="homeBtn" href="../../">← Main</a>
 <button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
@@ -706,7 +782,7 @@ ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noop
   <form id="commentForm">
     <div class="row"><input id="cname" placeholder="Your name (optional)" maxlength="40"></div>
     <textarea id="cbody" placeholder="Leave a comment or question about this slide…" maxlength="2000"></textarea>
-    <div class="row"><button type="submit">Post</button><span class="msg" id="cmsg">Visible to your instructor &amp; classmates.</span></div>
+    <div class="row"><button type="submit">Post</button><span class="msg" id="cmsg">Visible to your instructor.</span></div>
   </form>
 </div>
 
@@ -766,6 +842,23 @@ if(!window.Reveal){
 Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
   width:1280, height:720, margin:0.04, transition:'slide',
   keyboardCondition:'focused', plugins: window.RevealNotes ? [ RevealNotes ] : [] });
+(function(){
+  const select=document.getElementById('jumpSelect'),panel=document.getElementById('overviewPanel'),grid=document.getElementById('overviewGrid');
+  const openBtn=document.getElementById('overviewBtn'),closeBtn=document.getElementById('overviewClose');
+  const all=[...document.querySelectorAll('.reveal .slides > section')];
+  all.forEach(function(slide,index){
+    const heading=slide.querySelector('h1,h2,h3');
+    const label=(heading&&heading.textContent.trim())||slide.dataset.sid||('Slide '+(index+1));
+    const option=document.createElement('option'); option.value=index; option.textContent=(index+1)+'. '+label; select.appendChild(option);
+    const button=document.createElement('button'); button.innerHTML='<span class="ov-n">SLIDE '+String(index+1).padStart(2,'0')+'</span>'+label;
+    button.addEventListener('click',function(){ Reveal.slide(index); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); }); grid.appendChild(button);
+  });
+  select.addEventListener('change',function(){ if(this.value!=='') Reveal.slide(Number(this.value)); });
+  openBtn.addEventListener('click',function(){ panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); });
+  closeBtn.addEventListener('click',function(){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); });
+  panel.addEventListener('click',function(e){ if(e.target===panel) closeBtn.click(); });
+  if(typeof Reveal!=='undefined'&&Reveal.on) Reveal.on('slidechanged',function(e){ if(e&&e.indexh!=null) select.value=String(e.indexh); });
+})();
 (function(){
   const requested=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   if(!requested) return;
@@ -1215,7 +1308,7 @@ print(f"Next week goal: {hours + 1} hours.")`;
       <div class="step"><span class="n">4</span><b>确认栏目</b><span>Classwork / Assignments / Materials</span></div>
     </div>
     <div class="callout"><b>提交提醒：</b>作业统一交到 Google Classroom 的 Classwork -> Assignments。</div>
-    ${notes("如果学生已经加入，可以让他们帮助旁边同学。教师确认大家都能看到课程主页。")}`));
+    ${notes("线上课堂中，教师确认每位学生都能打开课程主页；遇到问题时通过聊天框或屏幕共享协助。")}`));
 
   S.push(sec("colab", `<div class="kicker">COLAB</div>
     <h2>Google Colab 是我们的云端 Python 教室</h2>
@@ -2696,6 +2789,299 @@ for word, count in counts.items():
   },
 };
 
+// 15 课高中生友好融合版：保留统一模板，核心任务重直觉、运行与解释；
+// 较难算法只出现在 challenge，不作为全班必做要求。
+const commonMistakes = [
+  ["只复制不理解", "每段代码至少改一个值，并用自己的话解释输出。"],
+  ["一次改太多", "一次只改变一个变量，重新运行后再继续。"],
+  ["结果没有记录", "用 Markdown 写下观察、证据和下一步问题。"],
+];
+const commonHomework = ["完成 Level 1 基础任务", "完成一个自己的数据或问题扩展", "从上到下运行全部 cells", "写 3-5 句结果解释", "提交可访问的 Colab 链接"];
+
+Object.assign(syncedZhLessons, {
+  "01": {
+    classNo: "01", title: "Python Basics & Google Colab",
+    subtitle: "变量、基本类型、清楚输出和第一份科研实验日志",
+    output: "完成一份包含类型检查和格式化输出的实验日志 notebook。",
+    skills: ["在 Colab 运行代码", "识别四种基本类型", "用 f-string 清楚输出"],
+    concepts: [["变量", "给实验信息起一个可读的名字。"], ["数据类型", "int、float、str、bool 表示不同信息。"], ["输出", "用 print 和 f-string 检查并说明结果。"]],
+    vocab: [["Notebook", "代码、输出和说明放在一起的文档。"], ["type", "检查一个值的数据类型。"], ["Comment", "用 # 解释为什么这样做。"]],
+    syntax: `sample_count = 24\ntemperature = 37.0\nis_valid = True\nprint(type(sample_count))\nprint(f"Samples: {sample_count}, Temp: {temperature} C")`,
+    demo: `experiment = "Seed Growth"\nresearcher = "Alex"\nsamples = 12\nis_complete = True\nprint(f"{experiment} | {researcher} | n={samples} | complete={is_complete}")`,
+    labTitle: "Research Log Builder", labIntro: "修改实验名称、样本量和条件，观察类型与输出。",
+    labCode: `experiment = "Plant Light Test"\ndays = 7\nlight_hours = 8.5\nis_valid = True\nprint(type(days), type(light_hours), type(is_valid))\nprint(f"{experiment}: {days} days, {light_hours} light hours/day")`,
+    projectTitle: "科研实验日志登记系统", projectInput: "实验名称、研究者、日期、样本量和有效性。", projectProcess: "用合适类型保存信息，用 type 检查。", projectOutput: "输出结构清楚、可追踪的实验日志。",
+    projectCode: `experiment = input("Experiment: ")\nresearcher = input("Researcher: ")\nsamples = int(input("Sample count: "))\nprint("---- Research Log ----")\nprint(f"Experiment: {experiment}")\nprint(f"Researcher: {researcher}")\nprint(f"Samples: {samples}")`,
+    quiz1: ["哪种类型最适合保存 36.5？", ["float", "bool", "str"], 0, "带小数的测量值通常用 float。"],
+    quiz2: ["type(value) 的作用是什么？", ["检查数据类型", "删除变量", "保存文件"], 0, "type 可以帮助发现类型不匹配。"],
+    mistakes: [["变量名不清楚", "使用 sample_count，不用 x1。"], ["文字忘记引号", "字符串需要成对引号。"], ["数字仍是文字", "input 后需要计算时用 int 或 float。"]],
+    homework: commonHomework, line: "变量保存证据，清楚输出让别人看懂证据。",
+  },
+  "02": {
+    classNo: "02", title: "Python Control Flow", subtitle: "让程序判断传感器数据是否可靠",
+    output: "完成一个能标记正常、偏高和偏低读数的质量检查器。",
+    skills: ["写 if / elif / else", "用循环批量检查", "测试阈值边界"],
+    concepts: [["条件", "一个结果为 True 或 False 的问题。"], ["循环", "把相同检查应用到每个数据点。"], ["边界", "刚好等于阈值时也要有明确规则。"]],
+    vocab: [["Boolean", "True 或 False。"], ["Threshold", "分类规则使用的界线。"], ["enumerate", "同时得到序号和数据值。"]],
+    syntax: `temperature = 37.8\nif 15 <= temperature <= 35:\n    label = "normal"\nelif temperature > 35:\n    label = "high"\nelse:\n    label = "low"\nprint(label)`,
+    demo: `temps = [22.5, 37.8, 12.1]\nfor sensor_id, temp in enumerate(temps, start=1):\n    if 15 <= temp <= 35:\n        label = "normal"\n    else:\n        label = "check"\n    print(sensor_id, temp, label)`,
+    labTitle: "Sensor Quality Check", labIntro: "修改温度列表，并专门测试 15 和 35 两个边界值。",
+    labCode: `temps = [15, 22.5, 35, 37.8, 12.1]\nfor i, temp in enumerate(temps, 1):\n    if 15 <= temp <= 35:\n        label = "normal"\n    elif temp > 35:\n        label = "high"\n    else:\n        label = "low"\n    print(f"Sensor {i}: {temp} -> {label}")`,
+    projectTitle: "传感器数据质量检查器", projectInput: "10 个模拟温度读数。", projectProcess: "循环检查范围并统计异常。", projectOutput: "每条记录的标签和整体正常率。",
+    projectCode: `temps = [22.5, 37.8, 18.0, 41.2, 15.3]\nnormal = 0\nfor temp in temps:\n    if 15 <= temp <= 35:\n        normal += 1\nprint(f"Normal rate: {normal / len(temps):.0%}")`,
+    quiz1: ["15 <= x <= 35 表示什么？", ["x 在 15 到 35 之间", "x 只能等于 15", "x 大于 35"], 0, "Python 支持链式比较。"],
+    quiz2: ["为什么要测试 15 和 35？", ["它们是边界值", "它们是字符串", "它们会停止循环"], 0, "边界最容易暴露分类规则错误。"],
+    mistakes: [["漏写冒号", "条件和循环行末需要冒号。"], ["缩进不一致", "同一代码块保持四个空格。"], ["边界遗漏", "明确等于阈值属于哪一类。"]],
+    homework: commonHomework, line: "好规则不仅处理普通情况，也能说清边界情况。",
+  },
+  "03": {
+    classNo: "03", title: "Functions & File I/O", subtitle: "把重复分析变成函数，并保存可复现结果",
+    output: "完成一个读取小型 CSV、调用函数并保存结果的 notebook。",
+    skills: ["定义和调用函数", "return 分析结果", "读取与保存 CSV"],
+    concepts: [["函数", "给一段可重复逻辑起名字。"], ["return", "把计算结果交给后续代码。"], ["文件", "让数据和结果在 notebook 之外保留下来。"]],
+    vocab: [["Parameter", "函数需要的输入。"], ["Docstring", "说明函数用途的文字。"], ["CSV", "用逗号分隔的表格文本文件。"]],
+    syntax: `def mean_value(values):\n    return sum(values) / len(values)\n\nprint(mean_value([2, 4, 6]))`,
+    demo: `def classify(value, cutoff=50):\n    """Return high or low using one cutoff."""\n    return "high" if value >= cutoff else "low"\n\nfor value in [42, 67, 81]:\n    print(value, classify(value))`,
+    labTitle: "Reusable Sample Summary", labIntro: "把平均值和标签逻辑封装成函数，再用不同数据测试。",
+    labCode: `def summarize(values):\n    return min(values), sum(values) / len(values), max(values)\n\nlow, avg, high = summarize([12, 18, 15, 21])\nprint(low, round(avg, 1), high)`,
+    projectTitle: "可复现分析小工具", projectInput: "一个小型 CSV 或样本数值列表。", projectProcess: "函数计算摘要；try/except 给出友好错误。", projectOutput: "保存 summary.csv 或文本结果。",
+    projectCode: `import csv\n\ndef save_summary(values, filename):\n    average = sum(values) / len(values)\n    with open(filename, "w", newline="") as f:\n        writer = csv.writer(f)\n        writer.writerow(["count", "average"])\n        writer.writerow([len(values), average])\n\nsave_summary([12, 18, 15, 21], "summary.csv")`,
+    quiz1: ["print 和 return 的主要区别？", ["print 显示，return 交回结果", "完全相同", "return 只能处理文字"], 0, "return 让结果可以继续被其他代码使用。"],
+    quiz2: ["为什么保存结果文件？", ["便于复查和分享", "让代码更长", "避免变量"], 0, "文件让分析过程更可追踪。"],
+    mistakes: [["定义后忘记调用", "def 只创建函数，不会自动运行。"], ["路径错误", "先确认文件名和当前目录。"], ["异常被忽略", "显示可理解的错误，不要静默失败。"]],
+    homework: commonHomework, line: "函数让分析可重复，文件让结果可追踪。",
+  },
+  "04": {
+    classNo: "04", title: "Data Structures for Research", subtitle: "用 list、dict、tuple 和 set 整理样本记录",
+    output: "建立一个包含 10 条样本记录的数据管理 notebook。",
+    skills: ["用 list 保存顺序", "用 dict 表示字段", "用 set 去重"],
+    concepts: [["List", "保存有顺序的一组数据。"], ["Dictionary", "用字段名找到对应值。"], ["Set", "保存不重复的项目。"]],
+    vocab: [["Index", "数据在序列中的位置。"], ["Key-value", "字段名和字段值的配对。"], ["Unpacking", "一次取出多个固定位置。"]],
+    syntax: `sample = {"id": "S01", "group": "control", "value": 2.4}\nprint(sample["group"])`,
+    demo: `samples = [\n    {"id": "S01", "group": "control", "value": 2.4},\n    {"id": "S02", "group": "treatment", "value": 3.1},\n]\nfor sample in samples:\n    print(sample["id"], sample["value"])`,
+    labTitle: "Sample Record Manager", labIntro: "添加、筛选和汇总少量样本记录。",
+    labCode: `samples = [{"id":"S01","group":"A","value":2.4}, {"id":"S02","group":"B","value":3.1}]\ngroups = {s["group"] for s in samples}\nprint("Groups:", groups)\nprint("Values:", [s["value"] for s in samples])`,
+    projectTitle: "多组学样本记录管理器", projectInput: "10 条样本 ID、组别和测量值。", projectProcess: "用 list 包含 dict，用 set 检查组别，用推导式提取值。", projectOutput: "样本表、唯一组别和一个统计值。",
+    projectCode: `samples = [{"id":"S01","group":"control","value":2.4}, {"id":"S02","group":"treatment","value":3.1}]\nvalues = [s["value"] for s in samples]\nprint("n =", len(samples))\nprint("mean =", sum(values) / len(values))`,
+    quiz1: ["哪种结构适合表示一条有字段名的样本记录？", ["dict", "bool", "float"], 0, "dict 可以用 id、group、value 等 key 表示字段。"],
+    quiz2: ["set 最适合做什么？", ["去重", "保存重复顺序", "画图"], 0, "set 自动保留唯一值。"],
+    mistakes: commonMistakes, homework: commonHomework, line: "选对数据结构，研究记录才会清楚。",
+  },
+  "05": {
+    classNo: "05", title: "NumPy for Scientific Computing", subtitle: "用数组快速完成模拟和统计",
+    output: "完成一次随机模拟，并用布尔索引找出异常值。",
+    skills: ["创建 ndarray", "进行向量化计算", "用条件筛选数组"],
+    concepts: [["Array", "同类数值组成的高效数据容器。"], ["Vectorization", "一次对整组数据计算。"], ["Boolean mask", "用 True/False 选择符合条件的数据。"]],
+    vocab: [["shape", "数组各维度的大小。"], ["mean", "平均值。"], ["random seed", "让随机模拟可以复现。"]],
+    syntax: `import numpy as np\nvalues = np.array([2.1, 2.4, 3.8])\nprint(values.mean())\nprint(values[values > 3])`,
+    demo: `import numpy as np\nrng = np.random.default_rng(42)\ndata = rng.normal(50, 5, 20)\nprint(data.mean(), data.std())\nprint(data[data > 58])`,
+    labTitle: "Small Simulation", labIntro: "固定随机种子，模拟 100 个测量值并比较统计结果。",
+    labCode: `import numpy as np\nrng = np.random.default_rng(7)\nmeasurements = rng.normal(100, 10, 100)\nprint("mean:", measurements.mean())\nprint("high count:", (measurements > 120).sum())`,
+    projectTitle: "实验测量模拟器", projectInput: "均值、标准差和样本量。", projectProcess: "生成模拟数据、计算摘要、筛选异常。", projectOutput: "可复现的统计结果和异常数量。",
+    projectCode: `import numpy as np\nrng = np.random.default_rng(42)\ndata = rng.normal(37, 1.5, 50)\nnormal = data[(data >= 35) & (data <= 39)]\nprint(f"Normal: {len(normal)}/{len(data)}")`,
+    quiz1: ["向量化的主要好处？", ["少写循环并高效计算", "让数字变文字", "删除数组"], 0, "NumPy 可以一次处理整个数组。"],
+    quiz2: ["为什么固定 random seed？", ["便于复现", "让结果永远为零", "增加样本"], 0, "相同种子可以得到相同模拟结果。"],
+    mistakes: commonMistakes, homework: commonHomework, line: "NumPy 让我们把一组测量值当成一个整体来思考。",
+  },
+  "06": {
+    classNo: "06", title: "pandas for Data Analysis", subtitle: "读取真实表格，筛选、分组并解释结果",
+    output: "加载一份 CSV，完成筛选、groupby 和一句结果解释。",
+    skills: ["读取 DataFrame", "筛选与排序", "分组统计"],
+    concepts: [["DataFrame", "带行列标签的数据表。"], ["Filter", "只保留符合条件的行。"], ["Groupby", "按组计算可比较的统计结果。"]],
+    vocab: [["Column", "表格中的一个变量。"], ["Row", "一条观察记录。"], ["Aggregation", "把多条记录汇总成统计值。"]],
+    syntax: `import pandas as pd\ndf = pd.read_csv("data.csv")\nprint(df.head())\nprint(df.groupby("group")["value"].mean())`,
+    demo: `import pandas as pd\ndf = pd.DataFrame({"group":["A","A","B"], "value":[2.1,2.5,3.2]})\nprint(df[df["value"] > 2.2])\nprint(df.groupby("group")["value"].mean())`,
+    labTitle: "Group Comparison", labIntro: "查看数据、选择列、筛选记录并比较两组均值。",
+    labCode: `import pandas as pd\ndf = pd.DataFrame({"sample":["S1","S2","S3","S4"],"group":["A","A","B","B"],"value":[2.1,2.5,3.2,2.9]})\nprint(df.describe())\nprint(df.groupby("group")["value"].mean())`,
+    projectTitle: "真实数据统计摘要", projectInput: "一份包含组别和数值变量的 CSV。", projectProcess: "检查、筛选、分组和排序。", projectOutput: "基础统计表和 2-3 句解释。",
+    projectCode: `import pandas as pd\ndf = pd.read_csv("data.csv")\nsummary = df.groupby("group")["value"].agg(["count","mean","std"])\nprint(summary)\nsummary.to_csv("group_summary.csv")`,
+    quiz1: ["groupby 最适合回答哪类问题？", ["不同组的均值是否不同", "文件在哪里", "变量名多长"], 0, "groupby 用于按类别比较统计量。"],
+    quiz2: ["读取数据后第一步应该？", ["先查看 head/info", "直接训练复杂模型", "删除所有行"], 0, "先了解数据结构和质量。"],
+    mistakes: commonMistakes, homework: commonHomework, line: "先看懂表格，再计算；先计算，再解释。",
+  },
+  "07": {
+    classNo: "07", title: "Data Cleaning & Reproducible Decisions", subtitle: "修复数据问题，并记录每个决定的理由",
+    output: "提交 clean dataset 和一份 before/after 清洗决策表。",
+    skills: ["发现缺失与重复", "处理类型和异常值", "记录清洗理由"],
+    concepts: [["Missing value", "数据没有被记录。"], ["Outlier", "明显偏离多数数据的观察。"], ["Decision log", "记录做了什么、为什么、影响多少行。"]],
+    vocab: [["NaN", "pandas 中常见的缺失标记。"], ["Duplicate", "重复记录。"], ["Standardization", "把不同量纲转换到可比较尺度。"]],
+    syntax: `print(df.isna().sum())\ndf = df.drop_duplicates()\ndf["age"] = pd.to_numeric(df["age"], errors="coerce")`,
+    demo: `before = len(df)\ndf = df.drop_duplicates()\ndf["value"] = df["value"].fillna(df["value"].median())\nprint("rows changed:", before - len(df))`,
+    labTitle: "Cleaning Decision Lab", labIntro: "每执行一个清洗步骤，就补写一行决定和理由。",
+    labCode: `import pandas as pd\ndf = pd.DataFrame({"id":[1,2,2,3],"value":[10,None,None,500]})\nprint("Before:\n", df)\ndf = df.drop_duplicates()\ndf["value"] = df["value"].fillna(df["value"].median())\nprint("After:\n", df)`,
+    projectTitle: "Before / After 数据清洗报告", projectInput: "含缺失、重复或异常值的小数据集。", projectProcess: "发现问题、选择方法、记录理由和影响。", projectOutput: "clean.csv 与清洗决策日志。",
+    projectCode: `decisions = []\nbefore = len(df)\ndf = df.drop_duplicates()\ndecisions.append({"step":"drop duplicates","reason":"same record repeated","rows_changed":before-len(df)})\npd.DataFrame(decisions).to_csv("cleaning_log.csv", index=False)`,
+    quiz1: ["发现异常值后一定要删除吗？", ["不一定，要结合来源和研究问题", "一定", "永远不能"], 0, "异常值可能是错误，也可能是真实的重要现象。"],
+    quiz2: ["清洗日志最重要的作用？", ["让决定可检查和复现", "增加文件数量", "替代原数据"], 0, "科研数据处理需要留下理由和影响记录。"],
+    mistakes: commonMistakes, homework: commonHomework, line: "清洗不是把数据变漂亮，而是让每个决定有证据。",
+  },
+  "08": {
+    classNo: "08", title: "Data Visualization & EDA", subtitle: "用图表发现现象，并把观察变成研究问题",
+    output: "完成 3 张核心图和一页 EDA 小报告。",
+    skills: ["选择合适图表", "比较分布与关系", "写出证据支持的观察"],
+    concepts: [["Distribution", "一个变量的集中、离散和形状。"], ["Relationship", "两个变量如何一起变化。"], ["Research question", "可以用数据检验的具体问题。"]],
+    vocab: [["Histogram", "查看数值分布。"], ["Scatterplot", "查看两个数值变量关系。"], ["Correlation", "描述线性关系方向与强度。"]],
+    syntax: `import seaborn as sns\nsns.histplot(data=df, x="value")\nsns.scatterplot(data=df, x="age", y="value", hue="group")`,
+    demo: `import seaborn as sns\nimport matplotlib.pyplot as plt\nsns.boxplot(data=df, x="group", y="value")\nplt.title("Value by group")\nplt.show()`,
+    labTitle: "Three-Chart EDA", labIntro: "用一张分布图、一张组间比较图和一张关系图探索数据。",
+    labCode: `import seaborn as sns\nimport matplotlib.pyplot as plt\ndf = sns.load_dataset("tips")\nsns.histplot(data=df, x="total_bill")\nplt.show()\nsns.scatterplot(data=df, x="total_bill", y="tip", hue="time")\nplt.show()`,
+    projectTitle: "一页 EDA 小报告", projectInput: "清洗后的数据集。", projectProcess: "提出问题、画图、写观察、说明不能得出的结论。", projectOutput: "3 张图、3 条观察、1 个候选研究问题。",
+    projectCode: `question = "Do two groups show different value distributions?"\nprint("Question:", question)\nsummary = df.groupby("group")["value"].describe()\nprint(summary)\nsns.boxplot(data=df, x="group", y="value")`,
+    quiz1: ["想看两个数值变量关系，优先用？", ["散点图", "饼图", "单个数字"], 0, "散点图能显示每条观察的两个数值。"],
+    quiz2: ["相关性可以直接证明因果吗？", ["不能", "总能", "只有负相关能"], 0, "相关只说明一起变化，不足以证明因果。"],
+    mistakes: commonMistakes, homework: commonHomework, line: "图表不是装饰；每张图都应回答一个问题。",
+  },
+});
+
+Object.assign(syncedZhLessons, {
+  "09": {
+    classNo: "09", title: "Machine Learning Workflow & Baseline", subtitle: "让模型回答问题，而不是把模型当成魔法",
+    output: "跑通第一个 sklearn baseline，并解释每一步的目的。",
+    skills: ["区分特征与标签", "正确拆分训练测试集", "建立简单 baseline"],
+    concepts: [["Feature / label", "输入信息和希望预测的结果。"], ["Train / test", "一部分学习，一部分检查新数据表现。"], ["Baseline", "用最简单方法建立可比较的起点。"]],
+    vocab: [["Supervised learning", "用带答案的数据学习。"], ["fit", "让模型从训练数据学习。"], ["predict", "让模型对新数据给出结果。"]],
+    syntax: `from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, random_state=42)\nmodel.fit(X_train, y_train)\npred = model.predict(X_test)`,
+    demo: `from sklearn.datasets import load_diabetes\nfrom sklearn.dummy import DummyRegressor\nfrom sklearn.model_selection import train_test_split\nX, y = load_diabetes(return_X_y=True)\nXtr, Xte, ytr, yte = train_test_split(X, y, test_size=.2, random_state=42)\nmodel = DummyRegressor(strategy="mean").fit(Xtr, ytr)\nprint(model.score(Xte, yte))`,
+    labTitle: "First Baseline", labIntro: "先用 Dummy 模型建立起点，再换一个简单模型比较。",
+    labCode: `from sklearn.datasets import load_diabetes\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.dummy import DummyRegressor\nfrom sklearn.linear_model import LinearRegression\nX, y = load_diabetes(return_X_y=True)\nXtr, Xte, ytr, yte = train_test_split(X, y, test_size=.2, random_state=42)\nfor model in [DummyRegressor(), LinearRegression()]:\n    model.fit(Xtr, ytr)\n    print(type(model).__name__, round(model.score(Xte, yte), 3))`,
+    projectTitle: "第一个可比较模型", projectInput: "sklearn 内置小数据集。", projectProcess: "拆分、训练 Dummy 和一个简单模型。", projectOutput: "两行结果和一段不超过 100 字解释。",
+    projectCode: `models = {"dummy": DummyRegressor(), "linear": LinearRegression()}\nfor name, model in models.items():\n    model.fit(Xtr, ytr)\n    print(name, model.score(Xte, yte))`,
+    quiz1: ["为什么测试集不能参与训练？", ["要检查模型面对新数据的表现", "测试集不能有数字", "为了代码更短"], 0, "测试集模拟模型没见过的新数据。"],
+    quiz2: ["Baseline 的作用？", ["提供比较起点", "保证模型完美", "代替研究问题"], 0, "没有 baseline，就不知道改进是否真的有价值。"],
+    mistakes: [["先标准化全数据", "预处理只能在训练集 fit，避免数据泄漏。"], ["只看训练分数", "必须检查未见过的测试数据。"], ["模型越复杂越好", "先从最简单、可解释的 baseline 开始。"]],
+    homework: commonHomework, line: "先建立简单而诚实的起点，再谈模型改进。",
+  },
+  "10": {
+    classNo: "10", title: "Model Evaluation & Algorithm Choice", subtitle: "用合适指标判断模型，而不是只追求一个高分",
+    output: "完成一张模型评价表，并说明为什么选择该指标。",
+    skills: ["选择回归或分类指标", "读懂混淆矩阵", "公平比较简单模型"],
+    concepts: [["Metric", "用数字衡量模型在特定目标上的表现。"], ["Error pattern", "模型在哪些情况容易出错。"], ["Fair comparison", "相同数据拆分和指标下比较模型。"]],
+    vocab: [["MAE", "平均绝对误差，单位容易解释。"], ["Recall", "真正例中被找出的比例。"], ["Confusion matrix", "分类正确与错误类型的表格。"]],
+    syntax: `from sklearn.metrics import mean_absolute_error\nmae = mean_absolute_error(y_test, y_pred)\nprint("MAE:", mae)`,
+    demo: `from sklearn.metrics import confusion_matrix, classification_report\nprint(confusion_matrix(y_test, y_pred))\nprint(classification_report(y_test, y_pred))`,
+    labTitle: "Metric Detective", labIntro: "比较 Accuracy、Precision、Recall 和 F1，讨论不同任务更在意哪种错误。",
+    labCode: `from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score\ny_true = [1,1,1,0,0,0]\ny_pred = [1,0,1,0,0,1]\nprint("accuracy", accuracy_score(y_true, y_pred))\nprint("precision", precision_score(y_true, y_pred))\nprint("recall", recall_score(y_true, y_pred))\nprint("f1", f1_score(y_true, y_pred))`,
+    projectTitle: "模型评价卡", projectInput: "一个 baseline 和一个改进模型的预测。", projectProcess: "统一指标比较，并定位错误类型。", projectOutput: "评价表、选择理由和下一步改进建议。",
+    projectCode: `results = []\nfor name, pred in predictions.items():\n    results.append({"model":name, "accuracy":accuracy_score(y_test,pred), "recall":recall_score(y_test,pred)})\nprint(pd.DataFrame(results))`,
+    quiz1: ["疾病筛查特别怕漏诊时，更应关注？", ["Recall", "文件大小", "训练时间"], 0, "Recall 衡量真正患者中被找出的比例。"],
+    quiz2: ["两个模型公平比较需要？", ["相同数据拆分和指标", "不同测试集", "只看最好一次"], 0, "统一条件才能归因于模型差异。"],
+    mistakes: [["只看 Accuracy", "类别不平衡时可能造成误导。"], ["在不同测试集比较", "固定相同拆分和 random_state。"], ["把分数当结论", "还要分析错误、限制和实际代价。"]],
+    homework: commonHomework, line: "好模型不是分数最高，而是错误类型符合任务需要。",
+  },
+  "11": {
+    classNo: "11", title: "Project 1 · Research Question & Dataset", subtitle: "把兴趣收窄成一个能用数据回答的问题",
+    output: "提交项目题目、研究问题、数据来源和变量字典初稿。",
+    skills: ["用 FINER 检查问题", "判断数据是否合适", "说明伦理与限制"],
+    concepts: [["Research question", "明确输入、输出和可检验关系。"], ["Dataset fit", "数据变量能否真正回答问题。"], ["Evidence", "结论必须能追溯到数据和分析。"]],
+    vocab: [["FINER", "可行、有趣、新颖、伦理、相关。"], ["Target", "项目希望解释或预测的变量。"], ["Data dictionary", "变量名称、含义、单位和类型。"]],
+    syntax: `project = {\n  "question": "Can features predict the target?",\n  "target": "outcome",\n  "metric": "MAE or F1"\n}\nprint(project)`,
+    demo: `question = "Can basic measurements predict diabetes progression?"\ninputs = ["age", "bmi", "blood pressure"]\ntarget = "progression after one year"\nprint(question, inputs, target)`,
+    labTitle: "Question Narrowing", labIntro: "把一个宽泛主题改写成具体、可量化、可在课程时间内完成的问题。",
+    labCode: `broad = "AI and health"\nnarrow = "Can selected health measurements predict a numeric progression score?"\nprint("Before:", broad)\nprint("After:", narrow)`,
+    projectTitle: "项目立项卡", projectInput: "兴趣主题和 1-2 个候选公开数据集。", projectProcess: "FINER 检查、变量核对、隐私和偏差检查。", projectOutput: "一页立项卡和数据字典。",
+    projectCode: `proposal = {"question":"", "dataset":"", "target":"", "metric":"", "risk_or_limit":""}\nfor key, value in proposal.items():\n    print(f"{key}: {value}")`,
+    quiz1: ["好的研究问题首先应该？", ["具体且可用数据检验", "尽可能宽泛", "先决定复杂算法"], 0, "问题决定数据、模型和评价。"],
+    quiz2: ["使用公开数据仍需检查什么？", ["来源、许可、隐私和偏差", "只看文件名", "完全不用检查"], 0, "公开不等于没有伦理和质量问题。"],
+    mistakes: commonMistakes, homework: ["提交一个具体研究问题", "说明数据来源和许可", "完成变量字典", "写出评价指标", "列出至少一个限制"],
+    line: "先把问题问清楚，模型才知道该回答什么。",
+  },
+  "12": {
+    classNo: "12", title: "Project 2 · Data Processing & EDA", subtitle: "把原始数据变成可解释、可建模的项目数据",
+    output: "形成项目 clean dataset、处理说明和 3 张关键图。",
+    skills: ["建立数据质量报告", "完成必要预处理", "用 EDA 检查项目假设"],
+    concepts: [["Pipeline", "按固定顺序重复数据处理步骤。"], ["Data leakage", "不小心让测试信息进入训练过程。"], ["EDA checkpoint", "建模前检查分布、关系和异常。"]],
+    vocab: [["Encoding", "把类别转换为模型可处理形式。"], ["Scaling", "调整数值尺度。"], ["Leakage", "未来或测试信息泄露给模型。"]],
+    syntax: `X_train, X_test = train_test_split(X, test_size=.2, random_state=42)\nscaler.fit(X_train)\nX_train_scaled = scaler.transform(X_train)\nX_test_scaled = scaler.transform(X_test)`,
+    demo: `print(df.shape)\nprint(df.isna().sum())\nprint(df[target].describe())\nprint(df.groupby(group)[target].mean())`,
+    labTitle: "Project Data Audit", labIntro: "用固定清单检查形状、类型、缺失、重复、目标分布和潜在泄漏。",
+    labCode: `audit = {"rows":len(df), "columns":len(df.columns), "missing":int(df.isna().sum().sum()), "duplicates":int(df.duplicated().sum())}\nprint(audit)`,
+    projectTitle: "Clean Dataset + EDA Checkpoint", projectInput: "项目原始数据。", projectProcess: "清洗、记录、画图并核对研究问题。", projectOutput: "clean.csv、cleaning_log.csv 和 EDA 小结。",
+    projectCode: `df.to_csv("project_clean.csv", index=False)\nprint("Saved rows:", len(df))\nprint("Target summary:\n", df[target].describe())`,
+    quiz1: ["标准化器应该在哪里 fit？", ["只在训练集", "测试集", "全数据"], 0, "只在训练集 fit 可以避免数据泄漏。"],
+    quiz2: ["EDA 后可以修改研究问题吗？", ["可以，但要记录理由", "绝对不可以", "只能删除数据"], 0, "真实数据可能要求合理收窄问题。"],
+    mistakes: commonMistakes, homework: ["保存 clean dataset", "提交清洗决策日志", "完成 3 张关键图", "写 3 条观察", "说明一个数据限制"],
+    line: "项目数据不是清洗完就结束，还要能说明它如何回答问题。",
+  },
+  "13": {
+    classNo: "13", title: "Project 3 · Modeling as a Tool", subtitle: "选择少量合适模型，做公平、可解释的比较",
+    output: "训练一个 baseline 和一个改进模型，形成初步结果表。",
+    skills: ["根据任务选择模型", "使用统一训练流程", "解释模型差异"],
+    concepts: [["Simple first", "先使用容易理解的线性或逻辑模型。"], ["One improvement", "只增加一个合理模型进行比较。"], ["Optional challenge", "树模型、SVM 或 XGBoost 只供进阶探索。"]],
+    vocab: [["Linear model", "用加权关系做预测。"], ["Tree model", "用一系列 if-then 规则做决定。"], ["Hyperparameter", "训练前由研究者设置的选项。"]],
+    syntax: `models = {"baseline": DummyClassifier(strategy="most_frequent"), "logistic": LogisticRegression(max_iter=1000)}\nfor name, model in models.items():\n    model.fit(X_train, y_train)`,
+    demo: `for name, model in models.items():\n    model.fit(X_train, y_train)\n    pred = model.predict(X_test)\n    print(name, f1_score(y_test, pred))`,
+    labTitle: "Two-Model Comparison", labIntro: "全班完成 Dummy + 一个基础模型；进阶学生可增加浅层决策树。",
+    labCode: `from sklearn.dummy import DummyClassifier\nfrom sklearn.linear_model import LogisticRegression\nmodels = [DummyClassifier(strategy="most_frequent"), LogisticRegression(max_iter=1000)]\nfor model in models:\n    model.fit(X_train, y_train)\n    print(type(model).__name__, model.score(X_test, y_test))`,
+    projectTitle: "Baseline + One Improvement", projectInput: "处理后的项目特征和目标。", projectProcess: "用同一拆分训练两个模型并记录参数。", projectOutput: "模型结果表和选择理由。",
+    projectCode: `results = []\nfor name, model in models.items():\n    model.fit(X_train, y_train)\n    pred = model.predict(X_test)\n    results.append({"model":name, "score":f1_score(y_test,pred)})\nprint(pd.DataFrame(results))`,
+    quiz1: ["全班必做模型数量最合理的是？", ["Baseline + 1 个基础模型", "至少 10 个", "越多越好"], 0, "课程重点是公平比较和解释，不是堆算法。"],
+    quiz2: ["SVM/XGBoost 在本课属于？", ["进阶选讲", "人人必做", "与机器学习无关"], 0, "进阶算法只给准备充分的学生挑战。"],
+    mistakes: [["模型堆太多", "先回答研究问题，再考虑额外模型。"], ["比较条件不同", "固定拆分、预处理和指标。"], ["无法解释选择", "每个模型都要有选择理由。"]],
+    homework: ["完成 baseline", "完成一个基础改进模型", "记录模型和参数", "输出统一结果表", "写出选择理由"],
+    line: "模型是回答问题的工具，不是项目的主角。",
+  },
+  "14": {
+    classNo: "14", title: "Project 4 · Evaluation & Research Report", subtitle: "把模型结果变成谨慎、可复现的研究结论",
+    output: "完成结果表、核心图表、限制分析和 IMRaD 报告 v1。",
+    skills: ["分析模型错误", "记录可复现实验", "按 IMRaD 写报告"],
+    concepts: [["Controlled comparison", "一次只改变一个因素。"], ["Limitation", "明确数据和方法不能支持什么。"], ["IMRaD", "引言、方法、结果和讨论的报告结构。"]],
+    vocab: [["Residual", "真实值与预测值之差。"], ["Feature importance", "模型使用特征的相对程度。"], ["Reproducibility", "别人按说明能得到相近结果。"]],
+    syntax: `experiment = {"model":"logistic", "split_seed":42, "metric":"F1", "score":0.78}\nprint(experiment)`,
+    demo: `report = {"Introduction":"Why the question matters", "Method":"Data and models", "Results":"Evidence", "Discussion":"Meaning and limits"}\nfor section, purpose in report.items():\n    print(section, "->", purpose)`,
+    labTitle: "Evidence to Claim", labIntro: "把一个结果数字改写成包含条件、证据和限制的研究陈述。",
+    labCode: `score = 0.78\nbaseline = 0.65\nclaim = f"On the fixed test split, F1 improved from {baseline:.2f} to {score:.2f}; results may change with another sample."\nprint(claim)`,
+    projectTitle: "研究报告 v1", projectInput: "实验表、评价指标和关键图。", projectProcess: "核对证据、写方法、结果、限制和下一步。", projectOutput: "IMRaD 报告草稿和可复现说明。",
+    projectCode: `required = ["question", "dataset", "split", "preprocessing", "model", "metric", "result", "limitation"]\nfor item in required:\n    print("[ ]", item)`,
+    quiz1: ["结果部分主要写什么？", ["观察到的证据", "所有背景资料", "没有数据的猜测"], 0, "Results 先报告证据，解释和意义主要放 Discussion。"],
+    quiz2: ["结论中说明限制意味着？", ["更诚实、更科学", "项目失败", "模型不能使用"], 0, "限制界定了结论适用范围。"],
+    mistakes: commonMistakes, homework: ["完成结果表", "加入 2-3 张核心图", "写 IMRaD 草稿", "记录全部实验设置", "说明至少两个限制"],
+    line: "科研结论要比数据支持的范围更窄，而不是更宽。",
+  },
+  "15": {
+    classNo: "15", title: "Final Project Presentation", subtitle: "用清楚的研究故事展示问题、证据、限制和下一步",
+    output: "提交报告、Notebook、5–8 页展示和最终项目检查表。",
+    skills: ["讲清研究故事", "展示关键证据", "回答问题并说明限制"],
+    concepts: [["Story", "问题、方法、发现和意义形成一条清楚主线。"], ["Evidence slide", "一页只突出一个关键图表或结果。"], ["Q&A", "先确认问题，再用证据回答，不确定时诚实说明。"]],
+    vocab: [["Takeaway", "希望听众记住的一句话。"], ["Reproducibility note", "别人运行项目所需的信息。"], ["Limitation", "结论适用范围和未解决问题。"]],
+    syntax: `presentation = ["Question", "Data", "Method", "Result", "Limitations", "Next step"]\nfor i, slide in enumerate(presentation, 1):\n    print(i, slide)`,
+    demo: `takeaway = "A simple model improved over baseline, but the small public dataset limits generalization."\nprint("Main takeaway:", takeaway)`,
+    labTitle: "One-Minute Research Story", labIntro: "用 60 秒讲清问题、方法、关键发现和一个限制。",
+    labCode: `story = {"question":"What did we ask?", "method":"What did we compare?", "finding":"What evidence did we see?", "limit":"What can we not claim?"}\nfor key, prompt in story.items():\n    print(key, ":", prompt)`,
+    projectTitle: "最终 AI 科研项目展示", projectInput: "最终报告、代码、结果表和图表。", projectProcess: "按检查表核对、录制一次计时彩排、根据教师反馈修改并提交。", projectOutput: "报告 + Notebook + 5–8 页 PPT + 复现说明。",
+    projectCode: `checklist = {"question":True, "data_source":True, "baseline":True, "result_table":True, "limitations":False, "reproducible":False}\nfor item, done in checklist.items():\n    print("✓" if done else "□", item)`,
+    quiz1: ["科研展示中最重要的是？", ["让听众理解问题和证据", "展示最多代码", "使用最复杂动画"], 0, "展示应围绕研究故事和关键证据。"],
+    quiz2: ["遇到不会回答的问题应该？", ["诚实说明并提出如何验证", "编一个答案", "跳过所有 Q&A"], 0, "科学交流允许不确定，但要说明下一步验证方法。"],
+    mistakes: [["一页文字太多", "每页只保留一个核心信息。"], ["只报最好分数", "同时展示 baseline、条件和限制。"], ["无法复现", "提交前从头运行并检查文件与权限。"]],
+    homework: ["完成最终项目检查表", "从头运行 Notebook", "完成 5–8 页展示", "进行一次计时彩排", "提交报告、代码和 PPT"],
+    line: "最好的展示不是证明你什么都知道，而是清楚说明证据支持什么。",
+  },
+});
+
+const englishLessonText = {
+  "01": { title:"Python Basics & Google Colab", subtitle:"Variables, basic types, clear output, and a first research log", output:"Build and submit a research-log notebook with type checks and formatted output.", skills:["Run code in Colab","Recognize four basic types","Use f-strings for clear output"], concepts:[["Variable","A readable name for one piece of research information."],["Data type","int, float, str, and bool represent different kinds of information."],["Output","print and f-strings make results visible and checkable."]], vocab:[["Notebook","A document containing code, output, and explanation."],["type","A function that checks a value's data type."],["Comment","A # note explaining why the code exists."]], labTitle:"Research Log Builder", labIntro:"Change the experiment, sample count, and conditions; then inspect types and output.", projectTitle:"Research Experiment Log", projectInput:"Experiment, researcher, date, sample count, and validity.", projectProcess:"Store each item with a suitable type and verify it.", projectOutput:"A clear, traceable research log.", quiz1:["Which type best stores 36.5?",["float","bool","str"],0,"Measurements with decimals normally use float."], quiz2:["What does type(value) do?",["Checks the data type","Deletes the value","Saves a file"],0,"type helps find mismatched data."], line:"Variables store evidence; clear output makes evidence understandable." },
+  "02": { title:"Python Control Flow", subtitle:"Use rules to check whether sensor data is reliable", output:"Build a quality checker that labels normal, high, and low readings.", skills:["Write if / elif / else","Check many values with loops","Test threshold boundaries"], concepts:[["Condition","A question whose answer is True or False."],["Loop","Apply the same check to each data point."],["Boundary","A rule must explain what happens exactly at a threshold."]], vocab:[["Boolean","A True or False value."],["Threshold","A boundary used by a rule."],["enumerate","Get an item number and value together."]], labTitle:"Sensor Quality Check", labIntro:"Change the readings and deliberately test the boundary values 15 and 35.", projectTitle:"Sensor Data Quality Checker", projectInput:"Ten simulated temperature readings.", projectProcess:"Check each range and count abnormal readings.", projectOutput:"A label for each reading and an overall normal rate.", quiz1:["What does 15 <= x <= 35 mean?",["x is between 15 and 35","x equals only 15","x is above 35"],0,"Python supports chained comparisons."], quiz2:["Why test 15 and 35?",["They are boundary values","They are strings","They stop the loop"],0,"Boundaries often reveal rule errors."], line:"A good rule handles ordinary cases and explains boundary cases." },
+  "03": { title:"Functions & File I/O", subtitle:"Turn repeated analysis into functions and save reproducible results", output:"Read a small dataset, call a function, and save a result file.", skills:["Define and call functions","Return analysis results","Read and save CSV files"], concepts:[["Function","A named block of reusable logic."],["return","Send a result back to the calling code."],["File","Keep data and results beyond one notebook session."]], vocab:[["Parameter","An input required by a function."],["Docstring","Text explaining what a function does."],["CSV","A simple text format for tables."]], labTitle:"Reusable Sample Summary", labIntro:"Wrap summary logic in a function and test it with different values.", projectTitle:"Reproducible Analysis Helper", projectInput:"A small CSV file or sample-value list.", projectProcess:"Use functions for summaries and save the output.", projectOutput:"A summary.csv file or readable text result.", quiz1:["How are print and return different?",["print displays; return sends back a value","They are identical","return only handles text"],0,"Returned results can be reused by other code."], quiz2:["Why save a result file?",["To review and share results","To make code longer","To avoid variables"],0,"Files make analysis traceable."], line:"Functions make analysis repeatable; files make results traceable." },
+  "04": { title:"Data Structures for Research", subtitle:"Organize sample records with lists, dictionaries, tuples, and sets", output:"Build a notebook that manages ten structured sample records.", skills:["Use lists for ordered data","Use dictionaries for named fields","Use sets to find unique values"], concepts:[["List","Store an ordered collection."],["Dictionary","Find a value using a field name."],["Set","Store unique items without duplicates."]], vocab:[["Index","The position of an item in a sequence."],["Key-value","A field name paired with its value."],["Unpacking","Take several fixed positions at once."]], labTitle:"Sample Record Manager", labIntro:"Add, filter, and summarize a small set of sample records.", projectTitle:"Multi-omics Sample Record Manager", projectInput:"Ten sample IDs, groups, and measurements.", projectProcess:"Use a list of dictionaries and a set of group labels.", projectOutput:"A sample table, unique groups, and one summary statistic.", quiz1:["Which structure best represents one record with named fields?",["dict","bool","float"],0,"A dictionary can name fields such as id, group, and value."], quiz2:["What is a set especially useful for?",["Removing duplicates","Keeping repeated order","Drawing a chart"],0,"A set keeps unique values."], line:"Choose the right structure so research records stay clear." },
+  "05": { title:"NumPy for Scientific Computing", subtitle:"Use arrays for fast simulation and statistics", output:"Run a random simulation and use a boolean mask to find unusual values.", skills:["Create an ndarray","Use vectorized calculations","Filter arrays with conditions"], concepts:[["Array","An efficient container for similar numeric values."],["Vectorization","Calculate on an entire group at once."],["Boolean mask","Use True and False to select values."]], vocab:[["shape","The size of each array dimension."],["mean","The arithmetic average."],["random seed","A setting that makes a simulation reproducible."]], labTitle:"Small Simulation", labIntro:"Fix the random seed, simulate 100 measurements, and compare summaries.", projectTitle:"Experimental Measurement Simulator", projectInput:"A mean, standard deviation, and sample size.", projectProcess:"Generate data, summarize it, and flag unusual values.", projectOutput:"Reproducible statistics and an unusual-value count.", quiz1:["What is a main benefit of vectorization?",["Less looping and efficient calculation","Turning numbers into text","Deleting arrays"],0,"NumPy operates on whole arrays."], quiz2:["Why fix a random seed?",["To reproduce the simulation","To make every value zero","To increase the sample"],0,"The same seed reproduces the same random sequence."], line:"NumPy helps us reason about measurements as a group." },
+  "06": { title:"pandas for Data Analysis", subtitle:"Read real tables, filter, group, and explain results", output:"Load a CSV, complete a group comparison, and write one result statement.", skills:["Read a DataFrame","Filter and sort rows","Calculate grouped summaries"], concepts:[["DataFrame","A table with labeled rows and columns."],["Filter","Keep only rows meeting a condition."],["Groupby","Calculate comparable statistics for categories."]], vocab:[["Column","One variable in a table."],["Row","One observation record."],["Aggregation","Summarize many records into statistics."]], labTitle:"Group Comparison", labIntro:"Inspect the table, filter records, and compare group means.", projectTitle:"Real-data Statistical Summary", projectInput:"A CSV containing a group and numeric variable.", projectProcess:"Inspect, filter, group, and sort.", projectOutput:"A summary table and a short interpretation.", quiz1:["What question is groupby suited to?",["Do groups have different means?","Where is the file?","How long is a name?"],0,"groupby compares summaries across categories."], quiz2:["What should happen just after loading data?",["Inspect head and info","Train a complex model","Delete all rows"],0,"Understand the table before analysis."], line:"Understand the table before calculating; calculate before interpreting." },
+  "07": { title:"Data Cleaning & Reproducible Decisions", subtitle:"Repair data problems and document every decision", output:"Submit a clean dataset and a before/after cleaning decision table.", skills:["Find missing and duplicate data","Handle types and outliers","Document cleaning reasons"], concepts:[["Missing value","Information that was not recorded."],["Outlier","An observation far from most values."],["Decision log","What changed, why, and how many rows were affected."]], vocab:[["NaN","A common pandas marker for missing data."],["Duplicate","A repeated record."],["Standardization","Put measurements on a comparable scale."]], labTitle:"Cleaning Decision Lab", labIntro:"Add one decision-log entry after every cleaning operation.", projectTitle:"Before / After Cleaning Report", projectInput:"A small dataset with missing, duplicate, or unusual values.", projectProcess:"Detect, decide, document the reason, and measure the effect.", projectOutput:"clean.csv and a cleaning decision log.", quiz1:["Must every outlier be deleted?",["No; use context and the research question","Always","Never"],0,"An outlier may be an error or a meaningful real case."], quiz2:["Why keep a cleaning log?",["To make decisions reviewable and reproducible","To create more files","To replace the raw data"],0,"Research processing needs an audit trail."], line:"Cleaning is not making data look nice; every decision needs evidence." },
+  "08": { title:"Data Visualization & EDA", subtitle:"Find patterns with plots and turn observations into questions", output:"Complete three key plots and a one-page EDA report.", skills:["Choose an appropriate plot","Compare distributions and relationships","Write evidence-based observations"], concepts:[["Distribution","The center, spread, and shape of one variable."],["Relationship","How two variables change together."],["Research question","A specific question that data can test."]], vocab:[["Histogram","Display a numeric distribution."],["Scatterplot","Display a relationship between two numeric variables."],["Correlation","Describe the direction and strength of a linear relationship."]], labTitle:"Three-chart EDA", labIntro:"Create one distribution plot, one group comparison, and one relationship plot.", projectTitle:"One-page EDA Report", projectInput:"A cleaned dataset.", projectProcess:"Ask, plot, observe, and state what cannot yet be concluded.", projectOutput:"Three plots, three observations, and one candidate question.", quiz1:["Which plot shows two numeric variables?",["Scatterplot","Pie chart","One number"],0,"A scatterplot shows each observation on two numeric axes."], quiz2:["Does correlation prove causation?",["No","Always","Only negative correlation does"],0,"Correlation alone is not causal evidence."], line:"A plot is not decoration; every plot should answer a question." },
+  "09": { title:"Machine Learning Workflow & Baseline", subtitle:"Use a model to answer a question, not as magic", output:"Run a first sklearn baseline and explain the purpose of every step.", skills:["Separate features and target","Split train and test data","Build a simple baseline"], concepts:[["Feature / target","Inputs and the outcome to predict."],["Train / test","Learn from one part and evaluate on unseen data."],["Baseline","A simple, honest comparison starting point."]], vocab:[["Supervised learning","Learn from examples that include answers."],["fit","Learn from training data."],["predict","Produce outputs for new inputs."]], labTitle:"First Baseline", labIntro:"Start with a Dummy model, then compare one simple model.", projectTitle:"First Comparable Model", projectInput:"A small built-in sklearn dataset.", projectProcess:"Split, train a Dummy model, and train one simple model.", projectOutput:"Two scores and a short interpretation.", quiz1:["Why keep test data out of training?",["To evaluate unseen-data performance","Test data cannot contain numbers","To shorten code"],0,"The test set represents new observations."], quiz2:["What does a baseline provide?",["A comparison starting point","A perfect model","A research question"],0,"A baseline shows whether an improvement has value."], line:"Build a simple, honest starting point before improving a model." },
+  "10": { title:"Model Evaluation & Algorithm Choice", subtitle:"Choose metrics that match the real task", output:"Complete a model scorecard and justify the selected metric.", skills:["Choose regression or classification metrics","Read a confusion matrix","Compare simple models fairly"], concepts:[["Metric","A number measuring performance for a specific goal."],["Error pattern","The cases a model gets wrong."],["Fair comparison","Use the same split and metrics for every model."]], vocab:[["MAE","Average absolute error in an interpretable unit."],["Recall","The fraction of true cases that were found."],["Confusion matrix","A table of classification outcomes."]], labTitle:"Metric Detective", labIntro:"Compare Accuracy, Precision, Recall, and F1 for different priorities.", projectTitle:"Model Scorecard", projectInput:"Predictions from a baseline and one improved model.", projectProcess:"Use common metrics and locate important error types.", projectOutput:"A scorecard, metric choice, and next-step recommendation.", quiz1:["If missed patients are costly, emphasize?",["Recall","File size","Training time"],0,"Recall measures how many true cases were found."], quiz2:["Fair model comparison requires?",["The same split and metrics","Different test sets","Only the best run"],0,"Common conditions isolate model differences."], line:"A good model has errors that fit the needs of the task." },
+  "11": { title:"Project 1 · Research Question & Dataset", subtitle:"Narrow an interest into a data-answerable question", output:"Submit a project question, dataset source, and first variable dictionary.", skills:["Check a question with FINER","Evaluate dataset fit","State ethics and limitations"], concepts:[["Research question","A specific, measurable relationship or prediction."],["Dataset fit","Whether available variables can answer the question."],["Evidence","Claims must trace back to data and analysis."]], vocab:[["FINER","Feasible, Interesting, Novel, Ethical, Relevant."],["Target","The outcome the project explains or predicts."],["Data dictionary","Variable name, meaning, unit, and type."]], labTitle:"Question Narrowing", labIntro:"Rewrite a broad interest as a specific question that fits the course timeline.", projectTitle:"Project Proposal Card", projectInput:"An interest area and one or two public datasets.", projectProcess:"Check FINER, variables, privacy, bias, and feasibility.", projectOutput:"A one-page proposal and data dictionary.", quiz1:["A good research question should first be?",["Specific and testable with data","As broad as possible","Based on a complex model"],0,"The question drives data, modeling, and evaluation."], quiz2:["What should be checked for public data?",["Source, license, privacy, and bias","Only the filename","Nothing"],0,"Public does not mean risk-free."], line:"Clarify the question before asking a model to answer it." },
+  "12": { title:"Project 2 · Data Processing & EDA", subtitle:"Turn raw data into explainable project data", output:"Produce a clean project dataset, processing notes, and three key plots.", skills:["Create a data-quality report","Complete necessary preprocessing","Use EDA to check assumptions"], concepts:[["Pipeline","A fixed order of repeatable processing steps."],["Data leakage","Test or future information accidentally enters training."],["EDA checkpoint","Check distributions, relationships, and anomalies before modeling."]], vocab:[["Encoding","Convert categories to a model-ready form."],["Scaling","Adjust numeric variables to comparable scales."],["Leakage","Information reaches a model when it should not."]], labTitle:"Project Data Audit", labIntro:"Check shape, types, missing values, duplicates, target distribution, and leakage.", projectTitle:"Clean Dataset + EDA Checkpoint", projectInput:"The raw project dataset.", projectProcess:"Clean, document, visualize, and revisit the question.", projectOutput:"clean.csv, cleaning_log.csv, and an EDA summary.", quiz1:["Where should a scaler be fitted?",["Training data only","Test data","All data"],0,"Fit preprocessing on training data to prevent leakage."], quiz2:["Can EDA lead to a revised question?",["Yes, with a documented reason","Never","Only by deleting data"],0,"Real data may justify narrowing the question."], line:"Project data must not only be clean; it must connect to the question." },
+  "13": { title:"Project 3 · Modeling as a Tool", subtitle:"Compare a small number of suitable, explainable models", output:"Train a baseline and one improved model, then create an initial results table.", skills:["Select a model for the task","Use one common training workflow","Explain model differences"], concepts:[["Simple first","Begin with an understandable linear or logistic model."],["One improvement","Add only one reasonable comparison model."],["Optional challenge","Trees, SVM, or XGBoost are extensions, not requirements."]], vocab:[["Linear model","Predict using weighted relationships."],["Tree model","Decide through a sequence of if-then rules."],["Hyperparameter","A setting chosen before training."]], labTitle:"Two-model Comparison", labIntro:"Everyone completes Dummy plus one core model; advanced learners may add a shallow tree.", projectTitle:"Baseline + One Improvement", projectInput:"Processed project features and target.", projectProcess:"Train two models on the same split and record settings.", projectOutput:"A model-results table and selection rationale.", quiz1:["What is a suitable required model count?",["Baseline + one core model","At least ten","As many as possible"],0,"The goal is fair comparison and explanation."], quiz2:["SVM and XGBoost are?",["Optional extensions","Required for everyone","Not machine learning"],0,"Advanced algorithms are challenge material."], line:"The model is a tool for answering the question, not the star." },
+  "14": { title:"Project 4 · Evaluation & Research Report", subtitle:"Turn model output into a careful, reproducible conclusion", output:"Complete the results table, key figures, limitations, and an IMRaD draft.", skills:["Analyze model errors","Document a reproducible experiment","Write an IMRaD report"], concepts:[["Controlled comparison","Change one factor at a time."],["Limitation","State what the data and method cannot support."],["IMRaD","Introduction, Method, Results, and Discussion."]], vocab:[["Residual","The difference between observed and predicted values."],["Feature importance","How much a model uses each feature."],["Reproducibility","Others can follow the record and obtain similar results."]], labTitle:"Evidence to Claim", labIntro:"Rewrite a score as a statement with conditions, evidence, and a limitation.", projectTitle:"Research Report v1", projectInput:"Experiment table, metrics, and key figures.", projectProcess:"Check evidence and write methods, results, limitations, and next steps.", projectOutput:"An IMRaD draft and reproducibility note.", quiz1:["What belongs mainly in Results?",["Observed evidence","All background","Unsupported guesses"],0,"Results reports evidence; Discussion interprets meaning."], quiz2:["Stating limitations makes a project?",["More scientific and honest","A failure","Unusable"],0,"Limitations define the valid scope of a claim."], line:"A scientific conclusion should be narrower than the evidence, not wider." },
+  "15": { title:"Final Project Presentation", subtitle:"Present the question, evidence, limitations, and next step clearly", output:"Submit the report, notebook, 5–8 slide deck, and final checklist.", skills:["Tell a clear research story","Present the key evidence","Answer questions and state limits"], concepts:[["Story","Question, method, finding, and meaning form one line."],["Evidence slide","One slide highlights one key figure or result."],["Q&A","Confirm the question, answer with evidence, and state uncertainty honestly."]], vocab:[["Takeaway","The one sentence the audience should remember."],["Reproducibility note","Information needed to rerun the project."],["Limitation","Where the conclusion applies and what remains unknown."]], labTitle:"One-minute Research Story", labIntro:"Explain the question, method, key finding, and one limitation in 60 seconds.", projectTitle:"Final AI Research Presentation", projectInput:"Final report, code, table, and figures.", projectProcess:"Use the checklist, record a timed rehearsal, revise from instructor feedback, and submit.", projectOutput:"Report + notebook + 5–8 slides + reproducibility note.", quiz1:["What matters most in a research presentation?",["Understanding the question and evidence","Showing the most code","Using complex animation"],0,"The presentation centers on the research story and evidence."], quiz2:["What if you cannot answer a question?",["State uncertainty and how you would test it","Invent an answer","Avoid all Q&A"],0,"Scientific communication allows uncertainty."], line:"A strong presentation clearly states what the evidence supports." },
+};
+
+const englishMistakes = [["Copying without understanding","Change one meaningful value and explain the output."],["Changing too much at once","Change one factor, rerun, and observe."],["Not recording results","Write the observation, evidence, and next question in Markdown."]];
+const englishHomework = ["Complete the Level 1 task","Add one meaningful extension","Run all cells from top to bottom","Write a 3–5 sentence interpretation","Submit an accessible Colab link"];
+const syncedEnLessons = Object.fromEntries(Object.entries(englishLessonText).map(([no, en]) => {
+  const base = syncedZhLessons[no];
+  return [no, { ...base, ...en, classNo:no, mistakes:englishMistakes, homework:englishHomework }];
+}));
+
 function buildSyncedChineseLesson(spec) {
   const S = [];
   const notes = (text) => `<aside class="notes">${esc(text)}</aside>`;
@@ -2710,20 +3096,20 @@ function buildSyncedChineseLesson(spec) {
   S.push(sec("outputs", `<div class="kicker">TODAY'S OUTPUT</div><h2>${esc(spec.output)}</h2><div class="grid3" style="margin-top:.65em">${box3([["理解", "能用自己的话解释今天的 Python 概念。"], ["练习", "运行并修改课堂示例代码。"], ["提交", "完成一个整洁 notebook，并加入一个小扩展。"]])}</div>${notes("先给出本节课可见产出。")}`));
   S.push(sec("two-hour-pacing", `<div class="kicker">2-HOUR PACING</div><h2>讲解、跟做、独立挑战、提交</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>预测、运行、讨论。</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>完整看一遍思路。</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>修改代码并观察输出。</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>构建、解释、提交。</span></div></div>${notes("用于管理两小时课堂节奏。")}`));
   S.push(sec("recap", `<div class="kicker">RECAP</div><h2>这节课放在课程里的位置</h2><p class="lead">我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。</p><div class="callout"><b>Python-first reminder:</b> 每节课都先把一个代码能力练扎实。</div>${notes("把今天内容连接到 15 节课路线。")}`));
-  S.push(sec("warmup", `<div class="kicker">WARM-UP</div><h2>先预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3>${list(["先猜输出", "改一个小地方", "重新运行并比较"])}</div><div class="box"><h3>教师提问</h3>${list(["你预期输出是什么？", "哪一行最可能出错？", "第一步会改哪里？"])}</div></div>${notes("预测让学生主动阅读代码。")}`));
+  S.push(sec("warmup", `<div class="kicker">ONLINE WARM-UP</div><h2>先在聊天框预测，再运行</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生动作</h3>${list(["在聊天框提交预测", "独立修改一个地方", "重新运行并比较"])}</div><div class="box"><h3>教师提问</h3>${list(["你预期输出是什么？", "哪一行最可能出错？", "第一步会改哪里？"])}</div></div>${notes("线上课堂通过聊天框收集预测；需要帮助时学生可共享屏幕。")}`));
   S.push(sec("vocabulary", `<div class="kicker">VOCABULARY</div><h2>今天要会用的三个词</h2><div class="grid3" style="margin-top:.65em">${box3(spec.vocab)}</div>${notes("给学生解释代码的语言。")}`));
   S.push(sec("mental-model", `<div class="kicker">MENTAL MODEL</div><h2>先理解模型，再记语法</h2><div class="callout"><b>核心模型：</b>${esc(spec.concepts.map((c) => c[0]).join("、"))} 是今天的三块拼图；先知道它们各自解决什么问题。</div>${notes("用心智模型降低语法记忆负担。")}`));
-  spec.concepts.forEach(([name, desc], i) => S.push(sec(`concept-${i + 1}`, `<div class="kicker">CONCEPT ${i + 1}</div><h2>${esc(name)}</h2><p class="lead">${esc(desc)}</p><div class="callout"><b>说给同学听：</b>如果有人缺课，你会怎样用一句话解释 ${esc(name)}？</div>${notes("短暂停顿，让学生口头解释。")}`)));
+  spec.concepts.forEach(([name, desc], i) => S.push(sec(`concept-${i + 1}`, `<div class="kicker">CONCEPT ${i + 1}</div><h2>${esc(name)}</h2><p class="lead">${esc(desc)}</p><div class="callout"><b>线上回应：</b>用一句话在聊天框或麦克风中解释 ${esc(name)}。</div>${notes("短暂停顿，请学生独立提交一句解释；教师抽取匿名示例讲评。")}`)));
   S.push(sec("syntax-pattern", `<div class="kicker">SYNTAX PATTERN</div><h2>今天的 Python 模式</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.syntax)}</code></pre><div class="callout"><b>运行前先读：</b>找出输入、处理和输出。</div>${notes("先读结构，再运行。")}`));
   S.push(sec("teacher-demo", `<div class="kicker">TEACHER DEMO</div><h2>先看一次完整流程</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.demo)}</code></pre>${notes("先整体运行，再逐行解释。")}`));
   S.push(sec("trace-table", `<div class="kicker">TRACE THE CODE</div><h2>每一行运行后发生了什么？</h2><div class="grid3" style="margin-top:.65em">${box3([["Before", "这一行运行前有哪些值？"], ["During", "创建或改变了什么？"], ["After", "输出是否符合预测？"]])}</div>${notes("训练调试和阅读代码能力。")}`));
   S.push(quizSlide("prediction-quiz", "PREDICTION CHECK", spec.quiz1[0], spec.quiz1[1], spec.quiz1[2], spec.quiz1[3], "快速形成性检查。"));
-  S.push(sec("guided-practice-1", `<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box">${list(["只改一个变量或一条规则", "重新运行并观察变化", "把变化说给旁边同学听"])}</div>${notes("一次只做一个小改动。")}`));
+  S.push(sec("guided-practice-1", `<div class="kicker">GUIDED PRACTICE 1</div><h2>小改动，然后重新运行</h2><div class="box">${list(["只改一个变量或一条规则", "重新运行并观察变化", "在聊天框提交一句变化说明"])}</div>${notes("一次只做一个小改动；教师通过聊天框快速检查理解。")}`));
   S.push(sec("guided-practice-2", `<div class="kicker">GUIDED PRACTICE 2</div><h2>解释你的修改</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">改了什么</div><p>指出具体代码行。</p></div><div class="skillcard"><div class="cn">输出变化</div><p>观察运行结果。</p></div><div class="skillcard"><div class="cn">为什么</div><p>解释背后的规则。</p></div></div>${notes("每次修改都要能解释。")}`));
   S.push(labSlide("guided-lab", "PYTHON LAB", spec.labTitle, spec.labIntro, spec.labCode, [], "两小时课堂的主要跟做实验。"));
   S.push(sec("mistake-clinic", `<div class="kicker">MISTAKE CLINIC</div><h2>今天最常见的错误</h2><div class="grid3" style="margin-top:.65em">${box3(spec.mistakes)}</div>${notes("把错误正常化，并给出修复路线。")}`));
   S.push(sec("debug-routine", `<div class="kicker">DEBUG ROUTINE</div><h2>读错误、定位、隔离、重跑</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>读最后一行错误。</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>找到行号。</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>测试最小片段。</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>从上到下重跑。</span></div></div>${notes("每周重复这个调试流程。")}`));
-  S.push(sec("pair-programming", `<div class="kicker">PAIR PROGRAMMING</div><h2>Driver 写代码，Navigator 读逻辑</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Driver</h3><p>输入并运行代码。</p></div><div class="box"><h3>Navigator</h3><p>预测输出并检查逻辑。</p></div></div><div class="callout"><b>5 分钟后交换角色。</b></div>${notes("保持课堂参与度。")}`));
+  S.push(sec("online-checkpoint", `<div class="kicker">ONLINE CHECKPOINT</div><h2>独立编码，教师在线巡检</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>学生</h3><p>独立输入、运行并在表单或聊天框提交输出。</p></div><div class="box"><h3>需要帮助时</h3><p>粘贴最后一行错误，或共享屏幕让教师定位。</p></div></div><div class="callout"><b>5 分钟后统一核对答案与常见错误。</b></div>${notes("线上教学不依赖学生互相配对；教师用聊天框、表单或屏幕共享巡检。")}`));
   S.push(sec("mini-project-brief", `<div class="kicker">MINI PROJECT</div><h2>${esc(spec.projectTitle)}</h2><div class="grid3" style="margin-top:.65em">${box3([["Input", spec.projectInput], ["Process", spec.projectProcess], ["Output", spec.projectOutput]])}</div>${notes("把项目都讲成 input -> process -> output。")}`));
   S.push(labSlide("mini-project-lab", "PYTHON LAB", `${spec.projectTitle} Starter`, "从这里开始，再在自己的 notebook 里扩展。", spec.projectCode, [], "独立项目 starter。"));
   S.push(sec("test-cases", `<div class="kicker">TEST CASES</div><h2>不要只测一个例子</h2><div class="grid3" style="margin-top:.65em">${box3([["普通情况", "一个典型输入。"], ["边界情况", "刚好在阈值附近。"], ["自定义情况", "你自己的例子。"]])}</div>${notes("测试能避免碰巧正确。")}`));
@@ -2738,64 +3124,108 @@ function buildSyncedChineseLesson(spec) {
   S.push(sec("submission-checklist", `<div class="kicker">SUBMISSION CHECKLIST</div><h2>提交前确认</h2><div class="grid3" style="margin-top:.65em"><div class="skillcard"><div class="cn">Run</div><p>所有 cells 都能运行。</p></div><div class="skillcard"><div class="cn">Share</div><p>链接权限可访问。</p></div><div class="skillcard"><div class="cn">Explain</div><p>说明文字清楚。</p></div></div>${notes("减少坏链接和无法运行的提交。")}`));
   S.push(sec("exit-ticket", `<div class="kicker">EXIT TICKET</div><h2>一个清楚点，一个问题</h2><div class="callout"><b>留言任务：</b>写下你现在最清楚的一点，以及还想问的一个问题。</div>${notes("收集快速反馈。")}`, "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
   S.push(sec("line-to-remember", `<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">${esc(spec.line)}</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p>${notes("一句话收束。")}`, "center", 'data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)"'));
-  S.push(sec("buffer", `<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em">${box3([["需要帮助", "展示最后一行错误。"], ["快完成了", "向同伴解释代码。"], ["提前完成", "完成 Level 3 并写改进想法。"]])}</div>${notes("两小时课堂的收尾缓冲页。")}`));
+  S.push(sec("buffer", `<div class="kicker">BUFFER / CATCH-UP</div><h2>最后几分钟这样用</h2><div class="grid3" style="margin-top:.65em">${box3([["需要帮助", "在聊天框提交最后一行错误。"], ["快完成了", "录制或口述 30 秒代码解释。"], ["提前完成", "完成 Level 3 并写改进想法。"]])}</div>${notes("线上课堂用聊天框、语音或屏幕共享完成收尾检查。")}`));
   return S;
 }
 
-const { lessons: mappedLessons } = require("./curriculum-mapped");
+function buildSyncedEnglishLesson(spec) {
+  const replacements = [
+    ["中文 35 页同步版，页码与英文课件对齐，方便中英切换。", "A 35-slide online lesson aligned with the Chinese course."],
+    ["理解", "Understand"], ["能用自己的话解释今天的 Python 概念。", "Explain today's core idea in your own words."],
+    ["练习", "Practice"], ["运行并修改课堂示例代码。", "Run and modify the lesson code."],
+    ["提交", "Submit"], ["完成一个整洁 notebook，并加入一个小扩展。", "Complete a clean notebook with one extension."],
+    ["讲解、跟做、独立挑战、提交", "Explain, practice, independent challenge, submit"],
+    ["预测、运行、讨论。", "Predict, run, respond in chat."], ["完整看一遍思路。", "Watch one complete worked example."],
+    ["修改代码并观察输出。", "Modify code and observe output."], ["构建、解释、提交。", "Build, explain, and submit."],
+    ["这节课放在课程里的位置", "Where this lesson fits"],
+    ["我们用一个 Python 技能连接到后续 AI 科研项目：先写清楚代码，再解释结果。", "Each Python skill supports the final AI research project: write clear code, then explain the evidence."],
+    ["每节课都先把一个代码能力练扎实。", "Build one reliable coding skill in every lesson."],
+    ["先在聊天框预测，再运行", "Predict in chat, then run"], ["学生动作", "Student actions"], ["教师提问", "Instructor prompts"],
+    ["在聊天框提交预测", "Post a prediction in chat"], ["独立修改一个地方", "Change one detail independently"], ["重新运行并比较", "Rerun and compare"],
+    ["你预期输出是什么？", "What output do you expect?"], ["哪一行最可能出错？", "Which line is most likely to fail?"], ["第一步会改哪里？", "What would you change first?"],
+    ["今天要会用的三个词", "Three words to use today"], ["先理解模型，再记语法", "Understand the model before memorizing syntax"],
+    ["核心模型：", "Core model: "], ["是今天的三块拼图；先知道它们各自解决什么问题。", " are today's three pieces; first identify the problem each one solves."],
+    ["线上回应：", "Online response: "], ["用一句话在聊天框或麦克风中解释", "Explain in one sentence through chat or microphone:"],
+    ["今天的 Python 模式", "Today's Python pattern"], ["运行前先读：", "Read before running: "], ["找出输入、处理和输出。", "Identify the input, process, and output."],
+    ["先看一次完整流程", "Watch one complete workflow"], ["每一行运行后发生了什么？", "What changes after each line runs?"],
+    ["这一行运行前有哪些值？", "What values exist before this line?"], ["创建或改变了什么？", "What is created or changed?"], ["输出是否符合预测？", "Does the output match the prediction?"],
+    ["小改动，然后重新运行", "Make one small change, then rerun"], ["只改一个变量或一条规则", "Change only one variable or rule"],
+    ["重新运行并观察变化", "Rerun and observe the change"], ["在聊天框提交一句变化说明", "Post one change statement in chat"],
+    ["解释你的修改", "Explain your change"], ["改了什么", "What changed"], ["指出具体代码行。", "Identify the exact line."],
+    ["输出变化", "Output change"], ["观察运行结果。", "Observe the result."], ["为什么", "Why"], ["解释背后的规则。", "Explain the rule behind it."],
+    ["今天最常见的错误", "Today's common mistakes"], ["读错误、定位、隔离、重跑", "Read, locate, isolate, rerun"],
+    ["读最后一行错误。", "Read the final error line."], ["找到行号。", "Locate the line number."], ["测试最小片段。", "Test the smallest code block."], ["从上到下重跑。", "Rerun from top to bottom."],
+    ["独立编码，教师在线巡检", "Code independently with instructor check-ins"], ["学生", "Student"],
+    ["独立输入、运行并在表单或聊天框提交输出。", "Type and run independently, then submit output in chat or a form."],
+    ["需要帮助时", "When help is needed"], ["粘贴最后一行错误，或共享屏幕让教师定位。", "Paste the final error line or share the screen with the instructor."],
+    ["5 分钟后统一核对答案与常见错误。", "After five minutes, review the answer and common errors."],
+    ["从这里开始，再在自己的 notebook 里扩展。", "Start here, then extend it in your own notebook."],
+    ["不要只测一个例子", "Do not test only one example"], ["普通情况", "Typical case"], ["一个典型输入。", "A typical input."],
+    ["边界情况", "Boundary case"], ["刚好在阈值附近。", "A value at or near the threshold."], ["自定义情况", "Custom case"], ["你自己的例子。", "Your own example."],
+    ["每个人至少完成 Level 1", "Everyone completes at least Level 1"], ["完成基础版并能运行。", "Complete and run the core version."],
+    ["修改数据并加入一个扩展。", "Modify the data and add one extension."], ["加入测试并解释变化。", "Add tests and explain the change."],
+    ["构建你自己的版本", "Build your own version"], ["规则：", "Rule: "],
+    ["不要只复制 starter code；至少做一个有意义的修改，并解释它。", "Do not only copy the starter code; make and explain one meaningful change."],
+    ["先运行，再解释", "Run first, then explain"], ["它做什么？", "What does it do?"], ["为什么这样写？", "Why is it written this way?"], ["你改了哪里？", "What did you change?"],
+    ["提交前整理 notebook", "Clean the notebook before submission"], ["从上到下能运行", "Runs from top to bottom"], ["变量名可读", "Readable variable names"], ["删掉无关草稿", "Remove unrelated drafts"], ["输出清楚", "Clear output"],
+    ["2-3 句 Markdown 说明", "2–3 Markdown explanation sentences"], ["解释输入和输出", "Explain input and output"], ["标出自己的扩展", "Identify your extension"], ["写一个问题", "Write one question"],
+    ["用 AI 学 Python，不是跳过 Python", "Use AI to learn Python, not to skip it"], ["好用法", "Good uses"], ["避免", "Avoid"],
+    ["像初学者一样解释这个错误", "Explain this error for a beginner"], ["给我一道类似练习题", "Give me a similar practice problem"], ["先给提示，不要直接给答案", "Give a hint before the answer"],
+    ["直接写完整作业", "Generating the entire assignment"], ["改同学代码当成自己的", "Submitting someone else's code"], ["提交自己不能解释的代码", "Submitting code you cannot explain"],
+    ["这次作业怎么评价", "How this assignment is assessed"], ["40% 能运行", "40% Runs"], ["notebook 从上到下能跑通。", "The notebook runs from top to bottom."],
+    ["25% 能解释", "25% Explanation"], ["能说清关键代码。", "Explains the key code."], ["20% 有扩展", "20% Extension"], ["有一个自己的有意义修改。", "Includes one meaningful change."], ["15% 整洁", "15% Clarity"], ["结构清楚，输出可读。", "Clear structure and readable output."],
+    ["完成 mini project notebook", "Complete the mini-project notebook"], ["提交前确认", "Confirm before submitting"], ["所有 cells 都能运行。", "All cells run."], ["链接权限可访问。", "The link is accessible."], ["说明文字清楚。", "The explanation is clear."],
+    ["一个清楚点，一个问题", "One clear point and one question"], ["留言任务：", "Exit response: "], ["写下你现在最清楚的一点，以及还想问的一个问题。", "Submit one idea that is clear and one remaining question."],
+    ["最后几分钟这样用", "Use the final minutes this way"], ["在聊天框提交最后一行错误。", "Post the final error line in chat."], ["快完成了", "Almost done"], ["录制或口述 30 秒代码解释。", "Record or deliver a 30-second code explanation."], ["提前完成", "Finished early"], ["完成 Level 3 并写改进想法。", "Complete Level 3 and write an improvement idea."],
+    ["独立项目 starter。", "Independent project starter."], ["两小时课堂的主要跟做实验。", "Main guided lab for the two-hour online lesson."]
+  ];
+  const cleanup = [
+    ["讲解、跟做、独立挑战、Submit", "Explain, practice, independent challenge, submit"],
+    ["构建、解释、Submit。", "Build, explain, and submit."],
+    ["在聊天框Submit预测", "Post a prediction in chat"],
+    ["先Understand模型，再记语法", "Understand the model before memorizing syntax"],
+    ["在聊天框Submit一句变化说明", "Post one change statement in chat"],
+    ["独立输入、运行并在表单或聊天框Submit输出。", "Type and run independently, then submit output in chat or a form."],
+    ["Why这样写？", "Why is it written this way?"],
+    ["Submit前整理 notebook", "Clean the notebook before submission"],
+    ["给我一道类似Practice题", "Give me a similar practice problem"],
+    ["Submit自己不能解释的代码", "Submitting code you cannot explain"],
+    ["Submit前确认", "Confirm before submitting"],
+    ["需要帮助", "Need help"],
+    ["在聊天框Submit最后一行错误。", "Post the final error line in chat."],
+  ];
+  return buildSyncedChineseLesson(spec).map((html) => {
+    let out = replacements.reduce((value, [from, to]) => value.split(from).join(to), html);
+    out = cleanup.reduce((value, [from, to]) => value.split(from).join(to), out);
+    out = out.replace(/<aside class="notes">[\s\S]*?<\/aside>/g, '<aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>');
+    return out.replaceAll("、", ", ").replaceAll("。", ".");
+  });
+}
 
-const localeText = {
-  zh: {
-    outcome: "本节课产出", map: "知识点地图", demo: "教师示范",
-    predict: "先预测输出，再运行代码，并逐行解释状态如何变化。", lab: "课堂 Python 实验",
-    labIntro: "先运行 starter，再修改数据或规则，最后解释输出为什么改变。", practice: "分层练习",
-    levels: [["Level 1 · 复现", "不看答案重新写出核心示例。"], ["Level 2 · 修改", "改变数据、边界或参数并验证结果。"], ["Level 3 · 迁移", "把同一知识点用于一个新场景。"]],
-    homework: "课后任务", exit: "离开前，你应该能做到", close: "把语法变成可解释、可测试的研究工具。",
-  },
-  en: {
-    outcome: "Today's outcome", map: "Concept map", demo: "Teacher demo",
-    predict: "Predict the output first, then run the code and explain each state change.", lab: "In-browser Python lab",
-    labIntro: "Run the starter, change data or rules, and explain why the output changes.", practice: "Challenge ladder",
-    levels: [["Level 1 · Rebuild", "Recreate the core example without the answer."], ["Level 2 · Modify", "Change data, boundaries, or parameters and verify the result."], ["Level 3 · Transfer", "Apply the same idea to a new context."]],
-    homework: "Homework", exit: "Before leaving, you should be able to", close: "Turn syntax into an explainable, testable research tool.",
-  },
+const DECK_BUILDERS = {
+  "python-ai/lesson-01": { build: () => buildSyncedChineseLesson(syncedZhLessons["01"]), title: "Class 01 · Python Basics & Google Colab" },
+  "python-ai/lesson-02": { build: () => buildSyncedChineseLesson(syncedZhLessons["02"]), title: "Class 02 · Python Control Flow" },
+  "python-ai/lesson-03": { build: () => buildSyncedChineseLesson(syncedZhLessons["03"]), title: "Class 03 · Functions & File I/O" },
+  "python-ai/lesson-04": { build: () => buildSyncedChineseLesson(syncedZhLessons["04"]), title: "Class 04 · Data Structures for Research" },
+  "python-ai/lesson-05": { build: () => buildSyncedChineseLesson(syncedZhLessons["05"]), title: "Class 05 · NumPy for Scientific Computing" },
+  "python-ai/lesson-06": { build: () => buildSyncedChineseLesson(syncedZhLessons["06"]), title: "Class 06 · pandas for Data Analysis" },
+  "python-ai/lesson-07": { build: () => buildSyncedChineseLesson(syncedZhLessons["07"]), title: "Class 07 · Data Cleaning" },
+  "python-ai/lesson-08": { build: () => buildSyncedChineseLesson(syncedZhLessons["08"]), title: "Class 08 · Visualization & EDA" },
+  "python-ai/lesson-09": { build: () => buildSyncedChineseLesson(syncedZhLessons["09"]), title: "Class 09 · ML Workflow & Baseline" },
+  "python-ai/lesson-10": { build: () => buildSyncedChineseLesson(syncedZhLessons["10"]), title: "Class 10 · Model Evaluation" },
+  "python-ai/lesson-11": { build: () => buildSyncedChineseLesson(syncedZhLessons["11"]), title: "Class 11 · Research Question & Dataset" },
+  "python-ai/lesson-12": { build: () => buildSyncedChineseLesson(syncedZhLessons["12"]), title: "Class 12 · Project Data & EDA" },
+  "python-ai/lesson-13": { build: () => buildSyncedChineseLesson(syncedZhLessons["13"]), title: "Class 13 · Modeling as a Tool" },
+  "python-ai/lesson-14": { build: () => buildSyncedChineseLesson(syncedZhLessons["14"]), title: "Class 14 · Evaluation & Report" },
+  "python-ai/lesson-15": { build: () => buildSyncedChineseLesson(syncedZhLessons["15"]), title: "Class 15 · Final Project Presentation" },
 };
 
-function buildMappedLesson(record, lang) {
-  const spec = record[lang];
-  const ui = localeText[lang];
-  const S = [];
-  const notes = (t) => `<aside class="notes">${esc(t)}</aside>`;
-  const cards = (items) => items.map(([h, p], i) => `<div class="box"><span class="feature"${i === 1 ? ' style="background:var(--green)"' : i === 2 ? ' style="background:var(--amber)"' : ""}>${i + 1}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join("");
-  const packages = record.n <= 2 ? ["pandas", "numpy"] : [];
-
-  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${String(record.n).padStart(2, "0")}</div><h1 style="color:#fff">${esc(spec.title)}</h1><p style="color:#cfe0ef;margin-top:.45em">${esc(spec.summary)}</p>`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
-  S.push(sec("outcome", `<div class="kicker">${esc(ui.outcome)}</div><h2>${esc(spec.outcome)}</h2><div class="grid3" style="margin-top:.75em">${cards(ui.levels)}</div>${notes(spec.outcome)}`));
-  spec.topics.forEach(([h, p], i) => S.push(sec(`concept-${i + 1}`, `<div class="kicker">CONCEPT ${i + 1}</div><h2>${esc(h)}</h2><p class="lead">${esc(p)}</p><div class="callout"><b>Explain:</b> ${esc(lang === "zh" ? "用一个自己的例子说明这个概念。" : "Explain this concept with an example of your own.")}</div>${notes(p)}`)));
-  S.push(sec("teacher-demo", `<div class="kicker">${esc(ui.demo)}</div><h2>${esc(spec.title)}</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.demo)}</code></pre><div class="callout"><b>Predict → Run → Explain:</b> ${esc(ui.predict)}</div>${notes(ui.predict)}`));
-  S.push(quizSlide("concept-check", "CONCEPT CHECK", spec.quiz[0], spec.quiz[1], spec.quiz[2], spec.quiz[3], spec.quiz[3]));
-  S.push(labSlide("guided-lab", "PYTHON LAB", ui.lab, ui.labIntro, spec.lab, packages, ui.labIntro));
-  S.push(sec("practice", `<div class="kicker">PRACTICE</div><h2>${esc(ui.practice)}</h2><div class="grid3" style="margin-top:.75em">${cards(ui.levels)}</div>${notes(ui.practice)}`));
-  S.push(sec("debug", `<div class="kicker">DEBUG ROUTINE</div><h2>Read → Locate → Isolate → Rerun</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">1</span><b>Read</b><span>Read the final error line.</span></div><div class="step"><span class="n">2</span><b>Locate</b><span>Find the failing line.</span></div><div class="step"><span class="n">3</span><b>Isolate</b><span>Test the smallest example.</span></div><div class="step loop"><span class="n">4</span><b>Rerun</b><span>Run top to bottom.</span></div></div>${notes("Use the same debugging routine every week.")}`));
-  S.push(sec("homework", `<div class="kicker">${esc(ui.homework)}</div><h2>${esc(spec.title)}</h2><div class="box"><p class="lead">${esc(spec.homework)}</p></div><div class="callout"><b>Submission:</b> runnable notebook + short explanation + test evidence.</div>${notes(spec.homework)}`));
-  S.push(sec("exit", `<div class="kicker">EXIT TICKET</div><h2>${esc(ui.exit)}</h2><div class="grid3" style="margin-top:.75em">${cards([[spec.topics[0][0], spec.topics[0][1]], [spec.topics[1][0], spec.topics[1][1]], [spec.topics.at(-1)[0], spec.topics.at(-1)[1]]])}</div>${notes(spec.outcome)}`, "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
-  S.push(sec("close", `<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">${esc(ui.close)}</h2><p style="color:#cfe0ef;margin-top:.5em">${esc(spec.outcome)}</p>${notes(ui.close)}`, "center", 'data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)"'));
-  return S;
-}
-
-const mappedCatalog = (lang) => mappedLessons.map((record) => {
-  const spec = record[lang];
-  return { id: `lesson-${String(record.n).padStart(2, "0")}`, n: record.n, title: spec.title, summary: spec.summary,
-    tags: [`Class ${String(record.n).padStart(2, "0")}`, "Python", "Quiz", "Lab"], duration: "2 hours", status: "ready" };
-});
-CATALOG.courses.find((course) => course.id === "python-ai").decks = mappedCatalog("zh");
-CATALOG.courses.find((course) => course.id === "python-ai-en").decks = mappedCatalog("en");
-
-const DECK_BUILDERS = {};
-mappedLessons.forEach((record) => {
-  const lessonId = `lesson-${String(record.n).padStart(2, "0")}`;
-  DECK_BUILDERS[`python-ai/${lessonId}`] = { build: () => buildMappedLesson(record, "zh"), title: `Class ${record.n} · ${record.zh.title}` };
-  DECK_BUILDERS[`python-ai-en/${lessonId}`] = { build: () => buildMappedLesson(record, "en"), title: `Class ${record.n} · ${record.en.title}` };
+Object.keys(syncedEnLessons).forEach((no) => {
+  const lessonId = `lesson-${no}`;
+  DECK_BUILDERS[`python-ai-en/${lessonId}`] = {
+    build: () => buildSyncedEnglishLesson(syncedEnLessons[no]),
+    title: `Class ${Number(no)} · ${syncedEnLessons[no].title}`,
+  };
 });
 
 // =====================================================================

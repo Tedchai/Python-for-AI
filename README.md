@@ -19,24 +19,35 @@
 - 随堂测验：学生可以在课件中直接答题并看到反馈。
 - 浏览器 Python 实验：基于 Pyodide，无需本地安装 Python 即可运行练习代码。
 - 中英文课程版本：`python-ai` 与 `python-ai-en` 分别维护中文和英文课件。
+- 线上课堂互动：使用聊天框、表单、麦克风、屏幕共享和教师巡检，不依赖学生结对活动。
+- 快速导航：每课提供上一课/下一课、指定页下拉菜单和 35 页总览。
 - 可选 AI 助教：配置 Anthropic API key 后，可在实验页启用代码答疑能力。
 - 可选语音讲解：可用 `narrate.js` 为课件生成逐页讲解音频。
 - 多平台部署：支持 GitHub Pages、Netlify、Vercel 和 Render。
 
 ## 课程内容
 
-当前已生成前 6 节课程：
+中文和英文课程均已生成完整 15 节：
 
 | 课次 | 中文标题 | English Title |
 |---|---|---|
-| 01 | 课程导入与第一个 Python Notebook | Course Introduction and Your First Python Notebook |
+| 01 | Python Basics & Google Colab | Python Basics & Google Colab |
 | 02 | Python Control Flow | Python Control Flow |
-| 03 | Python Functions | Python Functions |
-| 04 | Python Lists and 2D Lists | Python Lists and 2D Lists |
-| 05 | Python Tuples and Unpacking | Python Tuples and Unpacking |
-| 06 | Python Dictionaries and Word Frequency | Python Dictionaries and Word Frequency |
+| 03 | Functions & File I/O | Functions & File I/O |
+| 04 | Data Structures for Research | Data Structures for Research |
+| 05 | NumPy for Scientific Computing | NumPy for Scientific Computing |
+| 06 | pandas for Data Analysis | pandas for Data Analysis |
+| 07 | Data Cleaning & Reproducible Decisions | Data Cleaning & Reproducible Decisions |
+| 08 | Data Visualization & EDA | Data Visualization & EDA |
+| 09 | Machine Learning Workflow & Baseline | Machine Learning Workflow & Baseline |
+| 10 | Model Evaluation & Algorithm Choice | Model Evaluation & Algorithm Choice |
+| 11 | Project 1 · Research Question & Dataset | Project 1 · Research Question & Dataset |
+| 12 | Project 2 · Data Processing & EDA | Project 2 · Data Processing & EDA |
+| 13 | Project 3 · Modeling as a Tool | Project 3 · Modeling as a Tool |
+| 14 | Project 4 · Evaluation & Research Report | Project 4 · Evaluation & Research Report |
+| 15 | Final Project Presentation | Final Project Presentation |
 
-课程目录和首页信息由 `catalog.json` 与 `build.js` 生成。仓库中的课程规划目标是 15 节课，后续课程可继续在 `build.js` 中扩展并注册。
+课程目录和首页信息由 `catalog.json` 与 `build.js` 生成。中文路线按高中生可完成的项目制节奏设计；SVM、XGBoost 等内容仅作为进阶选讲。
 
 ## 快速开始
 
@@ -89,7 +100,7 @@ npm run narrate    # 可选：生成语音讲解，需要额外配置
 主要编辑入口是 `build.js`：
 
 - `CATALOG` 控制站点标题、课程列表、课程标题、标签和状态。
-- `buildPythonClass01()` 到 `buildPythonClass06()` 生成当前中文课程页面。
+- `syncedZhLessons` 定义 15 节中文课程内容，`buildSyncedChineseLesson()` 使用统一模板生成页面。
 - 英文课程页面位于 `python-ai-en/`，可通过构建流程继续维护。
 - `DECK_BUILDERS` 注册哪些课程会被生成。
 
@@ -198,27 +209,23 @@ Live site:
 
 ## Course Content
 
-The first 8 lessons are currently generated from Professor Qin's four source decks:
+The Chinese and English courses both contain the full 15-class sequence.
 
 | Lesson | Title |
 |---|---|
-| 01 | Pandas Series and Time Data |
-| 02 | Pandas DataFrame Analysis |
-| 03 | Conditions and Branching |
-| 04 | for, while, and Loop Control |
-| 05 | Defining, Calling, and Returning |
-| 06 | Advanced Arguments, Scope, and Documentation |
-| 07 | Lists, 2D Lists, and Tuples |
-| 08 | Dictionaries and a Word-Frequency Project |
+| 01 | Python Basics & Google Colab |
+| 02 | Python Control Flow |
+| 03 | Functions & File I/O |
+| 04 | Data Structures for Research |
+| 05 | NumPy for Scientific Computing |
+| 06 | pandas for Data Analysis |
+| 07 | Data Cleaning & Reproducible Decisions |
+| 08 | Data Visualization & EDA |
+| 09 | Machine Learning Workflow & Baseline |
+| 10 | Model Evaluation & Algorithm Choice |
+| 11–15 | Staged AI research project and final presentation |
 
-Source coverage is intentionally split into two lessons per source:
-
-- `6450_slides.pdf` → Lessons 01-02
-- `Python Control Flow.ppsx` → Lessons 03-04
-- `Python Functions.ppsx` → Lessons 05-06
-- `Python Structure.ppsx` → Lessons 07-08
-
-The course roadmap targets a 15-class sequence. Additional lessons can be added in `build.js` and registered in `DECK_BUILDERS`.
+The Chinese route is calibrated for high-school learners. Advanced algorithms such as SVM and XGBoost are optional extension topics rather than required outcomes.
 
 ## Quick Start
 
@@ -271,8 +278,8 @@ npm run narrate    # Optional: generate narration audio after configuration
 The main editing entry point is `build.js`:
 
 - `CATALOG` controls the site title, course list, lesson metadata, tags, and status.
-- `curriculum-mapped.js` contains the bilingual, source-mapped lesson specifications.
-- `buildMappedLesson()` generates the synchronized Chinese and English lesson pages.
+- `syncedZhLessons` defines all 15 Chinese lessons, rendered through the shared `buildSyncedChineseLesson()` template.
+- English pages are under `python-ai-en/` and can be maintained through the same build workflow.
 - `DECK_BUILDERS` registers the lessons that should be generated.
 
 After editing, run:

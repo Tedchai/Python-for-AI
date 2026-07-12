@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Class 5 · NumPy for Scientific Computing</title>
+<title>Class 15 · Final Project Presentation</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
 <style>
@@ -184,14 +184,14 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 </style></head><body>
 <div class="reveal"><div class="slides">
 <section id="title" data-sid="title" class="center" data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)">
-<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 05</div>
-    <h1 style="color:#fff">NumPy for Scientific Computing</h1>
-    <p style="color:#cfe0ef;margin-top:.45em">Use arrays for fast simulation and statistics</p>
-    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">Create an ndarray</div><p>Create an ndarray</p></div><div class="skillcard"><div class="cn">Use vectorized calculations</div><p>Use vectorized calculations</p></div><div class="skillcard"><div class="cn">Filter arrays with conditions</div><p>Filter arrays with conditions</p></div></div>
+<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS 15</div>
+    <h1 style="color:#fff">Final Project Presentation</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">Present the question, evidence, limitations, and next step clearly</p>
+    <div class="grid3" style="margin-top:1em"><div class="skillcard"><div class="cn">Tell a clear research story</div><p>Tell a clear research story</p></div><div class="skillcard"><div class="cn">Present the key evidence</div><p>Present the key evidence</p></div><div class="skillcard"><div class="cn">Answer questions and state limits</div><p>Answer questions and state limits</p></div></div>
     <aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="outputs" data-sid="outputs">
-<div class="kicker">TODAY'S OUTPUT</div><h2>Run a random simulation and use a boolean mask to find unusual values.</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Understand</h3><p>Explain today's core idea in your own words.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Practice</h3><p>Run and modify the lesson code.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Submit</h3><p>Complete a clean notebook with one extension.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">TODAY'S OUTPUT</div><h2>Submit the report, notebook, 5–8 slide deck, and final checklist.</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Understand</h3><p>Explain today's core idea in your own words.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Practice</h3><p>Run and modify the lesson code.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Submit</h3><p>Complete a clean notebook with one extension.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="two-hour-pacing" data-sid="two-hour-pacing">
 <div class="kicker">2-HOUR PACING</div><h2>Explain, practice, independent challenge, submit</h2><div class="flow" style="margin-top:.75em"><div class="step"><span class="n">0-20</span><b>Warm-up</b><span>Predict, run, respond in chat.</span></div><div class="step"><span class="n">20-55</span><b>Demo</b><span>Watch one complete worked example.</span></div><div class="step"><span class="n">55-90</span><b>Guided lab</b><span>Modify code and observe output.</span></div><div class="step loop"><span class="n">90-120</span><b>Challenge</b><span>Build, explain, and submit.</span></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
@@ -203,32 +203,28 @@ body.reveal-fallback .slides section.present,body.reveal-fallback .slides sectio
 <div class="kicker">ONLINE WARM-UP</div><h2>Predict in chat, then run</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Student actions</h3><ul><li>Post a prediction in chat</li><li>Change one detail independently</li><li>Rerun and compare</li></ul></div><div class="box"><h3>Instructor prompts</h3><ul><li>What output do you expect?</li><li>Which line is most likely to fail?</li><li>What would you change first?</li></ul></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="vocabulary" data-sid="vocabulary">
-<div class="kicker">VOCABULARY</div><h2>Three words to use today</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>shape</h3><p>The size of each array dimension.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>mean</h3><p>The arithmetic average.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>random seed</h3><p>A setting that makes a simulation reproducible.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">VOCABULARY</div><h2>Three words to use today</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Takeaway</h3><p>The one sentence the audience should remember.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Reproducibility note</h3><p>Information needed to rerun the project.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Limitation</h3><p>Where the conclusion applies and what remains unknown.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="mental-model" data-sid="mental-model">
-<div class="kicker">MENTAL MODEL</div><h2>Understand the model before memorizing syntax</h2><div class="callout"><b>Core model: </b>Array, Vectorization, Boolean mask  are today's three pieces; first identify the problem each one solves.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">MENTAL MODEL</div><h2>Understand the model before memorizing syntax</h2><div class="callout"><b>Core model: </b>Story, Evidence slide, Q&amp;A  are today's three pieces; first identify the problem each one solves.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="concept-1" data-sid="concept-1">
-<div class="kicker">CONCEPT 1</div><h2>Array</h2><p class="lead">An efficient container for similar numeric values.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Array.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CONCEPT 1</div><h2>Story</h2><p class="lead">Question, method, finding, and meaning form one line.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Story.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="concept-2" data-sid="concept-2">
-<div class="kicker">CONCEPT 2</div><h2>Vectorization</h2><p class="lead">Calculate on an entire group at once.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Vectorization.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CONCEPT 2</div><h2>Evidence slide</h2><p class="lead">One slide highlights one key figure or result.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Evidence slide.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="concept-3" data-sid="concept-3">
-<div class="kicker">CONCEPT 3</div><h2>Boolean mask</h2><p class="lead">Use True and False to select values.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Boolean mask.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">CONCEPT 3</div><h2>Q&amp;A</h2><p class="lead">Confirm the question, answer with evidence, and state uncertainty honestly.</p><div class="callout"><b>Online response: </b>Explain in one sentence through chat or microphone: Q&amp;A.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="syntax-pattern" data-sid="syntax-pattern">
-<div class="kicker">SYNTAX PATTERN</div><h2>Today's Python pattern</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>import numpy as np
-values = np.array([2.1, 2.4, 3.8])
-print(values.mean())
-print(values[values &gt; 3])</code></pre><div class="callout"><b>Read before running: </b>Identify the input, process, and output.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">SYNTAX PATTERN</div><h2>Today's Python pattern</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>presentation = ["Question", "Data", "Method", "Result", "Limitations", "Next step"]
+for i, slide in enumerate(presentation, 1):
+    print(i, slide)</code></pre><div class="callout"><b>Read before running: </b>Identify the input, process, and output.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="teacher-demo" data-sid="teacher-demo">
-<div class="kicker">TEACHER DEMO</div><h2>Watch one complete workflow</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>import numpy as np
-rng = np.random.default_rng(42)
-data = rng.normal(50, 5, 20)
-print(data.mean(), data.std())
-print(data[data &gt; 58])</code></pre><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">TEACHER DEMO</div><h2>Watch one complete workflow</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>takeaway = "A simple model improved over baseline, but the small public dataset limits generalization."
+print("Main takeaway:", takeaway)</code></pre><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="trace-table" data-sid="trace-table">
 <div class="kicker">TRACE THE CODE</div><h2>What changes after each line runs?</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Before</h3><p>What values exist before this line?</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>During</h3><p>What is created or changed?</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>After</h3><p>Does the output match the prediction?</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
@@ -237,9 +233,9 @@ print(data[data &gt; 58])</code></pre><aside class="notes">Online teaching note:
 <div class="kicker">PREDICTION CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">What is a main benefit of vectorization?</p>
-    <div class="opts"><button class="opt" data-i="0">Less looping and efficient calculation</button><button class="opt" data-i="1">Turning numbers into text</button><button class="opt" data-i="2">Deleting arrays</button></div>
-    <p class="quiz-exp">NumPy operates on whole arrays.</p>
+    <p class="qq">What matters most in a research presentation?</p>
+    <div class="opts"><button class="opt" data-i="0">Understanding the question and evidence</button><button class="opt" data-i="1">Showing the most code</button><button class="opt" data-i="2">Using complex animation</button></div>
+    <p class="quiz-exp">The presentation centers on the research story and evidence.</p>
   </div>
   <aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
@@ -251,15 +247,13 @@ print(data[data &gt; 58])</code></pre><aside class="notes">Online teaching note:
 </section>
 <section id="guided-lab" data-sid="guided-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>Small Simulation</h2>
-  <p class="lead" style="margin:.1em 0 .25em">Fix the random seed, simulate 100 measurements, and compare summaries.</p>
+  <h2>One-minute Research Story</h2>
+  <p class="lead" style="margin:.1em 0 .25em">Explain the question, method, key finding, and one limitation in 60 seconds.</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">import numpy as np
-rng = np.random.default_rng(7)
-measurements = rng.normal(100, 10, 100)
-print("mean:", measurements.mean())
-print("high count:", (measurements &gt; 120).sum())</textarea>
+      <textarea class="code" spellcheck="false">story = {"question":"What did we ask?", "method":"What did we compare?", "finding":"What evidence did we see?", "limit":"What can we not claim?"}
+for key, prompt in story.items():
+    print(key, ":", prompt)</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -286,19 +280,17 @@ print("high count:", (measurements &gt; 120).sum())</textarea>
 <div class="kicker">ONLINE CHECKPOINT</div><h2>Code independently with instructor check-ins</h2><div class="grid2" style="grid-template-columns:1fr 1fr;margin-top:.65em"><div class="box"><h3>Student</h3><p>Type and run independently, then submit output in chat or a form.</p></div><div class="box"><h3>When help is needed</h3><p>Paste the final error line or share the screen with the instructor.</p></div></div><div class="callout"><b>After five minutes, review the answer and common errors.</b></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="mini-project-brief" data-sid="mini-project-brief">
-<div class="kicker">MINI PROJECT</div><h2>Experimental Measurement Simulator</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>A mean, standard deviation, and sample size.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>Generate data, summarize it, and flag unusual values.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>Reproducible statistics and an unusual-value count.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker">MINI PROJECT</div><h2>Final AI Research Presentation</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Input</h3><p>Final report, code, table, and figures.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Process</h3><p>Use the checklist, record a timed rehearsal, revise from instructor feedback, and submit.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Output</h3><p>Report + notebook + 5–8 slides + reproducibility note.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="mini-project-lab" data-sid="mini-project-lab">
 <div class="kicker">PYTHON LAB</div>
-  <h2>Experimental Measurement Simulator Starter</h2>
+  <h2>Final AI Research Presentation Starter</h2>
   <p class="lead" style="margin:.1em 0 .25em">Start here, then extend it in your own notebook.</p>
   <div class="lab" data-packages="">
     <div class="lab-main">
-      <textarea class="code" spellcheck="false">import numpy as np
-rng = np.random.default_rng(42)
-data = rng.normal(37, 1.5, 50)
-normal = data[(data &gt;= 35) &amp; (data &lt;= 39)]
-print(f"Normal: {len(normal)}/{len(data)}")</textarea>
+      <textarea class="code" spellcheck="false">checklist = {"question":True, "data_source":True, "baseline":True, "result_table":True, "limitations":False, "reproducible":False}
+for item, done in checklist.items():
+    print("✓" if done else "□", item)</textarea>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
         <button class="ai-explain">✨ Explain</button>
@@ -325,9 +317,9 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 <div class="kicker">CONCEPT CHECK</div>
   <h2>Quick check <span class="quiz-badge">· tap an answer</span></h2>
   <div class="quiz" data-correct="0">
-    <p class="qq">Why fix a random seed?</p>
-    <div class="opts"><button class="opt" data-i="0">To reproduce the simulation</button><button class="opt" data-i="1">To make every value zero</button><button class="opt" data-i="2">To increase the sample</button></div>
-    <p class="quiz-exp">The same seed reproduces the same random sequence.</p>
+    <p class="qq">What if you cannot answer a question?</p>
+    <div class="opts"><button class="opt" data-i="0">State uncertainty and how you would test it</button><button class="opt" data-i="1">Invent an answer</button><button class="opt" data-i="2">Avoid all Q&amp;A</button></div>
+    <p class="quiz-exp">Scientific communication allows uncertainty.</p>
   </div>
   <aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
@@ -356,7 +348,7 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 <div class="kicker">EXIT TICKET</div><h2>One clear point and one question</h2><div class="callout"><b>Exit response: </b>Submit one idea that is clear and one remaining question.</div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="line-to-remember" data-sid="line-to-remember" class="center" data-background-gradient="linear-gradient(135deg,#0B7E8A,#0F9DB0)">
-<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">NumPy helps us reason about measurements as a group.</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
+<div class="kicker" style="color:#7fd3df">LINE TO REMEMBER</div><h2 style="color:#fff">A strong presentation clearly states what the evidence supports.</h2><p style="color:#cfe0ef;margin-top:.5em">Python skill first, AI project later.</p><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
 </section>
 <section id="buffer" data-sid="buffer">
 <div class="kicker">BUFFER / CATCH-UP</div><h2>Use the final minutes this way</h2><div class="grid3" style="margin-top:.65em"><div class="box"><span class="feature">1</span><h3>Need help</h3><p>Post the final error line in chat.</p></div><div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Almost done</h3><p>Record or deliver a 30-second code explanation.</p></div><div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Finished early</h3><p>Complete Level 3 and write an improvement idea.</p></div></div><aside class="notes">Online teaching note: collect an individual response through chat, form, microphone, or screen share.</aside>
@@ -365,12 +357,12 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 
 
 <nav id="jumpBar" aria-label="Course and slide navigation">
-  <a id="prevLesson" class="" href="../../python-ai-en/lesson-04/" title="Previous lesson">← Lesson</a>
+  <a id="prevLesson" class="" href="../../python-ai-en/lesson-14/" title="Previous lesson">← Lesson</a>
   <button id="overviewBtn" type="button">Overview</button>
   <select id="jumpSelect" aria-label="Jump to slide"><option>Jump to slide…</option></select>
-  <a id="nextLesson" class="" href="../../python-ai-en/lesson-06/" title="Next lesson">Lesson →</a>
+  <a id="nextLesson" class="disabled" href="#" title="Next lesson">Lesson →</a>
 </nav>
-<div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>Class 5 · NumPy for Scientific Computing · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
+<div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>Class 15 · Final Project Presentation · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
 <!-- per-slide comments -->
 <a id="homeBtn" href="../../">← Main</a>
 <button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
@@ -392,7 +384,7 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 <script>
 (function(){
   const langBtn=document.getElementById('langBtn');
-  const ALT_DECK_URL="../../python-ai/lesson-05/";
+  const ALT_DECK_URL="../../python-ai/lesson-15/";
   const requestedSlide=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   function slides(){ return [...document.querySelectorAll('.reveal .slides section')]; }
   function showRequestedSlide(){
@@ -433,7 +425,7 @@ print(f"Normal: {len(normal)}/{len(data)}")</textarea>
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
 <script>
-const DECK = "python-ai-en/lesson-05";
+const DECK = "python-ai-en/lesson-15";
 if(!window.Reveal){
   document.body.classList.add('reveal-fallback');
   window.Reveal={
