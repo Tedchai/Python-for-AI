@@ -1,7 +1,7 @@
 /* =====================================================================
  * 可选的本地/线上服务器 — 零依赖（只用 Node 自带模块，Node ≥ 18）。
  *
- *   node server.js          → http://localhost:3100
+ *   npm run serve           → http://localhost:3100
  *
  * 提供三样东西：
  *   1. 静态托管整个课件站（等价于任何静态服务器）
@@ -15,7 +15,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname, "..");
 const PORT = process.env.PORT || 3100;
 
 // ── .env（可选）──────────────────────────────────────────────────────

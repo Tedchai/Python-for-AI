@@ -1,7 +1,7 @@
 /* =====================================================================
  * narrate.js — per-slide "professor presenting" narration for a deck.
  *
- *   node narrate.js [--deck ai-toolbox/class-01] [--only <slug>] [--force]
+ *   npm run narrate -- [--deck python-ai/lesson-01] [--only <slug>] [--force]
  *
  * For every <section data-sid="…"> it:
  *   1. extracts the slide's visible text + presenter notes,
@@ -20,7 +20,7 @@ const path = require("path");
 const crypto = require("crypto");
 const { execFileSync } = require("child_process");
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname, "..");
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > -1 ? process.argv[i + 1] : d; };
 const DECK = arg("--deck", "demo-course/lesson-01");
 const ONLY = arg("--only", null);

@@ -4,7 +4,7 @@
  * 随堂测验、浏览器内 Python 实验（Pyodide）、AI 代码助教、
  * 每页评论、可选的语音讲解。
  *
- *   node build.js        ← 生成/更新全部页面
+ *   npm run build        ← 生成/更新全部页面
  *
  * 套用方法见 README.md。要点：
  *   1. 改下面的 CATALOG（站点名、课程、每课标题）
@@ -14,12 +14,19 @@
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = __dirname;
+const ROOT = path.resolve(__dirname, "..");
 const W = (rel, html) => {
   const p = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(p), { recursive: true });
   fs.writeFileSync(p, html);
   console.log("wrote", rel, "(" + html.length + " bytes)");
+};
+const COPY = (fromRel, toRel) => {
+  const from = path.join(ROOT, fromRel);
+  const to = path.join(ROOT, toRel);
+  fs.mkdirSync(path.dirname(to), { recursive: true });
+  fs.copyFileSync(from, to);
+  console.log("copied", fromRel, "→", toRel);
 };
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -572,7 +579,7 @@ def _sift_up(self, idx):
 // 套用三步：
 //   1. 把这个函数整个复制一份，改名（如 buildLesson02），替换成你的内容
 //   2. 在文件底部 DECK_BUILDERS 里注册它
-//   3. 把 CATALOG 里对应 deck 条目的 status 改为 "ready"，运行 node build.js
+//   3. 把 CATALOG 里对应 deck 条目的 status 改为 "ready"，运行 npm run build
 //
 // ⚠ 每页第一个参数是 sid（唯一英文短名）——它是这一页评论和语音的
 //   "身份证"。定稿后不要改名，否则该页已有的评论/语音会对不上。
@@ -622,7 +629,7 @@ function buildLesson01() {
       <button class="speak" data-audio="audio/quote.mp3">🔊 <span>朗读这段话</span></button>
       <span class="muted" style="font-size:.52em">神经语音 · 点击播放 / 暂停（需先用 edge-tts 生成 audio/quote.mp3）</span></div>
     <p class="src">.src 是灰色小字，放出处、补充说明。</p>
-    <aside class="notes">整页自动讲解是另一件事：运行 node narrate.js 会给每一页生成"教授讲解"音频和字幕（需要 ANTHROPIC_API_KEY），页面右下角出现 Listen 按钮。</aside>`));
+    <aside class="notes">整页自动讲解是另一件事：运行 npm run narrate 会给每一页生成"教授讲解"音频和字幕（需要 ANTHROPIC_API_KEY），页面右下角出现 Listen 按钮。</aside>`));
 
   // ── 组件 5：流程图（flow + step）───────────────────────────────────
   S.push(sec("flow-demo", `<div class="kicker">组件 · 流程图</div>
@@ -674,7 +681,7 @@ function buildLesson01() {
   // labSlide(sid, kicker, 标题, 导语, python代码字符串, 依赖包数组, 备注)
   // 代码在学生浏览器里真实运行（Pyodide/WebAssembly），无需安装任何东西。
   // 依赖包数组如 ["numpy"] 会在首次运行时自动加载；纯 Python 传 []。
-  // 右侧 AI 助教需要后端 /api/assistant（node server.js + ANTHROPIC_API_KEY）；
+  // 右侧 AI 助教需要后端 /api/assistant（npm run serve + ANTHROPIC_API_KEY）；
   // 纯静态托管时其他功能不受影响，助教会提示暂不可用。
   S.push(labSlide("lab-demo", "组件 · 在线 Python 实验", "学生在浏览器里跑真代码",
     `点 <b>▶ Run</b> 直接运行；改几个数字再跑一次 — 这就是课堂实验。右侧 AI 助教可以解释、找错、改进代码。`,
@@ -719,7 +726,7 @@ print("高于平均分的人数:", sum(1 for s in scores if s > average))
     <ul style="display:inline-block;text-align:left;color:#eaf2fb">
       <li>改 <b>CATALOG</b> → 写你的课程和课名</li>
       <li>复制 <b>buildLesson01()</b> → 换成你的内容</li>
-      <li><b>node build.js</b> → 整站更新，发链接即上课</li></ul>
+      <li><b>npm run build</b> → 整站更新，发链接即上课</li></ul>
     <p style="color:#cfe0ef;margin-top:.6em"><b>退场券：</b>让学生在 💬 里留一个今天学到的东西 — 这就是你的课堂反馈。</p>
     <aside class="notes">深蓝渐变呼应标题页，首尾闭环。祝你做出自己的"会讲课的课件"！</aside>`,
     "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
@@ -3233,6 +3240,7 @@ Object.keys(syncedEnLessons).forEach((no) => {
 // =====================================================================
 W("assets/site.css", siteCss);
 W("assets/site.js", siteJs);
+COPY("docs/course-outline.png", "python-ai/lesson-01/assets/course-overview.png");
 W("index.html", siteIndex());
 W("catalog.json", JSON.stringify(CATALOG, null, 2));
 
