@@ -4,6 +4,8 @@
   "description": "Python for AI Research interactive web lecture deck",
   "scripts": {
     "build": "node scripts/build.js",
+    "validate": "node scripts/build.js && node scripts/course-validator.js && node scripts/lab-smoke-test.js",
+    "smoke:labs": "node scripts/lab-smoke-test.js",
     "serve": "node scripts/server.js",
     "narrate": "node scripts/narrate.js"
   },
