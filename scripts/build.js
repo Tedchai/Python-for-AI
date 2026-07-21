@@ -230,6 +230,7 @@ function siteIndex() {
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(CATALOG.site)}</title><meta name="description" content="${esc(CATALOG.tagline)}">
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="assets/site.css"></head><body>
 <header class="site"><div class="wrap"><div class="logo">${esc(CATALOG.logo || "AI")}</div>
 <div><h1>${esc(CATALOG.site)}</h1><p>${esc(CATALOG.tagline)}</p></div>
@@ -266,6 +267,7 @@ function courseIndex(co) {
   const target = firstReady ? `${firstReady.id}/` : "../";
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(co.title)} — Merit Point Academy</title><meta http-equiv="refresh" content="0;url=${target}">
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="../assets/site.css"></head><body>
 <main class="wrap" style="padding-top:60px;text-align:center"><h1>${esc(co.title)}</h1><p>Opening Class 01…</p><p><a class="main-btn" style="background:var(--teal);color:#fff!important" href="${target}">Open Class 01</a></p></main>
 <script>location.replace(${JSON.stringify(target)});</script></body></html>`;
@@ -772,6 +774,7 @@ function deckHtml(deckId, title, slides) {
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="${REVEAL}/dist/reveal.css">
 <link rel="stylesheet" href="${REVEAL}/dist/theme/white.css">
 <style>${deckCss}</style></head><body>
@@ -3097,11 +3100,223 @@ const englishLessonText = {
 const englishMistakes = [["Copying without understanding","Change one meaningful value and explain the output."],["Changing too much at once","Change one factor, rerun, and observe."],["Not recording results","Write the observation, evidence, and next question in Markdown."]];
 const englishHomework = ["Complete the Level 1 task","Add one meaningful extension","Run all cells from top to bottom","Write a 3–5 sentence interpretation","Submit an accessible Colab link"];
 
-// Apply the live Kaggle-centered course after the legacy lesson records are
-// defined. This preserves useful old examples while making the generated decks
-// and catalog use the new 15-class sequence.
+// Preserve the strongest existing examples before applying the July 2026
+// instructor syllabus.  The prior branch used a 120-minute Kaggle-stage path;
+// the live course returns to the approved 60-minute, five-stage sequence.
+const reusableZhLessons = { ...syncedZhLessons };
+const reusableEnLessons = { ...englishLessonText };
+
 Object.assign(syncedZhLessons, KAGGLE_COURSE.zh);
 Object.assign(englishLessonText, KAGGLE_COURSE.en);
+
+const syllabusMap = {
+  "01": "01", "02": "02", "03": "04", "04": "05", "05": "06",
+  "06": "07", "07": "08", "08": "08", "09": "09", "10": "10",
+  "11": "10", "12": "13", "13": "13", "14": "14", "15": "15",
+};
+
+const syllabusTitles = {
+  "01": ["Python Basics & Google Colab", "Python Basics & Google Colab"],
+  "02": ["Python Control Structures", "Python Control Structures"],
+  "03": ["Python Data Structures", "Python Data Structures"],
+  "04": ["NumPy for Scientific Computing", "NumPy for Scientific Computing"],
+  "05": ["pandas for Data Analysis", "pandas for Data Analysis"],
+  "06": ["Data Cleaning", "Data Cleaning"],
+  "07": ["Data Visualization", "Data Visualization"],
+  "08": ["Exploratory Data Analysis (EDA)", "Exploratory Data Analysis (EDA)"],
+  "09": ["Machine Learning with Scikit-learn", "Machine Learning with Scikit-learn"],
+  "10": ["Linear Regression", "Linear Regression"],
+  "11": ["Classification: Logistic Regression & KNN", "Classification: Logistic Regression & KNN"],
+  "12": ["Decision Tree & Random Forest", "Decision Tree & Random Forest"],
+  "13": ["SVM & XGBoost", "SVM & XGBoost"],
+  "14": ["AI Research Workflow", "AI Research Workflow"],
+  "15": ["Final AI Research Project", "Final AI Research Project"],
+};
+
+const stageForLesson = (no, lang) => {
+  const n = Number(no);
+  const labels = lang === "zh"
+    ? ["阶段1 · Python基础入门", "阶段2 · 数据处理与分析", "阶段3 · 数据可视化与EDA", "阶段4 · 机器学习建模", "阶段5 · AI科研项目实战"]
+    : ["Stage 1 · Python Foundations", "Stage 2 · Data Processing and Analysis", "Stage 3 · Visualization and EDA", "Stage 4 · Machine Learning Modeling", "Stage 5 · AI Research Project"];
+  return n <= 3 ? labels[0] : n <= 6 ? labels[1] : n <= 8 ? labels[2] : n <= 13 ? labels[3] : labels[4];
+};
+
+const packagesForLesson = {
+  "01": [], "02": [], "03": [], "04": ["numpy"], "05": ["pandas"],
+  "06": ["pandas"], "07": ["pandas", "matplotlib", "seaborn"], "08": ["pandas", "matplotlib", "seaborn"],
+  "09": ["scikit-learn"], "10": ["scikit-learn"], "11": ["scikit-learn"],
+  "12": ["scikit-learn"], "13": ["scikit-learn"], "14": [], "15": [],
+};
+
+for (const [target, source] of Object.entries(syllabusMap)) {
+  syncedZhLessons[target] = { ...reusableZhLessons[source], classNo: target, title: syllabusTitles[target][0] };
+  englishLessonText[target] = { ...reusableEnLessons[source], classNo: target, title: syllabusTitles[target][1] };
+}
+
+// The prior general deck combined metrics and algorithm choice.  The approved
+// syllabus gives Linear Regression its own class, so reuse the focused model
+// lesson from the research-path draft instead of merely renaming that page set.
+Object.assign(syncedZhLessons["10"], KAGGLE_COURSE.zh["10"], { classNo: "10", title: syllabusTitles["10"][0] });
+Object.assign(englishLessonText["10"], KAGGLE_COURSE.en["10"], { classNo: "10", title: syllabusTitles["10"][1] });
+Object.assign(syncedZhLessons["10"], {
+  subtitle: "预测连续值，并用 R²、MAE 和 RMSE 理解误差",
+  output: "完成一个连续值预测模型、R²/MAE/RMSE 指标表和误差图。",
+  skills: ["训练线性回归", "计算 R²、MAE 与 RMSE", "解释预测误差"],
+  concepts: [["Linear Regression", "用输入特征的加权组合预测连续数值。"], ["Prediction error", "真实值与预测值之间的差异；不同指标强调不同误差特征。"]],
+  vocab: [["MAE", "绝对误差的平均值，单位与目标相同。"], ["RMSE", "对较大误差更敏感的均方根误差。"]],
+  demo: `from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error\npred = model.predict(X_test)\nprint("R2:", round(r2_score(y_test, pred), 3))\nprint("MAE:", round(mean_absolute_error(y_test, pred), 3))\nprint("RMSE:", round(mean_squared_error(y_test, pred) ** 0.5, 3))`,
+  labTitle: "Linear Regression Error Lab",
+  labIntro: "训练一个连续值模型，并在同一测试集上计算 R²、MAE 和 RMSE。",
+  labCode: `from sklearn.datasets import load_diabetes\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error\nX, y = load_diabetes(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.25, random_state=42)\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\npred = model.predict(X_test)\nprint("R2:", round(r2_score(y_test, pred), 3))\nprint("MAE:", round(mean_absolute_error(y_test, pred), 3))\nprint("RMSE:", round(mean_squared_error(y_test, pred) ** 0.5, 3))`,
+  projectTitle: "连续值预测与误差图", projectInput: "连续目标、数值特征和固定拆分。", projectProcess: "训练模型、计算三个指标、检查最大误差。", projectOutput: "指标表、预测误差图和限制说明。",
+  line: "指标不是分数装饰，而是帮助我们理解模型如何出错。",
+});
+Object.assign(englishLessonText["10"], {
+  subtitle: "Predict continuous values and interpret error with R-squared, MAE, and RMSE",
+  output: "Complete a continuous-value model, R-squared/MAE/RMSE table, and error plot.",
+  skills: ["Train linear regression", "Calculate R-squared, MAE, and RMSE", "Interpret prediction error"],
+  concepts: [["Linear Regression", "Predict a continuous value from a weighted combination of features."], ["Prediction error", "The difference between observed and predicted values; metrics emphasize different error properties."]],
+  vocab: [["MAE", "Average absolute error in the target unit."], ["RMSE", "Root mean squared error, which emphasizes larger errors."]],
+  demo: syncedZhLessons["10"].demo,
+  labTitle: "Linear Regression Error Lab", labIntro: "Train a continuous-value model and calculate R-squared, MAE, and RMSE on one test set.", labCode: syncedZhLessons["10"].labCode,
+  projectTitle: "Continuous Prediction and Error Plot", projectInput: "A continuous target, numeric features, and a fixed split.", projectProcess: "Train the model, calculate three metrics, and inspect the largest errors.", projectOutput: "A metric table, prediction-error plot, and limitation note.",
+  line: "Metrics are not score decorations; they help us understand how a model fails.",
+});
+
+Object.assign(syncedZhLessons["08"], {
+  subtitle: "比较变量、检查关系，并从图表提出可验证问题",
+  output: "完成一页 EDA 小报告和一个可验证的研究问题。",
+  skills: ["比较变量关系", "用证据提出研究问题", "说明数据限制"],
+  line: "EDA 不是寻找漂亮图，而是寻找值得验证的问题。",
+});
+const cleaningLabCode = `import pandas as pd\ndf = pd.DataFrame({"id":[1,2,2,3], "value":[10,None,None,500]})\nprint("Before")\nprint(df)\ndf = df.drop_duplicates()\ndf["value"] = df["value"].fillna(df["value"].median())\nprint("After")\nprint(df)`;
+syncedZhLessons["06"].labCode = cleaningLabCode;
+englishLessonText["06"].labCode = cleaningLabCode;
+Object.assign(englishLessonText["08"], {
+  subtitle: "Compare variables, inspect relationships, and form a testable question from figures",
+  output: "Complete a one-page EDA report and one testable research question.",
+  skills: ["Compare variable relationships", "Form an evidence-based question", "State data limitations"],
+  line: "EDA is not a search for pretty charts; it is a search for testable questions.",
+});
+
+// Classes 11–13 need dedicated model content rather than renamed project pages.
+Object.assign(syncedZhLessons["11"], {
+  subtitle: "完成分类预测，并用 accuracy 与 confusion matrix 解释错误",
+  output: "训练 Logistic Regression 和 KNN，并解释混淆矩阵。",
+  skills: ["训练两个分类器", "解释分类概率与邻居投票", "分析混淆矩阵"],
+  concepts: [["Logistic Regression", "先估计类别概率，再按阈值给出预测。"], ["KNN", "根据附近训练样本的类别投票。"]],
+  vocab: [["Accuracy", "全部预测中正确预测的比例。"], ["Confusion matrix", "按真实类别和预测类别统计结果的表。"]],
+  syntax: `from sklearn.linear_model import LogisticRegression\nfrom sklearn.neighbors import KNeighborsClassifier\nmodels = [LogisticRegression(max_iter=1000), KNeighborsClassifier(n_neighbors=3)]`,
+  demo: `from sklearn.metrics import accuracy_score, confusion_matrix\nfor model in models:\n    model.fit(X_train, y_train)\n    pred = model.predict(X_test)\n    print(type(model).__name__, accuracy_score(y_test, pred))\n    print(confusion_matrix(y_test, pred))`,
+  labTitle: "Two Classifiers, One Split",
+  labIntro: "在同一数据拆分上比较 Logistic Regression 和 KNN。",
+  labCode: `from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.metrics import accuracy_score, confusion_matrix\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.25, random_state=42, stratify=y)\nfor model in [LogisticRegression(max_iter=1000), KNeighborsClassifier(n_neighbors=3)]:\n    model.fit(X_train, y_train)\n    pred = model.predict(X_test)\n    print(type(model).__name__, round(accuracy_score(y_test, pred), 3))\n    print(confusion_matrix(y_test, pred))`,
+  projectTitle: "分类实验记录", projectInput: "分类特征、标签和固定拆分。", projectProcess: "训练两个模型并使用相同指标比较。", projectOutput: "模型结果表和混淆矩阵解释。",
+  quiz1: ["公平比较两个分类器需要什么？", ["相同拆分和指标", "不同测试集", "只保留最好一次"], 0, "共同条件才能隔离模型差异。"],
+  quiz2: ["混淆矩阵最适合回答什么？", ["哪些类别容易被混淆", "文件有多大", "训练用了多久"], 0, "它展示每种真实类别被预测成了什么。"],
+  line: "分数说明整体表现，错误类型说明模型在哪里失效。",
+});
+Object.assign(englishLessonText["11"], {
+  subtitle: "Build classifiers and explain errors with accuracy and a confusion matrix",
+  output: "Train Logistic Regression and KNN and explain a confusion matrix.",
+  skills: ["Train two classifiers", "Explain probability and neighbor voting", "Analyze a confusion matrix"],
+  concepts: [["Logistic Regression", "Estimate class probability before assigning a prediction."], ["KNN", "Vote using nearby training examples."]],
+  vocab: [["Accuracy", "The proportion of predictions that are correct."], ["Confusion matrix", "A table crossing true and predicted classes."]],
+  syntax: syncedZhLessons["11"].syntax, demo: syncedZhLessons["11"].demo,
+  labTitle: "Two Classifiers, One Split", labIntro: "Compare Logistic Regression and KNN on the same split.", labCode: syncedZhLessons["11"].labCode,
+  projectTitle: "Classification Experiment Record", projectInput: "Classification features, labels, and a fixed split.", projectProcess: "Train two models and compare them with the same metrics.", projectOutput: "A result table and confusion-matrix explanation.",
+  quiz1: ["What is required for a fair classifier comparison?", ["The same split and metrics", "Different test sets", "Only the best run"], 0, "Shared conditions isolate model differences."],
+  quiz2: ["What does a confusion matrix best reveal?", ["Which classes are confused", "File size", "Training time"], 0, "It shows how each true class was predicted."],
+  line: "A score shows overall performance; error types show where a model fails.",
+});
+
+Object.assign(syncedZhLessons["12"], {
+  subtitle: "从 if-then 规则理解树模型、过拟合和特征重要性",
+  output: "训练决策树与随机森林，并解释主要特征和过拟合迹象。",
+  skills: ["训练树与森林", "比较训练与测试结果", "解释特征重要性"],
+  concepts: [["Decision Tree", "用一连串 if-then 问题划分数据。"], ["Random Forest", "汇总多棵不同的树以提高稳定性。"]],
+  vocab: [["Depth", "从根节点到最深决策的层数。"], ["Feature importance", "模型在分裂中使用特征的相对程度。"]],
+  syntax: `from sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\ntree = DecisionTreeClassifier(max_depth=3, random_state=42)\nforest = RandomForestClassifier(n_estimators=100, random_state=42)`,
+  demo: `for model in [tree, forest]:\n    model.fit(X_train, y_train)\n    print(type(model).__name__, model.score(X_train, y_train), model.score(X_test, y_test))`,
+  labTitle: "Tree vs Forest", labIntro: "比较训练与测试 accuracy，并观察主要特征。",
+  labCode: `from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.25, random_state=42, stratify=y)\nfor model in [DecisionTreeClassifier(max_depth=3, random_state=42), RandomForestClassifier(n_estimators=100, random_state=42)]:\n    model.fit(X_train, y_train)\n    print(type(model).__name__, round(model.score(X_train,y_train),3), round(model.score(X_test,y_test),3))\n    print(model.feature_importances_.round(3))`,
+  projectTitle: "树模型证据包", projectInput: "与上一课相同的特征、标签和拆分。", projectProcess: "限制树深、训练森林、检查过拟合。", projectOutput: "模型表、主要特征和过拟合说明。",
+  quiz1: ["训练分数很高但测试分数明显较低说明什么？", ["可能过拟合", "一定完美", "没有训练"], 0, "模型可能记住训练数据而没有推广。"],
+  quiz2: ["随机森林为什么通常更稳定？", ["汇总多棵不同的树", "不使用数据", "只预测一个类别"], 0, "集成能够降低单棵树的波动。"],
+  line: "复杂模型仍然要接受同样的公平比较。",
+});
+Object.assign(englishLessonText["12"], {
+  subtitle: "Use if-then rules to understand trees, overfitting, and feature importance",
+  output: "Train a decision tree and random forest and explain key features and overfitting signs.",
+  skills: ["Train a tree and forest", "Compare train and test results", "Explain feature importance"],
+  concepts: [["Decision Tree", "Split data through a sequence of if-then questions."], ["Random Forest", "Combine varied trees for greater stability."]],
+  vocab: [["Depth", "Levels from root to deepest decision."], ["Feature importance", "Relative use of a feature in model splits."]],
+  syntax: syncedZhLessons["12"].syntax, demo: syncedZhLessons["12"].demo,
+  labTitle: "Tree vs Forest", labIntro: "Compare train and test accuracy and inspect key features.", labCode: syncedZhLessons["12"].labCode,
+  projectTitle: "Tree-model Evidence Pack", projectInput: "The same features, labels, and split as Class 11.", projectProcess: "Limit tree depth, train a forest, and inspect overfitting.", projectOutput: "A model table, key features, and overfitting note.",
+  quiz1: ["What does a high train score and lower test score suggest?", ["Possible overfitting", "A perfect model", "No training"], 0, "The model may not generalize."],
+  quiz2: ["Why is a random forest often more stable?", ["It combines varied trees", "It uses no data", "It predicts one class"], 0, "An ensemble reduces variation from one tree."],
+  line: "A more complex model still needs the same fair comparison.",
+});
+
+Object.assign(syncedZhLessons["13"], {
+  subtitle: "理解间隔与 boosting，并完成至少三个模型的公平比较",
+  output: "完成至少三个模型的统一指标对比表和适用场景说明。",
+  skills: ["理解 SVM 间隔", "理解 boosting", "完成统一模型比较"],
+  concepts: [["Margin", "SVM 寻找分类边界并扩大最近样本间隔。"], ["Boosting", "XGBoost 逐步加入模型，重点修正前面的错误。"]],
+  vocab: [["Kernel", "帮助 SVM 表达非线性边界的方法。"], ["Learning rate", "控制每一轮 boosting 更新的步长。"]],
+  syntax: `from sklearn.svm import SVC\nfrom xgboost import XGBClassifier\nsvm = SVC(kernel="rbf")\nxgb = XGBClassifier(n_estimators=100, max_depth=3, learning_rate=.05)`,
+  demo: `results = []\nfor name, model in models.items():\n    model.fit(X_train, y_train)\n    pred = model.predict(X_test)\n    results.append({"model": name, "accuracy": accuracy_score(y_test, pred)})\nprint(pd.DataFrame(results))`,
+  labTitle: "Three-model Scorecard", labIntro: "用同一拆分比较 Logistic Regression、SVM 和梯度提升模型。",
+  labCode: `from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.svm import SVC\nfrom sklearn.ensemble import HistGradientBoostingClassifier\nfrom sklearn.metrics import accuracy_score\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.25, random_state=42, stratify=y)\nfor model in [LogisticRegression(max_iter=1000), SVC(), HistGradientBoostingClassifier(random_state=42)]:\n    model.fit(X_train, y_train)\n    print(type(model).__name__, round(accuracy_score(y_test, model.predict(X_test)),3))`,
+  projectTitle: "Three-model Scorecard", projectInput: "相同数据、拆分、预处理和指标。", projectProcess: "比较至少三个模型并记录参数。", projectOutput: "指标表、模型选择理由和限制。",
+  quiz1: ["模型比较中必须保持什么一致？", ["数据拆分和指标", "模型名称", "代码行数"], 0, "相同实验条件才能公平比较。"],
+  quiz2: ["XGBoost 的核心思想是什么？", ["逐步修正前面模型的错误", "只训练一棵树", "不需要标签"], 0, "boosting 按顺序累积改进。"],
+  line: "最好的模型是在公平实验中最适合问题，而不是名字最复杂。",
+});
+Object.assign(englishLessonText["13"], {
+  subtitle: "Understand margins and boosting and compare at least three models fairly",
+  output: "Complete a common-metric comparison table for at least three models and explain use cases.",
+  skills: ["Understand the SVM margin", "Understand boosting", "Complete a common model comparison"],
+  concepts: [["Margin", "SVM finds a boundary and maximizes the margin to nearby samples."], ["Boosting", "XGBoost adds models sequentially to correct earlier errors."]],
+  vocab: [["Kernel", "Helps SVM express nonlinear boundaries."], ["Learning rate", "Controls each boosting update."]],
+  syntax: syncedZhLessons["13"].syntax, demo: syncedZhLessons["13"].demo,
+  labTitle: "Three-model Scorecard", labIntro: "Compare Logistic Regression, SVM, and gradient boosting on one split.", labCode: syncedZhLessons["13"].labCode,
+  projectTitle: "Three-model Scorecard", projectInput: "The same data, split, preprocessing, and metric.", projectProcess: "Compare at least three models and record settings.", projectOutput: "A metric table, model-choice rationale, and limitations.",
+  quiz1: ["What must stay the same in model comparison?", ["Data split and metric", "Model names", "Code length"], 0, "Shared conditions enable fair comparison."],
+  quiz2: ["What is the core idea of XGBoost?", ["Sequentially correct earlier errors", "Train one tree only", "Use no labels"], 0, "Boosting accumulates improvements."],
+  line: "The best model fits the question under a fair experiment; it is not the fanciest name.",
+});
+
+const researchActionsZh = {
+  "01":"建立Research Log并保存第一个可运行notebook。", "02":"记录一条数据判断规则和边界测试。", "03":"建立变量字典和样本记录格式。",
+  "04":"保存模拟参数与统计结果。", "05":"加载真实数据并输出基础统计摘要。", "06":"保存clean dataset与清洗决策日志。",
+  "07":"保存三张核心图和三条观察。", "08":"完成EDA小报告并提出研究问题。", "09":"记录特征、标签、拆分、Pipeline与baseline。",
+  "10":"保存回归指标和误差图。", "11":"保存分类器与混淆矩阵。", "12":"保存树模型、特征重要性和过拟合检查。",
+  "13":"完成至少三个模型的统一对比表。", "14":"从头运行Notebook并整理项目v1证据包。", "15":"完成报告、代码和PPT的最终复现检查。",
+};
+const researchActionsEn = {
+  "01":"Start the Research Log and save a first runnable notebook.", "02":"Record one data-check rule and boundary tests.", "03":"Create a variable dictionary and sample-record format.",
+  "04":"Save simulation settings and summary results.", "05":"Load real data and produce a basic statistical summary.", "06":"Save clean data and a cleaning decision log.",
+  "07":"Save three core figures and observations.", "08":"Complete an EDA brief and research question.", "09":"Record features, target, split, pipeline, and baseline.",
+  "10":"Save regression metrics and an error plot.", "11":"Save classifiers and confusion matrices.", "12":"Save tree models, feature importance, and overfitting checks.",
+  "13":"Complete a common comparison table for at least three models.", "14":"Run the notebook top to bottom and assemble project v1 evidence.", "15":"Complete final reproducibility checks for report, code, and slides.",
+};
+
+for (const no of Object.keys(syllabusMap)) {
+  Object.assign(syncedZhLessons[no], {
+    duration: 60, stage: stageForLesson(no, "zh"), requiredPackages: packagesForLesson[no],
+    kaggleAction: researchActionsZh[no], projectAction: researchActionsZh[no],
+    paperSection: Number(no) < 14 ? "把本节成果加入Research Log，保留输入、处理、输出和限制。" : "整理Question、Data、Method、Results、Limitations与Future Work。",
+    paperEvidence: Number(no) < 14 ? "Research Log中的可追溯证据。" : "可追溯的报告与展示证据。",
+  });
+  Object.assign(englishLessonText[no], {
+    duration: 60, stage: stageForLesson(no, "en"), requiredPackages: packagesForLesson[no],
+    kaggleAction: researchActionsEn[no], projectAction: researchActionsEn[no],
+    paperSection: Number(no) < 14 ? "Add the result to the Research Log with input, process, output, and limitation." : "Organize Question, Data, Method, Results, Limitations, and Future Work.",
+    paperEvidence: Number(no) < 14 ? "Traceable evidence in the Research Log." : "Traceable report and presentation evidence.",
+  });
+}
 
 const syncedEnLessons = Object.fromEntries(Object.entries(englishLessonText).map(([no, en]) => {
   const base = syncedZhLessons[no];
@@ -3344,11 +3559,151 @@ function buildKaggleLesson(spec, lang) {
   return S;
 }
 
+function buildSyllabusLesson(spec, lang) {
+  const zh = lang === "zh";
+  const S = [];
+  const note = (zhText, enText) => `<aside class="notes">${esc(zh ? zhText : enText)}</aside>`;
+  const list = (items) => `<ul>${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>`;
+  const concepts = (spec.concepts || []).slice(0, 2);
+  const vocabulary = (spec.vocab || []).slice(0, 2);
+  const skills = (spec.skills || spec.objectives || []).slice(0, 3);
+  const homework = (spec.homework || []).slice(0, 4);
+  const quiz = spec.quiz1;
+  const current = Number(spec.classNo);
+
+  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div>
+    <h1 style="color:#fff">${esc(spec.title)}</h1>
+    <p style="color:#cfe0ef;margin-top:.45em">${esc(spec.subtitle)}</p>
+    <div class="grid3" style="margin-top:1em">${skills.map((skill, i) => `<div class="skillcard"><div class="cn">${i + 1}</div><p>${esc(skill)}</p></div>`).join("")}</div>
+    ${note("本节只保留支撑当堂成果的核心概念。", "Keep only the concepts needed for today's visible output.")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+
+  S.push(sec("outcomes", `<div class="kicker">TODAY'S OUTPUT</div><h2>${esc(spec.output)}</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><h3>${zh ? "可见成果" : "Visible output"}</h3><p>${esc(spec.projectOutput || spec.output)}</p></div>
+      <div class="box"><h3>${zh ? "科研能力" : "Research skill"}</h3><p>${esc(skills[0] || spec.stage)}</p></div>
+      <div class="box"><h3>${zh ? "工具训练" : "Tool practice"}</h3><p>${esc(skills[1] || spec.title)}</p></div>
+    </div>${note("开场明确今天必须带走的成果。", "Open with the artifact students must leave with.")}`));
+
+  S.push(sec("lesson-agenda", `<div class="kicker">AGENDA</div><h2>${zh ? "一个问题、一段代码、一个成果" : "One question, one code pattern, one result"}</h2>
+    <div class="grid3" style="margin-top:.7em">
+      <div class="box"><span class="feature">1</span><h3>${zh ? "研究场景" : "Research context"}</h3><p>${esc(spec.projectInput || spec.subtitle)}</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>${zh ? "核心实作" : "Core practice"}</h3><p>${esc(spec.labTitle)}</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>${zh ? "保存证据" : "Save evidence"}</h3><p>${esc(spec.projectOutput || spec.output)}</p></div>
+    </div>${note("Agenda服务于60分钟课堂主线。", "The agenda supports one 60-minute lesson arc.")}`));
+
+  S.push(sec("sixty-minute-pacing", `<div class="kicker">60-MINUTE PACING</div><h2>${zh ? "短讲解，长实作，及时保存" : "Brief explanation, substantial practice, saved evidence"}</h2>
+    <div class="flow" style="margin-top:.7em">
+      <div class="step"><span class="n">0–8</span><b>Start</b><span>${zh ? "场景与预测" : "Context and prediction"}</span></div>
+      <div class="step"><span class="n">8–20</span><b>Concept</b><span>${zh ? "两个必要概念" : "Two necessary concepts"}</span></div>
+      <div class="step"><span class="n">20–50</span><b>Lab</b><span>${zh ? "跟做后独立修改" : "Guided then independent work"}</span></div>
+      <div class="step loop"><span class="n">50–60</span><b>Close</b><span>${zh ? "保存、解释、提交" : "Save, explain, submit"}</span></div>
+    </div>${note("根据班级速度在概念和实作之间微调，但不取消主要实验。", "Adjust concept and practice time slightly, but do not remove the main lab.")}`));
+
+  S.push(sec("course-position", `<div class="kicker">COURSE MAP · ${esc(spec.stage)}</div><h2>${zh ? "15节课共同完成一个AI科研闭环" : "Fifteen classes build one AI research workflow"}</h2>
+    <div class="flow" style="margin-top:.65em">
+      ${[
+        ["1–3", zh ? "Python基础" : "Python"], ["4–6", zh ? "数据处理" : "Data"], ["7–8", "Visualization / EDA"], ["9–13", "Machine Learning"], ["14–15", zh ? "研究项目" : "Research Project"],
+      ].map(([n, label]) => `<div class="step${current >= Number(n.split("–")[0]) && current <= Number(n.split("–")[1]) ? " loop" : ""}"><span class="n">${n}</span><b>${esc(label)}</b></div>`).join("")}
+    </div><div class="callout"><b>${zh ? "本节推进：" : "This class advances: "}</b>${esc(spec.kaggleAction || spec.projectAction)}</div>
+    ${note("强调每节成果进入同一份Research Log和最终项目。", "Connect every result to one Research Log and final project.")}`));
+
+  S.push(sec("warmup", `<div class="kicker">RESEARCH WARM-UP</div><h2>${zh ? "先判断需要什么证据，再打开代码" : "Decide what evidence is needed before opening the code"}</h2>
+    <div class="grid2" style="margin-top:.7em">
+      <div class="box"><h3>${zh ? "情境" : "Context"}</h3><p>${esc(spec.projectInput || spec.subtitle)}</p></div>
+      <div class="box"><h3>${zh ? "预测" : "Prediction"}</h3><p>${zh ? "写下输入、预期输出和一个可能的错误。" : "Write the input, expected output, and one likely error."}</p></div>
+    </div>${note("让学生先提交预测，再运行代码。", "Collect a prediction before students run code.")}`));
+
+  concepts.forEach(([name, description], index) => {
+    const vocab = vocabulary[index];
+    S.push(sec(`concept-${index + 1}`, `<div class="kicker">CORE CONCEPT ${index + 1}</div><h2>${esc(name)}</h2><p class="lead">${esc(description)}</p>
+      ${vocab ? `<div class="callout"><b>${esc(vocab[0])}:</b> ${esc(vocab[1])}</div>` : ""}
+      ${note("只讲完成主要实验所需的直觉和语言。", "Teach only the intuition and language needed for the main lab.")}`));
+  });
+  while (S.length < 8) {
+    S.push(sec(`concept-${S.length - 5}`, `<div class="kicker">CORE CONCEPT</div><h2>${zh ? "把概念连接到输出" : "Connect the idea to the output"}</h2><p class="lead">${esc(spec.line)}</p>${note("用一句话补齐概念与成果的连接。", "Use one sentence to connect concept and output.")}`));
+  }
+
+  S.push(sec("syntax-pattern", `<div class="kicker">CODE PATTERN</div><h2>${zh ? "先找输入、处理和输出" : "Find the input, process, and output"}</h2>
+    <pre style="font-size:.55em;max-height:410px;overflow:auto"><code>${esc(spec.syntax || spec.demo)}</code></pre>
+    <div class="callout"><b>${zh ? "运行前：" : "Before running: "}</b>${zh ? "圈出会改变的值，并预测一行输出。" : "Identify the value that will change and predict one line of output."}</div>
+    ${note("代码显示保持一屏可读。", "Keep the code readable on one screen.")}`));
+
+  S.push(quizSlide("prediction-check", "PREDICTION CHECK", quiz[0], quiz[1], quiz[2], quiz[3], zh ? "快速检查后立即解释答案。" : "Explain the answer immediately after the quick check."));
+
+  S.push(sec("guided-practice", `<div class="kicker">GUIDED PRACTICE</div><h2>${zh ? "教师示范一次，学生只改一个因素" : "Instructor models once; students change one factor"}</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>Read</h3><p>${zh ? "指出输入和输出。" : "Identify input and output."}</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Change</h3><p>${zh ? "只改一个值或规则。" : "Change one value or rule."}</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Explain</h3><p>${zh ? "解释输出为何变化。" : "Explain why output changed."}</p></div>
+    </div><pre style="font-size:.5em;max-height:250px;overflow:auto"><code>${esc(spec.demo || spec.syntax)}</code></pre>
+    ${note("跟做完成后立即进入主要实验。", "Move into the main lab immediately after guided practice.")}`));
+
+  S.push(labSlide("main-lab", "MAIN PYTHON LAB", spec.labTitle, esc(spec.labIntro), spec.labCode, spec.requiredPackages || [], zh ? "学生先完成基础版，再做一个有意义的修改。" : "Students complete the core version, then make one meaningful change."));
+
+  S.push(sec("debug-routine", `<div class="kicker">DEBUG & EXPLAIN</div><h2>${zh ? "错误是下一步检查提示" : "An error points to the next check"}</h2>
+    <div class="flow" style="margin-top:.7em">
+      <div class="step"><span class="n">1</span><b>Read</b><span>${zh ? "最后一行" : "Last line"}</span></div>
+      <div class="step"><span class="n">2</span><b>Locate</b><span>${zh ? "行号和变量" : "Line and variable"}</span></div>
+      <div class="step"><span class="n">3</span><b>Isolate</b><span>${zh ? "最小片段" : "Smallest block"}</span></div>
+      <div class="step loop"><span class="n">4</span><b>Rerun</b><span>${zh ? "从上到下" : "Top to bottom"}</span></div>
+    </div><div class="callout"><b>${zh ? "提交要求：" : "Submission rule: "}</b>${zh ? "学生必须能口头解释主要代码。" : "Students must explain the main code aloud."}</div>
+    ${note("教师给提示，不代写完整答案。", "Give hints without writing the complete answer.")}`));
+
+  S.push(sec("project-connection", `<div class="kicker">AI RESEARCH PROJECT</div><h2>${esc(spec.projectTitle)}</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><h3>Input</h3><p>${esc(spec.projectInput)}</p></div>
+      <div class="box"><h3>Process</h3><p>${esc(spec.projectProcess)}</p></div>
+      <div class="box"><h3>Output</h3><p>${esc(spec.projectOutput)}</p></div>
+    </div><div class="callout"><b>Research Log:</b> ${esc(spec.paperSection || spec.paperEvidence)}</div>
+    ${note("只要求学生保存今天真正生成的证据。", "Require only evidence genuinely produced today.")}`));
+
+  S.push(sec("challenge-ladder", `<div class="kicker">INDEPENDENT WORK</div><h2>${zh ? "基础任务完成后，再选择进阶挑战" : "Complete the core task before choosing a challenge"}</h2>
+    <div class="grid3" style="margin-top:.65em">
+      <div class="box"><span class="feature">1</span><h3>Core</h3><p>${zh ? "代码能运行，输出正确。" : "Code runs with correct output."}</p></div>
+      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>Apply</h3><p>${zh ? "替换为自己的数据或问题。" : "Use personal data or a question."}</p></div>
+      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>Challenge</h3><p>${esc(spec.challenge || (zh ? "加入一个检查并说明限制。" : "Add one check and state a limitation."))}</p></div>
+    </div>${note("不同基础学生在同一核心成果上分层。", "Differentiate learners around the same core output.")}`));
+
+  S.push(sec("homework", `<div class="kicker">HOMEWORK & SUBMISSION</div><h2>${zh ? "保存成果，而不是重新开始" : "Polish the result instead of starting over"}</h2>
+    <div class="grid2" style="margin-top:.65em"><div class="box">${list(homework.length ? homework : [zh ? "从上到下运行全部cells" : "Run all cells top to bottom", zh ? "保存输出和解释" : "Save output and explanation"])}</div>
+      <div class="box"><h3>${zh ? "四项检查" : "Four checks"}</h3>${list(zh ? ["能运行", "能解释", "证据可追溯", "结构清楚"] : ["Runs", "Can be explained", "Evidence is traceable", "Structure is clear"])}</div></div>
+    <div class="callout"><b>AI:</b> ${zh ? "可以解释概念和报错；不得伪造事实、引用、代码或实验结果。" : "AI may explain concepts and errors; it may not fabricate facts, citations, code ownership, or results."}</div>
+    ${note("作业延续课堂已启动的任务。", "Homework extends work already started in class.")}`));
+
+  S.push(sec("exit-ticket", `<div class="kicker">EXIT TICKET</div><h2>${esc(spec.line)}</h2>
+    <div class="grid2" style="margin-top:.7em"><div class="box"><h3>${zh ? "我现在能做什么？" : "What can I do now?"}</h3><p>${zh ? "用一句话说明新增能力。" : "State the new capability in one sentence."}</p></div><div class="box"><h3>${zh ? "项目下一步" : "Project next step"}</h3><p>${esc(spec.kaggleAction || spec.projectAction)}</p></div></div>
+    ${profQuote({ quoteZh: spec.line, quoteEn: spec.line, explainZh: "把今天的成果保存进Research Log，并写下一步。", explainEn: "Save today's result in the Research Log and name the next step." })}
+    ${note("收集一个清楚点和一个仍需帮助的问题。", "Collect one clear point and one remaining question.")}`,
+    "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
+
+  return S;
+}
+
+const liveCatalog = (lessons, lang) => Object.values(lessons)
+  .sort((a, b) => Number(a.classNo) - Number(b.classNo))
+  .map((lesson) => ({
+    id: `lesson-${lesson.classNo}`,
+    n: Number(lesson.classNo),
+    title: lesson.title,
+    summary: `${lesson.stage} · ${lesson.output}`,
+    tags: [`Class ${lesson.classNo}`, lesson.stage, lang === "zh" ? "科研项目" : "Research Project"],
+    duration: lang === "zh" ? "60 分钟" : "60 minutes",
+    status: "ready",
+  }));
+
+chineseCourse.subtitle = "从Python基础、数据处理、EDA到机器学习与AI科研项目的15节互动课程。";
+chineseCourse.tags = ["Python", "Data Analysis", "Machine Learning", "AI Research"];
+chineseCourse.decks = liveCatalog(syncedZhLessons, "zh");
+englishCourse.subtitle = "A 15-class path from Python foundations and data analysis to machine learning and an AI research project.";
+englishCourse.tags = ["Python", "Data Analysis", "Machine Learning", "AI Research"];
+englishCourse.decks = liveCatalog(syncedEnLessons, "en");
+
 const DECK_BUILDERS = {};
 Object.keys(syncedZhLessons).forEach((no) => {
   const lessonId = `lesson-${no}`;
   DECK_BUILDERS[`python-ai/${lessonId}`] = {
-    build: () => buildKaggleLesson(syncedZhLessons[no], "zh"),
+    build: () => buildSyllabusLesson(syncedZhLessons[no], "zh"),
     title: `Class ${Number(no)} · ${syncedZhLessons[no].title}`,
   };
 });
@@ -3356,7 +3711,7 @@ Object.keys(syncedZhLessons).forEach((no) => {
 Object.keys(syncedEnLessons).forEach((no) => {
   const lessonId = `lesson-${no}`;
   DECK_BUILDERS[`python-ai-en/${lessonId}`] = {
-    build: () => buildKaggleLesson(syncedEnLessons[no], "en"),
+    build: () => buildSyllabusLesson(syncedEnLessons[no], "en"),
     title: `Class ${Number(no)} · ${syncedEnLessons[no].title}`,
   };
 });
@@ -3380,6 +3735,7 @@ CATALOG.courses.forEach((co) => {
     if (!entry) { console.warn("⚠ no DECK_BUILDERS entry for ready deck:", key); return; }
     const slides = entry.build();
     W(key + "/index.html", deckHtml(key, entry.title, slides));
+    W(key + "/audio/narration.json", "{}\n");
     console.log("  →", slides.length, "slides in", key);
     deckCount++;
   });
