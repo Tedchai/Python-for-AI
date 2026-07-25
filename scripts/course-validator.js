@@ -13,7 +13,7 @@ const check = (condition, message) => {
 const read = (relative) => fs.readFileSync(path.join(ROOT, relative), "utf8");
 
 const expectedTitles = [
-  "Python Basics & Google Colab",
+  "Python Basics & Kaggle Notebook",
   "Python Control Structures",
   "Python Data Structures",
   "NumPy for Scientific Computing",

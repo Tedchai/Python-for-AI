@@ -2818,14 +2818,14 @@ const commonMistakes = [
   ["一次改太多", "一次只改变一个变量，重新运行后再继续。"],
   ["结果没有记录", "用 Markdown 写下观察、证据和下一步问题。"],
 ];
-const commonHomework = ["完成 Level 1 基础任务", "完成一个自己的数据或问题扩展", "从上到下运行全部 cells", "写 3-5 句结果解释", "提交可访问的 Colab 链接"];
+const commonHomework = ["完成 Level 1 基础任务", "完成一个自己的数据或问题扩展", "从上到下运行全部 cells", "写 3-5 句结果解释", "提交可访问的 Kaggle Notebook 链接"];
 
 Object.assign(syncedZhLessons, {
   "01": {
-    classNo: "01", title: "Python Basics & Google Colab",
-    subtitle: "变量、基本类型、清楚输出和第一份科研实验日志",
+    classNo: "01", title: "Python Basics & Kaggle Notebook",
+    subtitle: "Kaggle Notebook、变量、基本类型、清楚输出和第一份科研实验日志",
     output: "完成一份包含类型检查和格式化输出的实验日志 notebook。",
-    skills: ["在 Colab 运行代码", "识别四种基本类型", "用 f-string 清楚输出"],
+    skills: ["在 Kaggle Notebook 运行并保存代码", "识别四种基本类型", "用 f-string 清楚输出"],
     concepts: [["变量", "给实验信息起一个可读的名字。"], ["数据类型", "int、float、str、bool 表示不同信息。"], ["输出", "用 print 和 f-string 检查并说明结果。"]],
     vocab: [["Notebook", "代码、输出和说明放在一起的文档。"], ["type", "检查一个值的数据类型。"], ["Comment", "用 # 解释为什么这样做。"]],
     syntax: `sample_count = 24\ntemperature = 37.0\nis_valid = True\nprint(type(sample_count))\nprint(f"Samples: {sample_count}, Temp: {temperature} C")`,
@@ -3080,7 +3080,7 @@ Object.assign(syncedZhLessons, {
 });
 
 const englishLessonText = {
-  "01": { title:"Python Basics & Google Colab", subtitle:"Variables, basic types, clear output, and a first research log", output:"Build and submit a research-log notebook with type checks and formatted output.", skills:["Run code in Colab","Recognize four basic types","Use f-strings for clear output"], concepts:[["Variable","A readable name for one piece of research information."],["Data type","int, float, str, and bool represent different kinds of information."],["Output","print and f-strings make results visible and checkable."]], vocab:[["Notebook","A document containing code, output, and explanation."],["type","A function that checks a value's data type."],["Comment","A # note explaining why the code exists."]], labTitle:"Research Log Builder", labIntro:"Change the experiment, sample count, and conditions; then inspect types and output.", projectTitle:"Research Experiment Log", projectInput:"Experiment, researcher, date, sample count, and validity.", projectProcess:"Store each item with a suitable type and verify it.", projectOutput:"A clear, traceable research log.", quiz1:["Which type best stores 36.5?",["float","bool","str"],0,"Measurements with decimals normally use float."], quiz2:["What does type(value) do?",["Checks the data type","Deletes the value","Saves a file"],0,"type helps find mismatched data."], line:"Variables store evidence; clear output makes evidence understandable." },
+  "01": { title:"Python Basics & Kaggle Notebook", subtitle:"Kaggle Notebook, variables, basic types, clear output, and a first research log", output:"Build and submit a research-log notebook with type checks and formatted output.", skills:["Run and save code in Kaggle Notebook","Recognize four basic types","Use f-strings for clear output"], concepts:[["Variable","A readable name for one piece of research information."],["Data type","int, float, str, and bool represent different kinds of information."],["Output","print and f-strings make results visible and checkable."]], vocab:[["Notebook","A document containing code, output, and explanation."],["type","A function that checks a value's data type."],["Comment","A # note explaining why the code exists."]], labTitle:"Research Log Builder", labIntro:"Change the experiment, sample count, and conditions; then inspect types and output.", projectTitle:"Research Experiment Log", projectInput:"Experiment, researcher, date, sample count, and validity.", projectProcess:"Store each item with a suitable type and verify it.", projectOutput:"A clear, traceable research log.", quiz1:["Which type best stores 36.5?",["float","bool","str"],0,"Measurements with decimals normally use float."], quiz2:["What does type(value) do?",["Checks the data type","Deletes the value","Saves a file"],0,"type helps find mismatched data."], line:"Variables store evidence; clear output makes evidence understandable." },
   "02": { title:"Python Control Flow", subtitle:"Use rules to check whether sensor data is reliable", output:"Build a quality checker that labels normal, high, and low readings.", skills:["Write if / elif / else","Check many values with loops","Test threshold boundaries"], concepts:[["Condition","A question whose answer is True or False."],["Loop","Apply the same check to each data point."],["Boundary","A rule must explain what happens exactly at a threshold."]], vocab:[["Boolean","A True or False value."],["Threshold","A boundary used by a rule."],["enumerate","Get an item number and value together."]], labTitle:"Sensor Quality Check", labIntro:"Change the readings and deliberately test the boundary values 15 and 35.", projectTitle:"Sensor Data Quality Checker", projectInput:"Ten simulated temperature readings.", projectProcess:"Check each range and count abnormal readings.", projectOutput:"A label for each reading and an overall normal rate.", quiz1:["What does 15 <= x <= 35 mean?",["x is between 15 and 35","x equals only 15","x is above 35"],0,"Python supports chained comparisons."], quiz2:["Why test 15 and 35?",["They are boundary values","They are strings","They stop the loop"],0,"Boundaries often reveal rule errors."], line:"A good rule handles ordinary cases and explains boundary cases." },
   "03": { title:"Functions & File I/O", subtitle:"Turn repeated analysis into functions and save reproducible results", output:"Read a small dataset, call a function, and save a result file.", skills:["Define and call functions","Return analysis results","Read and save CSV files"], concepts:[["Function","A named block of reusable logic."],["return","Send a result back to the calling code."],["File","Keep data and results beyond one notebook session."]], vocab:[["Parameter","An input required by a function."],["Docstring","Text explaining what a function does."],["CSV","A simple text format for tables."]], labTitle:"Reusable Sample Summary", labIntro:"Wrap summary logic in a function and test it with different values.", projectTitle:"Reproducible Analysis Helper", projectInput:"A small CSV file or sample-value list.", projectProcess:"Use functions for summaries and save the output.", projectOutput:"A summary.csv file or readable text result.", quiz1:["How are print and return different?",["print displays; return sends back a value","They are identical","return only handles text"],0,"Returned results can be reused by other code."], quiz2:["Why save a result file?",["To review and share results","To make code longer","To avoid variables"],0,"Files make analysis traceable."], line:"Functions make analysis repeatable; files make results traceable." },
   "04": { title:"Data Structures for Research", subtitle:"Organize sample records with lists, dictionaries, tuples, and sets", output:"Build a notebook that manages ten structured sample records.", skills:["Use lists for ordered data","Use dictionaries for named fields","Use sets to find unique values"], concepts:[["List","Store an ordered collection."],["Dictionary","Find a value using a field name."],["Set","Store unique items without duplicates."]], vocab:[["Index","The position of an item in a sequence."],["Key-value","A field name paired with its value."],["Unpacking","Take several fixed positions at once."]], labTitle:"Sample Record Manager", labIntro:"Add, filter, and summarize a small set of sample records.", projectTitle:"Multi-omics Sample Record Manager", projectInput:"Ten sample IDs, groups, and measurements.", projectProcess:"Use a list of dictionaries and a set of group labels.", projectOutput:"A sample table, unique groups, and one summary statistic.", quiz1:["Which structure best represents one record with named fields?",["dict","bool","float"],0,"A dictionary can name fields such as id, group, and value."], quiz2:["What is a set especially useful for?",["Removing duplicates","Keeping repeated order","Drawing a chart"],0,"A set keeps unique values."], line:"Choose the right structure so research records stay clear." },
@@ -3098,7 +3098,7 @@ const englishLessonText = {
 };
 
 const englishMistakes = [["Copying without understanding","Change one meaningful value and explain the output."],["Changing too much at once","Change one factor, rerun, and observe."],["Not recording results","Write the observation, evidence, and next question in Markdown."]];
-const englishHomework = ["Complete the Level 1 task","Add one meaningful extension","Run all cells from top to bottom","Write a 3–5 sentence interpretation","Submit an accessible Colab link"];
+const englishHomework = ["Complete the Level 1 task","Add one meaningful extension","Run all cells from top to bottom","Write a 3–5 sentence interpretation","Submit an accessible Kaggle Notebook link"];
 
 // Preserve the strongest existing examples before applying the July 2026
 // instructor syllabus.  The prior branch used a 120-minute Kaggle-stage path;
@@ -3116,7 +3116,7 @@ const syllabusMap = {
 };
 
 const syllabusTitles = {
-  "01": ["Python Basics & Google Colab", "Python Basics & Google Colab"],
+  "01": ["Python Basics & Kaggle Notebook", "Python Basics & Kaggle Notebook"],
   "02": ["Python Control Structures", "Python Control Structures"],
   "03": ["Python Data Structures", "Python Data Structures"],
   "04": ["NumPy for Scientific Computing", "NumPy for Scientific Computing"],
@@ -3639,7 +3639,19 @@ function buildSyllabusLesson(spec, lang) {
     </div><pre style="font-size:.5em;max-height:250px;overflow:auto"><code>${esc(spec.demo || spec.syntax)}</code></pre>
     ${note("跟做完成后立即进入主要实验。", "Move into the main lab immediately after guided practice.")}`));
 
-  S.push(labSlide("main-lab", "MAIN PYTHON LAB", spec.labTitle, esc(spec.labIntro), spec.labCode, spec.requiredPackages || [], zh ? "学生先完成基础版，再做一个有意义的修改。" : "Students complete the core version, then make one meaningful change."));
+  if (spec.classNo === "01") {
+    S.push(sec("main-lab", `<div class="kicker">KAGGLE NOTEBOOK · MAIN LAB</div><h2>${esc(spec.labTitle)}</h2><p class="lead">${esc(spec.labIntro)}</p>
+      <div class="grid2" style="grid-template-columns:.78fr 1.22fr;margin-top:.55em"><div class="box"><h3>${zh ? "在Kaggle完成" : "Complete in Kaggle"}</h3>${list(zh
+        ? ["打开课程Notebook并选择Copy & Edit", "新建Code Cell并粘贴代码", "预测输出后运行", "修改一个值、重跑并保存版本"]
+        : ["Open the course notebook and choose Copy & Edit", "Add a code cell and paste the code", "Predict the output, then run", "Change one value, rerun, and save a version"])}</div>
+      <pre style="font-size:.47em;max-height:340px;overflow:auto"><code>${esc(spec.labCode)}</code></pre></div>
+      <div class="callout"><b>${zh ? "课堂边界：" : "Class boundary: "}</b>${zh
+        ? "代码运行、报错、调试、保存和分享全部在Kaggle Notebook完成；课件只展示任务。"
+        : "Run, debug, save, and share all code in Kaggle Notebook; the slide only frames the task."}</div>
+      ${note("展示任务后切换到Kaggle，不使用课件内置Run按钮。", "After framing the task, switch to Kaggle; do not use an embedded slide Run button.")}`));
+  } else {
+    S.push(labSlide("main-lab", "MAIN PYTHON LAB", spec.labTitle, esc(spec.labIntro), spec.labCode, spec.requiredPackages || [], zh ? "学生先完成基础版，再做一个有意义的修改。" : "Students complete the core version, then make one meaningful change."));
+  }
 
   S.push(sec("debug-routine", `<div class="kicker">DEBUG & EXPLAIN</div><h2>${zh ? "错误是下一步检查提示" : "An error points to the next check"}</h2>
     <div class="flow" style="margin-top:.7em">

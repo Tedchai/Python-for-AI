@@ -23,7 +23,7 @@
 
 | 阶段 | 课次 | 课程内容 | 课堂/课后成果 |
 |---|---:|---|---|
-| Python 基础入门 | 1 | Python Basics & Google Colab | 第一个可运行 notebook |
+| Python 基础入门 | 1 | Python Basics & Kaggle Notebook | 第一个可运行 notebook |
 | Python 基础入门 | 2 | Python Control Structures | 数据判断与边界测试任务 |
 | Python 基础入门 | 3 | Python Data Structures | 数据字典和样本记录表 |
 | 数据处理与分析 | 4 | NumPy for Scientific Computing | 可复现模拟与统计计算 |

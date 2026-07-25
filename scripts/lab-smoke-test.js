@@ -43,6 +43,10 @@ for (let lesson = 1; lesson <= 15; lesson += 1) {
   const codeMatch = section.match(/<textarea class="code"[^>]*>([\s\S]*?)<\/textarea>/);
   const packages = ((section.match(/data-packages="([^"]*)"/) || ["", ""])[1] || "").split(",").filter(Boolean);
   if (!codeMatch) {
+    if (lesson === 1 && section.includes("KAGGLE NOTEBOOK")) {
+      deferred.push("Class 01 (Kaggle Notebook)");
+      continue;
+    }
     failures.push(`Class ${no}: main lab code not found`);
     continue;
   }
