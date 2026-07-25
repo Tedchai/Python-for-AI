@@ -1,6 +1,6 @@
 # Python for AI Research
 
-面向 8–12 年级高中生、大学本科生与 AI 科研初学者的中英双语互动课程。课程用 15 次、每次约 60 分钟的课堂，把 Python 基础、数据处理、可视化、机器学习和最终 AI 科研项目连接成一条连续学习路径。
+面向 8–12 年级高中生、大学本科生与 AI 科研初学者的中英双语互动课程。第 1、2 课采用 120 分钟完整课堂设计，后续课程目前保留 60 分钟版本并逐步按同一标准扩充。课程把 Python 基础、数据处理、可视化、机器学习和最终 AI 科研项目连接成一条连续学习路径。
 
 **在线课程：** [GitHub Pages](https://tedchai.github.io/Python-for-AI/)
 
@@ -39,33 +39,31 @@
 | AI 科研项目实战 | 14 | AI Research Workflow | 项目 v1：notebook、结果图和实验表 |
 | AI 科研项目实战 | 15 | Final AI Research Project | 报告/论文、代码和 PPT 展示 |
 
-## 每节课的 60 分钟结构
+## 课程时长与页面结构
 
-每套中英文网页课件统一为 17 个主要页面，避免把一小时课堂塞成冗长语法讲座：
+第 1、2 课各包含 36 个主要页面，按照 120 分钟课堂组织，而不是把原有 17 页简单拉长。扩充内容包括：
 
-1. 课程标题与技能；
-2. 当堂可见成果；
-3. 课堂主线；
-4. 60 分钟节奏；
-5. 课程位置与项目推进；
-6. 研究场景热身；
-7–8. 两个必要核心概念；
-9. 代码模式；
-10. Prediction Check；
-11. Guided Practice；
-12. 主要浏览器 Python Lab；
-13. Debug 与代码解释；
-14. AI 科研项目连接；
-15. 基础任务与进阶挑战；
-16. 作业、科研诚信和提交检查；
-17. Exit Ticket 与下一步。
+1. 目标、成果、课堂主线和 120 分钟节奏；
+2. Kaggle Notebook 打开、复制、运行、保存与版本管理；
+3. 术语、心智模型和三个核心知识点；
+4. 代码模式、完整示范、逐行追踪和 Prediction Check；
+5. 两轮 Guided Practice 与 Kaggle Notebook Guided Lab；
+6. 常见错误、固定 Debug 流程和独立 Checkpoint；
+7. Project Plan、Project Brief、Kaggle Project Lab 与 20 分钟独立操作；
+8. 分层挑战、Concept Check、Research Log 证据交接；
+9. Notebook 整理、科研诚信、评价、作业、缓冲和 Exit Ticket。
 
-建议课堂节奏：
+第 1、2 课建议节奏：
 
-- 0–8 分钟：研究场景、目标和预测；
-- 8–20 分钟：两个必要概念；
-- 20–50 分钟：教师示范、跟做与学生独立修改；
-- 50–60 分钟：保存成果、解释代码、提交和 Exit Ticket。
+- 0–10 分钟：目标、成果与 Kaggle 环境确认；
+- 10–30 分钟：术语、心智模型和三个核心概念；
+- 30–50 分钟：完整示范、代码追踪与预测；
+- 50–70 分钟：两轮跟做和 Kaggle Guided Lab；
+- 70–75 分钟：短休息；
+- 75–105 分钟：项目计划、Kaggle Project Lab、20 分钟学生独立操作与教师巡检；
+- 105–120 分钟：挑战、证据保存、Notebook 整理、评价和 Exit Ticket。
+
+所有课堂代码操作以 Kaggle Notebook 为准。课件负责呈现知识、任务和检查点，不提供浏览器内 Run 按钮。第 3–15 课目前仍采用 17 页、60 分钟结构，后续可按相同的 120 分钟框架继续扩充。
 
 ## 教学与评价原则
 
@@ -115,15 +113,17 @@ npm run serve
 
 - 中文和英文均有 15 课；
 - 课程顺序与五阶段大纲一致；
-- 每课生成 17 个主要页面；
-- 页面包含 60 分钟节奏、Prediction Check、浏览器 Lab、科研项目连接、科研诚信、作业和 Exit Ticket；
-- 课程导航、语言切换、朗读和返回主页功能仍然存在。
+- 第 1、2 课各生成 36 个主要页面并标注 120 分钟节奏；
+- 第 1、2 课的 Guided Lab 和 Project Lab 均以 Kaggle Notebook 为唯一运行环境；
+- 第 3–15 课各生成 17 个主要页面并保留 60 分钟节奏；
+- 页面包含 Prediction Check、科研项目连接、科研诚信、作业和 Exit Ticket；
+- 课程导航、语言切换和返回主页功能仍然存在；逐页朗读暂未启用。
 
 推送到 `main` 后，GitHub Actions 会构建并发布 GitHub Pages。
 
 ## English
 
-This repository contains a bilingual 15-class, 60-minute-per-class Python for AI Research course. Students move from Python foundations through data processing, visualization, EDA, regression, classification, tree models, SVM, and XGBoost before completing a reproducible AI research project with a report, code, figures, and presentation.
+This repository contains a bilingual 15-class Python for AI Research course. Classes 1 and 2 are expanded to 120 minutes and 36 slides each, with all practical work completed in Kaggle Notebook. Classes 3–15 currently retain the 60-minute structure and can be expanded through the same framework. Students move from Python foundations through data processing, visualization, EDA, regression, classification, tree models, SVM, and XGBoost before completing a reproducible AI research project with a report, code, figures, and presentation.
 
 ## License
 

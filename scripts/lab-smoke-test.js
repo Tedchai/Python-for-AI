@@ -33,20 +33,26 @@ const decode = (text) => text
 
 const failures = [];
 const deferred = [];
+const kaggleDeferred = [];
 let passed = 0;
 
 for (let lesson = 1; lesson <= 15; lesson += 1) {
   const no = String(lesson).padStart(2, "0");
   const file = path.join(ROOT, `python-ai-en/lesson-${no}/index.html`);
   const html = fs.readFileSync(file, "utf8");
+  if (lesson <= 2) {
+    const guided = (html.match(/<section id="guided-lab"[\s\S]*?<\/section>/) || [""])[0];
+    if (!guided.includes("KAGGLE NOTEBOOK") || !/<pre[\s\S]*?<code>[\s\S]+?<\/code>/.test(guided)) {
+      failures.push(`Class ${no}: Kaggle guided lab code not found`);
+    } else {
+      kaggleDeferred.push(`Class ${no} (Kaggle Notebook)`);
+    }
+    continue;
+  }
   const section = (html.match(/<section id="main-lab"[\s\S]*?<\/section>/) || [""])[0];
   const codeMatch = section.match(/<textarea class="code"[^>]*>([\s\S]*?)<\/textarea>/);
   const packages = ((section.match(/data-packages="([^"]*)"/) || ["", ""])[1] || "").split(",").filter(Boolean);
   if (!codeMatch) {
-    if (lesson === 1 && section.includes("KAGGLE NOTEBOOK")) {
-      deferred.push("Class 01 (Kaggle Notebook)");
-      continue;
-    }
     failures.push(`Class ${no}: main lab code not found`);
     continue;
   }
@@ -70,7 +76,8 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`  ${failure}`));
   process.exitCode = 1;
 } else {
-  console.log(`CODE EXPERIMENTS: PASS (${passed} host-Python labs executed; ${deferred.length} package-dependent labs deferred)`);
+  console.log(`CODE EXPERIMENTS: PASS (${passed} host-Python labs executed; ${kaggleDeferred.length} Kaggle labs and ${deferred.length} package-dependent labs deferred)`);
+  if (kaggleDeferred.length) console.log(`  DEFERRED TO KAGGLE NOTEBOOK: ${kaggleDeferred.join("; ")}`);
   if (deferred.length) console.log(`  DEFERRED TO PYODIDE/BROWSER: ${deferred.join("; ")}`);
   console.log("BROWSER FUNCTION CHECKS: manual — verify Pyodide loading, Run, output, and error rendering in the browser.");
 }

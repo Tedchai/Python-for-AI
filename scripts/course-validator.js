@@ -37,6 +37,17 @@ const requiredSlideIds = [
   "challenge-ladder", "homework", "exit-ticket",
 ];
 
+const expandedFoundationSlideIds = [
+  "title", "outputs", "lesson-agenda", "one-twenty-minute-pacing", "prerequisite-recap",
+  "course-position", "dataset-context", "warmup", "vocabulary", "mental-model",
+  "concept-1", "concept-2", "concept-3", "syntax-pattern", "teacher-demo",
+  "code-trace", "prediction-check", "guided-practice-1", "guided-practice-2",
+  "guided-lab", "mistake-clinic", "debug-routine", "checkpoint", "project-plan",
+  "project-brief", "project-lab", "independent-work", "challenge-ladder",
+  "concept-check", "evidence-handoff", "notebook-hygiene", "research-integrity",
+  "rubric", "homework", "buffer-catchup", "exit-ticket",
+];
+
 const catalogPath = path.join(ROOT, "catalog.json");
 check(fs.existsSync(catalogPath), "catalog.json exists after build");
 const catalog = JSON.parse(read("catalog.json"));
@@ -45,7 +56,8 @@ check(catalog.courses.length === 2, "Chinese and English course catalogs exist")
 for (const course of catalog.courses) {
   check(course.decks.length === 15, `${course.id} contains 15 lessons`);
   check(JSON.stringify(course.decks.map((deck) => deck.title)) === JSON.stringify(expectedTitles), `${course.id} follows the approved 15-class order`);
-  check(course.decks.every((deck) => /60/.test(deck.duration)), `${course.id} uses 60-minute lessons`);
+  check(course.decks.slice(0, 2).every((deck) => /120/.test(deck.duration)), `${course.id} expands Classes 1-2 to 120 minutes`);
+  check(course.decks.slice(2).every((deck) => /60/.test(deck.duration)), `${course.id} retains 60-minute duration for Classes 3-15`);
 }
 
 const generated = [];
@@ -57,16 +69,24 @@ for (const folder of ["python-ai", "python-ai-en"]) {
     if (!fs.existsSync(path.join(ROOT, relative))) continue;
     const html = read(relative);
     const ids = [...html.matchAll(/<section id="([^"]+)"/g)].map((match) => match[1]);
-    check(ids.length === 17, `${relative} contains 17 primary slides`);
-    check(JSON.stringify(ids) === JSON.stringify(requiredSlideIds), `${relative} uses the shared 17-slide sequence`);
-    check(html.includes("60-MINUTE PACING"), `${relative} declares 60-minute pacing`);
-    check(!html.includes("120-MINUTE PACING") && !html.includes("2-HOUR PACING"), `${relative} contains no obsolete two-hour pacing`);
-    check(html.includes('id="prediction-check"') && html.includes('id="main-lab"'), `${relative} includes a prediction check and main lab`);
-    check(html.includes('id="project-connection"') && html.includes("Research Log"), `${relative} connects the lesson to research evidence`);
-    check(html.includes('id="homework"') && /不得伪造|may not fabricate/.test(html), `${relative} includes homework and research-integrity guidance`);
+    const expanded = lesson <= 2;
+    const expectedIds = expanded ? expandedFoundationSlideIds : requiredSlideIds;
+    check(ids.length === expectedIds.length, `${relative} contains ${expectedIds.length} primary slides`);
+    check(JSON.stringify(ids) === JSON.stringify(expectedIds), `${relative} uses the approved slide sequence`);
+    check(html.includes(expanded ? "120-MINUTE PACING" : "60-MINUTE PACING"), `${relative} declares the approved lesson pacing`);
+    check(expanded ? !html.includes("60-MINUTE PACING") : !html.includes("120-MINUTE PACING"), `${relative} contains no conflicting pacing`);
+    check(html.includes('id="prediction-check"') && html.includes(expanded ? 'id="guided-lab"' : 'id="main-lab"'), `${relative} includes a prediction check and guided lab`);
+    check(html.includes(expanded ? 'id="evidence-handoff"' : 'id="project-connection"') && html.includes("Research Log"), `${relative} connects the lesson to research evidence`);
+    check(html.includes('id="homework"') && (expanded
+      ? html.includes('id="research-integrity"') && /伪造结果|Fabricate results/.test(html)
+      : /不得伪造|may not fabricate/.test(html)), `${relative} includes homework and research-integrity guidance`);
     check(html.includes('id="homeBtn"') && html.includes('id="langBtn"'), `${relative} retains home and language controls`);
     check(!html.includes("商博老师") && !html.includes("Professor Shangbo"), `${relative} contains no other teacher attribution`);
     check(!html.includes("朗读这段话") && !html.includes("Read this aloud") && !html.includes("prof-quote"), `${relative} contains no quote-reading card`);
+    if (expanded) {
+      check(html.includes("KAGGLE NOTEBOOK") && !/Google Colab|colab\.research\.google\.com/i.test(html), `${relative} uses Kaggle rather than Colab`);
+      check(!html.includes('class="lab"') && !html.includes("BROWSER / PYODIDE"), `${relative} keeps all practical work in Kaggle Notebook`);
+    }
     generated.push({ folder, lesson, html, ids });
   }
 }
@@ -101,7 +121,8 @@ for (const [lesson, terms] of evidenceChecks) {
 const readme = read("README.md");
 check(expectedTitles.every((title) => readme.includes(title)), "README lists all approved lesson titles");
 check(/25%；[\s\S]*25%；[\s\S]*30%；[\s\S]*20%/.test(readme), "README records the approved 25/25/30/20 assessment weights");
-check(!/120分钟|120-minute|Kaggle四个Stage/.test(readme), "README contains no obsolete 120-minute course claim");
+check(/第 1、2 课[^。\n]*120 分钟/.test(readme), "README records the expanded 120-minute Classes 1-2");
+check(/Classes 1 and 2[^.\n]*120 minutes/.test(readme), "README records the English 120-minute Classes 1-2");
 
 console.log(`\nCOURSE VALIDATION: ${failures.length ? "FAIL" : "PASS"} (${passed} checks passed)`);
 if (failures.length) failures.forEach((message) => console.error(`  FAIL: ${message}`));
