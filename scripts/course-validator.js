@@ -65,7 +65,8 @@ for (const folder of ["python-ai", "python-ai-en"]) {
     check(html.includes('id="project-connection"') && html.includes("Research Log"), `${relative} connects the lesson to research evidence`);
     check(html.includes('id="homework"') && /不得伪造|may not fabricate/.test(html), `${relative} includes homework and research-integrity guidance`);
     check(html.includes('id="homeBtn"') && html.includes('id="langBtn"'), `${relative} retains home and language controls`);
-    check(html.includes("speechSynthesis") && html.includes("prof-quote"), `${relative} retains narration support`);
+    check(!html.includes("商博老师") && !html.includes("Professor Shangbo"), `${relative} contains no other teacher attribution`);
+    check(!html.includes("朗读这段话") && !html.includes("Read this aloud") && !html.includes("prof-quote"), `${relative} contains no quote-reading card`);
     generated.push({ folder, lesson, html, ids });
   }
 }

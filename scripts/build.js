@@ -302,15 +302,9 @@ const deckCss = `
 .reveal blockquote{border:none;box-shadow:none;background:var(--cloud2);border-left:6px solid var(--teal);border-radius:8px;font-size:.76em;font-style:normal;width:100%;padding:.65em 1em}
 .reveal .speak{cursor:pointer;display:inline-flex;align-items:center;gap:.4em;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:.28em .85em;font-size:.52em;font-weight:700;font-family:-apple-system,sans-serif;box-shadow:0 4px 12px rgba(15,157,176,.3)}
 .reveal .speak:hover{background:#0d8a9b}.reveal .speak.playing{background:var(--coral)}
-.reveal .prof-quote{background:#fff;border:1px solid var(--line);border-left:6px solid var(--amber);border-radius:12px;padding:.55em .75em;margin-top:.55em;box-shadow:0 6px 18px rgba(20,40,70,.07)}
-.reveal .prof-quote .label{font-size:.48em;color:var(--muted);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.22em}
-.reveal .prof-quote blockquote{margin:.12em 0;background:var(--cloud2);font-size:.68em}
-.reveal .prof-quote .explain{font-size:.58em;color:var(--muted);margin:.45em 0 0}
 .lang-en{display:none}
 body.lang-en .lang-zh{display:none!important}
 body.lang-en .lang-en{display:inline!important}
-body.lang-en .prof-quote .lang-en{display:block!important}
-body.lang-en .prof-quote .lang-zh{display:none!important}
 /* timeline */
 .reveal .tl{display:flex;gap:.4em;align-items:stretch;margin-top:.5em}
 .reveal .tl .ev{flex:1;background:#fff;border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:10px;padding:.45em .5em}
@@ -521,23 +515,6 @@ function labSlide(sid, kicker, title, intro, code, packages, notes) {
   </div><aside class="notes">${esc(notes)}</aside>`);
 }
 
-function profQuote({ quoteZh, quoteEn, explainZh, explainEn }) {
-  return `<div class="prof-quote">
-    <div class="label"><span class="lang-zh">商博老师 · 朗读 / 解释</span><span class="lang-en">Professor Shangbo · Quote / Explanation</span></div>
-    <blockquote>
-      <span class="lang-zh">${esc(quoteZh)}</span>
-      <span class="lang-en">${esc(quoteEn)}</span>
-    </blockquote>
-    <p class="explain">
-      <span class="lang-zh">${esc(explainZh)}</span>
-      <span class="lang-en">${esc(explainEn)}</span>
-    </p>
-    <button class="speak" data-text-zh="${esc(quoteZh + " " + explainZh)}" data-text-en="${esc(quoteEn + " " + explainEn)}">
-      <span class="lang-zh">朗读这段话</span><span class="lang-en">Read this aloud</span>
-    </button>
-  </div>`;
-}
-
 function heapVizSlide(sid, kicker, title, intro, preset, notes) {
   return sec(sid, `<div class="kicker">${esc(kicker)}</div>
   <h2>${esc(title)}</h2>
@@ -631,19 +608,12 @@ function buildLesson01() {
     "点击即判分：选对变绿、选错变红，正确项高亮，下方自动展开解析 — 全部在浏览器本地完成。",
     "测验页穿插在概念之间用来保持注意力。correct 参数是下标：0=第一个选项。"));
 
-  // ── 组件 4：故事页 + 语音按钮 ───────────────────────────────────────
-  // blockquote 放故事/引文；.speak 按钮播放 audio/ 目录下的 mp3。
-  // 生成音频（可选）：pip install edge-tts 后，例如
-  //   edge-tts --voice zh-CN-YunxiNeural --text "你的文字" --write-media <deck目录>/audio/quote.mp3
-  // 没有该 mp3 文件时按钮仍会显示，只是点了没声音 — 不影响其他功能。
-  S.push(sec("story-speak", `<div class="kicker">组件 · 故事 + 语音</div>
+  // ── 组件 4：故事页 ─────────────────────────────────────────────────
+  S.push(sec("story-speak", `<div class="kicker">组件 · 故事</div>
     <h2>用一个故事开场</h2>
-    <blockquote id="quote">好课常从一个真实的故事开始：一个悬念、一次失败、一个反转。<b>把故事写在这里</b>，再用下面的按钮配上朗读音频，学生课后也能"听"这一页。</blockquote>
-    <div style="margin-top:.4em;display:flex;align-items:center;gap:1em">
-      <button class="speak" data-audio="audio/quote.mp3">🔊 <span>朗读这段话</span></button>
-      <span class="muted" style="font-size:.52em">神经语音 · 点击播放 / 暂停（需先用 edge-tts 生成 audio/quote.mp3）</span></div>
+    <blockquote id="quote">好课常从一个真实的故事开始：一个悬念、一次失败、一个反转。<b>把故事写在这里</b>，再联系本页的学习目标。</blockquote>
     <p class="src">.src 是灰色小字，放出处、补充说明。</p>
-    <aside class="notes">整页自动讲解是另一件事：运行 npm run narrate 会给每一页生成"教授讲解"音频和字幕（需要 ANTHROPIC_API_KEY），页面右下角出现 Listen 按钮。</aside>`));
+    <aside class="notes">故事页先服务于课程内容；统一的逐页朗读功能将在后续单独加入。</aside>`));
 
   // ── 组件 5：流程图（flow + step）───────────────────────────────────
   S.push(sec("flow-demo", `<div class="kicker">组件 · 流程图</div>
@@ -1419,12 +1389,6 @@ print(3.14)</code></pre></div>
       <div class="skillcard"><div class="cn">我能解释</div><p>说出 print、变量、input 的作用。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>点右下角 Comment，写下今天最清楚的一点，或一个还没解决的问题。</div>
-    ${profQuote({
-      quoteZh: "第一段代码不需要很长；它只需要证明一件事：你可以让计算机听懂你的指令。",
-      quoteEn: "Your first program does not need to be long; it only needs to prove one thing: you can make the computer understand your instructions.",
-      explainZh: "今天的重点不是背语法，而是建立信心：能运行、能修改、能解释，就是进入 Python 的第一步。",
-      explainEn: "The point today is not memorizing syntax. It is building confidence: run it, change it, and explain it."
-    })}
     ${notes("用留言收集课堂反馈。如果是 GitHub Pages 静态部署，评论功能会降级；本地 server 或后端部署时可持久保存。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1702,12 +1666,6 @@ while count &gt; 0:
       <div class="skillcard"><div class="cn">我能控制</div><p>说出 break 和 continue 的区别。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>点右下角 Comment，写一个今天最容易混淆的边界情况。</div>
-    ${profQuote({
-      quoteZh: "程序的分支像一次选择：先问清楚条件，再让代码沿着唯一的路径走下去。",
-      quoteEn: "A branch in a program is a choice: ask the condition clearly, then let the code follow one path.",
-      explainZh: "判断题、循环题最容易错在边界。每写一个条件，都要测试刚好等于阈值的情况。",
-      explainEn: "Most control-flow bugs live at the boundary. Whenever you write a condition, test the exact cutoff."
-    })}
     ${notes("收集学生对 range 边界、elif 顺序、while 终止条件的困惑。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -1982,12 +1940,6 @@ if score &gt;= 50:
       <div class="skillcard"><div class="cn">我能返回</div><p>把 return value 存入变量。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>点右下角 Comment，写一句“return 和 print 的区别”。</div>
-    ${profQuote({
-      quoteZh: "函数的价值不只是少写几行代码，而是给一个想法取名字，让它可以被反复使用。",
-      quoteEn: "The value of a function is not just fewer lines of code; it gives an idea a name so we can reuse it.",
-      explainZh: "当你能解释参数是什么、return 交回什么，你就不只是在运行代码，而是在设计代码。",
-      explainEn: "When you can explain the parameters and the return value, you are not just running code; you are designing it."
-    })}
     ${notes("用留言快速检查本课最关键误区。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -2147,12 +2099,6 @@ for i in range(len(students)):
       <div class="skillcard"><div class="cn">我能嵌套</div><p>用 2D list 表示表格。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>写一句：什么时候用 for-each，什么时候用 index loop？</div>
-    ${profQuote({
-      quoteZh: "list 让我们把很多值放在一起；index 让我们精确地指向其中一个位置。",
-      quoteEn: "A list lets us keep many values together; an index lets us point to one exact position.",
-      explainZh: "只读取时可以 for-each；需要改原列表、需要位置、需要二维表格时，index loop 更清楚。",
-      explainEn: "Use for-each when you only read values. Use an index loop when position or updating the original list matters."
-    })}
     ${notes("收集学生对 for-each 和 index loop 的理解。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -2308,12 +2254,6 @@ print("Raw tuple:", result)`;
       <div class="skillcard"><div class="cn">我能返回</div><p>用 tuple 返回多个结果。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>写一个你认为适合用 tuple 的数据例子。</div>
-    ${profQuote({
-      quoteZh: "tuple 像一张稳定的小卡片：顺序重要，内容不该被随手改掉。",
-      quoteEn: "A tuple is like a small stable card: the order matters, and the contents should not be casually changed.",
-      explainZh: "当数据代表坐标、记录或函数多个返回值时，不可变反而是一种保护。",
-      explainEn: "For coordinates, records, or multiple return values, immutability is not a limitation; it is protection."
-    })}
     ${notes("检查学生能否把 tuple 用到真实场景。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -2497,12 +2437,6 @@ print(word_frequency(sample))`;
       <div class="skillcard"><div class="cn">我能统计</div><p>用 dictionary 做词频计数。</p></div>
     </div>
     <div class="callout"><b>留言任务：</b>写一个现实中适合用 dictionary 表示的数据。</div>
-    ${profQuote({
-      quoteZh: "dictionary 的核心问题是：我已经知道 key，怎样最快找到它对应的 value？",
-      quoteEn: "The central question of a dictionary is: if I know the key, how quickly can I find its value?",
-      explainZh: "从学生到分数、商品到库存、单词到次数，key-value 是把现实问题变成数据结构的桥。",
-      explainEn: "From students to scores, items to inventory, and words to counts, key-value pairs turn real problems into data structures."
-    })}
     ${notes("收集学生是否理解 dictionary 的场景：名字到分数、商品到库存、单词到次数。")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
@@ -3685,7 +3619,6 @@ function buildSyllabusLesson(spec, lang) {
 
   S.push(sec("exit-ticket", `<div class="kicker">EXIT TICKET</div><h2>${esc(spec.line)}</h2>
     <div class="grid2" style="margin-top:.7em"><div class="box"><h3>${zh ? "我现在能做什么？" : "What can I do now?"}</h3><p>${zh ? "用一句话说明新增能力。" : "State the new capability in one sentence."}</p></div><div class="box"><h3>${zh ? "项目下一步" : "Project next step"}</h3><p>${esc(spec.kaggleAction || spec.projectAction)}</p></div></div>
-    ${profQuote({ quoteZh: spec.line, quoteEn: spec.line, explainZh: "把今天的成果保存进Research Log，并写下一步。", explainEn: "Save today's result in the Research Log and name the next step." })}
     ${note("收集一个清楚点和一个仍需帮助的问题。", "Collect one clear point and one remaining question.")}`,
     "center", 'data-background-gradient="linear-gradient(135deg,#EEF4FA,#FFFFFF)"'));
 
