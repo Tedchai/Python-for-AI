@@ -117,7 +117,7 @@ npm run serve
 - 第 1、2 课的 Guided Lab 和 Project Lab 均以 Kaggle Notebook 为唯一运行环境；
 - 第 3–15 课各生成 17 个主要页面并保留 60 分钟节奏；
 - 页面包含 Prediction Check、科研项目连接、科研诚信、作业和 Exit Ticket；
-- 课程导航、语言切换和返回主页功能仍然存在；逐页朗读暂未启用。
+- 英文第 1 课的 36 页全部使用固定神经音色教授讲解：每页独立 MP3、Listen 播放和 CC 同步字幕。源音频保存在 `narration/python-ai-en/lesson-01/audio/`，每次构建会自动复制到课件目录。
 
 推送到 `main` 后，GitHub Actions 会构建并发布 GitHub Pages。
 

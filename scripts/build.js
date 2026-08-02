@@ -29,6 +29,14 @@ const COPY = (fromRel, toRel) => {
   fs.copyFileSync(from, to);
   console.log("copied", fromRel, "→", toRel);
 };
+const COPY_TREE_IF_PRESENT = (fromRel, toRel) => {
+  const from = path.join(ROOT, fromRel);
+  if (!fs.existsSync(from)) return;
+  const to = path.join(ROOT, toRel);
+  fs.mkdirSync(to, { recursive: true });
+  fs.cpSync(from, to, { recursive: true, force: true });
+  console.log("copied", fromRel, "→", toRel);
+};
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // ---------- palette ----------
@@ -3690,4 +3698,5 @@ CATALOG.courses.forEach((co) => {
     deckCount++;
   });
 });
+COPY_TREE_IF_PRESENT("narration/python-ai-en", "python-ai-en");
 console.log("\nDONE — " + deckCount + " deck(s) built.");
