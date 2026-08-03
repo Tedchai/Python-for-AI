@@ -1,0 +1,1288 @@
+{
+  "title": {
+    "hash": "35e129d1f1ebd63f",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Welcome, everyone, to our very first class on Python for AI research! Today we're going to get comfortable with the Kaggle Notebook, which is where we'll write, run, and save our code throughout this course. We'll learn how to work with variables, recognize four basic data types, and use something called f-strings to print clean, readable output. And by the end, you'll even start your very first research log. Ready to dive in?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 6.184,
+        "text": "Welcome, everyone, to our very first class on Python for AI research!"
+      },
+      {
+        "start": 6.184,
+        "end": 13.932,
+        "text": "Today we're going to get comfortable with the Kaggle Notebook, which is where we'll write, run, and save our code throughout this course."
+      },
+      {
+        "start": 13.932,
+        "end": 22.565,
+        "text": "We'll learn how to work with variables, recognize four basic data types, and use something called f-strings to print clean, readable output."
+      },
+      {
+        "start": 22.565,
+        "end": 26.809,
+        "text": "And by the end, you'll even start your very first research log."
+      },
+      {
+        "start": 26.809,
+        "end": 27.994,
+        "text": "Ready to dive in?"
+      }
+    ],
+    "bytes": 168336,
+    "model": "claude-opus-4-8"
+  },
+  "outputs": {
+    "hash": "cb13b1bd891805dc",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Here's what we're aiming for by the end of today: you'll build and submit a research-log notebook that includes type checks and nicely formatted output. To get there, we'll move through three steps. First, you'll understand the core ideas well enough to explain them in your own words. Then you'll practice by running and tweaking the example together. And finally, you'll save your work in the project notebook and submit it. Sound good?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 8.867,
+        "text": "Here's what we're aiming for by the end of today: you'll build and submit a research-log notebook that includes type checks and nicely formatted output."
+      },
+      {
+        "start": 8.867,
+        "end": 12.291,
+        "text": "To get there, we'll move through three steps."
+      },
+      {
+        "start": 12.291,
+        "end": 17.578,
+        "text": "First, you'll understand the core ideas well enough to explain them in your own words."
+      },
+      {
+        "start": 17.578,
+        "end": 21.419,
+        "text": "Then you'll practice by running and tweaking the example together."
+      },
+      {
+        "start": 21.419,
+        "end": 26.08,
+        "text": "And finally, you'll save your work in the project notebook and submit it."
+      },
+      {
+        "start": 26.08,
+        "end": 27.018,
+        "text": "Sound good?"
+      }
+    ],
+    "bytes": 162576,
+    "model": "claude-opus-4-8"
+  },
+  "lesson-agenda": {
+    "hash": "eafef23a32734eed",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, let's map out where we're heading today. We've got three big goals to tackle together. First, we'll build a solid understanding of variables, data types, and how to output results. Then you'll put that into practice by starting your Research Log and saving your very first runnable notebook. And finally, we'll preserve what we learned by recording the input, process, output, and any limitations we ran into. Sound good? Let's get started.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 2.799,
+        "text": "Alright, let's map out where we're heading today."
+      },
+      {
+        "start": 2.799,
+        "end": 5.885,
+        "text": "We've got three big goals to tackle together."
+      },
+      {
+        "start": 5.885,
+        "end": 12.031,
+        "text": "First, we'll build a solid understanding of variables, data types, and how to output results."
+      },
+      {
+        "start": 12.031,
+        "end": 18.489,
+        "text": "Then you'll put that into practice by starting your Research Log and saving your very first runnable notebook."
+      },
+      {
+        "start": 18.489,
+        "end": 26.679,
+        "text": "And finally, we'll preserve what we learned by recording the input, process, output, and any limitations we ran into."
+      },
+      {
+        "start": 26.679,
+        "end": 27.578,
+        "text": "Sound good?"
+      },
+      {
+        "start": 27.578,
+        "end": 28.697,
+        "text": "Let's get started."
+      }
+    ],
+    "bytes": 172656,
+    "model": "claude-opus-4-8"
+  },
+  "one-twenty-minute-pacing": {
+    "hash": "84f2b49fb7238b7c",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's take a quick look at how our two hours will flow today. We'll open with a warm-up and a clear goal, then spend some time on three core ideas before walking through code together and tracing what it actually does. After a couple of guided practice rounds and a short break, you'll get about twenty minutes to work independently while I come around for check-ins and feedback. Finally, we'll close by saving your evidence and submitting. Sound good?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.333,
+        "text": "Let's take a quick look at how our two hours will flow today."
+      },
+      {
+        "start": 3.333,
+        "end": 12.304,
+        "text": "We'll open with a warm-up and a clear goal, then spend some time on three core ideas before walking through code together and tracing what it actually does."
+      },
+      {
+        "start": 12.304,
+        "end": 21.145,
+        "text": "After a couple of guided practice rounds and a short break, you'll get about twenty minutes to work independently while I come around for check-ins and feedback."
+      },
+      {
+        "start": 21.145,
+        "end": 25.208,
+        "text": "Finally, we'll close by saving your evidence and submitting."
+      },
+      {
+        "start": 25.208,
+        "end": 26.132,
+        "text": "Sound good?"
+      }
+    ],
+    "bytes": 157248,
+    "model": "claude-opus-4-8"
+  },
+  "prerequisite-recap": {
+    "hash": "d2bb150f76ed8127",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Welcome, everyone! Today is our very first meeting, and here's the good news: you don't need any background in Python or Kaggle to succeed. All you need is a browser, and together we'll run and modify real code from scratch. By the end, you'll walk away with something concrete—your own research-log notebook, complete with type checks and nicely formatted output. I'll show you the workflow first, then you'll try it yourself, saving your own work. Ready to build something real?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 1.51,
+        "text": "Welcome, everyone!"
+      },
+      {
+        "start": 1.51,
+        "end": 9.453,
+        "text": "Today is our very first meeting, and here's the good news: you don't need any background in Python or Kaggle to succeed."
+      },
+      {
+        "start": 9.453,
+        "end": 15.169,
+        "text": "All you need is a browser, and together we'll run and modify real code from scratch."
+      },
+      {
+        "start": 15.169,
+        "end": 24.309,
+        "text": "By the end, you'll walk away with something concrete—your own research-log notebook, complete with type checks and nicely formatted output."
+      }
+    ],
+    "bytes": 146304,
+    "model": "claude-opus-4-8"
+  },
+  "course-position": {
+    "hash": "63a4b5f768edbd1e",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's take a moment to see how today's work fits into your bigger research project. In this first stage, you'll start your Research Log and save a notebook that actually runs—that's your foundation. Then, when it comes time to draft your paper, you'll record each result with four things: the input, the process, the output, and its limitation. Now here's something important to remember: you get to choose your own topic, but I'll be guiding the dataset, the task type, and how deep we go technically. Sound good?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.934,
+        "text": "Let's take a moment to see how today's work fits into your bigger research project."
+      },
+      {
+        "start": 4.934,
+        "end": 11.888,
+        "text": "In this first stage, you'll start your Research Log and save a notebook that actually runs—that's your foundation."
+      },
+      {
+        "start": 11.888,
+        "end": 22.109,
+        "text": "Then, when it comes time to draft your paper, you'll record each result with four things: the input, the process, the output, and its limitation."
+      },
+      {
+        "start": 22.109,
+        "end": 30.546,
+        "text": "Now here's something important to remember: you get to choose your own topic, but I'll be guiding the dataset, the task type, and how deep we go technically."
+      },
+      {
+        "start": 30.546,
+        "end": 31.445,
+        "text": "Sound good?"
+      }
+    ],
+    "bytes": 189072,
+    "model": "claude-opus-4-8"
+  },
+  "dataset-context": {
+    "hash": "1cb9e2075bbc6142",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, let's actually get into Kaggle together and set up our very first notebook. It really comes down to four simple moves: you open the code page, sign in, then make your own copy so you can edit freely, and finally run everything and save a version. Notice how you can't break the original when you copy it first—that's your safety net. What I love about Kaggle is that your code, data, results, and saved versions all live in one place, so nothing gets lost as our project grows.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.96,
+        "text": "Alright, let's actually get into Kaggle together and set up our very first notebook."
+      },
+      {
+        "start": 4.96,
+        "end": 15.677,
+        "text": "It really comes down to four simple moves: you open the code page, sign in, then make your own copy so you can edit freely, and finally run everything and save a version."
+      },
+      {
+        "start": 15.677,
+        "end": 20.989,
+        "text": "Notice how you can't break the original when you copy it first—that's your safety net."
+      },
+      {
+        "start": 20.989,
+        "end": 30.325,
+        "text": "What I love about Kaggle is that your code, data, results, and saved versions all live in one place, so nothing gets lost as our project grows."
+      }
+    ],
+    "bytes": 182304,
+    "model": "claude-opus-4-8"
+  },
+  "warmup": {
+    "hash": "4e1a70c98264701b",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's start with a quick warm-up before we dive in. Take a look at the code and, before running anything, try to predict what the output will be. Is there a variable you're not quite sure about? Pick one value, change it, and see what happens. This little habit of predicting first will make you much sharper at reading code, so let's give it a go.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 2.447,
+        "text": "Let's start with a quick warm-up before we dive in."
+      },
+      {
+        "start": 2.447,
+        "end": 8.125,
+        "text": "Take a look at the code and, before running anything, try to predict what the output will be."
+      },
+      {
+        "start": 8.125,
+        "end": 10.677,
+        "text": "Is there a variable you're not quite sure about?"
+      },
+      {
+        "start": 10.677,
+        "end": 14.01,
+        "text": "Pick one value, change it, and see what happens."
+      },
+      {
+        "start": 14.01,
+        "end": 19.843,
+        "text": "This little habit of predicting first will make you much sharper at reading code, so let's give it a go."
+      }
+    ],
+    "bytes": 119520,
+    "model": "claude-opus-4-8"
+  },
+  "vocabulary": {
+    "hash": "7adacba98421e621",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's get familiar with a few key words we'll be using today. First, a notebook is simply a document that holds your code, its output, and your explanations all together in one place. Then there's a handy little tool that lets you check what kind of data a value actually is. And finally, a comment is just a note you add to explain why your code exists—so future you, or a friend, understands what you were thinking. Ready to put these to work?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.515,
+        "text": "Let's get familiar with a few key words we'll be using today."
+      },
+      {
+        "start": 3.515,
+        "end": 11.835,
+        "text": "First, a notebook is simply a document that holds your code, its output, and your explanations all together in one place."
+      },
+      {
+        "start": 11.835,
+        "end": 17.408,
+        "text": "Then there's a handy little tool that lets you check what kind of data a value actually is."
+      },
+      {
+        "start": 17.408,
+        "end": 27.161,
+        "text": "And finally, a comment is just a note you add to explain why your code exists—so future you, or a friend, understands what you were thinking."
+      },
+      {
+        "start": 27.161,
+        "end": 28.671,
+        "text": "Ready to put these to work?"
+      }
+    ],
+    "bytes": 172368,
+    "model": "claude-opus-4-8"
+  },
+  "mental-model": {
+    "hash": "4de23787fc165be2",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Before we jump into any code, let's build a mental picture of what's really going on. There are three ideas I want you to hold onto. First, a variable is just a readable name for a single piece of information—think of it as a labeled box. Second, data types tell us what kind of information we're storing, whether it's a whole number, a decimal, some text, or a true-or-false value. And finally, output is how we make our results visible so we can actually check them. Make sense so far?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.661,
+        "text": "Before we jump into any code, let's build a mental picture of what's really going on."
+      },
+      {
+        "start": 4.661,
+        "end": 7.356,
+        "text": "There are three ideas I want you to hold onto."
+      },
+      {
+        "start": 7.356,
+        "end": 14.518,
+        "text": "First, a variable is just a readable name for a single piece of information—think of it as a labeled box."
+      },
+      {
+        "start": 14.518,
+        "end": 23.658,
+        "text": "Second, data types tell us what kind of information we're storing, whether it's a whole number, a decimal, some text, or a true-or-false value."
+      },
+      {
+        "start": 23.658,
+        "end": 29.557,
+        "text": "And finally, output is how we make our results visible so we can actually check them."
+      },
+      {
+        "start": 29.557,
+        "end": 30.976,
+        "text": "Make sense so far?"
+      }
+    ],
+    "bytes": 186336,
+    "model": "claude-opus-4-8"
+  },
+  "concept-1": {
+    "hash": "0ae6edd534dce0ab",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's start with the idea of a variable. Think of it as a friendly, readable name we give to one piece of information in our research project. So instead of juggling raw numbers, we label them clearly so we know exactly what each one means. Here's a quick question to keep in mind: what problem does this actually solve in your own project? Try picking one field from your work and see how naming it would help.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 2.708,
+        "text": "Let's start with the idea of a variable."
+      },
+      {
+        "start": 2.708,
+        "end": 9.427,
+        "text": "Think of it as a friendly, readable name we give to one piece of information in our research project."
+      },
+      {
+        "start": 9.427,
+        "end": 16.419,
+        "text": "So instead of juggling raw numbers, we label them clearly so we know exactly what each one means."
+      },
+      {
+        "start": 16.419,
+        "end": 21.822,
+        "text": "Here's a quick question to keep in mind: what problem does this actually solve in your own project?"
+      },
+      {
+        "start": 21.822,
+        "end": 26.627,
+        "text": "Try picking one field from your work and see how naming it would help."
+      }
+    ],
+    "bytes": 160128,
+    "model": "claude-opus-4-8"
+  },
+  "concept-2": {
+    "hash": "ce49eb32892d1180",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "So let's talk about data types, because Python needs to know what kind of information it's working with. We've got integers for whole numbers, floats for decimals, strings for text, and booleans for true or false values. Think of it like sorting your information into the right containers. Here's a quick question for you: in your own project, what problem does choosing the right data type actually solve? Try answering that using one real field from what you're building.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 6.08,
+        "text": "So let's talk about data types, because Python needs to know what kind of information it's working with."
+      },
+      {
+        "start": 6.08,
+        "end": 14.179,
+        "text": "We've got integers for whole numbers, floats for decimals, strings for text, and booleans for true or false values."
+      },
+      {
+        "start": 14.179,
+        "end": 18.411,
+        "text": "Think of it like sorting your information into the right containers."
+      },
+      {
+        "start": 18.411,
+        "end": 24.921,
+        "text": "Here's a quick question for you: in your own project, what problem does choosing the right data type actually solve?"
+      },
+      {
+        "start": 24.921,
+        "end": 28.997,
+        "text": "Try answering that using one real field from what you're building."
+      }
+    ],
+    "bytes": 174384,
+    "model": "claude-opus-4-8"
+  },
+  "concept-3": {
+    "hash": "b0a897ea68d7af70",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "So here's where things get satisfying—when we use print and f-strings, our results actually show up on the screen where we can see and check them. Without output, your program might be doing all sorts of clever work behind the scenes, but you'd never know if it's right. F-strings are especially handy because they let you slip your variables neatly into a sentence. Think about your own project for a second: what problem does showing your output actually solve for you?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 8.463,
+        "text": "So here's where things get satisfying—when we use print and f-strings, our results actually show up on the screen where we can see and check them."
+      },
+      {
+        "start": 8.463,
+        "end": 15.807,
+        "text": "Without output, your program might be doing all sorts of clever work behind the scenes, but you'd never know if it's right."
+      },
+      {
+        "start": 15.807,
+        "end": 22.005,
+        "text": "F-strings are especially handy because they let you slip your variables neatly into a sentence."
+      }
+    ],
+    "bytes": 125136,
+    "model": "claude-opus-4-8"
+  },
+  "syntax-pattern": {
+    "hash": "197255e979298df1",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's look closely at how Python handles different kinds of data here. We've got a whole number for the sample count, a decimal for temperature, and a true-or-false value telling us whether something is valid. Notice how each variable naturally holds a different type of information. Before we ever hit run, try to trace the flow yourself—where does the input come from, what gets processed, and what actually shows up as output? Can you spot those three parts?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.244,
+        "text": "Let's look closely at how Python handles different kinds of data here."
+      },
+      {
+        "start": 4.244,
+        "end": 12.2,
+        "text": "We've got a whole number for the sample count, a decimal for temperature, and a true-or-false value telling us whether something is valid."
+      },
+      {
+        "start": 12.2,
+        "end": 16.809,
+        "text": "Notice how each variable naturally holds a different type of information."
+      }
+    ],
+    "bytes": 101088,
+    "model": "claude-opus-4-8"
+  },
+  "teacher-demo": {
+    "hash": "99efbfdb33169941",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, let me walk you through the whole thing before we break it down. First, I'm going to run the complete program from top to bottom so you can see what it actually produces. Notice how we've stored a few pieces of information—the experiment name, who's running it, how many samples we have, and whether it's finished. Then, in that last line, we pull all of those together into a single, neat summary. Once you've seen it work as a whole, we'll go back and unpack each piece.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.697,
+        "text": "Alright, let me walk you through the whole thing before we break it down."
+      },
+      {
+        "start": 3.697,
+        "end": 9.583,
+        "text": "First, I'm going to run the complete program from top to bottom so you can see what it actually produces."
+      },
+      {
+        "start": 9.583,
+        "end": 18.489,
+        "text": "Notice how we've stored a few pieces of information—the experiment name, who's running it, how many samples we have, and whether it's finished."
+      },
+      {
+        "start": 18.489,
+        "end": 23.88,
+        "text": "Then, in that last line, we pull all of those together into a single, neat summary."
+      },
+      {
+        "start": 23.88,
+        "end": 28.424,
+        "text": "Once you've seen it work as a whole, we'll go back and unpack each piece."
+      }
+    ],
+    "bytes": 170928,
+    "model": "claude-opus-4-8"
+  },
+  "code-trace": {
+    "hash": "72fe0fb19e586fed",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's try something different when we read code. Instead of memorizing what each line does, I want you to trace it like a story with three moments. First, ask yourself what variables already exist before this line runs. Then, during the line, notice what's actually being created, filtered, or calculated. And afterward, check whether the output matches what you predicted—did you guess right, or did something surprise you?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 2.395,
+        "text": "Let's try something different when we read code."
+      },
+      {
+        "start": 2.395,
+        "end": 8.75,
+        "text": "Instead of memorizing what each line does, I want you to trace it like a story with three moments."
+      },
+      {
+        "start": 8.75,
+        "end": 14.322,
+        "text": "First, ask yourself what variables already exist before this line runs."
+      },
+      {
+        "start": 14.322,
+        "end": 20.351,
+        "text": "Then, during the line, notice what's actually being created, filtered, or calculated."
+      },
+      {
+        "start": 20.351,
+        "end": 27.317,
+        "text": "And afterward, check whether the output matches what you predicted—did you guess right, or did something surprise you?"
+      }
+    ],
+    "bytes": 164304,
+    "model": "claude-opus-4-8"
+  },
+  "prediction-check": {
+    "hash": "c737f21f8676cb1c",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, quick gut check before we move on. If I asked you to store a value like thirty-six point five, which type would you reach for? Think about that decimal point for a second—what does it tell you? Whenever you've got measurements with fractions, float is your go-to choice, because it handles those decimal values cleanly.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 2.604,
+        "text": "Alright, quick gut check before we move on."
+      },
+      {
+        "start": 2.604,
+        "end": 7.578,
+        "text": "If I asked you to store a value like thirty-six point five, which type would you reach for?"
+      },
+      {
+        "start": 7.578,
+        "end": 11.393,
+        "text": "Think about that decimal point for a second—what does it tell you?"
+      },
+      {
+        "start": 11.393,
+        "end": 19.075,
+        "text": "Whenever you've got measurements with fractions, float is your go-to choice, because it handles those decimal values cleanly."
+      }
+    ],
+    "bytes": 114912,
+    "model": "claude-opus-4-8"
+  },
+  "guided-practice-1": {
+    "hash": "0e03f3767485ed59",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's try our first round together, and I'll walk you through it step by step. Before you touch anything, write down what you think the output should look like after your change—that's your prediction. Then go ahead and change just one value, maybe a variable or a field name, and rerun it. Now compare: did the real output match what you expected? If it didn't, that's actually where the interesting learning happens.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.205,
+        "text": "Let's try our first round together, and I'll walk you through it step by step."
+      },
+      {
+        "start": 4.205,
+        "end": 10.95,
+        "text": "Before you touch anything, write down what you think the output should look like after your change—that's your prediction."
+      },
+      {
+        "start": 10.95,
+        "end": 17.226,
+        "text": "Then go ahead and change just one value, maybe a variable or a field name, and rerun it."
+      },
+      {
+        "start": 17.226,
+        "end": 20.794,
+        "text": "Now compare: did the real output match what you expected?"
+      },
+      {
+        "start": 20.794,
+        "end": 24.687,
+        "text": "If it didn't, that's actually where the interesting learning happens."
+      }
+    ],
+    "bytes": 148464,
+    "model": "claude-opus-4-8"
+  },
+  "guided-practice-2": {
+    "hash": "c6e552f50d182835",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, for this second round you'll be working more on your own, but I'll be circling around to check in with each of you. What I want you to do is take a field from your own project and swap it into the code, keeping the overall structure exactly the same. Once it runs, talk me through what actually changed. How did the output shift, and why does that matter for the question you're trying to answer? Take your time, and call me over if you get stuck.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 5.677,
+        "text": "Alright, for this second round you'll be working more on your own, but I'll be circling around to check in with each of you."
+      },
+      {
+        "start": 5.677,
+        "end": 13.554,
+        "text": "What I want you to do is take a field from your own project and swap it into the code, keeping the overall structure exactly the same."
+      },
+      {
+        "start": 13.554,
+        "end": 17.109,
+        "text": "Once it runs, talk me through what actually changed."
+      },
+      {
+        "start": 17.109,
+        "end": 21.536,
+        "text": "How did the output shift, and why does that matter for the question you're trying to answer?"
+      },
+      {
+        "start": 21.536,
+        "end": 24.427,
+        "text": "Take your time, and call me over if you get stuck."
+      }
+    ],
+    "bytes": 147024,
+    "model": "claude-opus-4-8"
+  },
+  "guided-lab": {
+    "hash": "75b31f90812b7751",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Today we're going to build a little research log, and we'll do it right inside our Kaggle notebook. Start by adding a code cell, then paste in the example and try to predict what one line will print before you run it. Notice how we're storing different kinds of information here—a word, a whole number, a decimal, and a true-or-false value. Once it runs, change just one factor, maybe the number of days or the light hours, then rerun and save a version. Can you guess how the type changes if you swap a whole number for a decimal?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 5.716,
+        "text": "Today we're going to build a little research log, and we'll do it right inside our Kaggle notebook."
+      },
+      {
+        "start": 5.716,
+        "end": 12.955,
+        "text": "Start by adding a code cell, then paste in the example and try to predict what one line will print before you run it."
+      },
+      {
+        "start": 12.955,
+        "end": 21.497,
+        "text": "Notice how we're storing different kinds of information here—a word, a whole number, a decimal, and a true-or-false value."
+      },
+      {
+        "start": 21.497,
+        "end": 29.635,
+        "text": "Once it runs, change just one factor, maybe the number of days or the light hours, then rerun and save a version."
+      },
+      {
+        "start": 29.635,
+        "end": 33.802,
+        "text": "Can you guess how the type changes if you swap a whole number for a decimal?"
+      }
+    ],
+    "bytes": 203184,
+    "model": "claude-opus-4-8"
+  },
+  "mistake-clinic": {
+    "hash": "cfcd62260e928ef9",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's talk about a few common mistakes I see, and how to fix them. The first one is copying code without really understanding it—so try changing one meaningful value and explain what happens to the output. Another trap is changing too much at once; instead, adjust a single factor, rerun, and watch the result. And finally, don't forget to record what you find. Jot down your observation, your evidence, and your next question. Which of these sounds most like you?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.023,
+        "text": "Let's talk about a few common mistakes I see, and how to fix them."
+      },
+      {
+        "start": 4.023,
+        "end": 13.059,
+        "text": "The first one is copying code without really understanding it—so try changing one meaningful value and explain what happens to the output."
+      },
+      {
+        "start": 13.059,
+        "end": 21.354,
+        "text": "Another trap is changing too much at once; instead, adjust a single factor, rerun, and watch the result."
+      },
+      {
+        "start": 21.354,
+        "end": 24.648,
+        "text": "And finally, don't forget to record what you find."
+      },
+      {
+        "start": 24.648,
+        "end": 28.906,
+        "text": "Jot down your observation, your evidence, and your next question."
+      },
+      {
+        "start": 28.906,
+        "end": 30.703,
+        "text": "Which of these sounds most like you?"
+      }
+    ],
+    "bytes": 184608,
+    "model": "claude-opus-4-8"
+  },
+  "debug-routine": {
+    "hash": "676b8342b8de2591",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "When your code breaks, don't panic—we'll follow the same routine every single time. Start by reading the very last line of the error message, because that's where Python tells you what actually went wrong. Then locate the exact line it points to, and try running just that smallest piece on its own to see what's happening. Once you've fixed it, rerun everything from top to bottom to make sure the whole thing works. Simple, right?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 5.338,
+        "text": "When your code breaks, don't panic—we'll follow the same routine every single time."
+      },
+      {
+        "start": 5.338,
+        "end": 11.809,
+        "text": "Start by reading the very last line of the error message, because that's where Python tells you what actually went wrong."
+      },
+      {
+        "start": 11.809,
+        "end": 18.736,
+        "text": "Then locate the exact line it points to, and try running just that smallest piece on its own to see what's happening."
+      },
+      {
+        "start": 18.736,
+        "end": 24.375,
+        "text": "Once you've fixed it, rerun everything from top to bottom to make sure the whole thing works."
+      },
+      {
+        "start": 24.375,
+        "end": 25.481,
+        "text": "Simple, right?"
+      }
+    ],
+    "bytes": 153216,
+    "model": "claude-opus-4-8"
+  },
+  "checkpoint": {
+    "hash": "54fc3d2ef6d4ba61",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, let's take a few minutes for you to work on your own here. First, run this lesson's code all the way through, from the very top to the bottom, and see what happens. Then I want you to point out three things: where the input comes in, what the process is doing, and what the output looks like. Finally, can you explain how it all connects back to our topic? If you get stuck, just grab that last error line and we'll sort it out together.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.463,
+        "text": "Alright, let's take a few minutes for you to work on your own here."
+      },
+      {
+        "start": 3.463,
+        "end": 10.625,
+        "text": "First, run this lesson's code all the way through, from the very top to the bottom, and see what happens."
+      },
+      {
+        "start": 10.625,
+        "end": 17.838,
+        "text": "Then I want you to point out three things: where the input comes in, what the process is doing, and what the output looks like."
+      },
+      {
+        "start": 17.838,
+        "end": 21.51,
+        "text": "Finally, can you explain how it all connects back to our topic?"
+      },
+      {
+        "start": 21.51,
+        "end": 26.054,
+        "text": "If you get stuck, just grab that last error line and we'll sort it out together."
+      }
+    ],
+    "bytes": 156672,
+    "model": "claude-opus-4-8"
+  },
+  "project-plan": {
+    "hash": "4a125cfe4a381188",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Before you touch any code today, I want you to jot down a quick four-line plan. Ask yourself which field you'll be working with, what output you're actually trying to produce, and where that output belongs in your notebook. Then note which section of your paper this piece will support. Here's the important boundary—finish only today's defined action, and please don't sneak in a brand-new model. Does everyone see how this keeps things focused?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.622,
+        "text": "Before you touch any code today, I want you to jot down a quick four-line plan."
+      },
+      {
+        "start": 4.622,
+        "end": 12.161,
+        "text": "Ask yourself which field you'll be working with, what output you're actually trying to produce, and where that output belongs in your notebook."
+      },
+      {
+        "start": 12.161,
+        "end": 15.924,
+        "text": "Then note which section of your paper this piece will support."
+      },
+      {
+        "start": 15.924,
+        "end": 23.359,
+        "text": "Here's the important boundary—finish only today's defined action, and please don't sneak in a brand-new model."
+      },
+      {
+        "start": 23.359,
+        "end": 26.484,
+        "text": "Does everyone see how this keeps things focused?"
+      }
+    ],
+    "bytes": 159264,
+    "model": "claude-opus-4-8"
+  },
+  "project-brief": {
+    "hash": "056bf9c44ba9ebfc",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Now let's connect what we've learned to a real project. Imagine you're keeping a research experiment log, something a real scientist would rely on. You'll start by taking in the basics: the experiment name, who the researcher is, the date, how many samples there are, and whether the data is valid. Then you'll store each piece using the right data type and double-check it before moving on. The goal? A clean, traceable log you can trust and trace back later.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.138,
+        "text": "Now let's connect what we've learned to a real project."
+      },
+      {
+        "start": 3.138,
+        "end": 8.697,
+        "text": "Imagine you're keeping a research experiment log, something a real scientist would rely on."
+      },
+      {
+        "start": 8.697,
+        "end": 18.854,
+        "text": "You'll start by taking in the basics: the experiment name, who the researcher is, the date, how many samples there are, and whether the data is valid."
+      },
+      {
+        "start": 18.854,
+        "end": 24.453,
+        "text": "Then you'll store each piece using the right data type and double-check it before moving on."
+      },
+      {
+        "start": 24.453,
+        "end": 25.312,
+        "text": "The goal?"
+      },
+      {
+        "start": 25.312,
+        "end": 29.492,
+        "text": "A clean, traceable log you can trust and trace back later."
+      }
+    ],
+    "bytes": 177408,
+    "model": "claude-opus-4-8"
+  },
+  "project-lab": {
+    "hash": "a1c051aa3444b633",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's take everything we've practiced and turn it into real project evidence in your Kaggle Notebook. Here we're building a research log that asks for the experiment name, the researcher, and a sample count—notice we wrap that count in a conversion so it becomes a proper number. Then we print it all back in a clean, formatted log. One important rule before you submit: only hand in results you actually ran yourself, can explain in your own words, and remembered to save as a version. So, did everyone save their notebook this time?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 6.25,
+        "text": "Let's take everything we've practiced and turn it into real project evidence in your Kaggle Notebook."
+      },
+      {
+        "start": 6.25,
+        "end": 17.46,
+        "text": "Here we're building a research log that asks for the experiment name, the researcher, and a sample count—notice we wrap that count in a conversion so it becomes a proper number."
+      },
+      {
+        "start": 17.46,
+        "end": 21.015,
+        "text": "Then we print it all back in a clean, formatted log."
+      },
+      {
+        "start": 21.015,
+        "end": 30.559,
+        "text": "One important rule before you submit: only hand in results you actually ran yourself, can explain in your own words, and remembered to save as a version."
+      },
+      {
+        "start": 30.559,
+        "end": 33.919,
+        "text": "So, did everyone save their notebook this time?"
+      }
+    ],
+    "bytes": 203904,
+    "model": "claude-opus-4-8"
+  },
+  "independent-work": {
+    "hash": "3bf968c4f296234c",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, this is your time to work independently for the next twenty minutes, and I want you to move through it in stages. Spend the first seven minutes copying the starter code and swapping in your own fields. Then take about eight minutes to run it, fix any bugs, and save your output. For the last five, write a short explanation in Markdown and double-check your evidence. I'll come around to each of you, so just wave me over if you get stuck.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 7.304,
+        "text": "Alright, this is your time to work independently for the next twenty minutes, and I want you to move through it in stages."
+      },
+      {
+        "start": 7.304,
+        "end": 12.421,
+        "text": "Spend the first seven minutes copying the starter code and swapping in your own fields."
+      },
+      {
+        "start": 12.421,
+        "end": 17.226,
+        "text": "Then take about eight minutes to run it, fix any bugs, and save your output."
+      },
+      {
+        "start": 17.226,
+        "end": 22.799,
+        "text": "For the last five, write a short explanation in Markdown and double-check your evidence."
+      },
+      {
+        "start": 22.799,
+        "end": 26.822,
+        "text": "I'll come around to each of you, so just wave me over if you get stuck."
+      }
+    ],
+    "bytes": 161280,
+    "model": "claude-opus-4-8"
+  },
+  "challenge-ladder": {
+    "hash": "1768de23d26b1329",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, let's talk about how we'll work through today's challenge. Everyone starts at the first level—just run your code and get it to produce the output we're after. Once that's working, move up: change one field and tell me why the result shifts. And if you're feeling confident, take on the third level by adding a small figure, a check, or a comparison. What's one thing you could compare in your own project?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.114,
+        "text": "Alright, let's talk about how we'll work through today's challenge."
+      },
+      {
+        "start": 4.114,
+        "end": 10.221,
+        "text": "Everyone starts at the first level—just run your code and get it to produce the output we're after."
+      },
+      {
+        "start": 10.221,
+        "end": 15.742,
+        "text": "Once that's working, move up: change one field and tell me why the result shifts."
+      },
+      {
+        "start": 15.742,
+        "end": 22.473,
+        "text": "And if you're feeling confident, take on the third level by adding a small figure, a check, or a comparison."
+      },
+      {
+        "start": 22.473,
+        "end": 24.843,
+        "text": "What's one thing you could compare in your own project?"
+      }
+    ],
+    "bytes": 149472,
+    "model": "claude-opus-4-8"
+  },
+  "concept-check": {
+    "hash": "67ef8c146524e11b",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Alright, let's do a quick check to see how we're doing. When you write something like type of a value, what do you think it actually does? Think about it for a second—does it delete the value, save a file, or maybe tell us something about the data itself? That's right, it checks the data type, and this is really useful when you're trying to spot data that doesn't match what you expected. Small tool, but it saves you a lot of headaches.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.111,
+        "text": "Alright, let's do a quick check to see how we're doing."
+      },
+      {
+        "start": 3.111,
+        "end": 7.447,
+        "text": "When you write something like type of a value, what do you think it actually does?"
+      },
+      {
+        "start": 7.447,
+        "end": 15.013,
+        "text": "Think about it for a second—does it delete the value, save a file, or maybe tell us something about the data itself?"
+      },
+      {
+        "start": 15.013,
+        "end": 21.497,
+        "text": "That's right, it checks the data type, and this is really useful when you're trying to spot data that doesn't match what you expected."
+      },
+      {
+        "start": 21.497,
+        "end": 24.453,
+        "text": "Small tool, but it saves you a lot of headaches."
+      }
+    ],
+    "bytes": 147168,
+    "model": "claude-opus-4-8"
+  },
+  "evidence-handoff": {
+    "hash": "27fe7931c8692686",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Today I want you to think about where all your code eventually ends up. It starts life in a notebook, where you build something that actually runs and save it as your first research log. Then it grows into a draft paper, where you record each result with its input, process, output, and honest limitations. Here's the key idea to hold onto: every method, number, and figure in your final paper should trace straight back to the notebook. If you can't point to where it came from, it doesn't belong there yet.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.541,
+        "text": "Today I want you to think about where all your code eventually ends up."
+      },
+      {
+        "start": 3.541,
+        "end": 10.572,
+        "text": "It starts life in a notebook, where you build something that actually runs and save it as your first research log."
+      },
+      {
+        "start": 10.572,
+        "end": 19.492,
+        "text": "Then it grows into a draft paper, where you record each result with its input, process, output, and honest limitations."
+      },
+      {
+        "start": 19.492,
+        "end": 28.111,
+        "text": "Here's the key idea to hold onto: every method, number, and figure in your final paper should trace straight back to the notebook."
+      },
+      {
+        "start": 28.111,
+        "end": 31.953,
+        "text": "If you can't point to where it came from, it doesn't belong there yet."
+      }
+    ],
+    "bytes": 192096,
+    "model": "claude-opus-4-8"
+  },
+  "notebook-hygiene": {
+    "hash": "158bc2be5e796fbc",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Before you hand in your notebook, let's talk about keeping it clean and professional. Make sure your code runs smoothly from top to bottom, use readable variable names, and clear out any random drafts that don't belong. Keep only the output that matters, and use your text cells to explain what goes in, what comes out, and why your project is relevant. One thing students often forget? Mentioning a limitation of their work. So save yourself some time at the end for this cleanup, otherwise your notebook might not run for whoever reviews it.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.57,
+        "text": "Before you hand in your notebook, let's talk about keeping it clean and professional."
+      },
+      {
+        "start": 4.57,
+        "end": 12.903,
+        "text": "Make sure your code runs smoothly from top to bottom, use readable variable names, and clear out any random drafts that don't belong."
+      },
+      {
+        "start": 12.903,
+        "end": 20.976,
+        "text": "Keep only the output that matters, and use your text cells to explain what goes in, what comes out, and why your project is relevant."
+      },
+      {
+        "start": 20.976,
+        "end": 23.046,
+        "text": "One thing students often forget?"
+      },
+      {
+        "start": 23.046,
+        "end": 25.39,
+        "text": "Mentioning a limitation of their work."
+      },
+      {
+        "start": 25.39,
+        "end": 32.213,
+        "text": "So save yourself some time at the end for this cleanup, otherwise your notebook might not run for whoever reviews it."
+      }
+    ],
+    "bytes": 193680,
+    "model": "claude-opus-4-8"
+  },
+  "research-integrity": {
+    "hash": "3ec356e60cbe7b50",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's talk about how we use AI honestly in our work. The rule here is simple: you can use AI as a helper, but you can never submit code you don't understand yourself. It's perfectly fine to ask it to explain an error, give you similar practice problems, or suggest ways to make your writing clearer. What's off-limits is having it write your whole project, faking your results, or hiding where your data came from. So during our reviews, I'll ask you to explain your code out loud—does that sound fair to everyone?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.049,
+        "text": "Let's talk about how we use AI honestly in our work."
+      },
+      {
+        "start": 4.049,
+        "end": 11.600999999999999,
+        "text": "The rule here is simple: you can use AI as a helper, but you can never submit code you don't understand yourself."
+      },
+      {
+        "start": 11.600999999999999,
+        "end": 19.557,
+        "text": "It's perfectly fine to ask it to explain an error, give you similar practice problems, or suggest ways to make your writing clearer."
+      },
+      {
+        "start": 19.557,
+        "end": 26.041,
+        "text": "What's off-limits is having it write your whole project, faking your results, or hiding where your data came from."
+      },
+      {
+        "start": 26.041,
+        "end": 31.848,
+        "text": "So during our reviews, I'll ask you to explain your code out loud—does that sound fair to everyone?"
+      }
+    ],
+    "bytes": 191520,
+    "model": "claude-opus-4-8"
+  },
+  "rubric": {
+    "hash": "22acfefa5037f8e0",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Before we finish today, let's talk about what success actually looks like here. I want to see four things from you: run at least one Python block yourself, then change a single variable and watch how the output shifts. After that, point out one input and one output so you understand what's flowing through the code. Finally, save your own copy of the notebook. Notice that none of this is about a grade—it's about showing me you actually did the work.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.908,
+        "text": "Before we finish today, let's talk about what success actually looks like here."
+      },
+      {
+        "start": 4.908,
+        "end": 13.475999999999999,
+        "text": "I want to see four things from you: run at least one Python block yourself, then change a single variable and watch how the output shifts."
+      },
+      {
+        "start": 13.475999999999999,
+        "end": 19.609,
+        "text": "After that, point out one input and one output so you understand what's flowing through the code."
+      },
+      {
+        "start": 19.609,
+        "end": 22.526,
+        "text": "Finally, save your own copy of the notebook."
+      }
+    ],
+    "bytes": 118080,
+    "model": "claude-opus-4-8"
+  },
+  "homework": {
+    "hash": "6cc2105b06110065",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Before we wrap up today, I want you to leave with something that actually works. Finish your Level 1 task, then add one small extension that feels personal to you. Make sure you run every cell from top to bottom so there are no surprises, and write a short interpretation, just three to five sentences explaining what you found. Then double-check that your Kaggle link is accessible before you submit. Can you make sure your notebook runs cleanly from start to finish?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.205,
+        "text": "Before we wrap up today, I want you to leave with something that actually works."
+      },
+      {
+        "start": 4.205,
+        "end": 10.494,
+        "text": "Finish your Level 1 task, then add one small extension that feels personal to you."
+      },
+      {
+        "start": 10.494,
+        "end": 20.859,
+        "text": "Make sure you run every cell from top to bottom so there are no surprises, and write a short interpretation, just three to five sentences explaining what you found."
+      },
+      {
+        "start": 20.859,
+        "end": 25.585,
+        "text": "Then double-check that your Kaggle link is accessible before you submit."
+      },
+      {
+        "start": 25.585,
+        "end": 29.921,
+        "text": "Can you make sure your notebook runs cleanly from start to finish?"
+      }
+    ],
+    "bytes": 179856,
+    "model": "claude-opus-4-8"
+  },
+  "buffer-catchup": {
+    "hash": "0c231db5b21c937c",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Let's use these last few minutes wisely, and where you land depends on where you are right now. If you're still stuck on something, just send me that final error line and make sure your current version is saved. If you've only just finished, be ready to explain your code in about thirty seconds. And for those of you who wrapped up early, push on to level three and try naming one limitation of what you built. Which group are you in?",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 4.882,
+        "text": "Let's use these last few minutes wisely, and where you land depends on where you are right now."
+      },
+      {
+        "start": 4.882,
+        "end": 10.364,
+        "text": "If you're still stuck on something, just send me that final error line and make sure your current version is saved."
+      },
+      {
+        "start": 10.364,
+        "end": 15.442,
+        "text": "If you've only just finished, be ready to explain your code in about thirty seconds."
+      },
+      {
+        "start": 15.442,
+        "end": 22.018,
+        "text": "And for those of you who wrapped up early, push on to level three and try naming one limitation of what you built."
+      },
+      {
+        "start": 22.018,
+        "end": 23.268,
+        "text": "Which group are you in?"
+      }
+    ],
+    "bytes": 139968,
+    "model": "claude-opus-4-8"
+  },
+  "exit-ticket": {
+    "hash": "888faa4e945724d9",
+    "language": "en",
+    "voice": "en-US-AndrewMultilingualNeural",
+    "rate": "-4%",
+    "script": "Before we wrap up, let's pull together what today gave us. Remember, variables are how we store our evidence, and clear output is what makes that evidence actually understandable to someone else. So here's my question for you: can you sum up your new Python skill in a single sentence? For your next step, go ahead and start your Research Log and save a first notebook that actually runs.",
+    "cues": [
+      {
+        "start": 0.05,
+        "end": 3.828,
+        "text": "Before we wrap up, let's pull together what today gave us."
+      },
+      {
+        "start": 3.828,
+        "end": 13.125,
+        "text": "Remember, variables are how we store our evidence, and clear output is what makes that evidence actually understandable to someone else."
+      },
+      {
+        "start": 13.125,
+        "end": 18.541,
+        "text": "So here's my question for you: can you sum up your new Python skill in a single sentence?"
+      },
+      {
+        "start": 18.541,
+        "end": 24.635,
+        "text": "For your next step, go ahead and start your Research Log and save a first notebook that actually runs."
+      }
+    ],
+    "bytes": 148176,
+    "model": "claude-opus-4-8"
+  }
+}
