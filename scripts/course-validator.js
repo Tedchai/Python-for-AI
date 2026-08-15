@@ -161,7 +161,7 @@ for (const [lesson, terms] of evidenceChecks) {
 
 const readme = read("README.md");
 check(expectedTitles.every((title) => readme.includes(title)), "README lists all approved lesson titles");
-check(/25%；[\s\S]*25%；[\s\S]*30%；[\s\S]*20%/.test(readme), "README records the approved 25/25/30/20 assessment weights");
+check(/25%;[\s\S]*25%;[\s\S]*30%;[\s\S]*20%/.test(readme), "README records the approved 25/25/30/20 assessment weights");
 check(/Class 1[^.\n]*60 minutes/.test(readme), "README records the English 60-minute Class 1");
 check(/Class 2[^.\n]*120 minutes/.test(readme), "README records the English 120-minute Class 2");
 
