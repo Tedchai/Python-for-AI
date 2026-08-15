@@ -63,7 +63,7 @@
 - 75–105 分钟：项目计划、Kaggle Project Lab、20 分钟学生独立操作与教师巡检；
 - 105–120 分钟：挑战、证据保存、Notebook 整理、评价和 Exit Ticket。
 
-所有课堂代码操作以 Kaggle Notebook 为准。课件负责呈现知识、任务和检查点，不提供浏览器内 Run 按钮。第 3–15 课目前仍采用 17 页、60 分钟结构，后续可按相同的 120 分钟框架继续扩充。
+正式保存、版本管理和作业提交以 Kaggle Notebook 为准。第一课在教师完整示范页提供一个浏览器内 Run 按钮，让零基础学生先运行、修改并解释一段真实 Python；完成这个低门槛演示后，再进入 Kaggle Notebook 保存正式成果。第二课及其他正式项目实验仍在 Kaggle 中完成。第 3–15 课目前仍采用 17 页、60 分钟结构，后续可按相同的 120 分钟框架继续扩充。
 
 ## 教学与评价原则
 
@@ -123,7 +123,7 @@ npm run serve
 
 ## English
 
-This repository contains a bilingual 15-class Python for AI Research course. Classes 1 and 2 are expanded to 120 minutes and 36 slides each, with all practical work completed in Kaggle Notebook. Classes 3–15 currently retain the 60-minute structure and can be expanded through the same framework. Students move from Python foundations through data processing, visualization, EDA, regression, classification, tree models, SVM, and XGBoost before completing a reproducible AI research project with a report, code, figures, and presentation.
+This repository contains a bilingual 15-class Python for AI Research course. Class 1 is 60 minutes and is designed as a focused live online lesson for a beginner using browser-based Python first, followed by a guided Kaggle account and notebook handoff. Class 2 is 120 minutes, while Classes 3–15 use a 60-minute structure. Students move from Python foundations through data processing, visualization, EDA, regression, classification, tree models, SVM, and XGBoost before completing a reproducible AI research project with a report, code, figures, and presentation.
 
 ## License
 

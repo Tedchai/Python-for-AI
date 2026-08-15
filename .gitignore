@@ -1,5 +1,9 @@
 .agents/
 .codex/
+/local-only/
+/_site/
+/video-production/
+/docs/vps-frp-site-access.md
 
 # Python/cache artifacts
 __pycache__/
