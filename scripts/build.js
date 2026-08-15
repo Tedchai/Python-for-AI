@@ -373,6 +373,8 @@ body.lang-en .lang-en{display:inline!important}
 .reveal .line-guide-text{font-size:12px;line-height:1.5;margin:.35em 0 .6em}
 .reveal .line-guide-actions{display:flex;gap:.35em;flex-wrap:wrap}.reveal .line-guide-actions button{border:0;border-radius:6px;padding:.35em .65em;font-size:10.5px;font-weight:700;cursor:pointer}
 .reveal .line-prev,.reveal .line-next{background:var(--navy);color:#fff}.reveal .line-close{background:#e7eef5;color:var(--ink)}
+.reveal .line-replay{background:var(--teal);color:#fff}.reveal .line-replay.playing{background:var(--coral)}
+.reveal .line-replay:disabled{background:#a7b6c4;cursor:not-allowed}
 .reveal .assist-ask{display:flex;gap:.3em;border-top:1px solid var(--line);padding:.4em}
 .reveal .assist-ask input{flex:1;border:1px solid var(--line);border-radius:7px;padding:.4em .5em;font-size:12px;font-family:-apple-system,sans-serif;outline:none}
 .reveal .assist-ask button{background:var(--navy);color:#fff;border:none;border-radius:7px;padding:.4em .7em;font-size:12px;font-weight:600;cursor:pointer}
@@ -869,9 +871,16 @@ Reveal.initialize({ hash:true, slideNumber:'c/t', controls:true, progress:true,
  * never audibly played and the button silently reset to idle before anyone
  * noticed. Reusing an attached element avoids that path. */
 const _audio=document.getElementById('narratorAudio');
-let _btn=null,_playToken=0,_utter=null;
+let _btn=null,_playToken=0,_utter=null,_lineVoiceButton=null;
 function fmtClock(s){ s=Math.max(0,Math.floor(s||0)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
 function resetListenUI(){ listenBtn.style.setProperty('--p','0%'); listenBtn.querySelector('.li-ic').textContent='▶'; listenBtn.querySelector('.li-tx').textContent='Listen'; }
+function resetLineVoiceUI(){
+  if(!_lineVoiceButton) return;
+  _lineVoiceButton.classList.remove('playing');
+  _lineVoiceButton.textContent='🔊 Replay explanation';
+  _lineVoiceButton.setAttribute('aria-pressed','false');
+  _lineVoiceButton=null;
+}
 function rememberSpeakLabels(b){
   if(b.dataset.labelReady) return;
   const zh=b.querySelector('.lang-zh'), en=b.querySelector('.lang-en'), first=b.querySelector('span');
@@ -889,6 +898,7 @@ function stopAudio(){
   _playToken++; // invalidate any in-flight play() for the old src
   if(window.speechSynthesis){ window.speechSynthesis.cancel(); }
   _utter=null;
+  resetLineVoiceUI();
   _audio.pause(); _audio.currentTime=0; _audio.removeAttribute('src'); _audio.load();
   _audio.removeEventListener('timeupdate',onListenTimeupdate); // else it'd animate listenBtn during a .speak clip
   capBar.style.display='none';
@@ -1145,6 +1155,37 @@ function explainCodeLine(text){
   if(['}',']',')','},','],','),'].includes(line)) return 'This line closes the collection or function call that began above.';
   return 'Python evaluates this statement as part of the program. Read it together with the indented lines around it to understand its role.';
 }
+function preferredEnglishVoice(){
+  if(!window.speechSynthesis) return null;
+  const voices=window.speechSynthesis.getVoices();
+  return voices.find(function(voice){
+    return /^en-US/i.test(voice.lang)&&/Natural|Aria|Jenny|Samantha|Google US English/i.test(voice.name);
+  })||voices.find(function(voice){ return /^en-US/i.test(voice.lang); })
+    ||voices.find(function(voice){ return /^en[-_]/i.test(voice.lang); })||null;
+}
+function speakLineExplanation(lab,item,explanation){
+  const button=lab.querySelector('.line-replay');
+  if(!button) return;
+  stopAudio();
+  if(!window.speechSynthesis||typeof SpeechSynthesisUtterance==='undefined'){
+    button.textContent='Voice unavailable';
+    button.disabled=true;
+    return;
+  }
+  const token=_playToken;
+  _lineVoiceButton=button;
+  button.classList.add('playing');
+  button.textContent='■ Stop explanation';
+  button.setAttribute('aria-pressed','true');
+  _utter=new SpeechSynthesisUtterance('Line '+item.number+'. '+explanation);
+  _utter.lang='en-US';
+  _utter.rate=.92;
+  _utter.pitch=1;
+  const voice=preferredEnglishVoice(); if(voice) _utter.voice=voice;
+  _utter.onend=function(){ if(token===_playToken) stopAudio(); };
+  _utter.onerror=function(){ if(token===_playToken) stopAudio(); };
+  window.speechSynthesis.speak(_utter);
+}
 function renderLineWalkthrough(lab,index){
   const raw=lab.querySelector('.code').value;
   const lines=raw.split('\\n').map((text,i)=>({text:text,number:i+1})).filter(item=>item.text.trim());
@@ -1166,18 +1207,21 @@ function renderLineWalkthrough(lab,index){
   });
   const active=view.querySelector('.line-code-row.active'); if(active) active.scrollIntoView({block:'nearest'});
   const item=lines[safeIndex];
+  const explanation=explainCodeLine(item.text);
   const body=lab.querySelector('.assist-body');
   body.innerHTML='<div class="line-guide-progress">Line '+item.number+' · '+(safeIndex+1)+' of '+lines.length+'</div>'+
     '<code class="line-guide-code"></code><p class="line-guide-text"></p>'+
-    '<div class="line-guide-actions"><button class="line-prev">← Previous</button><button class="line-next">Next →</button><button class="line-close">Back to editor</button></div>';
+    '<div class="line-guide-actions"><button class="line-replay" aria-pressed="false">🔊 Replay explanation</button><button class="line-prev">← Previous</button><button class="line-next">Next →</button><button class="line-close">Back to editor</button></div>';
   body.querySelector('.line-guide-code').textContent=item.text.trim();
-  body.querySelector('.line-guide-text').textContent=explainCodeLine(item.text);
+  body.querySelector('.line-guide-text').textContent=explanation;
   body.querySelector('.line-prev').disabled=safeIndex===0;
   body.querySelector('.line-next').disabled=safeIndex===lines.length-1;
   lab.classList.add('explaining');
   lab.querySelector('.explain-lines').textContent='💡 Explaining line '+item.number;
+  speakLineExplanation(lab,item,explanation);
 }
 function closeLineWalkthrough(lab){
+  stopAudio();
   lab.classList.remove('explaining');
   const button=lab.querySelector('.explain-lines'); if(button) button.textContent='💡 Explain each line';
   lab.querySelector('.assist-body').innerHTML='Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.';
@@ -1186,6 +1230,14 @@ document.addEventListener('click',function(e){
   const t=e.target;
   if(t.closest('.lab .run')){ runLab(labOf(t.closest('.run'))); }
   else if(t.closest('.lab .explain-lines')){ const lab=labOf(t.closest('.explain-lines')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)); }
+  else if(t.closest('.lab .line-replay')){
+    const button=t.closest('.line-replay'); const lab=labOf(button);
+    if(_lineVoiceButton===button&&_utter){ stopAudio(); }
+    else {
+      const item=lab._lineItems&&lab._lineItems[Number(lab.dataset.lineIndex||0)];
+      if(item) speakLineExplanation(lab,item,explainCodeLine(item.text));
+    }
+  }
   else if(t.closest('.lab .line-prev')){ const lab=labOf(t.closest('.line-prev')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)-1); }
   else if(t.closest('.lab .line-next')){ const lab=labOf(t.closest('.line-next')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)+1); }
   else if(t.closest('.lab .line-close')){ closeLineWalkthrough(labOf(t.closest('.line-close'))); }
