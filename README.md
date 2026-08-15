@@ -31,6 +31,7 @@ Key features include:
 - editable Python code powered by Pyodide in the browser;
 - a **Run** button with visible output and error feedback;
 - an **Explain Each Line** walkthrough with line numbers, active-line highlighting, automatic spoken English explanations, replay control, and Previous/Next navigation;
+- a built-in **Mira** code coach that can explain the current code, use the latest Run error for debugging guidance, suggest a safe revision, answer common beginner questions, and apply suggested code without a server or API key;
 - beginner-friendly examples covering values, variables, lists, output, and simple data patterns;
 - optional guided Kaggle registration using a Google account;
 - privacy reminders before entering account details while screen sharing or recording;

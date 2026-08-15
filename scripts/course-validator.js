@@ -113,6 +113,7 @@ for (const folder of ["python-ai-en"]) {
         check(html.includes('class="line-code-view"') && html.includes("renderLineWalkthrough"), `${relative} includes the offline line highlighter and explanation flow`);
         check(html.includes("Previous") && html.includes("Next") && html.includes("Back to editor"), `${relative} includes line walkthrough navigation`);
         check(html.includes('class="line-replay"') && html.includes("speakLineExplanation") && html.includes("Replay explanation"), `${relative} includes automatic spoken line explanations and replay control`);
+        check(html.includes("Mira · Code coach") && html.includes("Built-in · instant") && html.includes("miraReply") && html.includes("Use this code"), `${relative} includes the built-in Mira code coach without a backend dependency`);
       } else {
         check(!html.includes('class="lab"') && !html.includes("BROWSER PYTHON DEMO"), `${relative} keeps practical work in Kaggle Notebook`);
       }
