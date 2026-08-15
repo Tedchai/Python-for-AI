@@ -30,7 +30,7 @@ Key features include:
 - no local Python installation required;
 - editable Python code powered by Pyodide in the browser;
 - a **Run** button with visible output and error feedback;
-- an **Explain Each Line** walkthrough with line numbers, active-line highlighting, and Previous/Next navigation;
+- an **Explain Each Line** walkthrough with line numbers, active-line highlighting, automatic spoken English explanations, replay control, and Previous/Next navigation;
 - beginner-friendly examples covering values, variables, lists, output, and simple data patterns;
 - optional guided Kaggle registration using a Google account;
 - privacy reminders before entering account details while screen sharing or recording;

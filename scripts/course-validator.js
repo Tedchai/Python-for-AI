@@ -112,6 +112,7 @@ for (const folder of ["python-ai-en"]) {
         check(html.includes('class="explain-lines"') && html.includes("Explain each line"), `${relative} includes the line-by-line explanation control`);
         check(html.includes('class="line-code-view"') && html.includes("renderLineWalkthrough"), `${relative} includes the offline line highlighter and explanation flow`);
         check(html.includes("Previous") && html.includes("Next") && html.includes("Back to editor"), `${relative} includes line walkthrough navigation`);
+        check(html.includes('class="line-replay"') && html.includes("speakLineExplanation") && html.includes("Replay explanation"), `${relative} includes automatic spoken line explanations and replay control`);
       } else {
         check(!html.includes('class="lab"') && !html.includes("BROWSER PYTHON DEMO"), `${relative} keeps practical work in Kaggle Notebook`);
       }
