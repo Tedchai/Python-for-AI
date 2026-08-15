@@ -55,7 +55,7 @@ const DONATE_URL = "";
 const CATALOG = {
   site: "Python for AI Research",
   logo: "AI",
-  tagline: "互动网页课件 — 随堂测验 · 浏览器 Python 实验 · 每页留言 · 可选语音讲解",
+  tagline: "Interactive lessons with quizzes, browser Python labs, comments, and optional narration",
   courses: [
     {
       id: "python-ai",
@@ -347,9 +347,15 @@ body.lang-en .lang-en{display:inline!important}
 .reveal .lab{display:grid;grid-template-columns:1.55fr 1fr;gap:.6em;margin-top:.4em;height:11.2em}
 .reveal .lab-main{display:flex;flex-direction:column;min-width:0}
 .reveal .lab textarea.code{flex:1;width:100%;background:#0f2742;color:#e7f0fb;border:1px solid #21405f;border-radius:10px 10px 0 0;font-family:Consolas,"SF Mono",monospace;font-size:13px;line-height:1.4;padding:.5em .6em;resize:none;outline:none;tab-size:4}
+.reveal .line-code-view{display:none;flex:1;background:#0f2742;color:#e7f0fb;border:1px solid #21405f;border-radius:10px 10px 0 0;font-family:Consolas,"SF Mono",monospace;font-size:12.5px;line-height:1.45;overflow:auto;padding:.35em 0}
+.reveal .lab.explaining textarea.code{display:none}.reveal .lab.explaining .line-code-view{display:block}
+.reveal .line-code-row{display:grid;grid-template-columns:3.2em 1fr;min-height:1.45em;padding:0 .55em;white-space:pre;cursor:pointer;border-left:3px solid transparent}
+.reveal .line-code-row:hover{background:#173b5e}.reveal .line-code-row.active{background:#244f76;border-left-color:#ffb238;color:#fff}
+.reveal .line-code-number{color:#6f96b9;text-align:right;padding-right:.9em;user-select:none}.reveal .line-code-row.active .line-code-number{color:#ffd27a}
 .reveal .lab-bar{display:flex;align-items:center;gap:.4em;background:#11314f;border:1px solid #21405f;border-top:none;padding:.3em .4em;flex-wrap:wrap}
 .reveal .lab-bar button{font-family:-apple-system,sans-serif;font-size:11px;font-weight:600;border:none;border-radius:7px;padding:.4em .7em;cursor:pointer}
 .reveal .lab-bar .run{background:var(--green);color:#fff}.reveal .lab-bar .run:hover{background:#178a64}
+.reveal .lab-bar .explain-lines{background:#ffb238;color:#102a43}.reveal .lab-bar .explain-lines:hover{background:#ffc45e}
 .reveal .lab-bar .ai-explain,.reveal .lab-bar .ai-debug,.reveal .lab-bar .ai-improve{background:#1b3e5e;color:#cfe0ef}
 .reveal .lab-bar .ai-explain:hover,.reveal .lab-bar .ai-debug:hover,.reveal .lab-bar .ai-improve:hover{background:#27557d}
 .reveal .lab-status{font-size:10.5px;color:#9db8d6;margin-left:auto;font-family:-apple-system,sans-serif}
@@ -362,6 +368,11 @@ body.lang-en .lang-en{display:inline!important}
 .reveal .assist-body pre{background:#0f2742;color:#e7f0fb;border-radius:8px;padding:.5em .6em;font-size:11px;overflow:auto;white-space:pre}
 .reveal .assist-body pre code{background:none;color:inherit}
 .reveal .assist-body .apply{background:var(--teal);color:#fff;border:none;border-radius:6px;padding:.25em .6em;font-size:11px;font-weight:600;cursor:pointer;margin-top:.2em}
+.reveal .line-guide-progress{font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--teal);text-transform:uppercase}
+.reveal .line-guide-code{display:block;background:#0f2742;color:#fff;border-radius:7px;padding:.55em .65em;margin:.45em 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.reveal .line-guide-text{font-size:12px;line-height:1.5;margin:.35em 0 .6em}
+.reveal .line-guide-actions{display:flex;gap:.35em;flex-wrap:wrap}.reveal .line-guide-actions button{border:0;border-radius:6px;padding:.35em .65em;font-size:10.5px;font-weight:700;cursor:pointer}
+.reveal .line-prev,.reveal .line-next{background:var(--navy);color:#fff}.reveal .line-close{background:#e7eef5;color:var(--ink)}
 .reveal .assist-ask{display:flex;gap:.3em;border-top:1px solid var(--line);padding:.4em}
 .reveal .assist-ask input{flex:1;border:1px solid var(--line);border-radius:7px;padding:.4em .5em;font-size:12px;font-family:-apple-system,sans-serif;outline:none}
 .reveal .assist-ask button{background:var(--navy);color:#fff;border:none;border-radius:7px;padding:.4em .7em;font-size:12px;font-weight:600;cursor:pointer}
@@ -501,14 +512,17 @@ function demoSlide(sid, { kicker, title, intro, prompts, link, linkLabel, qr }, 
 }
 
 function labSlide(sid, kicker, title, intro, code, packages, notes) {
+  const lineGuideButton = sid === "teacher-demo" ? '<button class="explain-lines">💡 Explain each line</button>' : "";
   return sec(sid, `<div class="kicker">${esc(kicker)}</div>
   <h2>${esc(title)}</h2>
   <p class="lead" style="margin:.1em 0 .25em">${intro}</p>
   <div class="lab" data-packages="${(packages || []).join(",")}">
     <div class="lab-main">
       <textarea class="code" spellcheck="false">${esc(code)}</textarea>
+      <div class="line-code-view" aria-label="Line-by-line code walkthrough"></div>
       <div class="lab-bar">
         <button class="run">▶ Run</button>
+        ${lineGuideButton}
         <button class="ai-explain">✨ Explain</button>
         <button class="ai-debug">🐞 Debug</button>
         <button class="ai-improve">⚡ Improve</button>
@@ -747,9 +761,6 @@ function deckHtml(deckId, title, slides) {
   const lessonHref = (n) => `../../${courseId}/lesson-${String(n).padStart(2, "0")}/`;
   const prevLessonUrl = lessonNumber > 1 ? lessonHref(lessonNumber - 1) : "";
   const nextLessonUrl = lessonNumber < 15 ? lessonHref(lessonNumber + 1) : "";
-  const altDeckUrl = deckId.startsWith("python-ai/")
-    ? `../../python-ai-en/${lessonId}/`
-    : `../../python-ai/${lessonId}/`;
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
@@ -771,7 +782,6 @@ ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noop
 <div id="overviewPanel" aria-hidden="true"><div class="ov-wrap"><div class="ov-head"><h2>${esc(title)} · Slide Overview</h2><button id="overviewClose" type="button">Close</button></div><div id="overviewGrid"></div></div></div>
 <!-- per-slide comments -->
 <a id="homeBtn" href="../../">← Main</a>
-<button id="langBtn" type="button" title="Switch Chinese / English">EN</button>
 <audio id="narratorAudio" preload="none" style="display:none"></audio>
 <div id="capBar"></div>
 <button id="ccBtn" title="Toggle captions">CC</button>
@@ -789,8 +799,6 @@ ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noop
 
 <script>
 (function(){
-  const langBtn=document.getElementById('langBtn');
-  const ALT_DECK_URL=${JSON.stringify(altDeckUrl)};
   const requestedSlide=(location.search.slice(1).split('&').map((part)=>part.split('=')).find((pair)=>pair[0]==='slide')||[])[1];
   function slides(){ return [...document.querySelectorAll('.reveal .slides section')]; }
   function showRequestedSlide(){
@@ -805,26 +813,6 @@ ${DONATE_URL ? `<a id="donateBtn" href="${DONATE_URL}" target="_blank" rel="noop
   }
   setTimeout(showRequestedSlide,0);
   setTimeout(showRequestedSlide,300);
-  if(!langBtn) return;
-  langBtn.textContent=${JSON.stringify(deckId.startsWith("python-ai-en/") ? "中文" : "EN")};
-  function currentSlideIndex(){
-    const slides=[...document.querySelectorAll('.reveal .slides section')];
-    const hashPart=(location.hash.split('/')[1]||'').split('/')[0]||'';
-    const hashIndex=Number(hashPart);
-    if(Number.isFinite(hashIndex)&&slides[hashIndex]) return slides[hashIndex].id||slides[hashIndex].dataset.sid||hashIndex;
-    if(hashPart){
-      const sidIndex=slides.findIndex((slide)=>slide.id===hashPart||slide.dataset.sid===hashPart);
-      if(sidIndex>=0) return hashPart;
-    }
-    if(typeof Reveal!=='undefined'&&Reveal.getIndices){
-      const idx=Reveal.getIndices();
-      if(idx&&typeof idx.h==='number'&&slides[idx.h]) return slides[idx.h].id||slides[idx.h].dataset.sid||idx.h;
-    }
-    const cur=typeof Reveal!=='undefined'&&Reveal.getCurrentSlide ? Reveal.getCurrentSlide() : document.querySelector('.slides > section.present');
-    if(cur) return cur.id||cur.dataset.sid||Math.max(0, slides.indexOf(cur));
-    return 0;
-  }
-  langBtn.addEventListener('click',function(){ const key=currentSlideIndex(); location.href=ALT_DECK_URL+'?slide='+key+'#/'+key; });
 })();
 </script>
 <script src="${REVEAL}/dist/reveal.js"></script>
@@ -893,7 +881,7 @@ function rememberSpeakLabels(b){
 }
 function setSpeakButtonState(b,playing){
   const zh=b.querySelector('.lang-zh'), en=b.querySelector('.lang-en'), first=b.querySelector('span');
-  if(zh) zh.textContent=playing?'暂停':b.dataset.labelZh;
+  if(zh) zh.textContent=playing?'Pause':b.dataset.labelZh;
   if(en) en.textContent=playing?'Pause':b.dataset.labelEn;
   if(!zh && !en && first) first.textContent=playing?'Pause':(b.dataset.labelZh||'Speak');
 }
@@ -1138,9 +1126,69 @@ async function askAssistant(lab,action,question){
     body.innerHTML=mdToHtml(j.text||'(no response)');
   }catch(e){ body.innerHTML='<p class="muted">Assistant unavailable right now. Try again shortly.</p>'; }
 }
+function explainCodeLine(text){
+  const line=text.trim();
+  if(line.startsWith('#')) return 'This comment tells the reader what the next part of the program is meant to do.';
+  if(/^from\\s+\\S+\\s+import\\s+/.test(line)||/^import\\s+/.test(line)) return 'This line loads a Python module so the program can use tools defined outside this file.';
+  if(/^def\\s+\\w+\\s*\\(/.test(line)) return 'This line defines a reusable function. The names inside the parentheses are inputs the function can receive.';
+  if(/^return\\b/.test(line)) return 'This line sends a result back to the code that called the function.';
+  if(/^(if|elif)\\b/.test(line)) return 'This line checks a condition. Python runs the indented block only when that condition is true.';
+  if(/^else\\s*:/.test(line)) return 'This line provides the alternative path when the earlier condition is false.';
+  if(/^for\\s+/.test(line)) return 'This line starts a loop, repeating the indented block once for each item in a collection.';
+  if(/^while\\s+/.test(line)) return 'This line repeats the indented block while its condition remains true.';
+  if(/^print\\s*\\(/.test(line)) return 'This line displays a result so we can inspect what the program produced.';
+  if(/^\\w[\\w.]*\\s*[+\\-*/]?=(?!=)/.test(line)){
+    const name=line.split(/\\s*[+\\-*/]?=\\s*/)[0];
+    return 'This line stores a value in '+name+'. A clear variable name helps us understand what the value represents.';
+  }
+  if(/^\\w+\\s*\\(/.test(line)) return 'This line calls a function, asking Python to perform the action named at the beginning of the line.';
+  if(['}',']',')','},','],','),'].includes(line)) return 'This line closes the collection or function call that began above.';
+  return 'Python evaluates this statement as part of the program. Read it together with the indented lines around it to understand its role.';
+}
+function renderLineWalkthrough(lab,index){
+  const raw=lab.querySelector('.code').value;
+  const lines=raw.split('\\n').map((text,i)=>({text:text,number:i+1})).filter(item=>item.text.trim());
+  if(!lines.length) return;
+  const safeIndex=Math.max(0,Math.min(index,lines.length-1));
+  lab.dataset.lineIndex=String(safeIndex);
+  lab._lineItems=lines;
+  const view=lab.querySelector('.line-code-view');
+  view.innerHTML='';
+  raw.split('\\n').forEach(function(text,i){
+    const itemIndex=lines.findIndex(item=>item.number===i+1);
+    const row=document.createElement('div'); row.className='line-code-row'+(itemIndex===safeIndex?' active':'');
+    row.dataset.lineIndex=String(itemIndex);
+    const number=document.createElement('span'); number.className='line-code-number'; number.textContent=String(i+1);
+    const code=document.createElement('span'); code.textContent=text||' ';
+    row.append(number,code);
+    if(itemIndex>=0) row.addEventListener('click',function(){renderLineWalkthrough(lab,itemIndex);});
+    view.appendChild(row);
+  });
+  const active=view.querySelector('.line-code-row.active'); if(active) active.scrollIntoView({block:'nearest'});
+  const item=lines[safeIndex];
+  const body=lab.querySelector('.assist-body');
+  body.innerHTML='<div class="line-guide-progress">Line '+item.number+' · '+(safeIndex+1)+' of '+lines.length+'</div>'+
+    '<code class="line-guide-code"></code><p class="line-guide-text"></p>'+
+    '<div class="line-guide-actions"><button class="line-prev">← Previous</button><button class="line-next">Next →</button><button class="line-close">Back to editor</button></div>';
+  body.querySelector('.line-guide-code').textContent=item.text.trim();
+  body.querySelector('.line-guide-text').textContent=explainCodeLine(item.text);
+  body.querySelector('.line-prev').disabled=safeIndex===0;
+  body.querySelector('.line-next').disabled=safeIndex===lines.length-1;
+  lab.classList.add('explaining');
+  lab.querySelector('.explain-lines').textContent='💡 Explaining line '+item.number;
+}
+function closeLineWalkthrough(lab){
+  lab.classList.remove('explaining');
+  const button=lab.querySelector('.explain-lines'); if(button) button.textContent='💡 Explain each line';
+  lab.querySelector('.assist-body').innerHTML='Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.';
+}
 document.addEventListener('click',function(e){
   const t=e.target;
   if(t.closest('.lab .run')){ runLab(labOf(t.closest('.run'))); }
+  else if(t.closest('.lab .explain-lines')){ const lab=labOf(t.closest('.explain-lines')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)); }
+  else if(t.closest('.lab .line-prev')){ const lab=labOf(t.closest('.line-prev')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)-1); }
+  else if(t.closest('.lab .line-next')){ const lab=labOf(t.closest('.line-next')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)+1); }
+  else if(t.closest('.lab .line-close')){ closeLineWalkthrough(labOf(t.closest('.line-close'))); }
   else if(t.closest('.lab .ai-explain')){ askAssistant(labOf(t.closest('.ai-explain')),'explain'); }
   else if(t.closest('.lab .ai-debug')){ askAssistant(labOf(t.closest('.ai-debug')),'debug'); }
   else if(t.closest('.lab .ai-improve')){ askAssistant(labOf(t.closest('.ai-improve')),'improve'); }
@@ -3254,7 +3302,7 @@ for (const no of Object.keys(syllabusMap)) {
     paperEvidence: Number(no) < 14 ? "Research Log中的可追溯证据。" : "可追溯的报告与展示证据。",
   });
   Object.assign(englishLessonText[no], {
-    duration: ["01", "02"].includes(no) ? 120 : 60, stage: stageForLesson(no, "en"), requiredPackages: packagesForLesson[no],
+    duration: no === "02" ? 120 : 60, stage: stageForLesson(no, "en"), requiredPackages: packagesForLesson[no],
     kaggleAction: researchActionsEn[no], projectAction: researchActionsEn[no],
     paperSection: Number(no) < 14 ? "Add the result to the Research Log with input, process, output, and limitation." : "Organize Question, Data, Method, Results, Limitations, and Future Work.",
     paperEvidence: Number(no) < 14 ? "Traceable evidence in the Research Log." : "Traceable report and presentation evidence.",
@@ -3412,9 +3460,9 @@ function buildKaggleLesson(spec, lang) {
     exit: "EXIT TICKET", run: "Runs", explain: "Explained", evidenceWord: "Evidence", clean: "Clear structure",
   };
 
-  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div><h1 style="color:#fff">${esc(spec.title)}</h1><p style="color:#cfe0ef;margin-top:.45em">${esc(spec.subtitle)}</p><div class="grid2" style="margin-top:1em">${spec.skills.map((skill) => `<div class="skillcard"><div class="cn">${esc(skill)}</div><p>${esc(spec.stage)}</p></div>`).join("")}</div>${notes("36页、120分钟课堂版；新增页面用于练习、项目推进和证据检查。", "A 36-slide, 120-minute lesson with additional practice, project work, and evidence checks.")}`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div><h1 style="color:#fff">${esc(spec.title)}</h1><p style="color:#cfe0ef;margin-top:.45em">${esc(spec.subtitle)}</p><div class="grid2" style="margin-top:1em">${spec.skills.map((skill) => `<div class="skillcard"><div class="cn">${esc(skill)}</div><p>${esc(spec.stage)}</p></div>`).join("")}</div>${!zh && spec.classNo === "01" ? '<div class="callout" style="margin-top:.75em"><b>LIVE ONLINE LESSON:</b> 60 minutes · Browser only · No Python installation required</div>' : ""}${notes("36页、120分钟课堂版；新增页面用于练习、项目推进和证据检查。", spec.classNo === "01" ? "A focused 60-minute live lesson with browser practice and an optional Kaggle handoff." : "A 36-slide, 120-minute lesson with additional practice, project work, and evidence checks.")}`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
   S.push(sec("outputs", `<div class="kicker">${t.output}</div><h2>${esc(spec.output)}</h2><div class="grid3" style="margin-top:.65em">${boxes([[t.understand, zh ? "能用自己的话解释三个核心概念。" : "Explain the three core ideas in your own words."], [t.practice, zh ? "运行并修改课堂示例。" : "Run and modify the lesson example."], [t.submit, zh ? "把成果保存到项目Notebook。" : "Save the result in the project notebook."]])}</div>${notes("先说明本节课唯一可见产出。", "Begin with the single visible lesson outcome.")}`));
-  S.push(sec("lesson-agenda", `<div class="kicker">AGENDA</div><h2>${zh ? "今天只完成三件大事" : "Three major jobs for today"}</h2><div class="grid3" style="margin-top:.65em">${boxes([[zh ? "理解" : "Understand", spec.concepts.map((item) => item[0]).join(zh ? "、" : ", ")], [zh ? "应用" : "Apply", spec.kaggleAction], [zh ? "留下证据" : "Preserve evidence", spec.paperSection]])}</div>${notes("用三块结构管理120分钟课堂，避免内容松散。", "Use three blocks to keep the 120-minute lesson coherent.")}`));
+  S.push(sec("lesson-agenda", `<div class="kicker">AGENDA</div><h2>${zh ? "今天只完成三件大事" : "Three major jobs for today"}</h2><div class="grid3" style="margin-top:.65em">${boxes([[zh ? "理解" : "Understand", spec.concepts.map((item) => item[0]).join(zh ? "、" : ", ")], [zh ? "应用" : "Apply", spec.kaggleAction], [zh ? "留下证据" : "Preserve evidence", spec.paperSection]])}</div>${notes("用三块结构管理120分钟课堂，避免内容松散。", spec.classNo === "01" ? "Use three blocks to keep the 60-minute live lesson coherent." : "Use three blocks to keep the 120-minute lesson coherent.")}`));
   S.push(sec("one-twenty-minute-pacing", `<div class="kicker">${t.pacing}</div><h2>${t.pacingTitle}</h2><div class="flow" style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65em;margin-top:.7em"><div class="step"><span class="n time">0–10</span><b>Start</b><span>${zh ? "目标与热身" : "Goal and warm-up"}</span></div><div class="step"><span class="n time">10–30</span><b>Concept</b><span>${zh ? "三个核心概念" : "Three core ideas"}</span></div><div class="step"><span class="n time">30–50</span><b>${spec.classNo === "01" ? "Walkthrough" : "Demo"}</b><span>${zh ? "代码演示与追踪" : (spec.classNo === "01" ? "Code walkthrough and trace" : "Demo and trace")}</span></div><div class="step"><span class="n time">50–70</span><b>Practice</b><span>${zh ? "两轮跟做" : "Two guided rounds"}</span></div><div class="step"><span class="n time">70–75</span><b>Break</b><span>${zh ? "短休息" : "Short break"}</span></div><div class="step"><span class="n time">75–105</span><b>Project</b><span>${zh ? "20分钟独立操作 + 10分钟巡检反馈" : "20 min independent + 10 min review"}</span></div><div class="step loop"><span class="n time">105–120</span><b>Close</b><span>${zh ? "证据、提交、退出条" : "Evidence, submit, exit"}</span></div></div>${notes("75–105分钟中约20分钟用于学生独立操作，约10分钟用于教师巡检、个别反馈和统一纠错。", "Within minutes 75–105, students work independently for about 20 minutes and the instructor uses about 10 minutes for check-ins, individual feedback, and a shared correction.")}`));
   if (spec.classNo === "01") {
     S.push(sec("prerequisite-recap", `<div class="kicker">${zh ? "第一课 · 从这里开始" : "CLASS 01 · START HERE"}</div><h2>${zh ? "第一次见面：零基础也能完成一份真实的 Python 成果" : "First meeting: complete a real Python result with no prior knowledge"}</h2><div class="grid2" style="margin-top:.65em"><div class="box"><h3>${zh ? "不需要提前学过" : "No prior experience required"}</h3><p>${zh ? "不要求学过 Python 或 Kaggle；只需要打开浏览器，跟着教师亲手运行和修改代码。" : "No Python or Kaggle background is required; open a browser and run and modify code with the instructor."}</p></div><div class="box"><h3>${zh ? "今天当堂带走" : "Leave with a real result"}</h3><p>${esc(spec.output)}</p></div></div><div class="callout"><b>${zh ? "课堂方式：" : "How class works: "}</b>${zh ? "教师先示范，学生现场运行、修改并保存自己的成果；每一步都看得见、说得清。" : "The instructor shows the workflow first; students then run, modify, and save their own work, with every step visible and explainable."}</div>${notes("第一节课先降低进入门槛并建立信心，不使用复习或续课话术。", "The first class lowers the entry barrier and builds confidence without recap language.")}`));
@@ -3423,7 +3471,7 @@ function buildKaggleLesson(spec, lang) {
   }
   S.push(sec("course-position", `<div class="kicker">COURSE MAP · ${esc(spec.stage)}</div><h2>${zh ? "这节课如何推动同一个研究项目" : "How this lesson advances one research project"}</h2><div class="grid2" style="margin-top:.65em"><div class="box"><h3>Kaggle</h3><p>${esc(spec.kaggleAction)}</p></div><div class="box"><h3>Draft Paper</h3><p>${esc(spec.paperSection)}</p></div></div><div class="callout"><b>${zh ? "课程原则：" : "Course rule: "}</b>${zh ? "学生选择主题，但数据集、任务类型和技术范围由教师审核。" : "Students choose a topic; the instructor controls dataset, task type, and technical scope."}</div>${notes("每节都明确Python技能、Kaggle动作和论文证据之间的关系。", "Connect the Python skill, Kaggle action, and paper evidence in every lesson.")}`));
   if (spec.classNo === "01") {
-    S.push(sec("dataset-context", `<div class="kicker">KAGGLE NOTEBOOK · QUICK START</div><h2>${zh ? "四步打开并保存第一份 Kaggle Notebook" : "Open and save the first Kaggle Notebook in four steps"}</h2><div class="flow" style="margin-top:.7em"><div class="step"><span class="n">1</span><b>${zh ? "打开" : "Open"}</b><span>kaggle.com/code</span></div><div class="step"><span class="n">2</span><b>${zh ? "登录" : "Sign in"}</b><span>${zh ? "进入课程Notebook" : "Open the course notebook"}</span></div><div class="step"><span class="n">3</span><b>${zh ? "复制" : "Copy"}</b><span>Copy &amp; Edit</span></div><div class="step loop"><span class="n">4</span><b>${zh ? "运行并保存" : "Run & save"}</b><span>Save Version</span></div></div><div class="callout"><b>${zh ? "为什么用Kaggle：" : "Why Kaggle: "}</b>${zh ? "同一环境完成代码、数据、输出、版本和分享，后续项目不需要迁移平台。" : "Code, data, output, versions, and sharing stay in one environment throughout the project."}</div>${notes("现场完成打开、Copy & Edit、运行和Save Version；不要只讲界面。", "Complete open, Copy & Edit, run, and Save Version live; do not merely describe the interface.")}`));
+    S.push(sec("dataset-context", `<div class="kicker">KAGGLE NOTEBOOK · QUICK START</div><h2>${zh ? "四步打开并保存第一份 Kaggle Notebook" : "Create, open, and save the first Kaggle Notebook"}</h2><div class="flow" style="margin-top:.7em"><div class="step"><span class="n">1</span><b>${zh ? "打开" : "Open"}</b><span>kaggle.com/code</span></div><div class="step"><span class="n">2</span><b>${zh ? "登录" : "Sign in"}</b><span>${zh ? "进入课程Notebook" : "Create or sign in with Google"}</span></div><div class="step"><span class="n">3</span><b>${zh ? "复制" : "Copy"}</b><span>Copy &amp; Edit</span></div><div class="step loop"><span class="n">4</span><b>${zh ? "运行并保存" : "Run & save"}</b><span>Save Version</span></div></div><div class="callout"><b>${zh ? "为什么用Kaggle：" : "Privacy note: "}</b>${zh ? "同一环境完成代码、数据、输出、版本和分享，后续项目不需要迁移平台。" : "Pause screen sharing or recording while entering passwords or verification information."}</div>${notes("现场完成打开、Copy & Edit、运行和Save Version；不要只讲界面。", "Guide account access live, protect private sign-in details, and continue with the browser exercise if registration takes too long.")}`));
   } else {
     S.push(sec("dataset-context", `<div class="kicker">DATASET CONTEXT</div><h2>${zh ? "把概念放回学生自己的数据" : "Put the concept back into the student's data"}</h2><div class="grid3" style="margin-top:.65em">${boxes([[zh ? "字段" : "Field", zh ? "今天会修改或检查哪个字段？" : "Which field will be changed or checked?"], [zh ? "目标" : "Target", zh ? "它怎样帮助回答研究问题？" : "How does it support the research question?"], [zh ? "风险" : "Risk", zh ? "这个字段可能有什么质量或解释限制？" : "What quality or interpretation limit may apply?"]])}</div>${notes("小班逐个确认学生项目字段，避免抽象讲解。", "Confirm a field from each student's project to avoid abstract teaching.")}`));
   }
@@ -3432,7 +3480,23 @@ function buildKaggleLesson(spec, lang) {
   S.push(sec("mental-model", `<div class="kicker">MENTAL MODEL</div><h2>${t.mental}</h2><div class="grid2" style="margin-top:.65em">${boxes(spec.concepts)}</div>${notes("先讲用途和直觉，再讲语法。", "Explain purpose and intuition before syntax.")}`));
   spec.concepts.forEach(([name, description], index) => S.push(sec(`concept-${index + 1}`, `<div class="kicker">CONCEPT ${index + 1}</div><h2>${esc(name)}</h2><p class="lead">${esc(description)}</p><div class="callout"><b>${zh ? "一句话检查：" : "One-sentence check: "}</b>${zh ? "这个概念在我的项目里解决什么问题？" : "What problem does this idea solve in my project?"}</div>${notes("请学生用自己的项目字段回答。", "Ask the student to answer using a field from the project.")}`)));
   S.push(sec("syntax-pattern", `<div class="kicker">SYNTAX PATTERN</div><h2>${t.syntax}</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.syntax)}</code></pre><div class="callout"><b>${zh ? "运行前：" : "Before running: "}</b>${t.trace}</div>${notes("只解释项目中会再次出现的代码。", "Explain only code that will reappear in the project.")}`));
-  S.push(sec("teacher-demo", `<div class="kicker">${spec.classNo === "01" ? "INSTRUCTOR WALKTHROUGH" : "TEACHER DEMO"}</div><h2>${spec.classNo === "01" ? (zh ? "教师示范：完整运行一次" : "Instructor walkthrough: run the full workflow") : t.demo}</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.demo)}</code></pre>${notes("先整体运行，再解释关键行。", "Run the whole example first, then explain key lines.")}`));
+  if (spec.classNo === "01") {
+    S.push(labSlide(
+      "teacher-demo",
+      zh ? "浏览器内 Python 演示" : "BROWSER PYTHON DEMO",
+      zh ? "先在课件里运行，再把成果带到 Kaggle" : "Run it here first, then take the result to Kaggle",
+      zh
+        ? "点击 <b>Run</b> 运行真实 Python。只修改一个变量，再次运行并解释输出为什么变化。"
+        : "Click <b>Run</b> to execute real Python. Change one variable, run it again, and explain why the output changed.",
+      spec.demo,
+      [],
+      zh
+        ? "这是第一课的低门槛浏览器演示：先整体运行，再解释关键行。正式保存、版本管理和提交仍在 Kaggle Notebook 完成。"
+        : "This is the low-friction Class 01 browser demo: run the whole example, then explain key lines. Saving, versioning, and submission still happen in Kaggle Notebook."
+    ));
+  } else {
+    S.push(sec("teacher-demo", `<div class="kicker">TEACHER DEMO</div><h2>${t.demo}</h2><pre style="font-size:.52em;max-height:430px;overflow:auto"><code>${esc(spec.demo)}</code></pre>${notes("先整体运行，再解释关键行。", "Run the whole example first, then explain key lines.")}`));
+  }
   S.push(sec("code-trace", `<div class="kicker">TRACE THE CODE</div><h2>${zh ? "逐行追踪：运行前、运行中、运行后" : "Trace the code: before, during, after"}</h2><div class="grid3" style="margin-top:.65em">${boxes([["Before", zh ? "这一行运行前有哪些变量？" : "Which variables exist before this line?"], ["During", zh ? "创建、筛选或计算了什么？" : "What is created, filtered, or calculated?"], ["After", zh ? "输出是否符合预测？" : "Does the output match the prediction?"]])}</div>${notes("让学生说出状态变化，不要求背诵语法。", "Students explain state changes rather than memorizing syntax.")}`));
   S.push(quizSlide("prediction-check", "PREDICTION CHECK", spec.quiz1[0], spec.quiz1[1], spec.quiz1[2], spec.quiz1[3], zh ? "用一题确认是否可以进入练习。" : "Use one question to confirm readiness for practice."));
   S.push(sec("guided-practice-1", `<div class="kicker">GUIDED PRACTICE 1</div><h2>${zh ? "只改一个值，然后重新运行" : "Change one value, then rerun"}</h2><div class="grid3" style="margin-top:.65em">${boxes([[zh ? "预测" : "Predict", zh ? "先写下输出会怎样变化。" : "Write how the output should change."], [zh ? "修改" : "Change", zh ? "只修改一个变量或字段名。" : "Change one variable or field name."], [zh ? "比较" : "Compare", zh ? "对比预测和真实输出。" : "Compare prediction with actual output."]])}</div>${notes("第一轮教师逐步带做。", "The instructor leads the first round step by step.")}`));
@@ -3500,6 +3564,21 @@ function buildKaggleLesson(spec, lang) {
     });
   }
   return S;
+}
+
+const liveEnglishClassOneSlideIds = [
+  "title", "outputs", "lesson-agenda", "prerequisite-recap", "warmup",
+  "concept-1", "concept-2", "syntax-pattern", "prediction-check",
+  "teacher-demo", "code-trace", "guided-practice-1", "debug-routine",
+  "dataset-context", "guided-lab", "rubric", "homework", "exit-ticket",
+];
+
+function buildLiveEnglishClassOne(spec) {
+  const slidesById = new Map(buildKaggleLesson(spec, "en").map((html) => {
+    const match = html.match(/^<section id="([^"]+)"/);
+    return [match ? match[1] : "", html];
+  }));
+  return liveEnglishClassOneSlideIds.map((id) => slidesById.get(id)).filter(Boolean);
 }
 
 function buildSyllabusLesson(spec, lang) {
@@ -3652,6 +3731,7 @@ chineseCourse.decks = liveCatalog(syncedZhLessons, "zh");
 englishCourse.subtitle = "A 15-class path from Python foundations and data analysis to machine learning and an AI research project.";
 englishCourse.tags = ["Python", "Data Analysis", "Machine Learning", "AI Research"];
 englishCourse.decks = liveCatalog(syncedEnLessons, "en");
+CATALOG.courses = [englishCourse];
 
 const DECK_BUILDERS = {};
 Object.keys(syncedZhLessons).forEach((no) => {
@@ -3667,9 +3747,11 @@ Object.keys(syncedZhLessons).forEach((no) => {
 Object.keys(syncedEnLessons).forEach((no) => {
   const lessonId = `lesson-${no}`;
   DECK_BUILDERS[`python-ai-en/${lessonId}`] = {
-    build: () => ["01", "02"].includes(no)
-      ? buildKaggleLesson(syncedEnLessons[no], "en")
-      : buildSyllabusLesson(syncedEnLessons[no], "en"),
+    build: () => no === "01"
+      ? buildLiveEnglishClassOne(syncedEnLessons[no])
+      : no === "02"
+        ? buildKaggleLesson(syncedEnLessons[no], "en")
+        : buildSyllabusLesson(syncedEnLessons[no], "en"),
     title: `Class ${Number(no)} · ${syncedEnLessons[no].title}`,
   };
 });
@@ -3679,7 +3761,6 @@ Object.keys(syncedEnLessons).forEach((no) => {
 // =====================================================================
 W("assets/site.css", siteCss);
 W("assets/site.js", siteJs);
-COPY("docs/course-outline.png", "python-ai/lesson-01/assets/course-overview.png");
 W("index.html", siteIndex());
 W("catalog.json", JSON.stringify(CATALOG, null, 2));
 
