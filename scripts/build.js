@@ -358,16 +358,21 @@ body.lang-en .lang-en{display:inline!important}
 .reveal .lab-bar .explain-lines{background:#ffb238;color:#102a43}.reveal .lab-bar .explain-lines:hover{background:#ffc45e}
 .reveal .lab-bar .ai-explain,.reveal .lab-bar .ai-debug,.reveal .lab-bar .ai-improve{background:#1b3e5e;color:#cfe0ef}
 .reveal .lab-bar .ai-explain:hover,.reveal .lab-bar .ai-debug:hover,.reveal .lab-bar .ai-improve:hover{background:#27557d}
+.reveal .lab-bar .mira-toggle{background:var(--teal);color:#fff}.reveal .lab-bar .mira-toggle:hover{background:#0c8797}
 .reveal .lab-status{font-size:10.5px;color:#9db8d6;margin-left:auto;font-family:-apple-system,sans-serif}
 .reveal .lab pre.out{background:#08192b;color:#bfe3c7;border:1px solid #21405f;border-top:none;border-radius:0 0 10px 10px;margin:0;padding:.5em .6em;font-family:Consolas,monospace;font-size:11.5px;line-height:1.4;overflow:auto;min-height:2.4em;max-height:4.2em;white-space:pre-wrap}
 .reveal .lab pre.out .err{color:#ff9b8a}
 .reveal .assist{display:flex;flex-direction:column;background:linear-gradient(135deg,#fff,#f1f7fb);border:1px solid var(--line);border-radius:11px;overflow:hidden;min-width:0}
-.reveal .assist-head{background:linear-gradient(90deg,#0F9DB0,#2BC4D4);color:#fff;font-size:12px;font-weight:700;padding:.45em .7em;font-family:-apple-system,sans-serif}
+.reveal .assist-head{background:linear-gradient(90deg,#0F9DB0,#2BC4D4);color:#fff;padding:.45em .7em;font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:.5em}
+.reveal .mira-brand{display:flex;align-items:center;gap:.45em;font-size:12px;font-weight:800}.reveal .mira-avatar{width:1.55em;height:1.55em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--teal);font-size:12px}
+.reveal .mira-mode{font-size:9.5px;font-weight:700;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:.22em .65em;white-space:nowrap}
 .reveal .assist-body{flex:1;overflow:auto;padding:.5em .65em;font-size:12px;line-height:1.46;color:var(--ink);font-family:-apple-system,sans-serif}
 .reveal .assist-body p{font-size:12px;margin:.3em 0}.reveal .assist-body code{background:#eef3f8;border-radius:4px;padding:0 .25em;font-family:Consolas,monospace;font-size:11px}
 .reveal .assist-body pre{background:#0f2742;color:#e7f0fb;border-radius:8px;padding:.5em .6em;font-size:11px;overflow:auto;white-space:pre}
 .reveal .assist-body pre code{background:none;color:inherit}
 .reveal .assist-body .apply{background:var(--teal);color:#fff;border:none;border-radius:6px;padding:.25em .6em;font-size:11px;font-weight:600;cursor:pointer;margin-top:.2em}
+.reveal .mira-welcome{margin:0 0 .55em!important}.reveal .mira-quick{display:flex;gap:.35em;flex-wrap:wrap;margin-top:.55em}
+.reveal .mira-prompt{background:#e8f6f8;color:#0b7180;border:1px solid #a8dce2;border-radius:999px;padding:.32em .65em;font-size:10px;font-weight:700;cursor:pointer}.reveal .mira-prompt:hover{background:#d5eff2}
 .reveal .line-guide-progress{font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--teal);text-transform:uppercase}
 .reveal .line-guide-code{display:block;background:#0f2742;color:#fff;border-radius:7px;padding:.55em .65em;margin:.45em 0;white-space:pre-wrap;overflow-wrap:anywhere}
 .reveal .line-guide-text{font-size:12px;line-height:1.5;margin:.35em 0 .6em}
@@ -528,14 +533,15 @@ function labSlide(sid, kicker, title, intro, code, packages, notes) {
         <button class="ai-explain">✨ Explain</button>
         <button class="ai-debug">🐞 Debug</button>
         <button class="ai-improve">⚡ Improve</button>
+        <button class="mira-toggle" aria-label="Focus the Mira coding coach">🤖 Mira</button>
         <span class="lab-status">Python loads on first Run</span>
       </div>
       <pre class="out">▶ Run the code to see the output here.</pre>
     </div>
     <div class="assist">
-      <div class="assist-head">✨ AI Assistant</div>
-      <div class="assist-body">Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.</div>
-      <div class="assist-ask"><input class="ask-in" placeholder="Ask about this code…"><button class="ask-btn">Ask</button></div>
+      <div class="assist-head"><div class="mira-brand"><span class="mira-avatar">●</span><span>Mira · Code coach</span></div><span class="mira-mode">Built-in · instant</span></div>
+      <div class="assist-body"><p class="mira-welcome"><b>Hey! 👋 Welcome to class.</b><br>I am Mira. I can inspect the code on the left, explain how it works, help with an error, or suggest one safe improvement.</p><div class="mira-quick"><button class="mira-prompt" data-action="explain">Explain this code</button><button class="mira-prompt" data-action="debug">Help me debug</button><button class="mira-prompt" data-action="improve">Suggest an improvement</button></div></div>
+      <div class="assist-ask"><input class="ask-in" aria-label="Ask Mira about this code" placeholder="Ask Mira about this code…"><button class="ask-btn">Ask</button></div>
     </div>
   </div><aside class="notes">${esc(notes)}</aside>`);
 }
@@ -1128,13 +1134,56 @@ function mdToHtml(md){
 }
 async function askAssistant(lab,action,question){
   const body=lab.querySelector('.assist-body');
-  body.innerHTML='<p class="muted">✨ Thinking…</p>';
-  try{
-    const r=await fetch('/api/assistant',{method:'POST',headers:{'content-type':'application/json'},
-      body:JSON.stringify({action:action,question:question||'',code:lab.querySelector('.code').value,error:lab.dataset.lastError||''})});
-    const j=await r.json();
-    body.innerHTML=mdToHtml(j.text||'(no response)');
-  }catch(e){ body.innerHTML='<p class="muted">Assistant unavailable right now. Try again shortly.</p>'; }
+  stopAudio();
+  body.innerHTML=mdToHtml(miraReply(lab,action,question||''));
+}
+function miraWelcomeHtml(){
+  return '<p class="mira-welcome"><b>Hey! 👋 Welcome to class.</b><br>I am Mira. I can inspect the code on the left, explain how it works, help with an error, or suggest one safe improvement.</p>'+
+    '<div class="mira-quick"><button class="mira-prompt" data-action="explain">Explain this code</button><button class="mira-prompt" data-action="debug">Help me debug</button><button class="mira-prompt" data-action="improve">Suggest an improvement</button></div>';
+}
+function miraCodeLines(code){
+  return code.split('\\n').map(function(text,index){ return {text:text.trim(),number:index+1}; }).filter(function(item){ return item.text; });
+}
+function miraExplain(code){
+  const lines=miraCodeLines(code);
+  if(!lines.length) return '**Mira says:** Add a few lines of Python first, and I will explain them.';
+  const tick=String.fromCharCode(96);
+  const shown=lines.slice(0,8).map(function(item){
+    return '**Line '+item.number+':** '+tick+item.text.replaceAll(tick,"'")+tick+' — '+explainCodeLine(item.text);
+  }).join('\\n');
+  const more=lines.length>8?'\\n\\nI mapped the first eight non-empty lines. Use **Explain Each Line** to hear every line in order.':'';
+  return '**Mira’s code map**\\n\\n'+shown+more+'\\n\\nTry predicting the output before you click **Run**.';
+}
+function miraDebug(lab){
+  const error=lab.dataset.lastError||'';
+  if(!error) return '**Mira’s debug check**\\n\\nI do not have a recorded error yet. Click **Run** first. If Python reports an error, come back to **Debug** and I will use that message.\\n\\nMeanwhile, check matching parentheses, quotation marks, spelling, colons, and indentation.';
+  let hint='Read the final line of the error first, then inspect the highlighted line and the line directly above it.';
+  if(/SyntaxError/i.test(error)) hint='Check for a missing colon, parenthesis, bracket, or quotation mark near the reported line.';
+  else if(/IndentationError|unexpected indent/i.test(error)) hint='Use four spaces for each indented block and keep statements in the same block aligned.';
+  else if(/NameError|is not defined/i.test(error)) hint='Check the variable name for spelling and make sure it is assigned before it is used.';
+  else if(/TypeError/i.test(error)) hint='Check the type of each value. You may be combining text and numbers or calling an operation on the wrong kind of object.';
+  else if(/IndexError/i.test(error)) hint='The code requested a list position that does not exist. Compare the index with the list length.';
+  const tick=String.fromCharCode(96);
+  return '**Mira found this Python message**\\n\\n'+tick+error.split('\\n').slice(-2).join(' ').replaceAll(tick,"'")+tick+'\\n\\n**Next step:** '+hint+'\\n\\nMake one small change, then click **Run** again.';
+}
+function miraImprove(code){
+  const lines=miraCodeLines(code);
+  if(!lines.length) return '**Mira says:** Add some Python code first, and I will suggest a safe improvement.';
+  const hasComment=lines.some(function(item){ return item.text.startsWith('#'); });
+  const improved=(hasComment?'':'# Goal: run a small data experiment and inspect the result\\n')+code.trim();
+  const fence=String.fromCharCode(96).repeat(3);
+  return '**Mira’s improvement plan**\\n\\n1. Keep one clear goal comment at the top.\\n2. Use descriptive variable names.\\n3. Label printed results so another reader understands the output.\\n\\nHere is a safe starting revision:\\n\\n'+fence+'python\\n'+improved+'\\n'+fence+'\\n\\nRun it and explain what changed before adding anything else.';
+}
+function miraReply(lab,action,question){
+  const code=lab.querySelector('.code').value;
+  const q=question.trim().toLowerCase();
+  if(action==='explain'||/explain|what does|how does|line/.test(q)) return miraExplain(code);
+  if(action==='debug'||/debug|error|wrong|fix/.test(q)) return miraDebug(lab);
+  if(action==='improve'||/improve|better|clean|challenge/.test(q)) return miraImprove(code);
+  if(/kaggle|save|submit/.test(q)) return '**Mira says:** Use this browser lab to practice and test ideas. Save, version, and submit the formal notebook in Kaggle.';
+  if(/run|output|print/.test(q)) return '**Mira says:** First predict the output, then click **Run**. Compare the result with your prediction and use the difference as evidence for your next edit.';
+  if(/variable|value|type/.test(q)) return '**Mira says:** A variable is a clear name attached to a value. Change one value, run the program again, and describe which output changed and why.';
+  return '**Mira says:** I can help with this code in three useful ways: ask me to **explain** it, **debug** the latest Run error, or **improve** it with one safe revision. You can also ask about a variable, the output, or the Kaggle handoff.';
 }
 function explainCodeLine(text){
   const line=text.trim();
@@ -1224,12 +1273,14 @@ function closeLineWalkthrough(lab){
   stopAudio();
   lab.classList.remove('explaining');
   const button=lab.querySelector('.explain-lines'); if(button) button.textContent='💡 Explain each line';
-  lab.querySelector('.assist-body').innerHTML='Hi! Edit the code and hit <b>Run</b>. Stuck? I can <b>Explain</b>, <b>Debug</b>, or <b>Improve</b> it — or just ask me below.';
+  lab.querySelector('.assist-body').innerHTML=miraWelcomeHtml();
 }
 document.addEventListener('click',function(e){
   const t=e.target;
   if(t.closest('.lab .run')){ runLab(labOf(t.closest('.run'))); }
   else if(t.closest('.lab .explain-lines')){ const lab=labOf(t.closest('.explain-lines')); renderLineWalkthrough(lab,Number(lab.dataset.lineIndex||0)); }
+  else if(t.closest('.lab .mira-toggle')){ const lab=labOf(t.closest('.mira-toggle')); lab.querySelector('.ask-in').focus(); }
+  else if(t.closest('.lab .mira-prompt')){ const button=t.closest('.mira-prompt'); askAssistant(labOf(button),button.dataset.action||'ask',''); }
   else if(t.closest('.lab .line-replay')){
     const button=t.closest('.line-replay'); const lab=labOf(button);
     if(_lineVoiceButton===button&&_utter){ stopAudio(); }
