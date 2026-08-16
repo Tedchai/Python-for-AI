@@ -19,7 +19,9 @@ Students gradually build a portfolio that may include:
 - three to five figures that support a research question;
 - model experiments with fair comparisons and recorded metrics;
 - a short research report or draft paper;
-- a presentation that explains the problem, method, results, limitations, and next steps.
+- an IEEE-style research poster and presentation that explain the problem, method, results, limitations, and next steps.
+
+The poster is a research-communication milestone, not a promise of conference submission, acceptance, publication, or an award. Any future submission must be evaluated separately against the specific event's eligibility, template, evidence, and review requirements.
 
 ## Class 1: live beginner lesson
 
