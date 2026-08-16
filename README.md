@@ -26,6 +26,7 @@ The poster is a research-communication milestone, not a promise of conference su
 ## Class 1: live beginner lesson
 
 Class 1 runs for 60 minutes and is designed for a live, fully English online session.
+It includes 36 slides so the teacher can choose the right level of detail without extending the meeting: Slide 4 links to four optional pathway previews, and each preview links back to the course map. The core coding route remains a 60-minute lesson and does not require presenting every slide in sequence.
 
 Key features include:
 
