@@ -50,10 +50,14 @@ const expandedFoundationSlideIds = [
 ];
 
 const liveClassOneSlideIds = [
-  "title", "outputs", "lesson-agenda", "prerequisite-recap", "warmup",
-  "concept-1", "concept-2", "syntax-pattern", "prediction-check",
-  "teacher-demo", "code-trace", "guided-practice-1", "debug-routine",
-  "dataset-context", "guided-lab", "rubric", "homework", "exit-ticket",
+  "title", "outputs", "lesson-agenda", "prerequisite-recap", "one-twenty-minute-pacing",
+  "course-position", "dataset-context", "warmup", "vocabulary", "mental-model",
+  "concept-1", "concept-2", "concept-3", "syntax-pattern", "teacher-demo",
+  "code-trace", "prediction-check", "guided-practice-1", "guided-practice-2",
+  "guided-lab", "mistake-clinic", "debug-routine", "checkpoint", "project-plan",
+  "project-brief", "project-lab", "independent-work", "challenge-ladder",
+  "concept-check", "evidence-handoff", "notebook-hygiene", "research-integrity",
+  "rubric", "homework", "buffer-catchup", "exit-ticket",
 ];
 
 const catalogPath = path.join(ROOT, "catalog.json");
@@ -104,6 +108,11 @@ for (const folder of ["python-ai-en"]) {
     if (liveClassOne || expanded) {
       check(html.includes("KAGGLE NOTEBOOK") && !/Google Colab|colab\.research\.google\.com/i.test(html), `${relative} uses Kaggle rather than Colab`);
       if (liveClassOne) {
+        check(html.includes('href="#/vocabulary"') && html.includes('href="#/mental-model"') && html.includes('href="#/concept-3"') && html.includes('href="#/course-position"'), `${relative} links the four course pathways to optional detail slides`);
+        check((html.match(/href="#\/prerequisite-recap"/g) || []).length >= 4, `${relative} gives every pathway preview a route back to the course map`);
+        check(!html.includes("A quick interest hook") && !html.includes("Game logic"), `${relative} uses family-friendly creative-coding language`);
+        check(!html.includes('<section id="warmup"') || (!html.includes('<h3>Student</h3>') && !html.includes('<h3>Instructor</h3>')), `${relative} avoids role-label language in the warm-up`);
+        check((html.match(/data-narration="off"/g) || []).length === 7 && html.includes("currentSlide?.dataset.narration!=='off'"), `${relative} hides stale narration on the seven rewritten pathway slides`);
         check(html.includes('class="lab"') && /BROWSER PYTHON DEMO|浏览器内 Python 演示/.test(html), `${relative} includes the approved browser Python warm-up`);
         check(/Saving, versioning, and submission still happen in Kaggle Notebook|正式保存、版本管理和提交仍在 Kaggle Notebook 完成/.test(html), `${relative} keeps the browser demo separate from Kaggle submission`);
         check(/No Python installation required/.test(html), `${relative} requires no local Python installation`);
