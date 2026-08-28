@@ -3568,8 +3568,8 @@ function buildKaggleLesson(spec, lang) {
     exit: "EXIT TICKET", run: "Runs", explain: "Explained", evidenceWord: "Evidence", clean: "Clear structure",
   };
 
-  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div><h1 style="color:#fff">${esc(spec.title)}</h1><p style="color:#cfe0ef;margin-top:.45em">${esc(spec.subtitle)}</p><div class="grid2" style="margin-top:1em">${spec.skills.map((skill) => `<div class="skillcard"><div class="cn">${esc(skill)}</div><p>${esc(spec.stage)}</p></div>`).join("")}</div>${!zh && spec.classNo === "01" ? '<div class="callout" style="margin-top:.75em"><b>LIVE ONLINE LESSON:</b> 60 minutes · Browser only · No Python installation required</div>' : ""}${notes("36页、120分钟课堂版；新增页面用于练习、项目推进和证据检查。", spec.classNo === "01" ? "A focused 60-minute live lesson with browser practice and an optional Kaggle handoff." : "A 36-slide, 120-minute lesson with additional practice, project work, and evidence checks.")}`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
-  S.push(sec("outputs", `<div class="kicker">${t.output}</div><h2>${esc(spec.output)}</h2><div class="grid3" style="margin-top:.65em">${boxes([[t.understand, zh ? "能用自己的话解释三个核心概念。" : "Explain the three core ideas in your own words."], [t.practice, zh ? "运行并修改课堂示例。" : "Run and modify the lesson example."], [t.submit, zh ? "把成果保存到项目Notebook。" : "Save the result in the project notebook."]])}</div>${!zh && spec.classNo === "01" ? `<div class="callout" style="margin-top:.65em"><b>COURSE DESTINATION:</b> Research Log → Data Story → Model Evidence → IEEE-style Research Poster<br><small>Poster readiness is a research-communication goal; conference submission is evaluated separately.</small></div>` : ""}${notes("先说明本节课唯一可见产出。", spec.classNo === "01" ? "Begin with today's visible output, then show how it becomes the first evidence block in a research poster. Describe the poster as a communication goal, not a promise of IEEE submission or acceptance." : "Begin with the single visible lesson outcome.")}`));
+  S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div><h1 style="color:#fff">${esc(spec.title)}</h1><p style="color:#cfe0ef;margin-top:.45em">${esc(spec.subtitle)}</p><div class="grid2" style="margin-top:1em">${spec.skills.map((skill) => `<div class="skillcard"><div class="cn">${esc(skill)}</div><p>${esc(spec.stage)}</p></div>`).join("")}</div>${!zh && spec.classNo === "01" ? '<div class="callout" style="margin-top:.75em"><b>LIVE ONLINE LESSON:</b> 60 minutes · Browser only · No Python installation required</div>' : ""}${notes("120分钟课堂版；讲解之后立即进入预测、运行、调试和项目实作。", spec.classNo === "01" ? "A focused 60-minute live lesson with browser practice and an optional Kaggle handoff." : "A focused 120-minute lesson built around prediction, code execution, debugging, and project work.")}`, "center", 'data-background-gradient="linear-gradient(135deg,#0C2D52,#16406e)"'));
+  S.push(sec("outputs", `<div class="kicker">${t.output}</div><h2>${esc(spec.output)}</h2><div class="grid3" style="margin-top:.65em">${boxes([[t.understand, zh ? "能用自己的话解释三个核心概念。" : "Explain the three core ideas in your own words."], [t.practice, zh ? "运行并修改课堂示例。" : "Run and modify the lesson example."], [t.submit, zh ? "把成果保存到项目Notebook。" : "Save the result in the project notebook."]])}</div>${notes("先说明本节课唯一可见产出。", "Begin with the single visible lesson outcome.")}`));
   S.push(sec("lesson-agenda", `<div class="kicker">AGENDA</div><h2>${zh ? "今天只完成三件大事" : "Three major jobs for today"}</h2><div class="grid3" style="margin-top:.65em">${boxes([[zh ? "理解" : "Understand", spec.concepts.map((item) => item[0]).join(zh ? "、" : ", ")], [zh ? "应用" : "Apply", spec.kaggleAction], [zh ? "留下证据" : "Preserve evidence", spec.paperSection]])}</div>${notes("用三块结构管理120分钟课堂，避免内容松散。", spec.classNo === "01" ? "Use three blocks to keep the 60-minute live lesson coherent." : "Use three blocks to keep the 120-minute lesson coherent.")}`));
   S.push(sec("one-twenty-minute-pacing", liveEnglishClassOne
     ? `<div class="kicker">60-MINUTE FIRST LESSON</div><h2>A clear core route, with optional detail when it helps</h2><div class="flow" style="display:grid;grid-template-columns:repeat(4,1fr);gap:.65em;margin-top:.7em"><div class="step"><span class="n time">0–8</span><b>Discover</b><span>Choose a question or creation goal</span></div><div class="step"><span class="n time">8–20</span><b>Understand</b><span>Variables, types, and output</span></div><div class="step"><span class="n time">20–48</span><b>Build</b><span>Run, change, debug, and record</span></div><div class="step loop"><span class="n time">48–60</span><b>Explain & save</b><span>Show the result and its next step</span></div></div><div class="callout" style="margin-top:.7em"><b>Flexible by design:</b> use the linked preview pages when they match the learner's interests; skip them when the core coding activity needs more time.</div>${notes("第一课保持60分钟主线；扩展页由第4页按兴趣选择，不要求线性讲完。", "Keep the 60-minute core route. Open the linked previews selectively instead of presenting every slide in sequence.")}`
@@ -3691,14 +3691,9 @@ function buildKaggleLesson(spec, lang) {
 }
 
 const liveEnglishClassOneSlideIds = [
-  "title", "outputs", "lesson-agenda", "prerequisite-recap", "one-twenty-minute-pacing",
-  "course-position", "dataset-context", "warmup", "vocabulary", "mental-model",
-  "concept-1", "concept-2", "concept-3", "syntax-pattern", "teacher-demo",
-  "code-trace", "prediction-check", "guided-practice-1", "guided-practice-2",
-  "guided-lab", "mistake-clinic", "debug-routine", "checkpoint", "project-plan",
-  "project-brief", "project-lab", "independent-work", "challenge-ladder",
-  "concept-check", "evidence-handoff", "notebook-hygiene", "research-integrity",
-  "rubric", "homework", "buffer-catchup", "exit-ticket",
+  "title", "outputs", "lesson-agenda",
+  "concept-1", "concept-2", "syntax-pattern", "prediction-check",
+  "teacher-demo", "dataset-context", "guided-lab", "rubric", "homework", "exit-ticket",
 ];
 
 function buildLiveEnglishClassOne(spec) {
@@ -3718,6 +3713,312 @@ function buildLiveEnglishClassOne(spec) {
   }).filter(Boolean);
 }
 
+const liveEnglishClassTwoSlideIds = [
+  "title", "outputs", "mental-model", "syntax-pattern", "teacher-demo",
+  "code-trace", "prediction-check", "guided-lab", "mistake-clinic",
+  "debug-routine", "project-brief", "project-lab", "concept-check",
+  "evidence-handoff", "research-integrity", "homework", "exit-ticket",
+];
+
+function buildLiveEnglishClassTwo(spec) {
+  const note = (text) => `<aside class="notes">${esc(text)}</aside>`;
+  const slidesById = new Map(buildKaggleLesson(spec, "en").map((html) => {
+    const match = html.match(/^<section id="([^"]+)"/);
+    return [match ? match[1] : "", html];
+  }));
+
+  slidesById.set("code-trace", sec("code-trace", `<div class="kicker">TRACE REAL VALUES</div>
+    <h2>Follow the branch selected by each reading</h2>
+    <table style="width:100%;border-collapse:collapse;font-size:.65em;margin-top:.55em">
+      <thead><tr style="background:#dcebf7"><th style="padding:.45em;text-align:left">temp</th><th style="padding:.45em;text-align:left">15 &lt;= temp &lt;= 35</th><th style="padding:.45em;text-align:left">next test</th><th style="padding:.45em;text-align:left">branch</th><th style="padding:.45em;text-align:left">label</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:.45em;border-bottom:1px solid #ccd8e4">15</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">True</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">skip</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">if</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4"><b>normal</b></td></tr>
+        <tr><td style="padding:.45em;border-bottom:1px solid #ccd8e4">35</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">True</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">skip</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">if</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4"><b>normal</b></td></tr>
+        <tr><td style="padding:.45em;border-bottom:1px solid #ccd8e4">37.8</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">False</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">temp &gt; 35 → True</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4">elif</td><td style="padding:.45em;border-bottom:1px solid #ccd8e4"><b>high</b></td></tr>
+        <tr><td style="padding:.45em">12.1</td><td style="padding:.45em">False</td><td style="padding:.45em">temp &gt; 35 → False</td><td style="padding:.45em">else</td><td style="padding:.45em"><b>low</b></td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><b>Predict first:</b> Which rows stop after the first condition, and why?</div>
+    ${note("Point to one row at a time. Claire predicts the Boolean result, selected branch, and label before the row is revealed or discussed.")}`));
+
+  slidesById.set("mistake-clinic", sec("mistake-clinic", `<div class="kicker">LOGIC BUG</div>
+    <h2>Two missing characters break both boundary cases</h2>
+    <div class="grid2" style="margin-top:.55em">
+      <div><h3>Buggy rule</h3><pre style="font-size:.5em"><code>${esc(`if 15 < temp < 35:\n    label = "normal"\nelif temp >= 35:\n    label = "high"\nelse:\n    label = "low"`)}</code></pre><p><b>15 → low</b><br><b>35 → high</b></p></div>
+      <div><h3>Fixed rule</h3><pre style="font-size:.5em"><code>${esc(`if 15 <= temp <= 35:\n    label = "normal"\nelif temp > 35:\n    label = "high"\nelse:\n    label = "low"`)}</code></pre><p><b>15 → normal</b><br><b>35 → normal</b></p></div>
+    </div>
+    <div class="callout"><b>Lesson:</b> correct syntax can still encode the wrong scientific rule.</div>
+    ${note("Ask for the two wrong outputs before showing the fixed rule. Distinguish a logic error from a Python syntax error.")}`));
+
+  slidesById.set("debug-routine", sec("debug-routine", `<div class="kicker">REAL DEBUG TRACE</div>
+    <h2>Python reports one blocking problem at a time</h2>
+    <div class="grid2" style="grid-template-columns:1.05fr .95fr;margin-top:.55em">
+      <pre style="font-size:.53em"><code>${esc(`temperature = 37.8\nif temperature > 35\n    lable = "high"\nprint(label)`)}</code></pre>
+      <div>
+        <h3>Run 1</h3><p><b>SyntaxError</b> near the <code>if</code> line → add the missing colon.</p>
+        <h3>Run 2</h3><p><b>NameError</b> at <code>print(label)</code> → make the variable spelling consistent.</p>
+        <h3>Run 3</h3><p><b>high</b> → now verify that the rule itself is correct.</p>
+      </div>
+    </div>
+    ${note("Run the snippet after each single fix. The sequence demonstrates why debugging is iterative and why a clean run is not yet proof of correct logic.")}`));
+
+  slidesById.set("project-brief", sec("project-brief", `<div class="kicker">PROJECT CONTRACT</div>
+    <h2>The checker is complete only when code and evidence agree</h2>
+    <div class="grid2" style="margin-top:.55em">
+      <div><h3>Required tests</h3><table style="width:100%;border-collapse:collapse;font-size:.68em"><tr style="background:#dcebf7"><th style="padding:.4em;text-align:left">reading</th><th style="padding:.4em;text-align:left">expected</th></tr><tr><td style="padding:.4em;border-bottom:1px solid #ccd8e4">14.9</td><td style="padding:.4em;border-bottom:1px solid #ccd8e4">low</td></tr><tr><td style="padding:.4em;border-bottom:1px solid #ccd8e4">15</td><td style="padding:.4em;border-bottom:1px solid #ccd8e4">normal</td></tr><tr><td style="padding:.4em;border-bottom:1px solid #ccd8e4">35</td><td style="padding:.4em;border-bottom:1px solid #ccd8e4">normal</td></tr><tr><td style="padding:.4em">35.1</td><td style="padding:.4em">high</td></tr></table></div>
+      <div><h3>Required evidence</h3><ul><li>A <code>for</code> loop checks every reading.</li><li><code>if / elif / else</code> assigns one label.</li><li>The notebook prints each label and the normal rate.</li><li>One Markdown sentence explains the boundary rule.</li></ul></div>
+    </div>
+    ${note("Treat the four test cases as acceptance criteria. Students should predict them, run the project, and compare actual output with expected output.")}`));
+
+  return liveEnglishClassTwoSlideIds.map((id) => slidesById.get(id)).filter(Boolean);
+}
+
+const LLM_BRIDGES = {
+  "03": {
+    chapter: "Chapter 2 · Prompting",
+    title: "A prompt experiment is structured Python data",
+    purpose: "Lists and dictionaries keep the prompt, examples, response, and evidence connected instead of scattered across cells.",
+    code: `trial = {
+    "prompt": "Classify the review",
+    "examples": [
+        {"text": "Clear explanation", "label": "positive"}
+    ],
+    "response": {"label": "positive", "reason": "specific praise"}
+}
+print(trial["response"]["label"])`,
+    predict: "Which keys would you need to reproduce this trial?",
+    scope: "No API key is needed; this lesson stores a mock prompt record.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter2"],
+  },
+  "04": {
+    chapter: "Chapter 5 · Model Watermarking",
+    title: "A toy token choice begins with a score vector",
+    purpose: "NumPy can turn candidate-token scores into probabilities and reveal which token has the highest simulated score.",
+    code: `import numpy as np
+
+tokens = np.array(["safe", "clear", "fast"])
+scores = np.array([1.2, 2.1, 0.7])
+weights = np.exp(scores - scores.max())
+probs = weights / weights.sum()
+
+print(tokens[probs.argmax()])
+print(probs.round(3))`,
+    predict: "Which token wins, and do the probabilities sum to 1?",
+    scope: "This is a small probability simulation, not a full language model.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter5"],
+  },
+  "05": {
+    chapter: "Chapter 2 · Prompting",
+    title: "Prompt strategies become comparable when every trial is a row",
+    purpose: "A DataFrame can compare zero-shot and few-shot trials using the same columns, metric, and test cases.",
+    code: `import pandas as pd
+
+trials = pd.DataFrame({
+    "strategy": ["zero-shot", "zero-shot", "few-shot", "few-shot"],
+    "correct": [0, 1, 1, 1],
+    "latency_ms": [820, 790, 910, 940]
+})
+
+print(trials.groupby("strategy")[["correct", "latency_ms"]].mean())`,
+    predict: "Which strategy is more accurate, and what tradeoff appears?",
+    scope: "Use classroom measurements; do not invent API results.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter2"],
+  },
+  "06": {
+    chapter: "Chapters 1 & 4 · Training Data",
+    title: "Model training starts with auditable data cleaning",
+    purpose: "Duplicate prompts, missing targets, and split leakage can make a fine-tuning or reasoning result look better than it is.",
+    code: `import pandas as pd
+
+rows = pd.DataFrame({
+    "prompt": ["2+2", "2+2", "3+5", None],
+    "target": ["4", "4", "8", "unknown"],
+    "split": ["train", "train", "test", "train"]
+})
+
+clean = rows.dropna(subset=["prompt", "target"]).drop_duplicates()
+print(clean)
+print("removed:", len(rows) - len(clean))`,
+    predict: "How many rows remain after both cleaning rules?",
+    scope: "The class cleans a tiny table; it does not fine-tune a model.",
+    sources: [
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter1",
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter4",
+    ],
+  },
+  "07": {
+    chapter: "Chapter 2 · Prompting",
+    title: "A prompt comparison needs a figure, not a favorite example",
+    purpose: "Plot accuracy and latency for the same prompt strategies so the audience can see performance and cost together.",
+    code: `import matplotlib.pyplot as plt
+
+strategies = ["zero-shot", "few-shot", "structured"]
+accuracy = [0.62, 0.78, 0.81]
+
+plt.bar(strategies, accuracy)
+plt.ylim(0, 1)
+plt.ylabel("Accuracy on the same test set")
+plt.title("Prompt strategy comparison")
+plt.show()`,
+    predict: "What claim is supported, and what claim is still missing?",
+    scope: "Replace the example numbers with measured notebook results.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter2"],
+  },
+  "08": {
+    chapter: "Chapters 3 & 10 · Evaluation",
+    title: "LLM errors need categories before they need explanations",
+    purpose: "EDA can separate factual, formatting, refusal, and safety errors before the project proposes a cause.",
+    code: `import pandas as pd
+
+results = pd.DataFrame({
+    "case": [1, 2, 3, 4, 5, 6],
+    "error_type": ["none", "factual", "format", "none", "safety", "factual"]
+})
+
+counts = results[results.error_type != "none"]["error_type"].value_counts()
+print(counts)`,
+    predict: "Which error type occurs most often in this small sample?",
+    scope: "Describe observed errors; do not infer a hidden model cause from counts alone.",
+    sources: [
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter3",
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter10",
+    ],
+  },
+  "09": {
+    chapter: "Chapter 10 · Agent Safety",
+    title: "An LLM safety classifier needs a baseline before a complex model",
+    purpose: "A most-frequent baseline reveals whether a learned classifier improves on the easiest possible rule.",
+    code: `from sklearn.dummy import DummyClassifier
+
+X_train = [[8, 0], [15, 0], [30, 1], [12, 0], [40, 1], [20, 0]]
+y_train = [0, 0, 1, 0, 1, 0]  # 1 = unsafe
+X_test = [[10, 0], [35, 1]]
+y_test = [0, 1]
+
+baseline = DummyClassifier(strategy="most_frequent")
+baseline.fit(X_train, y_train)
+print("baseline accuracy:", baseline.score(X_test, y_test))`,
+    predict: "Why can a high baseline score still hide the unsafe class?",
+    scope: "Use benign, teacher-reviewed examples; no autonomous action is executed.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter10"],
+  },
+  "10": {
+    chapter: "Chapter 1 · Deployment",
+    title: "Inference latency is a measurable outcome, not a vague impression",
+    purpose: "Linear regression can test whether longer generated outputs are associated with slower responses in one controlled experiment.",
+    code: `from sklearn.linear_model import LinearRegression
+
+output_tokens = [[20], [40], [60], [80]]
+latency_seconds = [0.7, 1.1, 1.5, 1.9]
+
+model = LinearRegression().fit(output_tokens, latency_seconds)
+print("seconds per token:", round(model.coef_[0], 3))
+print("predicted latency for 100 tokens:", round(model.predict([[100]])[0], 2))`,
+    predict: "What does the slope mean in this experiment?",
+    scope: "This classroom sample is not a universal latency law.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter1"],
+  },
+  "11": {
+    chapter: "Chapter 10 · Agent Safety",
+    title: "Safe versus unsafe is a binary prediction with asymmetric errors",
+    purpose: "A confusion matrix shows whether the classifier misses unsafe cases or over-flags safe ones.",
+    code: `from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+X_train = [[0, 0], [1, 0], [1, 1], [0, 1], [1, 1], [0, 0]]
+y_train = [0, 0, 1, 0, 1, 0]
+X_test = [[1, 1], [0, 0]]
+y_test = [1, 0]
+
+model = LogisticRegression().fit(X_train, y_train)
+pred = model.predict(X_test)
+print(confusion_matrix(y_test, pred, labels=[0, 1]))`,
+    predict: "Which cell would represent a missed unsafe case?",
+    scope: "The labels are a simplified classroom contract, not a safety certification.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter10"],
+  },
+  "12": {
+    chapter: "Chapter 10 · Agent Safety",
+    title: "A decision tree can expose the rule behind a risk label",
+    purpose: "Tree depth and feature importance make a small defensive classifier easier to inspect for overfitting and weak shortcuts.",
+    code: `from sklearn.tree import DecisionTreeClassifier
+
+# permission, private_data, irreversible_action
+X = [[1, 0, 0], [1, 0, 1], [0, 1, 0], [0, 1, 1], [1, 1, 0]]
+y = [0, 1, 1, 1, 1]
+
+tree = DecisionTreeClassifier(max_depth=2, random_state=42)
+tree.fit(X, y)
+print("depth:", tree.get_depth())
+print("importance:", tree.feature_importances_.round(2))`,
+    predict: "Which feature does the fitted tree rely on most?",
+    scope: "Interpretability helps review a model; it does not prove real-world safety.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter10"],
+  },
+  "13": {
+    chapter: "Chapter 6 · Jailbreak Evaluation",
+    title: "A stronger evaluator must use the same held-out safety cases",
+    purpose: "SVM or boosting is meaningful only when the features, split, labels, and metric remain fixed across models.",
+    code: `from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+
+# length, imperative_count, policy_match
+X_train = [[10, 0, 0], [18, 1, 0], [45, 3, 1], [35, 2, 1], [12, 0, 0], [28, 1, 0]]
+y_train = [0, 0, 1, 1, 0, 0]
+X_test = [[40, 2, 1], [14, 0, 0]]
+y_test = [1, 0]
+
+model = SVC(kernel="linear").fit(X_train, y_train)
+print("held-out accuracy:", accuracy_score(y_test, model.predict(X_test)))`,
+    predict: "What must stay unchanged before comparing this with XGBoost?",
+    scope: "The course studies defensive evaluation, not jailbreak execution.",
+    sources: ["https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter6"],
+  },
+  "14": {
+    chapter: "Chapters 2 & 3 · Controlled Evaluation",
+    title: "An LLM claim needs an ablation table, not one impressive answer",
+    purpose: "Change one prompt factor at a time, reuse the same test cases, and record reliability plus unintended side effects.",
+    code: `trials = [
+    {"examples": 0, "correct": 7, "format_errors": 2},
+    {"examples": 2, "correct": 9, "format_errors": 1}
+]
+
+for trial in trials:
+    accuracy = trial["correct"] / 10
+    print(trial["examples"], accuracy, trial["format_errors"])
+
+print("changed factor: number of examples")`,
+    predict: "Which conclusion is supported, and what still needs repetition?",
+    scope: "Reliability, generality, and locality are evaluation questions, not automatic guarantees.",
+    sources: [
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter2",
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter3",
+    ],
+  },
+  "15": {
+    chapter: "Chapters 2, 8 & 10 · Final Project",
+    title: "A final LLM project needs one question, one test set, and one auditable claim",
+    purpose: "Choose a safe prompt study, response-quality audit, or teacher-provided multimodal evaluation and define the evidence before running it.",
+    code: `project = {
+    "question": "Does two-shot prompting improve label accuracy?",
+    "test_cases": 20,
+    "metric": "accuracy",
+    "risk_control": "no private data or autonomous actions",
+    "claim": "pending experiment"
+}
+
+required = ["question", "test_cases", "metric", "risk_control", "claim"]
+print("complete contract:", all(key in project for key in required))`,
+    predict: "Which field prevents a demo from being mistaken for evidence?",
+    scope: "No model-weight training, jailbreak execution, GUI control, or RLHF training is required.",
+    sources: [
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter2",
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter8",
+      "https://github.com/Lordog/dive-into-llms/tree/main/documents/chapter10",
+    ],
+  },
+};
+
 function buildSyllabusLesson(spec, lang) {
   const zh = lang === "zh";
   const S = [];
@@ -3728,7 +4029,7 @@ function buildSyllabusLesson(spec, lang) {
   const skills = (spec.skills || spec.objectives || []).slice(0, 3);
   const homework = (spec.homework || []).slice(0, 4);
   const quiz = spec.quiz1;
-  const current = Number(spec.classNo);
+  const bridge = LLM_BRIDGES[spec.classNo];
 
   S.push(sec("title", `<div class="kicker" style="color:#7fd3df">PYTHON FOR AI RESEARCH / CLASS ${spec.classNo}</div>
     <h1 style="color:#fff">${esc(spec.title)}</h1>
@@ -3744,28 +4045,14 @@ function buildSyllabusLesson(spec, lang) {
       <div class="box"><h3>${zh ? "工具训练" : "Tool practice"}</h3><p>${esc(skills[1] || spec.title)}</p></div>
     </div>${note("开场明确今天必须带走的成果。", "Open with the artifact students must leave with.")}`));
 
-  S.push(sec("lesson-agenda", `<div class="kicker">AGENDA</div><h2>${zh ? "一个问题、一段代码、一个成果" : "One question, one code pattern, one result"}</h2>
-    <div class="grid3" style="margin-top:.7em">
-      <div class="box"><span class="feature">1</span><h3>${zh ? "研究场景" : "Research context"}</h3><p>${esc(spec.projectInput || spec.subtitle)}</p></div>
-      <div class="box"><span class="feature" style="background:var(--green)">2</span><h3>${zh ? "核心实作" : "Core practice"}</h3><p>${esc(spec.labTitle)}</p></div>
-      <div class="box"><span class="feature" style="background:var(--amber)">3</span><h3>${zh ? "保存证据" : "Save evidence"}</h3><p>${esc(spec.projectOutput || spec.output)}</p></div>
-    </div>${note("Agenda服务于60分钟课堂主线。", "The agenda supports one 60-minute lesson arc.")}`));
-
-  S.push(sec("sixty-minute-pacing", `<div class="kicker">60-MINUTE PACING</div><h2>${zh ? "短讲解，长实作，及时保存" : "Brief explanation, substantial practice, saved evidence"}</h2>
-    <div class="flow" style="margin-top:.7em">
-      <div class="step"><span class="n">0–8</span><b>Start</b><span>${zh ? "场景与预测" : "Context and prediction"}</span></div>
-      <div class="step"><span class="n">8–20</span><b>Concept</b><span>${zh ? "两个必要概念" : "Two necessary concepts"}</span></div>
-      <div class="step"><span class="n">20–50</span><b>Lab</b><span>${zh ? "跟做后独立修改" : "Guided then independent work"}</span></div>
-      <div class="step loop"><span class="n">50–60</span><b>Close</b><span>${zh ? "保存、解释、提交" : "Save, explain, submit"}</span></div>
-    </div>${note("根据班级速度在概念和实作之间微调，但不取消主要实验。", "Adjust concept and practice time slightly, but do not remove the main lab.")}`));
-
-  S.push(sec("course-position", `<div class="kicker">COURSE MAP · ${esc(spec.stage)}</div><h2>${zh ? "15节课共同完成一个AI科研闭环" : "Fifteen classes build one AI research workflow"}</h2>
-    <div class="flow" style="margin-top:.65em">
-      ${[
-        ["1–3", zh ? "Python基础" : "Python"], ["4–6", zh ? "数据处理" : "Data"], ["7–8", "Visualization / EDA"], ["9–13", "Machine Learning"], ["14–15", zh ? "研究项目" : "Research Project"],
-      ].map(([n, label]) => `<div class="step${current >= Number(n.split("–")[0]) && current <= Number(n.split("–")[1]) ? " loop" : ""}"><span class="n">${n}</span><b>${esc(label)}</b></div>`).join("")}
-    </div><div class="callout"><b>${zh ? "本节推进：" : "This class advances: "}</b>${esc(spec.kaggleAction || spec.projectAction)}</div>
-    ${note("强调每节成果进入同一份Research Log和最终项目。", "Connect every result to one Research Log and final project.")}`));
+  if (bridge) {
+    const sourceLines = bridge.sources.map((source) => `- ${source}`).join("\n");
+    S.push(sec("llm-bridge", `<div class="kicker">LLM BRIDGE · ${esc(bridge.chapter)}</div><h2>${esc(bridge.title)}</h2>
+      <div class="grid2" style="grid-template-columns:.82fr 1.18fr;margin-top:.55em">
+        <div><p class="lead" style="font-size:.82em">${esc(bridge.purpose)}</p><div class="callout"><b>Predict:</b> ${esc(bridge.predict)}</div><p style="font-size:.58em;margin-top:.65em"><b>Scope:</b> ${esc(bridge.scope)}</p></div>
+        <pre style="font-size:.45em;max-height:390px;overflow:auto"><code>${esc(bridge.code)}</code></pre>
+      </div>${note("本页只借鉴专题方向，课堂示例为独立改写。", `This classroom example is independently authored; the external repository was used only to select and scope the topic.\n[Sources]\n${sourceLines}`)}`));
+  }
 
   S.push(sec("warmup", `<div class="kicker">RESEARCH WARM-UP</div><h2>${zh ? "先判断需要什么证据，再打开代码" : "Decide what evidence is needed before opening the code"}</h2>
     <div class="grid2" style="margin-top:.7em">
@@ -3779,9 +4066,6 @@ function buildSyllabusLesson(spec, lang) {
       ${vocab ? `<div class="callout"><b>${esc(vocab[0])}:</b> ${esc(vocab[1])}</div>` : ""}
       ${note("只讲完成主要实验所需的直觉和语言。", "Teach only the intuition and language needed for the main lab.")}`));
   });
-  while (S.length < 8) {
-    S.push(sec(`concept-${S.length - 5}`, `<div class="kicker">CORE CONCEPT</div><h2>${zh ? "把概念连接到输出" : "Connect the idea to the output"}</h2><p class="lead">${esc(spec.line)}</p>${note("用一句话补齐概念与成果的连接。", "Use one sentence to connect concept and output.")}`));
-  }
 
   S.push(sec("syntax-pattern", `<div class="kicker">CODE PATTERN</div><h2>${zh ? "先找输入、处理和输出" : "Find the input, process, and output"}</h2>
     <pre style="font-size:.55em;max-height:410px;overflow:auto"><code>${esc(spec.syntax || spec.demo)}</code></pre>
@@ -3887,7 +4171,7 @@ Object.keys(syncedEnLessons).forEach((no) => {
     build: () => no === "01"
       ? buildLiveEnglishClassOne(syncedEnLessons[no])
       : no === "02"
-        ? buildKaggleLesson(syncedEnLessons[no], "en")
+        ? buildLiveEnglishClassTwo(syncedEnLessons[no])
         : buildSyllabusLesson(syncedEnLessons[no], "en"),
     title: `Class ${Number(no)} · ${syncedEnLessons[no].title}`,
   };

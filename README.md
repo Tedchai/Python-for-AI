@@ -44,6 +44,8 @@ The line-by-line explanation is deterministic and works on static GitHub Pages w
 
 ## Course sequence
 
+Classes 3–15 now include one concise, code-first **LLM Bridge** that applies the current Python, data, or machine-learning skill to a safe LLM research question. The complete rationale, source boundaries, and lesson-by-lesson mapping are recorded in [`LLM_KNOWLEDGE_MAP_LESSONS_03_15.md`](LLM_KNOWLEDGE_MAP_LESSONS_03_15.md). All classroom examples are independently rewritten; external notebooks, slides, images, and substantial code are not republished.
+
 | Class | Topic | Main outcome |
 |---:|---|---|
 | 1 | Python Basics & Kaggle Notebook | Run browser Python and create a first notebook |
