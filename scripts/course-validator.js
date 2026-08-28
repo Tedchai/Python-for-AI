@@ -32,28 +32,39 @@ const expectedTitles = [
 ];
 
 const requiredSlideIds = [
-  "title", "outcomes", "lesson-agenda", "sixty-minute-pacing", "course-position",
-  "warmup", "concept-1", "concept-2", "syntax-pattern", "prediction-check",
+  "title", "outcomes", "llm-bridge", "warmup", "concept-1", "concept-2",
+  "syntax-pattern", "prediction-check",
   "guided-practice", "main-lab", "debug-routine", "project-connection",
   "challenge-ladder", "homework", "exit-ticket",
 ];
 
-const expandedFoundationSlideIds = [
-  "title", "outputs", "lesson-agenda", "one-twenty-minute-pacing", "prerequisite-recap",
-  "course-position", "dataset-context", "warmup", "vocabulary", "mental-model",
-  "concept-1", "concept-2", "concept-3", "syntax-pattern", "teacher-demo",
-  "code-trace", "prediction-check", "guided-practice-1", "guided-practice-2",
-  "guided-lab", "mistake-clinic", "debug-routine", "checkpoint", "project-plan",
-  "project-brief", "project-lab", "independent-work", "challenge-ladder",
-  "concept-check", "evidence-handoff", "notebook-hygiene", "research-integrity",
-  "rubric", "homework", "buffer-catchup", "exit-ticket",
+const llmBridgeChecks = {
+  3: ["A prompt experiment is structured Python data", "documents/chapter2"],
+  4: ["A toy token choice begins with a score vector", "documents/chapter5"],
+  5: ["Prompt strategies become comparable when every trial is a row", "documents/chapter2"],
+  6: ["Model training starts with auditable data cleaning", "documents/chapter4"],
+  7: ["A prompt comparison needs a figure, not a favorite example", "documents/chapter2"],
+  8: ["LLM errors need categories before they need explanations", "documents/chapter3"],
+  9: ["An LLM safety classifier needs a baseline before a complex model", "documents/chapter10"],
+  10: ["Inference latency is a measurable outcome, not a vague impression", "documents/chapter1"],
+  11: ["Safe versus unsafe is a binary prediction with asymmetric errors", "documents/chapter10"],
+  12: ["A decision tree can expose the rule behind a risk label", "documents/chapter10"],
+  13: ["A stronger evaluator must use the same held-out safety cases", "documents/chapter6"],
+  14: ["An LLM claim needs an ablation table, not one impressive answer", "documents/chapter2"],
+  15: ["A final LLM project needs one question, one test set, and one auditable claim", "documents/chapter8"],
+};
+
+const liveClassTwoSlideIds = [
+  "title", "outputs", "mental-model", "syntax-pattern", "teacher-demo",
+  "code-trace", "prediction-check", "guided-lab", "mistake-clinic",
+  "debug-routine", "project-brief", "project-lab", "concept-check",
+  "evidence-handoff", "research-integrity", "homework", "exit-ticket",
 ];
 
 const liveClassOneSlideIds = [
-  "title", "outputs", "lesson-agenda", "prerequisite-recap", "warmup",
+  "title", "outputs", "lesson-agenda",
   "concept-1", "concept-2", "syntax-pattern", "prediction-check",
-  "teacher-demo", "code-trace", "guided-practice-1", "debug-routine",
-  "dataset-context", "guided-lab", "rubric", "homework", "exit-ticket",
+  "teacher-demo", "dataset-context", "guided-lab", "rubric", "homework", "exit-ticket",
 ];
 
 const catalogPath = path.join(ROOT, "catalog.json");
@@ -83,12 +94,14 @@ for (const folder of ["python-ai-en"]) {
     const ids = [...html.matchAll(/<section id="([^"]+)"/g)].map((match) => match[1]);
     const liveClassOne = lesson === 1;
     const expanded = lesson === 2;
-    const expectedIds = liveClassOne ? liveClassOneSlideIds : expanded ? expandedFoundationSlideIds : requiredSlideIds;
+    const expectedIds = liveClassOne ? liveClassOneSlideIds : expanded ? liveClassTwoSlideIds : requiredSlideIds;
     check(ids.length === expectedIds.length, `${relative} contains ${expectedIds.length} primary slides`);
     check(JSON.stringify(ids) === JSON.stringify(expectedIds), `${relative} uses the approved slide sequence`);
     check(liveClassOne
       ? html.includes("60 minutes") && !html.includes("120-MINUTE PACING")
-      : html.includes(expanded ? "120-MINUTE PACING" : "60-MINUTE PACING"), `${relative} declares the approved lesson pacing`);
+      : expanded
+      ? !html.includes("120-MINUTE PACING") && !html.includes("60-MINUTE PACING")
+      : !html.includes("120-MINUTE PACING") && !html.includes("60-MINUTE PACING"), `${relative} keeps timing in the catalog rather than student slides`);
     check(liveClassOne || (expanded ? !html.includes("60-MINUTE PACING") : !html.includes("120-MINUTE PACING")), `${relative} contains no conflicting pacing`);
     check(html.includes('id="prediction-check"') && html.includes((liveClassOne || expanded) ? 'id="guided-lab"' : 'id="main-lab"'), `${relative} includes a prediction check and guided lab`);
     check((liveClassOne ? html.includes('id="outputs"') : html.includes(expanded ? 'id="evidence-handoff"' : 'id="project-connection"')) && html.includes("Research Log"), `${relative} connects the lesson to research evidence`);
@@ -116,7 +129,18 @@ for (const folder of ["python-ai-en"]) {
         check(html.includes("Mira · Code coach") && html.includes("Built-in · instant") && html.includes("miraReply") && html.includes("Use this code"), `${relative} includes the built-in Mira code coach without a backend dependency`);
       } else {
         check(!html.includes('class="lab"') && !html.includes("BROWSER PYTHON DEMO"), `${relative} keeps practical work in Kaggle Notebook`);
+        check(!ids.includes("dataset-context") && !ids.includes("warmup") && !ids.includes("one-twenty-minute-pacing"), `${relative} removes standalone context, warm-up, and pacing slides`);
+        check(html.includes("Follow the branch selected by each reading") && html.includes("37.8") && html.includes("12.1"), `${relative} includes a concrete value-by-value code trace`);
+        check(html.includes("Two missing characters break both boundary cases") && html.includes("15 → normal") && html.includes("35 → normal"), `${relative} includes an explicit boundary logic bug and fix`);
+        check(html.includes("SyntaxError") && html.includes("NameError") && html.includes("lable"), `${relative} includes a reproducible two-step debugging example`);
+        check(html.includes("14.9") && html.includes("35.1") && html.includes("normal rate"), `${relative} defines executable project acceptance tests`);
       }
+    } else {
+      const [bridgeTitle, sourcePath] = llmBridgeChecks[lesson];
+      check(ids.includes("llm-bridge") && !ids.includes("lesson-agenda") && !ids.includes("sixty-minute-pacing") && !ids.includes("course-position"), `${relative} replaces process slides with one substantive LLM bridge`);
+      check(html.includes(bridgeTitle), `${relative} includes the approved Lesson ${lesson} LLM knowledge point`);
+      check(html.includes(sourcePath) && html.includes("[Sources]"), `${relative} retains the LLM topic source in speaker notes`);
+      check(/independently authored/i.test(html), `${relative} states that the classroom example was independently authored`);
     }
     generated.push({ folder, lesson, html, ids });
   }
@@ -166,6 +190,18 @@ check(expectedTitles.every((title) => readme.includes(title)), "README lists all
 check(/25%;[\s\S]*25%;[\s\S]*30%;[\s\S]*20%/.test(readme), "README records the approved 25/25/30/20 assessment weights");
 check(/Class 1[^.\n]*60 minutes/.test(readme), "README records the English 60-minute Class 1");
 check(/Class 2[^.\n]*120 minutes/.test(readme), "README records the English 120-minute Class 2");
+check(readme.includes("LLM_KNOWLEDGE_MAP_LESSONS_03_15.md"), "README links the Lesson 3-15 LLM knowledge map");
+
+const llmMapPath = "LLM_KNOWLEDGE_MAP_LESSONS_03_15.md";
+check(fs.existsSync(path.join(ROOT, llmMapPath)), `${llmMapPath} exists`);
+if (fs.existsSync(path.join(ROOT, llmMapPath))) {
+  const llmMap = read(llmMapPath);
+  for (let lesson = 3; lesson <= 15; lesson += 1) {
+    check(llmMap.includes(`| ${String(lesson).padStart(2, "0")} |`), `${llmMapPath} maps Lesson ${lesson}`);
+  }
+  check(/independently rewritten|independently authored/i.test(llmMap), `${llmMapPath} records the independent-rewrite boundary`);
+  check(/No top-level license|no clear top-level license/i.test(llmMap), `${llmMapPath} records the unverified external license boundary`);
+}
 
 console.log(`\nCOURSE VALIDATION: ${failures.length ? "FAIL" : "PASS"} (${passed} checks passed)`);
 if (failures.length) failures.forEach((message) => console.error(`  FAIL: ${message}`));
